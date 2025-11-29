@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIX: Supabase Email Confirmation Issue</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #dc2626;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        .urgent {
+            background: #fef2f2;
+            border-left: 4px solid #dc2626;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        .urgent h2 {
+            color: #dc2626;
+            margin-bottom: 0.5rem;
+        }
+        .step {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #10b981;
+        }
+        .step h2 {
+            color: #065f46;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        .step p, .step li {
+            color: #374151;
+            line-height: 1.8;
+            margin: 0.5rem 0;
+        }
+        .step ol {
+            margin-left: 1.5rem;
+        }
+        .btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+        .btn:hover {
+            background: #991b1b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220,38,38,0.3);
+        }
+        code {
+            background: #1f2937;
+            color: #10b981;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        .success {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #10b981;
+        }
+        .screenshot {
+            background: #fef3c7;
+            border: 2px dashed #f59e0b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: center;
+            color: #92400e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚨 FIX: Failed to Fetch Error</h1>
+
+        <div class="urgent">
+            <h2>⚡ THE PROBLEM:</h2>
+            <p><strong>Supabase has email confirmation ENABLED.</strong> This blocks new user signups until they verify their email. You need to DISABLE this NOW to create admin accounts.</p>
+        </div>
+
+        <div class="step">
+            <h2>Step 1: Open Supabase Authentication Settings</h2>
+            <p>Click the button below to open your Supabase authentication settings:</p>
+            <a href="https://supabase.com/dashboard/project/aqppeaqlvtjrpztzoswk/auth/providers" target="_blank" class="btn">
+                🔗 Open Supabase Auth Settings
+            </a>
+        </div>
+
+        <div class="step">
+            <h2>Step 2: Disable Email Confirmation</h2>
+            <ol>
+                <li>On the left sidebar, click <strong>"Authentication"</strong></li>
+                <li>Click <strong>"Providers"</strong></li>
+                <li>Find the <strong>"Email"</strong> provider section</li>
+                <li>Look for <strong>"Confirm email"</strong> toggle switch</li>
+                <li><strong>TURN OFF</strong> the "Confirm email" toggle (it should be gray/off)</li>
+                <li>Click <strong>"Save"</strong> at the bottom</li>
+            </ol>
+            <div class="screenshot">
+                📸 Look for: "Confirm email" toggle and make sure it's OFF (gray)
+            </div>
+        </div>
+
+        <div class="step">
+            <h2>Step 3: Verify the Change</h2>
+            <p>Make sure you see:</p>
+            <ul>
+                <li>✅ "Confirm email" toggle is <strong>OFF</strong> (gray, not blue)</li>
+                <li>✅ Settings saved successfully message</li>
+            </ul>
+        </div>
+
+        <div class="success">
+            <strong>✅ After completing these steps:</strong>
+            <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Go back to: <code>http://localhost:3002/admin-register</code></li>
+                <li>Fill in the registration form</li>
+                <li>Use secret code: <code>LABYAOUNDE2025ADMIN</code></li>
+                <li>Click "Create Admin Account"</li>
+                <li>It will work immediately - NO email confirmation needed!</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h2>🎯 Quick Access Links:</h2>
+            <a href="https://supabase.com/dashboard/project/aqppeaqlvtjrpztzoswk/auth/providers" target="_blank" class="btn">
+                Open Auth Settings
+            </a>
+            <a href="http://localhost:3002/admin-register" target="_blank" class="btn" style="background: #10b981;">
+                Admin Registration Page
+            </a>
+        </div>
+
+        <div class="urgent">
+            <h2>⚠️ IMPORTANT NOTE:</h2>
+            <p>If you CAN'T turn off email confirmation (some Supabase plans require it), I'll create an alternative solution that uses direct Supabase Dashboard user creation. Let me know if you need that!</p>
+        </div>
+    </div>
+
+    <script>
+        console.log('%c🚨 FIX SUPABASE EMAIL CONFIRMATION NOW! 🚨', 'background: #dc2626; color: white; font-size: 20px; padding: 10px;');
+        console.log('1. Go to: https://supabase.com/dashboard/project/aqppeaqlvtjrpztzoswk/auth/providers');
+        console.log('2. Turn OFF "Confirm email" toggle');
+        console.log('3. Save settings');
+        console.log('4. Try admin registration again!');
+    </script>
+</body>
+</html>

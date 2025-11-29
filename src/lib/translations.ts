@@ -11,9 +11,30 @@ export const translations = {
       // Main Navigation
       patients: "Patients",
       healthProfessionals: "Professionnels de santé",
-      expertise: "Expertise LabYaounde",
+      ourServices: "Nos Services",
+      theLaboratory: "Le Laboratoire",
+      aboutUs: "A propos",
+      contactUs: "Contactez-nous",
       careers: "Carrières",
       language: "Langue",
+
+      // About Menu
+      whoWeAre: "Qui sommes-nous",
+      ourVision: "Notre vision",
+      ourStandards: "Nos Standards",
+      ourStrategy: "Nos Stratégies",
+      ourObjectives: "Nos Objectifs",
+      organizationalChart: "Organigramme",
+      qualityAssurance: "Assurance Qualité",
+
+      // Services Menu
+      specialties: "Nos spécialités",
+      generalBiology: "Biologie générale",
+      infectiousDiseases: "Maladies infectieuses",
+      pregnantWomanBiology: "Biologie de la femme enceinte",
+      reproductionAssistance: "Aide à la procréation",
+      genetics: "Génétique",
+      cancerBiology: "Biologie des cancers",
       
       // Patient Menu
       beforeSampling: "Avant le prélèvement",
@@ -275,10 +296,31 @@ export const translations = {
       // Main Navigation
       patients: "Patients",
       healthProfessionals: "Healthcare Professionals",
-      expertise: "LabYaounde Expertise",
+      ourServices: "Our Services",
+      theLaboratory: "The Laboratory",
+      aboutUs: "About Us",
+      contactUs: "Contact Us",
       careers: "Careers",
       language: "Language",
-      
+
+      // About Menu
+      whoWeAre: "Who We Are",
+      ourVision: "Our Vision",
+      ourStandards: "Our Standards",
+      ourStrategy: "Our Strategies",
+      ourObjectives: "Our Objectives",
+      organizationalChart: "Organizational Chart",
+      qualityAssurance: "Quality Assurance",
+
+      // Services Menu
+      specialties: "Our Specialties",
+      generalBiology: "General Biology",
+      infectiousDiseases: "Infectious Diseases",
+      pregnantWomanBiology: "Pregnant Woman Biology",
+      reproductionAssistance: "Reproduction Assistance",
+      genetics: "Genetics",
+      cancerBiology: "Cancer Biology",
+
       // Patient Menu
       beforeSampling: "Before Sampling",
       needAppointment: "Do I need an appointment?",

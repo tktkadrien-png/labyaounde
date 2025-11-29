@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy SQL Schema - Lab Yaounde</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0B3D5F 0%, #0B4D6F 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #0B3D5F;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        .step {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #0B3D5F;
+        }
+        .step h2 {
+            color: #0B3D5F;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .step p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .btn {
+            background: #0B3D5F;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+        .btn:hover {
+            background: #0B4D6F;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(11,61,95,0.3);
+        }
+        .btn.secondary {
+            background: white;
+            color: #0B3D5F;
+            border: 2px solid #0B3D5F;
+        }
+        .btn.secondary:hover {
+            background: #f8f9fa;
+        }
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            resize: vertical;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #28a745;
+            display: none;
+        }
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #ffc107;
+        }
+        code {
+            background: #f8f9fa;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #0B3D5F;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Lab Yaounde - Database Setup</h1>
+        <p style="color: #666; margin-bottom: 2rem;">Follow these simple steps to complete your database setup.</p>
+
+        <div class="warning">
+            ⚠️ <strong>Important:</strong> Complete all 3 steps in order!
+        </div>
+
+        <div class="step">
+            <h2>Step 1: Copy SQL Schema</h2>
+            <p>Click the button below to copy the entire SQL schema to your clipboard.</p>
+            <button class="btn" onclick="copySQLToClipboard()">📋 Copy SQL to Clipboard</button>
+            <div class="success" id="copySuccess">✅ SQL copied to clipboard!</div>
+        </div>
+
+        <div class="step">
+            <h2>Step 2: Open Supabase SQL Editor</h2>
+            <p>Click the button below to open your Supabase SQL Editor in a new tab.</p>
+            <a href="https://supabase.com/dashboard/project/aqppeaqlvtjrpztzoswk/sql" target="_blank" class="btn">
+                🔗 Open Supabase SQL Editor
+            </a>
+        </div>
+
+        <div class="step">
+            <h2>Step 3: Run the SQL</h2>
+            <p>In the Supabase SQL Editor:</p>
+            <ol style="margin-left: 1.5rem; margin-top: 0.5rem; color: #666; line-height: 1.8;">
+                <li>Click <strong>"New Query"</strong></li>
+                <li>Press <code>Ctrl+V</code> (or <code>Cmd+V</code> on Mac) to paste the SQL</li>
+                <li>Click <strong>"Run"</strong> (or press <code>Ctrl+Enter</code>)</li>
+                <li>Wait for the success message</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h2>✅ After Completion</h2>
+            <p><strong>Restart your dev server:</strong></p>
+            <ol style="margin-left: 1.5rem; margin-top: 0.5rem; color: #666; line-height: 1.8;">
+                <li>Press <code>Ctrl+C</code> in your terminal</li>
+                <li>Run: <code>npm run dev</code></li>
+                <li>Test: Go to <code>http://localhost:3000/signup</code></li>
+            </ol>
+        </div>
+
+        <textarea id="sqlSchema" readonly style="display: none;">-- ============================================
+-- Lab Yaounde - Supabase Database Schema
+-- ============================================
+
+-- Create reviews table
+CREATE TABLE IF NOT EXISTS public.reviews (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL,
+    rating INTEGER NOT NULL CHECK (rating >= 1 AND rating <= 5),
+    comment TEXT NOT NULL,
+    status TEXT DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected')),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW()),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW())
+);
+
+-- Create index for faster queries
+CREATE INDEX IF NOT EXISTS reviews_user_id_idx ON public.reviews(user_id);
+CREATE INDEX IF NOT EXISTS reviews_status_idx ON public.reviews(status);
+CREATE INDEX IF NOT EXISTS reviews_created_at_idx ON public.reviews(created_at DESC);
+
+-- Enable Row Level Security (RLS)
+ALTER TABLE public.reviews ENABLE ROW LEVEL SECURITY;
+
+-- Create policies for reviews table
+
+-- Policy: Users can view approved reviews
+CREATE POLICY "Anyone can view approved reviews"
+    ON public.reviews
+    FOR SELECT
+    USING (status = 'approved');
+
+-- Policy: Users can view their own reviews (any status)
+CREATE POLICY "Users can view their own reviews"
+    ON public.reviews
+    FOR SELECT
+    USING (auth.uid() = user_id);
+
+-- Policy: Authenticated users can insert their own reviews
+CREATE POLICY "Authenticated users can create reviews"
+    ON public.reviews
+    FOR INSERT
+    WITH CHECK (auth.uid() = user_id);
+
+-- Policy: Users can update their own reviews (only if pending)
+CREATE POLICY "Users can update their own pending reviews"
+    ON public.reviews
+    FOR UPDATE
+    USING (auth.uid() = user_id AND status = 'pending')
+    WITH CHECK (auth.uid() = user_id);
+
+-- Policy: Users can delete their own reviews
+CREATE POLICY "Users can delete their own reviews"
+    ON public.reviews
+    FOR DELETE
+    USING (auth.uid() = user_id);
+
+-- Create a function to automatically update updated_at timestamp
+CREATE OR REPLACE FUNCTION public.handle_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = TIMEZONE('utc', NOW());
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Create trigger to auto-update updated_at
+CREATE TRIGGER set_updated_at
+    BEFORE UPDATE ON public.reviews
+    FOR EACH ROW
+    EXECUTE FUNCTION public.handle_updated_at();
+
+-- ============================================
+-- Optional: Create profiles table for extended user data
+-- ============================================
+
+CREATE TABLE IF NOT EXISTS public.profiles (
+    id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+    full_name TEXT,
+    avatar_url TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW()),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW())
+);
+
+-- Enable RLS for profiles
+ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
+
+-- Policy: Users can view their own profile
+CREATE POLICY "Users can view their own profile"
+    ON public.profiles
+    FOR SELECT
+    USING (auth.uid() = id);
+
+-- Policy: Users can update their own profile
+CREATE POLICY "Users can update their own profile"
+    ON public.profiles
+    FOR UPDATE
+    USING (auth.uid() = id)
+    WITH CHECK (auth.uid() = id);
+
+-- Policy: Users can insert their own profile
+CREATE POLICY "Users can insert their own profile"
+    ON public.profiles
+    FOR INSERT
+    WITH CHECK (auth.uid() = id);
+
+-- Create trigger for profiles updated_at
+CREATE TRIGGER set_profiles_updated_at
+    BEFORE UPDATE ON public.profiles
+    FOR EACH ROW
+    EXECUTE FUNCTION public.handle_updated_at();
+
+-- ============================================
+-- Create function to automatically create profile on signup
+-- ============================================
+
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO public.profiles (id, full_name)
+    VALUES (NEW.id, NEW.raw_user_meta_data->>'full_name');
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- Create trigger to auto-create profile
+CREATE TRIGGER on_auth_user_created
+    AFTER INSERT ON auth.users
+    FOR EACH ROW
+    EXECUTE FUNCTION public.handle_new_user();
+
+-- ============================================
+-- Success! Your database schema is now set up.
+-- ============================================</textarea>
+
+    </div>
+
+    <script>
+        function copySQLToClipboard() {
+            const sqlText = document.getElementById('sqlSchema').value;
+            navigator.clipboard.writeText(sqlText).then(() => {
+                const successMsg = document.getElementById('copySuccess');
+                successMsg.style.display = 'block';
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 3000);
+            }).catch(err => {
+                alert('Failed to copy. Please copy manually from supabase-schema.sql file.');
+            });
+        }
+    </script>
+</body>
+</html>

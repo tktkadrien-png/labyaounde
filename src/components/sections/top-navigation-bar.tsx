@@ -1,7 +1,8 @@
 "use client";
 
-import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Linkedin, Shield } from 'lucide-react';
 import { useLanguage } from '@/lib/contents/LanguageContext';
+import Link from 'next/link';
 
 const TopNavigationBar = () => {
   const { t } = useLanguage();
@@ -13,16 +14,16 @@ const TopNavigationBar = () => {
           {/* Left side - Contact info */}
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6">
             <span className="flex items-center gap-1.5">
+              <MapPin className="h-3.5 w-3.5 text-white" />
+              Cité verte Batiment B01
+            </span>
+            <span className="flex items-center gap-1.5">
               <Phone className="h-3.5 w-3.5 text-white" />
-              {t('phone')}
+              (+237) 242 04 68 50 / 671 37 05 65 / 694 493 130
             </span>
             <span className="flex items-center gap-1.5">
               <Mail className="h-3.5 w-3.5 text-white" />
-              {t('email')}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <MapPin className="h-3.5 w-3.5 text-white" />
-              {t('address')}
+              contact@labyaounde.org
             </span>
           </div>
 
@@ -39,7 +40,7 @@ const TopNavigationBar = () => {
             <a href="#" className="text-white no-underline hover:underline font-medium transition-all">
               {t('contact')}
             </a>
-            
+
             {/* Social Icons */}
             <div className="flex items-center gap-2.5 ml-2.5">
               <a href="#" aria-label="Facebook" className="text-white hover:opacity-80 transition-opacity">
@@ -54,6 +55,11 @@ const TopNavigationBar = () => {
               <a href="#" aria-label="LinkedIn" className="text-white hover:opacity-80 transition-opacity">
                 <Linkedin className="h-4 w-4" />
               </a>
+
+              {/* Admin Access Button */}
+              <Link href="/admin-login" aria-label="Admin Login" className="ml-2 flex items-center justify-center w-6 h-6 bg-red-600 hover:bg-red-700 rounded text-white font-bold text-xs transition-all hover:scale-110">
+                L
+              </Link>
             </div>
           </div>
         </div>
