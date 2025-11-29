@@ -167,15 +167,15 @@ const MainNavigation = () => {
           isSticky ? "shadow-md" : ""
         )}
       >
-        <div className="container mx-auto max-w-[1200px] px-[30px] py-[15px]">
-          <div className="flex h-[110px] items-center justify-between">
+        <div className="container mx-auto max-w-[1200px] px-4 sm:px-6 md:px-8 lg:px-[30px] py-3 md:py-[15px]">
+          <div className="flex h-16 sm:h-20 md:h-24 lg:h-[110px] items-center justify-between">
             <Link href="/" aria-label="Lab Yaoundé Home" className="flex items-center relative">
               <Image
                 src="/images/images.png"
                 alt="Lab Yaoundé Logo"
                 width={200}
                 height={90}
-                className="h-[90px] w-auto object-contain hover:opacity-90 transition-opacity"
+                className="h-12 sm:h-16 md:h-20 lg:h-[90px] w-auto object-contain hover:opacity-90 transition-opacity"
                 priority
               />
             </Link>
@@ -193,25 +193,25 @@ const MainNavigation = () => {
                 </li>
               </ul>
 
-              <div className="flex items-center gap-2 ml-4">
+              <div className="flex items-center gap-1.5 md:gap-2 ml-2 md:ml-4">
                 <Button
                   onClick={toggleLanguage}
                   size="sm"
                   variant="ghost"
-                  className="h-10 px-3 rounded-md text-[#0B3D5F] hover:bg-[#0B3D5F]/5 hover:text-[#0a6ed1] transition-colors border border-[#E0E0E0] font-medium"
+                  className="h-9 md:h-10 px-2 md:px-3 rounded-md text-[#0B3D5F] hover:bg-[#0B3D5F]/5 hover:text-[#0a6ed1] transition-colors border border-[#E0E0E0] font-medium"
                 >
-                  <Languages className="h-4 w-4 mr-1.5" />
-                  <span className="text-sm">{language.toUpperCase()}</span>
+                  <Languages className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1 md:mr-1.5" />
+                  <span className="text-xs md:text-sm">{language.toUpperCase()}</span>
                 </Button>
 
                 {user ? (
                   <div className="relative">
                     <button
                       onClick={() => setShowUserMenu(!showUserMenu)}
-                      className="flex items-center gap-2 h-10 px-4 rounded-md bg-[#0B3D5F] text-white hover:bg-[#0B4D6F] transition-colors font-medium"
+                      className="flex items-center gap-1.5 md:gap-2 h-9 md:h-10 px-2 md:px-4 rounded-md bg-[#0B3D5F] text-white hover:bg-[#0B4D6F] transition-colors font-medium"
                     >
-                      <User className="h-4 w-4" />
-                      <span className="text-sm">{user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
+                      <User className="h-3.5 w-3.5 md:h-4 md:w-4" />
+                      <span className="text-xs md:text-sm truncate max-w-[100px] md:max-w-none">{user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
                     </button>
                     {showUserMenu && (
                       <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
@@ -233,17 +233,17 @@ const MainNavigation = () => {
                     )}
                   </div>
                 ) : (
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1.5 md:gap-2">
                     <Link href="/login">
-                      <Button size="sm" variant="ghost" className="h-10 px-4 rounded-md text-[#0B3D5F] hover:bg-[#0B3D5F]/5 transition-colors border border-[#E0E0E0] font-medium">
-                        <LogIn className="h-4 w-4 mr-1.5" />
-                        <span className="text-sm">{language === 'fr' ? 'Connexion' : 'Login'}</span>
+                      <Button size="sm" variant="ghost" className="h-9 md:h-10 px-2 md:px-4 rounded-md text-[#0B3D5F] hover:bg-[#0B3D5F]/5 transition-colors border border-[#E0E0E0] font-medium">
+                        <LogIn className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1 md:mr-1.5" />
+                        <span className="text-xs md:text-sm">{language === 'fr' ? 'Connexion' : 'Login'}</span>
                       </Button>
                     </Link>
                     <Link href="/signup">
-                      <Button size="sm" className="h-10 px-4 rounded-md bg-[#0B3D5F] text-white hover:bg-[#0B4D6F] transition-colors font-medium">
-                        <UserPlus className="h-4 w-4 mr-1.5" />
-                        <span className="text-sm">{language === 'fr' ? 'Inscription' : 'Sign Up'}</span>
+                      <Button size="sm" className="h-9 md:h-10 px-2 md:px-4 rounded-md bg-[#0B3D5F] text-white hover:bg-[#0B4D6F] transition-colors font-medium">
+                        <UserPlus className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1 md:mr-1.5" />
+                        <span className="text-xs md:text-sm">{language === 'fr' ? 'Inscription' : 'Sign Up'}</span>
                       </Button>
                     </Link>
                   </div>
@@ -253,13 +253,13 @@ const MainNavigation = () => {
 
             <button
               onClick={toggleMobileMenu}
-              className="z-50 rounded p-2 xl:hidden"
+              className="z-50 rounded p-2 xl:hidden hover:bg-gray-100 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
-                <X className="h-7 w-7 text-[#0B3D5F]" />
+                <X className="h-6 w-6 md:h-7 md:w-7 text-[#0B3D5F]" />
               ) : (
-                <Menu className="h-7 w-7 text-[#0B3D5F]" />
+                <Menu className="h-6 w-6 md:h-7 md:w-7 text-[#0B3D5F]" />
               )}
             </button>
           </div>
@@ -273,44 +273,44 @@ const MainNavigation = () => {
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
-        <div className="container mx-auto h-full overflow-y-auto px-6 pt-24 pb-8">
-            <Accordion type="single" collapsible className="w-full space-y-4">
+        <div className="container mx-auto h-full overflow-y-auto px-4 sm:px-6 pt-20 sm:pt-24 pb-8">
+            <Accordion type="single" collapsible className="w-full space-y-3 sm:space-y-4">
               <MobileAccordionItemPro trigger={t('aboutUs')} professionalsMenu={aboutMenu} />
               <MobileAccordionItem trigger={t('ourServices')} menu={servicesMenu} />
               <MobileAccordionItemPro trigger={t('healthProfessionals')} professionalsMenu={professionalsMenu} />
               <MobileAccordionItem trigger={t('patients')} menu={patientsMenu} />
             </Accordion>
-            <div className="mt-6 border-t border-gray-200 pt-6">
-              <Link href="#careers" className="text-lg font-medium text-[#0B3D5F]" onClick={toggleMobileMenu}>
+            <div className="mt-4 sm:mt-6 border-t border-gray-200 pt-4 sm:pt-6">
+              <Link href="#careers" className="text-base sm:text-lg font-medium text-[#0B3D5F] block py-2" onClick={toggleMobileMenu}>
                 {t('careers')}
               </Link>
             </div>
-            <div className="mt-6 flex flex-col space-y-4 border-t border-gray-200 pt-6">
+            <div className="mt-4 sm:mt-6 flex flex-col space-y-3 sm:space-y-4 border-t border-gray-200 pt-4 sm:pt-6">
               {user ? (
                 <>
-                  <div className="flex items-center gap-3 px-4 py-3 bg-[#0B3D5F]/5 rounded-lg">
-                    <User className="h-5 w-5 text-[#0B3D5F]" />
-                    <span className="font-medium text-[#0B3D5F]">{user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
+                  <div className="flex items-center gap-3 px-3 sm:px-4 py-3 bg-[#0B3D5F]/5 rounded-lg">
+                    <User className="h-5 w-5 text-[#0B3D5F] flex-shrink-0" />
+                    <span className="font-medium text-[#0B3D5F] text-sm sm:text-base truncate">{user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
                   </div>
                   <Link href="/profile" onClick={toggleMobileMenu}>
-                    <Button variant="outline" className="w-full justify-start text-[#0B3D5F] hover:bg-[#0B3D5F]/5">
+                    <Button variant="outline" className="w-full justify-start text-[#0B3D5F] hover:bg-[#0B3D5F]/5 min-h-[44px] text-sm sm:text-base">
                       {language === 'fr' ? 'Mon profil' : 'My Profile'}
                     </Button>
                   </Link>
                   <Link href="/mes-resultats" onClick={toggleMobileMenu}>
-                    <Button variant="outline" className="w-full justify-start text-[#0B3D5F] hover:bg-[#0B3D5F]/5">
+                    <Button variant="outline" className="w-full justify-start text-[#0B3D5F] hover:bg-[#0B3D5F]/5 min-h-[44px] text-sm sm:text-base">
                       {language === 'fr' ? 'Mes résultats' : 'My Results'}
                     </Button>
                   </Link>
                   <Link href="/laisser-un-avis" onClick={toggleMobileMenu}>
-                    <Button variant="outline" className="w-full justify-start text-[#0B3D5F] hover:bg-[#0B3D5F]/5">
+                    <Button variant="outline" className="w-full justify-start text-[#0B3D5F] hover:bg-[#0B3D5F]/5 min-h-[44px] text-sm sm:text-base">
                       {language === 'fr' ? 'Laisser un avis' : 'Leave a Review'}
                     </Button>
                   </Link>
                   <Button
                     onClick={handleLogout}
                     variant="outline"
-                    className="w-full justify-start text-red-600 hover:bg-red-50 border-red-200"
+                    className="w-full justify-start text-red-600 hover:bg-red-50 border-red-200 min-h-[44px] text-sm sm:text-base"
                   >
                     <LogOut className="h-4 w-4 mr-2" />
                     {language === 'fr' ? 'Déconnexion' : 'Logout'}
@@ -319,13 +319,13 @@ const MainNavigation = () => {
               ) : (
                 <div className="flex flex-col gap-3">
                   <Link href="/login" onClick={toggleMobileMenu}>
-                    <Button variant="outline" className="w-full justify-start text-[#0B3D5F] hover:bg-[#0B3D5F]/5">
+                    <Button variant="outline" className="w-full justify-start text-[#0B3D5F] hover:bg-[#0B3D5F]/5 min-h-[44px] text-sm sm:text-base">
                       <LogIn className="h-4 w-4 mr-2" />
                       {language === 'fr' ? 'Connexion' : 'Login'}
                     </Button>
                   </Link>
                   <Link href="/signup" onClick={toggleMobileMenu}>
-                    <Button className="w-full justify-start bg-[#0B3D5F] text-white hover:bg-[#0B4D6F]">
+                    <Button className="w-full justify-start bg-[#0B3D5F] text-white hover:bg-[#0B4D6F] min-h-[44px] text-sm sm:text-base">
                       <UserPlus className="h-4 w-4 mr-2" />
                       {language === 'fr' ? 'Inscription' : 'Sign Up'}
                     </Button>
@@ -335,7 +335,7 @@ const MainNavigation = () => {
               <Button
                 onClick={toggleLanguage}
                 variant="outline"
-                className="w-full justify-start text-[#0B3D5F] hover:bg-[#0B3D5F]/5"
+                className="w-full justify-start text-[#0B3D5F] hover:bg-[#0B3D5F]/5 min-h-[44px] text-sm sm:text-base"
               >
                 <Languages className="h-4 w-4 mr-2" />
                 <span>{t('language')}: {language.toUpperCase()}</span>
@@ -471,15 +471,19 @@ const MegaMenuItemPro = ({ trigger, professionalsMenu }: { trigger: string, prof
 
 const MobileAccordionItem = ({ trigger, menu }: { trigger: string, menu: MegaMenuColumn[] }) => (
     <AccordionItem value={trigger.toLowerCase()} className="border-b">
-        <AccordionTrigger className="text-lg font-medium text-[#0B3D5F] no-underline hover:no-underline">{trigger}</AccordionTrigger>
+        <AccordionTrigger className="text-base sm:text-lg font-medium text-[#0B3D5F] no-underline hover:no-underline py-3">{trigger}</AccordionTrigger>
         <AccordionContent>
-            <div className="pl-4 space-y-4">
+            <div className="pl-3 sm:pl-4 space-y-3 sm:space-y-4">
                 {menu.map(col => (
                     <div key={col.title}>
-                        <h4 className="mb-2 font-semibold text-[#0B3D5F]">{col.title}</h4>
+                        <h4 className="mb-2 font-semibold text-[#0B3D5F] text-sm sm:text-base">{col.title}</h4>
                         <ul className="space-y-2 pl-2">
                             {col.links.map(link => (
-                                <li key={link.label}><Link href={link.href} className="text-[#0B3D5F]">{link.label}</Link></li>
+                                <li key={link.label} className="min-h-[44px] flex items-center">
+                                    <Link href={link.href} className="text-[#0B3D5F] text-sm sm:text-base py-2 block w-full hover:text-[#0a6ed1] transition-colors">
+                                        {link.label}
+                                    </Link>
+                                </li>
                             ))}
                         </ul>
                     </div>
@@ -491,15 +495,19 @@ const MobileAccordionItem = ({ trigger, menu }: { trigger: string, menu: MegaMen
 
 const MobileAccordionItemPro = ({ trigger, professionalsMenu }: { trigger: string, professionalsMenu: any }) => (
   <AccordionItem value={trigger.toLowerCase()} className="border-b">
-      <AccordionTrigger className="text-lg font-medium text-[#0B3D5F] no-underline hover:no-underline">{trigger}</AccordionTrigger>
+      <AccordionTrigger className="text-base sm:text-lg font-medium text-[#0B3D5F] no-underline hover:no-underline py-3">{trigger}</AccordionTrigger>
       <AccordionContent>
-          <div className="pl-4 space-y-4">
+          <div className="pl-3 sm:pl-4 space-y-3 sm:space-y-4">
               {professionalsMenu.columns.map((col: any, index: number) => (
                   <div key={index}>
-                      {col.title && <h4 className="mb-2 font-semibold text-[#0B3D5F]">{col.title}</h4>}
+                      {col.title && <h4 className="mb-2 font-semibold text-[#0B3D5F] text-sm sm:text-base">{col.title}</h4>}
                       <ul className="space-y-2 pl-2">
                           {col.links.map((link: any) => (
-                              <li key={link.label}><Link href={link.href} className="text-[#0B3D5F]">{link.label}</Link></li>
+                              <li key={link.label} className="min-h-[44px] flex items-center">
+                                  <Link href={link.href} className="text-[#0B3D5F] text-sm sm:text-base py-2 block w-full hover:text-[#0a6ed1] transition-colors">
+                                      {link.label}
+                                  </Link>
+                              </li>
                           ))}
                       </ul>
                   </div>

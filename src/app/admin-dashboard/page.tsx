@@ -222,54 +222,54 @@ export default function AdminDashboard() {
       <TopNavigationBar />
       <MainNavigation />
 
-      <main className="min-h-screen bg-gray-50 py-8">
+      <main className="min-h-screen bg-gray-50 py-4 sm:py-6 md:py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-            <div className="flex items-center justify-between">
-              <h1 className="text-3xl font-bold text-gray-900">{currentContent.dashboard}</h1>
-              <div className="flex gap-3">
+          <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-4 sm:mb-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">{currentContent.dashboard}</h1>
+              <div className="flex gap-2 sm:gap-3 w-full sm:w-auto">
                 <button
                   onClick={fetchAllData}
                   disabled={loading}
-                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50 min-h-[44px] flex-1 sm:flex-initial text-sm sm:text-base"
                 >
                   <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
-                  {currentContent.refresh}
+                  <span className="hidden sm:inline">{currentContent.refresh}</span>
                 </button>
                 <button
                   onClick={handleLogout}
-                  className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
+                  className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors min-h-[44px] flex-1 sm:flex-initial text-sm sm:text-base"
                 >
                   <LogOut className="w-4 h-4" />
-                  {currentContent.logout}
+                  <span className="hidden sm:inline">{currentContent.logout}</span>
                 </button>
               </div>
             </div>
 
             {/* Tabs */}
-            <div className="mt-6 border-b border-gray-200">
-              <nav className="flex gap-8">
+            <div className="mt-4 sm:mt-6 border-b border-gray-200 -mx-4 sm:mx-0 px-4 sm:px-0">
+              <nav className="flex gap-4 sm:gap-8 overflow-x-auto">
                 <button
                   onClick={() => setActiveTab("overview")}
-                  className={`pb-4 px-1 border-b-2 font-medium text-sm transition-colors ${
+                  className={`pb-3 sm:pb-4 px-1 border-b-2 font-medium text-xs sm:text-sm transition-colors whitespace-nowrap min-h-[44px] flex items-center ${
                     activeTab === "overview"
                       ? "border-[#0B3D5F] text-[#0B3D5F]"
                       : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
                   }`}
                 >
-                  <BarChart3 className="w-4 h-4 inline mr-2" />
+                  <BarChart3 className="w-4 h-4 inline mr-1.5 sm:mr-2" />
                   {currentContent.overview}
                 </button>
                 <button
                   onClick={() => setActiveTab("reviews")}
-                  className={`pb-4 px-1 border-b-2 font-medium text-sm transition-colors ${
+                  className={`pb-3 sm:pb-4 px-1 border-b-2 font-medium text-xs sm:text-sm transition-colors whitespace-nowrap min-h-[44px] flex items-center ${
                     activeTab === "reviews"
                       ? "border-[#0B3D5F] text-[#0B3D5F]"
                       : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
                   }`}
                 >
-                  <MessageSquare className="w-4 h-4 inline mr-2" />
+                  <MessageSquare className="w-4 h-4 inline mr-1.5 sm:mr-2" />
                   {currentContent.reviewsTab}
                 </button>
               </nav>
@@ -278,48 +278,48 @@ export default function AdminDashboard() {
 
           {/* Overview Tab */}
           {activeTab === "overview" && (
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {/* Stats Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {/* Total Users */}
-                <div className="bg-white rounded-lg shadow-md p-6">
+                <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-gray-600">{currentContent.totalUsers}</p>
-                      <p className="text-2xl font-bold text-gray-900 mt-1">{stats.totalUsers}</p>
+                      <p className="text-xs sm:text-sm font-medium text-gray-600">{currentContent.totalUsers}</p>
+                      <p className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">{stats.totalUsers}</p>
                       <p className="text-xs text-green-600 mt-1">+{stats.todayUsers} {currentContent.newToday.toLowerCase()}</p>
                     </div>
-                    <div className="p-3 bg-blue-100 rounded-full">
-                      <Users className="w-6 h-6 text-blue-600" />
+                    <div className="p-2 sm:p-3 bg-blue-100 rounded-full flex-shrink-0">
+                      <Users className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
                     </div>
                   </div>
                 </div>
 
                 {/* Total Reviews */}
-                <div className="bg-white rounded-lg shadow-md p-6">
+                <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-gray-600">{currentContent.totalReviews}</p>
-                      <p className="text-2xl font-bold text-gray-900 mt-1">{stats.totalReviews}</p>
+                      <p className="text-xs sm:text-sm font-medium text-gray-600">{currentContent.totalReviews}</p>
+                      <p className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">{stats.totalReviews}</p>
                       <p className="text-xs text-green-600 mt-1">+{stats.todayReviews} {currentContent.reviewsToday.toLowerCase()}</p>
                     </div>
-                    <div className="p-3 bg-yellow-100 rounded-full">
-                      <MessageSquare className="w-6 h-6 text-yellow-600" />
+                    <div className="p-2 sm:p-3 bg-yellow-100 rounded-full flex-shrink-0">
+                      <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-600" />
                     </div>
                   </div>
                 </div>
 
                 {/* Average Rating */}
-                <div className="bg-white rounded-lg shadow-md p-6">
+                <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 sm:col-span-2 lg:col-span-1">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-gray-600">{currentContent.avgRating}</p>
-                      <p className="text-2xl font-bold text-gray-900 mt-1">{stats.avgRating} / 5</p>
+                      <p className="text-xs sm:text-sm font-medium text-gray-600">{currentContent.avgRating}</p>
+                      <p className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">{stats.avgRating} / 5</p>
                       <div className="flex gap-1 mt-1">
                         {[1, 2, 3, 4, 5].map(star => (
                           <Star
                             key={star}
-                            className={`w-4 h-4 ${
+                            className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
                               star <= Math.round(stats.avgRating)
                                 ? 'text-yellow-400 fill-yellow-400'
                                 : 'text-gray-300'
@@ -328,28 +328,28 @@ export default function AdminDashboard() {
                         ))}
                       </div>
                     </div>
-                    <div className="p-3 bg-green-100 rounded-full">
-                      <Star className="w-6 h-6 text-green-600" />
+                    <div className="p-2 sm:p-3 bg-green-100 rounded-full flex-shrink-0">
+                      <Star className="w-5 h-5 sm:w-6 sm:h-6 text-green-600" />
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Recent Reviews */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h2 className="text-lg font-semibold text-gray-900 mb-4">Derniers Avis</h2>
-                <div className="space-y-4">
+              <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
+                <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">Derniers Avis</h2>
+                <div className="space-y-3 sm:space-y-4">
                   {reviews.slice(0, 5).map((review) => (
-                    <div key={review.id} className="border-b border-gray-200 pb-4 last:border-0">
+                    <div key={review.id} className="border-b border-gray-200 pb-3 sm:pb-4 last:border-0">
                       <div className="flex items-start justify-between">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2">
-                            <p className="font-medium text-gray-900">{review.name}</p>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                            <p className="font-medium text-gray-900 text-sm sm:text-base truncate">{review.name}</p>
                             <div className="flex gap-0.5">
                               {[1, 2, 3, 4, 5].map(star => (
                                 <Star
                                   key={star}
-                                  className={`w-4 h-4 ${
+                                  className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
                                     star <= review.rating
                                       ? 'text-yellow-400 fill-yellow-400'
                                       : 'text-gray-300'
@@ -358,7 +358,7 @@ export default function AdminDashboard() {
                               ))}
                             </div>
                           </div>
-                          <p className="text-sm text-gray-600 mt-1">{review.comment}</p>
+                          <p className="text-xs sm:text-sm text-gray-600 mt-1 line-clamp-2">{review.comment}</p>
                           <p className="text-xs text-gray-400 mt-1">
                             {new Date(review.created_at).toLocaleDateString('fr-FR')} à {new Date(review.created_at).toLocaleTimeString('fr-FR')}
                           </p>
@@ -373,26 +373,26 @@ export default function AdminDashboard() {
 
           {/* Reviews Tab */}
           {activeTab === "reviews" && (
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
               {/* Filters */}
-              <div className="mb-6 flex flex-col sm:flex-row gap-4">
+              <div className="mb-4 sm:mb-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <div className="flex-1">
                   <div className="relative">
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 sm:w-5 sm:h-5" />
                     <input
                       type="text"
                       placeholder={currentContent.search}
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#0B3D5F] focus:border-transparent"
+                      className="w-full pl-9 sm:pl-10 pr-3 sm:pr-4 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-md focus:ring-2 focus:ring-[#0B3D5F] focus:border-transparent min-h-[44px]"
                     />
                   </div>
                 </div>
-                <div className="sm:w-48">
+                <div className="w-full sm:w-48">
                   <select
                     value={statusFilter}
                     onChange={(e) => setStatusFilter(e.target.value as any)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#0B3D5F] focus:border-transparent"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-md focus:ring-2 focus:ring-[#0B3D5F] focus:border-transparent min-h-[44px]"
                   >
                     <option value="all">{currentContent.all}</option>
                     <option value="5">5 {currentContent.stars}</option>
