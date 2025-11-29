@@ -100,15 +100,10 @@ export default function AdminDashboard() {
 
   const checkAdminAuth = async () => {
     try {
-      const hasAdminAccess = sessionStorage.getItem("admin_access");
-      if (!hasAdminAccess) {
-        router.push("/admin-access");
-        return;
-      }
+      // Accès libre au dashboard - pas de vérification
       await fetchAllData();
     } catch (error) {
       console.error("Auth error:", error);
-      router.push("/admin-access");
     }
   };
 
@@ -219,7 +214,6 @@ export default function AdminDashboard() {
   };
 
   const handleLogout = () => {
-    sessionStorage.removeItem("admin_access");
     router.push("/");
   };
 
