@@ -147,7 +147,7 @@ export default function HematologiePage() {
               <div className="order-2 lg:order-1">
                 <div className="relative h-80 sm:h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/cdc-UBJJuAv9os-unsplash.jpg"
+                    src="/national-cancer-institute-rb8hr3cXD4A-unsplash.jpg"
                     alt="Cytologie oncologique"
                     fill
                     className="object-cover"

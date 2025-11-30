@@ -193,7 +193,7 @@ export default function BiologieMoleculairePage() {
               <div className="order-2 lg:order-1">
                 <div className="relative h-80 sm:h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/cdc-UBJJuAv9os-unsplash.jpg"
+                    src="/cdc-WCEOtVmk2VY-unsplash.jpg"
                     alt="Dépistage HPV"
                     fill
                     className="object-cover"

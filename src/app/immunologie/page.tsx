@@ -195,7 +195,7 @@ export default function ImmunologiePage() {
                 <div className="grid grid-cols-1 gap-4">
                   <div className="relative h-72 rounded-2xl overflow-hidden shadow-2xl">
                     <Image
-                      src="/pexels-rethaferguson-3825527.jpg"
+                      src="/pexels-edward-jenner-4033148.jpg"
                       alt="Sérologie virale"
                       fill
                       className="object-cover"
@@ -203,7 +203,7 @@ export default function ImmunologiePage() {
                   </div>
                   <div className="relative h-72 rounded-2xl overflow-hidden shadow-2xl">
                     <Image
-                      src="/cdc-UBJJuAv9os-unsplash.jpg"
+                      src="/national-institute-of-allergy-and-infectious-diseases-Cdt3s_jp1OY-unsplash.jpg"
                       alt="Analyses sérologiques"
                       fill
                       className="object-cover"
