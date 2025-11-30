@@ -91,9 +91,9 @@ const MainNavigation = () => {
 
   const professionalsMenu = {
     columns: [
-      { span: 4, title: language === 'fr' ? 'Normes et Certifications' : 'Standards & Certifications', links: [ { href: "#", label: language === 'fr' ? 'ISO 15189' : 'ISO 15189' }, { href: "#", label: language === 'fr' ? 'Accréditations' : 'Accreditations' }, { href: "#", label: language === 'fr' ? 'Audits Qualité' : 'Quality Audits' } ]},
-      { span: 4, title: language === 'fr' ? 'Processus Qualité' : 'Quality Processes', links: [ { href: "#", label: language === 'fr' ? 'Contrôle de Qualité' : 'Quality Control' }, { href: "#", label: language === 'fr' ? 'Amélioration Continue' : 'Continuous Improvement' }, { href: "#", label: language === 'fr' ? 'Gestion des Risques' : 'Risk Management' } ]},
-      { span: 4, title: language === 'fr' ? 'Documentation' : 'Documentation', links: [ { href: "#", label: language === 'fr' ? 'Politiques Qualité' : 'Quality Policies' }, { href: "#", label: language === 'fr' ? 'Procédures' : 'Procedures' } ]},
+      { span: 4, title: language === 'fr' ? 'Politiques et Chartes' : 'Policies & Charters', links: [ { href: "#", label: language === 'fr' ? "Politique d'Assurance" : 'Insurance Policy' }, { href: "#", label: language === 'fr' ? 'Charte de Qualité' : 'Quality Charter' }, { href: "#", label: language === 'fr' ? "Politique d'Hygiène et Sécurité" : 'Hygiene & Safety Policy' } ]},
+      { span: 4, title: language === 'fr' ? 'Gestion et Indicateurs' : 'Management & Indicators', links: [ { href: "#", label: language === 'fr' ? 'Gestion des Risques' : 'Risk Management' }, { href: "#", label: language === 'fr' ? 'Réclamations et Plaintes' : 'Complaints & Claims' }, { href: "#", label: language === 'fr' ? 'Indicateurs de Qualité' : 'Quality Indicators' } ]},
+      { span: 4, title: language === 'fr' ? 'Contrôle Qualité' : 'Quality Control', links: [ { href: "#", label: language === 'fr' ? 'Contrôle Qualité Interne' : 'Internal Quality Control' }, { href: "#", label: language === 'fr' ? 'Contrôle Qualité Externe' : 'External Quality Control' } ]},
     ]
   };
 
@@ -101,12 +101,13 @@ const MainNavigation = () => {
     {
       title: language === 'fr' ? "Domaines d'expertise" : 'Areas of Expertise',
       links: [
-        { href: "#", label: t('generalBiology') },
-        { href: "#", label: t('infectiousDiseases') },
-        { href: "#", label: t('pregnantWomanBiology') },
-        { href: "#", label: t('reproductionAssistance') },
-        { href: "#", label: t('genetics') },
-        { href: "#", label: t('cancerBiology') },
+        { href: "#", label: language === 'fr' ? 'Biochimie Clinique' : 'Clinical Biochemistry' },
+        { href: "#", label: language === 'fr' ? 'Hématologie' : 'Hematology' },
+        { href: "#", label: language === 'fr' ? 'Immunologie' : 'Immunology' },
+        { href: "#", label: language === 'fr' ? 'Microbiologie' : 'Microbiology' },
+        { href: "#", label: language === 'fr' ? 'Biologie Moléculaire' : 'Molecular Biology' },
+        { href: "#", label: language === 'fr' ? 'Empreintes Génétiques' : 'Genetic Fingerprinting' },
+        { href: "#", label: language === 'fr' ? 'Interprétation des Résultats' : 'Results Interpretation' },
       ],
     },
   ];
