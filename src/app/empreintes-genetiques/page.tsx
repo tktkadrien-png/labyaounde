@@ -8,7 +8,7 @@ import MainNavigation from "@/components/sections/main-navigation";
 import Footer from "@/components/sections/footer";
 import { Dna, Shield, Clock, ChevronRight, FileCheck, Scale, Calendar } from "lucide-react";
 
-export default function EmpreintesGenetiqu esPage() {
+export default function EmpreintesGenetiquesPage() {
   return (
     <>
       <TopNavigationBar />
