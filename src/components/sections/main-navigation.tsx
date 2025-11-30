@@ -79,7 +79,7 @@ const MainNavigation = () => {
 
   const patientsMenu: MegaMenuColumn[] = [
     {
-      title: t('beforeSampling'),
+      title: language === 'fr' ? 'Prélèvement' : 'Sampling',
       links: [
         { href: "/dois-je-prendre-rdv", label: t('needAppointment') },
         { href: "/conseils-et-informations", label: t('adviceInfo') },
@@ -87,38 +87,19 @@ const MainNavigation = () => {
         { href: "#", label: t('faq') },
       ],
     },
-    {
-      title: t('sampling'),
-      links: [
-        { href: "#", label: t('classicSampling') },
-        { href: "#", label: t('pregnancySampling') },
-        { href: "#", label: t('selfSampling') },
-      ],
-    },
-    {
-      title: t('afterSampling'),
-      links: [
-        { href: "#", label: t('viewResults') },
-        { href: "#", label: t('interpretation') },
-        { href: "#", label: t('payment') },
-        { href: "#", label: t('complaint') },
-      ],
-    },
   ];
 
   const professionalsMenu = {
     columns: [
-      { span: 2, title: t('prescriberSpace'), links: [ { href: "#", label: t('patientResultsAccess') }, { href: "#", label: t('prescriberSheets') }, { href: "#", label: t('giveOpinion') } ]},
-      { span: 2, title: t('nurseSpace'), links: [ { href: "#", label: t('patientResultsAccess') }, { href: "#", label: t('giveOpinion') } ]},
-      { span: 3, title: t('practicalDocs'), links: [ { href: "#", label: t('samplingManuals') }, { href: "#", label: t('consentForms') } ]},
-      { span: 3, title: t('information'), links: [ { href: "#", label: t('scientificInfo') }] },
-      { span: 2, title: "", links: [ { href: "#", label: t('faq') }, { href: "#", label: t('complaint') } ]},
+      { span: 4, title: language === 'fr' ? 'Normes et Certifications' : 'Standards & Certifications', links: [ { href: "#", label: language === 'fr' ? 'ISO 15189' : 'ISO 15189' }, { href: "#", label: language === 'fr' ? 'Accréditations' : 'Accreditations' }, { href: "#", label: language === 'fr' ? 'Audits Qualité' : 'Quality Audits' } ]},
+      { span: 4, title: language === 'fr' ? 'Processus Qualité' : 'Quality Processes', links: [ { href: "#", label: language === 'fr' ? 'Contrôle de Qualité' : 'Quality Control' }, { href: "#", label: language === 'fr' ? 'Amélioration Continue' : 'Continuous Improvement' }, { href: "#", label: language === 'fr' ? 'Gestion des Risques' : 'Risk Management' } ]},
+      { span: 4, title: language === 'fr' ? 'Documentation' : 'Documentation', links: [ { href: "#", label: language === 'fr' ? 'Politiques Qualité' : 'Quality Policies' }, { href: "#", label: language === 'fr' ? 'Procédures' : 'Procedures' } ]},
     ]
   };
 
   const servicesMenu: MegaMenuColumn[] = [
     {
-      title: t('specialties'),
+      title: language === 'fr' ? "Domaines d'expertise" : 'Areas of Expertise',
       links: [
         { href: "#", label: t('generalBiology') },
         { href: "#", label: t('infectiousDiseases') },
@@ -133,7 +114,7 @@ const MainNavigation = () => {
   const aboutMenu = {
     columns: [
       {
-        span: 4,
+        span: 6,
         title: t('whoWeAre'),
         links: [
           { href: "#", label: t('ourVision') },
@@ -143,17 +124,12 @@ const MainNavigation = () => {
         ]
       },
       {
-        span: 4,
-        title: "",
+        span: 6,
+        title: language === 'fr' ? 'Organisation' : 'Organization',
         links: [
           { href: "#", label: t('organizationalChart') },
-        ]
-      },
-      {
-        span: 4,
-        title: "",
-        links: [
-          { href: "#", label: t('qualityAssurance') },
+          { href: "#", label: language === 'fr' ? 'Notre Équipe' : 'Our Team' },
+          { href: "#", label: language === 'fr' ? 'Nos Valeurs' : 'Our Values' },
         ]
       },
     ]
@@ -184,8 +160,8 @@ const MainNavigation = () => {
               <ul className="flex list-none gap-[20px] m-0">
                 <MegaMenuItemPro trigger={t('aboutUs')} professionalsMenu={aboutMenu} />
                 <MegaMenuItem trigger={t('ourServices')} columns={servicesMenu} itemsInRow={1}/>
-                <MegaMenuItemPro trigger={t('healthProfessionals')} professionalsMenu={professionalsMenu} />
-                <MegaMenuItem trigger={t('patients')} columns={patientsMenu} itemsInRow={3} />
+                <MegaMenuItemPro trigger={language === 'fr' ? 'Assurance Qualité' : 'Quality Assurance'} professionalsMenu={professionalsMenu} />
+                <MegaMenuItem trigger={t('patients')} columns={patientsMenu} itemsInRow={1} />
                 <li className="relative">
                   <Link href="#careers" className="inline-flex h-10 items-center justify-center px-4 py-2 text-base font-[500] text-[#333] transition-colors hover:text-[#0a6ed1]">
                     {t('careers')}
