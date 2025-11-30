@@ -101,13 +101,13 @@ const MainNavigation = () => {
     {
       title: language === 'fr' ? "Domaines d'expertise" : 'Areas of Expertise',
       links: [
-        { href: "#", label: language === 'fr' ? 'Biochimie Clinique' : 'Clinical Biochemistry' },
-        { href: "#", label: language === 'fr' ? 'Hématologie' : 'Hematology' },
-        { href: "#", label: language === 'fr' ? 'Immunologie' : 'Immunology' },
-        { href: "#", label: language === 'fr' ? 'Microbiologie' : 'Microbiology' },
-        { href: "#", label: language === 'fr' ? 'Biologie Moléculaire' : 'Molecular Biology' },
-        { href: "#", label: language === 'fr' ? 'Empreintes Génétiques' : 'Genetic Fingerprinting' },
-        { href: "#", label: language === 'fr' ? 'Interprétation des Résultats' : 'Results Interpretation' },
+        { href: "/biochimie-clinique", label: language === 'fr' ? 'Biochimie Clinique' : 'Clinical Biochemistry' },
+        { href: "/hematologie", label: language === 'fr' ? 'Hématologie' : 'Hematology' },
+        { href: "/immunologie", label: language === 'fr' ? 'Immunologie' : 'Immunology' },
+        { href: "/microbiologie", label: language === 'fr' ? 'Microbiologie' : 'Microbiology' },
+        { href: "/biologie-moleculaire", label: language === 'fr' ? 'Biologie Moléculaire' : 'Molecular Biology' },
+        { href: "/empreintes-genetiques", label: language === 'fr' ? 'Empreintes Génétiques' : 'Genetic Fingerprinting' },
+        { href: "/interpretation-resultats", label: language === 'fr' ? 'Interprétation des Résultats' : 'Results Interpretation' },
       ],
     },
   ];
