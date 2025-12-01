@@ -7,8 +7,11 @@ import TopNavigationBar from "@/components/sections/top-navigation-bar";
 import MainNavigation from "@/components/sections/main-navigation";
 import Footer from "@/components/sections/footer";
 import { Shield, FileText, ChevronRight, CheckCircle, Users, Award, Target, BookOpen } from "lucide-react";
+import { useLanguage } from "@/lib/contents/LanguageContext";
 
 export default function PolitiqueDeQualitePage() {
+  const { language } = useLanguage();
+
   return (
     <>
       <TopNavigationBar />
@@ -32,21 +35,24 @@ export default function PolitiqueDeQualitePage() {
             <div className="max-w-3xl">
               <div className="flex items-center gap-2 mb-4">
                 <Link href="/" className="text-white/80 hover:text-white text-sm sm:text-base transition-colors">
-                  Accueil
+                  {language === 'fr' ? 'Accueil' : 'Home'}
                 </Link>
                 <ChevronRight className="w-4 h-4 text-white/60" />
                 <Link href="/#services" className="text-white/80 hover:text-white text-sm sm:text-base transition-colors">
-                  Assurance Qualité
+                  {language === 'fr' ? 'Assurance Qualité' : 'Quality Assurance'}
                 </Link>
                 <ChevronRight className="w-4 h-4 text-white/60" />
-                <span className="text-white text-sm sm:text-base">Politique de Qualité</span>
+                <span className="text-white text-sm sm:text-base">{language === 'fr' ? 'Politique de Qualité' : 'Quality Policy'}</span>
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-                Politique de Qualité
+                {language === 'fr' ? 'Politique de Qualité' : 'Quality Policy'}
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-6 sm:mb-8 leading-relaxed">
-                Notre engagement stratégique pour l&apos;excellence et la qualité de service
+                {language === 'fr'
+                  ? "Notre engagement stratégique pour l'excellence et la qualité de service"
+                  : 'Our strategic commitment to excellence and quality of service'
+                }
               </p>
               <div className="flex flex-wrap gap-4">
                 <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
@@ -55,7 +61,7 @@ export default function PolitiqueDeQualitePage() {
                 </div>
                 <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
                   <Award className="w-5 h-5 text-white" />
-                  <span className="text-white text-sm sm:text-base font-medium">Excellence certifiée</span>
+                  <span className="text-white text-sm sm:text-base font-medium">{language === 'fr' ? 'Excellence certifiée' : 'Certified Excellence'}</span>
                 </div>
               </div>
             </div>
@@ -68,17 +74,17 @@ export default function PolitiqueDeQualitePage() {
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-[#0B3D5F]/10 px-4 py-2 rounded-full mb-6">
                 <Target className="w-5 h-5 text-[#0B3D5F]" />
-                <span className="text-[#0B3D5F] font-semibold text-sm sm:text-base">Scope</span>
+                <span className="text-[#0B3D5F] font-semibold text-sm sm:text-base">{language === 'fr' ? 'Portée' : 'Scope'}</span>
               </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                Champ d&apos;Application
+                {language === 'fr' ? "Champ d'Application" : 'Scope of Application'}
               </h2>
               <div className="max-w-4xl mx-auto">
-                <p className="text-lg sm:text-xl text-gray-700 leading-relaxed mb-6">
-                  This quality policy applies to all activities carried out by the laboratory, including pre-analytical, analytical, and post-analytical phases of testing.
-                </p>
                 <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
-                  Cette politique de qualité s&apos;applique à toutes les activités réalisées par le laboratoire, y compris les phases pré-analytiques, analytiques et post-analytiques des analyses.
+                  {language === 'fr'
+                    ? "Cette politique de qualité s'applique à toutes les activités réalisées par le laboratoire, y compris les phases pré-analytiques, analytiques et post-analytiques des analyses."
+                    : 'This quality policy applies to all activities carried out by the laboratory, including pre-analytical, analytical, and post-analytical phases of testing.'
+                  }
                 </p>
               </div>
             </div>
@@ -86,25 +92,34 @@ export default function PolitiqueDeQualitePage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               <div className="bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-2xl p-8 text-white shadow-xl text-center">
                 <BookOpen className="w-12 h-12 mb-4 mx-auto" />
-                <h3 className="text-xl sm:text-2xl font-bold mb-3">Pré-analytique</h3>
+                <h3 className="text-xl sm:text-2xl font-bold mb-3">{language === 'fr' ? 'Pré-analytique' : 'Pre-analytical'}</h3>
                 <p className="text-white/90 leading-relaxed">
-                  Prélèvement, identification, transport et réception des échantillons
+                  {language === 'fr'
+                    ? 'Prélèvement, identification, transport et réception des échantillons'
+                    : 'Sample collection, identification, transport and reception'
+                  }
                 </p>
               </div>
 
               <div className="bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-2xl p-8 text-white shadow-xl text-center">
                 <Shield className="w-12 h-12 mb-4 mx-auto" />
-                <h3 className="text-xl sm:text-2xl font-bold mb-3">Analytique</h3>
+                <h3 className="text-xl sm:text-2xl font-bold mb-3">{language === 'fr' ? 'Analytique' : 'Analytical'}</h3>
                 <p className="text-white/90 leading-relaxed">
-                  Réalisation des analyses avec contrôle qualité rigoureux
+                  {language === 'fr'
+                    ? 'Réalisation des analyses avec contrôle qualité rigoureux'
+                    : 'Performing analyses with rigorous quality control'
+                  }
                 </p>
               </div>
 
               <div className="bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-2xl p-8 text-white shadow-xl text-center">
                 <FileText className="w-12 h-12 mb-4 mx-auto" />
-                <h3 className="text-xl sm:text-2xl font-bold mb-3">Post-analytique</h3>
+                <h3 className="text-xl sm:text-2xl font-bold mb-3">{language === 'fr' ? 'Post-analytique' : 'Post-analytical'}</h3>
                 <p className="text-white/90 leading-relaxed">
-                  Validation, transmission et archivage des résultats
+                  {language === 'fr'
+                    ? 'Validation, transmission et archivage des résultats'
+                    : 'Validation, transmission and archiving of results'
+                  }
                 </p>
               </div>
             </div>
@@ -117,13 +132,16 @@ export default function PolitiqueDeQualitePage() {
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-[#0B3D5F]/10 px-4 py-2 rounded-full mb-6">
                 <Users className="w-5 h-5 text-[#0B3D5F]" />
-                <span className="text-[#0B3D5F] font-semibold text-sm sm:text-base">Responsibilities</span>
+                <span className="text-[#0B3D5F] font-semibold text-sm sm:text-base">{language === 'fr' ? 'Responsabilités' : 'Responsibilities'}</span>
               </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                Responsabilités
+                {language === 'fr' ? 'Responsabilités' : 'Responsibilities'}
               </h2>
               <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-                Une organisation claire pour garantir l&apos;excellence à tous les niveaux
+                {language === 'fr'
+                  ? "Une organisation claire pour garantir l'excellence à tous les niveaux"
+                  : 'Clear organization to ensure excellence at all levels'
+                }
               </p>
             </div>
 
@@ -134,12 +152,14 @@ export default function PolitiqueDeQualitePage() {
                     <Shield className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">Laboratory Director</h3>
-                    <p className="text-gray-700 leading-relaxed mb-4">
-                      The Laboratory Director is responsible for ensuring that this quality policy is implemented and maintained.
-                    </p>
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+                      {language === 'fr' ? 'Directeur du Laboratoire' : 'Laboratory Director'}
+                    </h3>
                     <p className="text-gray-700 leading-relaxed">
-                      Le Directeur du Laboratoire est responsable de s&apos;assurer que cette politique de qualité est mise en œuvre et maintenue.
+                      {language === 'fr'
+                        ? "Le Directeur du Laboratoire est responsable de s'assurer que cette politique de qualité est mise en œuvre et maintenue."
+                        : 'The Laboratory Director is responsible for ensuring that this quality policy is implemented and maintained.'
+                      }
                     </p>
                   </div>
                 </div>
@@ -151,12 +171,14 @@ export default function PolitiqueDeQualitePage() {
                     <Users className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">All Personnel</h3>
-                    <p className="text-gray-700 leading-relaxed mb-4">
-                      All laboratory personnel are responsible for understanding and adhering to this quality policy.
-                    </p>
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+                      {language === 'fr' ? 'Tout le Personnel' : 'All Personnel'}
+                    </h3>
                     <p className="text-gray-700 leading-relaxed">
-                      Tout le personnel du laboratoire est responsable de comprendre et de respecter cette politique de qualité.
+                      {language === 'fr'
+                        ? 'Tout le personnel du laboratoire est responsable de comprendre et de respecter cette politique de qualité.'
+                        : 'All laboratory personnel are responsible for understanding and adhering to this quality policy.'
+                      }
                     </p>
                   </div>
                 </div>
@@ -170,10 +192,13 @@ export default function PolitiqueDeQualitePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                Nos Engagements Qualité
+                {language === 'fr' ? 'Nos Engagements Qualité' : 'Our Quality Commitments'}
               </h2>
               <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-                The laboratory is committed to the following quality commitments
+                {language === 'fr'
+                  ? 'Le laboratoire est engagé dans les engagements qualité suivants'
+                  : 'The laboratory is committed to the following quality commitments'
+                }
               </p>
             </div>
 
@@ -225,10 +250,12 @@ export default function PolitiqueDeQualitePage() {
                       <CheckCircle className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">{commitment.title}</h3>
-                      <h4 className="text-base sm:text-lg font-semibold text-[#0B3D5F] mb-3">{commitment.titleFr}</h4>
-                      <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-2">{commitment.description}</p>
-                      <p className="text-gray-600 text-sm leading-relaxed italic">{commitment.descriptionFr}</p>
+                      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">
+                        {language === 'fr' ? commitment.titleFr : commitment.title}
+                      </h3>
+                      <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                        {language === 'fr' ? commitment.descriptionFr : commitment.description}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -243,13 +270,18 @@ export default function PolitiqueDeQualitePage() {
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-[#0B3D5F]/10 px-4 py-2 rounded-full mb-6">
                 <Award className="w-5 h-5 text-[#0B3D5F]" />
-                <span className="text-[#0B3D5F] font-semibold text-sm sm:text-base">Standards & Compliance</span>
+                <span className="text-[#0B3D5F] font-semibold text-sm sm:text-base">
+                  {language === 'fr' ? 'Normes & Conformité' : 'Standards & Compliance'}
+                </span>
               </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                Normes et Conformité
+                {language === 'fr' ? 'Normes et Conformité' : 'Standards and Compliance'}
               </h2>
               <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-                Respect des standards internationaux les plus exigeants
+                {language === 'fr'
+                  ? 'Respect des standards internationaux les plus exigeants'
+                  : 'Compliance with the most demanding international standards'
+                }
               </p>
             </div>
 
@@ -284,8 +316,9 @@ export default function PolitiqueDeQualitePage() {
                       <Icon className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-3">{standard.title}</h3>
-                    <p className="text-gray-700 leading-relaxed mb-2">{standard.description}</p>
-                    <p className="text-gray-600 text-sm leading-relaxed italic">{standard.descriptionFr}</p>
+                    <p className="text-gray-700 leading-relaxed">
+                      {language === 'fr' ? standard.descriptionFr : standard.description}
+                    </p>
                   </div>
                 );
               })}
@@ -303,12 +336,14 @@ export default function PolitiqueDeQualitePage() {
                     <FileText className="w-10 h-10 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h2 className="text-2xl sm:text-3xl font-bold mb-6">Policy Review / Révision de la Politique</h2>
-                    <p className="text-white/90 text-lg leading-relaxed mb-4">
-                      This quality policy will be reviewed annually or as needed to ensure it remains relevant and effective.
-                    </p>
+                    <h2 className="text-2xl sm:text-3xl font-bold mb-6">
+                      {language === 'fr' ? 'Révision de la Politique' : 'Policy Review'}
+                    </h2>
                     <p className="text-white/90 text-lg leading-relaxed">
-                      Cette politique de qualité sera révisée annuellement ou au besoin pour s&apos;assurer qu&apos;elle demeure pertinente et efficace.
+                      {language === 'fr'
+                        ? "Cette politique de qualité sera révisée annuellement ou au besoin pour s'assurer qu'elle demeure pertinente et efficace."
+                        : 'This quality policy will be reviewed annually or as needed to ensure it remains relevant and effective.'
+                      }
                     </p>
                   </div>
                 </div>
@@ -321,24 +356,30 @@ export default function PolitiqueDeQualitePage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-              Excellence et Qualité au Cœur de Notre Mission
+              {language === 'fr'
+                ? 'Excellence et Qualité au Cœur de Notre Mission'
+                : 'Excellence and Quality at the Heart of Our Mission'
+              }
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Notre politique de qualité guide toutes nos actions pour vous garantir un service d&apos;excellence conforme aux standards internationaux les plus exigeants.
+              {language === 'fr'
+                ? "Notre politique de qualité guide toutes nos actions pour vous garantir un service d'excellence conforme aux standards internationaux les plus exigeants."
+                : 'Our quality policy guides all our actions to guarantee you an excellent service compliant with the most demanding international standards.'
+              }
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/signup"
                 className="inline-flex items-center justify-center gap-2 bg-[#0B3D5F] text-white px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-[#0B4D6F] transition-all hover:scale-105 shadow-lg"
               >
-                Créer un Compte
+                {language === 'fr' ? 'Créer un Compte' : 'Create an Account'}
                 <ChevronRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/charte-de-qualite"
                 className="inline-flex items-center justify-center gap-2 bg-transparent text-[#0B3D5F] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-[#0B3D5F] hover:bg-[#0B3D5F] hover:text-white transition-all"
               >
-                Notre Charte de Qualité
+                {language === 'fr' ? 'Notre Charte de Qualité' : 'Our Quality Charter'}
               </Link>
             </div>
           </div>
