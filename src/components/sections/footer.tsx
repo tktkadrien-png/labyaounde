@@ -221,7 +221,7 @@ const Footer = () => {
                       <MapPin size={20} className="text-cyan-400 flex-shrink-0 mt-0.5" />
                       <div>
                         <p className="text-sm font-medium">Carrefour Ancien Bâtiments</p>
-                        <p className="text-xs text-white/60">Bâtiment E01, Cité Verte, Yaoundé</p>
+                        <p className="text-xs text-white/60">Cité verte Batiment B01 Yaounde 2 Rue 2.711</p>
                         <span className="text-xs text-cyan-400 flex items-center gap-1 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
                           Voir sur Google Maps <ExternalLink size={12} />
                         </span>

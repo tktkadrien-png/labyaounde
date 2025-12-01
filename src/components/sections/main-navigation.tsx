@@ -91,9 +91,9 @@ const MainNavigation = () => {
 
   const professionalsMenu = {
     columns: [
-      { span: 4, title: language === 'fr' ? 'Politiques et Chartes' : 'Policies & Charters', links: [ { href: "#", label: language === 'fr' ? "Politique d'Assurance" : 'Insurance Policy' }, { href: "#", label: language === 'fr' ? 'Charte de Qualité' : 'Quality Charter' }, { href: "#", label: language === 'fr' ? "Politique d'Hygiène et Sécurité" : 'Hygiene & Safety Policy' } ]},
-      { span: 4, title: language === 'fr' ? 'Gestion et Indicateurs' : 'Management & Indicators', links: [ { href: "#", label: language === 'fr' ? 'Gestion des Risques' : 'Risk Management' }, { href: "#", label: language === 'fr' ? 'Réclamations et Plaintes' : 'Complaints & Claims' }, { href: "#", label: language === 'fr' ? 'Indicateurs de Qualité' : 'Quality Indicators' } ]},
-      { span: 4, title: language === 'fr' ? 'Contrôle Qualité' : 'Quality Control', links: [ { href: "#", label: language === 'fr' ? 'Contrôle Qualité Interne' : 'Internal Quality Control' }, { href: "#", label: language === 'fr' ? 'Contrôle Qualité Externe' : 'External Quality Control' } ]},
+      { span: 4, title: language === 'fr' ? 'Politiques et Chartes' : 'Policies & Charters', links: [ { href: "/politique-de-qualite", label: language === 'fr' ? "Politique de Qualité" : 'Quality Policy' }, { href: "/charte-de-qualite", label: language === 'fr' ? 'Charte de Qualité' : 'Quality Charter' }, { href: "#", label: language === 'fr' ? "Politique d'Hygiène et Sécurité" : 'Hygiene & Safety Policy' } ]},
+      { span: 4, title: language === 'fr' ? 'Gestion et Indicateurs' : 'Management & Indicators', links: [ { href: "#", label: language === 'fr' ? 'Gestion des Risques' : 'Risk Management' }, { href: "/reclamations-et-plaintes", label: language === 'fr' ? 'Réclamations et Plaintes' : 'Complaints & Claims' }, { href: "#", label: language === 'fr' ? 'Indicateurs de Qualité' : 'Quality Indicators' } ]},
+      { span: 4, title: language === 'fr' ? 'Contrôle Qualité' : 'Quality Control', links: [ { href: "/controle-qualite", label: language === 'fr' ? 'Contrôle Qualité Interne et Externe' : 'Internal & External Quality Control' } ]},
     ]
   };
 
@@ -254,7 +254,7 @@ const MainNavigation = () => {
             <Accordion type="single" collapsible className="w-full space-y-3 sm:space-y-4">
               <MobileAccordionItemPro trigger={t('aboutUs')} professionalsMenu={aboutMenu} />
               <MobileAccordionItem trigger={t('ourServices')} menu={servicesMenu} />
-              <MobileAccordionItemPro trigger={t('healthProfessionals')} professionalsMenu={professionalsMenu} />
+              <MobileAccordionItemPro trigger={language === 'fr' ? 'Assurance Qualité' : 'Quality Assurance'} professionalsMenu={professionalsMenu} />
               <MobileAccordionItem trigger={t('patients')} menu={patientsMenu} />
             </Accordion>
             <div className="mt-4 sm:mt-6 border-t border-gray-200 pt-4 sm:pt-6">
