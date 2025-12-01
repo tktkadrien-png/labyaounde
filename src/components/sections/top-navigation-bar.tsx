@@ -15,7 +15,7 @@ const TopNavigationBar = () => {
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 lg:gap-6 w-full lg:w-auto">
             <span className="flex items-center gap-1.5 text-xs sm:text-sm">
               <MapPin className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-white flex-shrink-0" />
-              <span className="hidden sm:inline">Cité verte Batiment B01</span>
+              <span className="hidden sm:inline">Cité verte Batiment B01 Yaoundé 2 Rue 2.711</span>
               <span className="sm:hidden">Cité verte B01</span>
             </span>
             <span className="flex items-center gap-1.5 text-xs sm:text-sm">

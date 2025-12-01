@@ -83,16 +83,16 @@ const MainNavigation = () => {
       links: [
         { href: "/dois-je-prendre-rdv", label: t('needAppointment') },
         { href: "/conseils-et-informations", label: t('adviceInfo') },
-        { href: "#", label: t('necessaryDocs') },
-        { href: "#", label: t('faq') },
+        { href: "/coming-soon", label: t('necessaryDocs') },
+        { href: "/coming-soon", label: t('faq') },
       ],
     },
   ];
 
   const professionalsMenu = {
     columns: [
-      { span: 4, title: language === 'fr' ? 'Politiques et Chartes' : 'Policies & Charters', links: [ { href: "/politique-de-qualite", label: language === 'fr' ? "Politique de Qualité" : 'Quality Policy' }, { href: "/charte-de-qualite", label: language === 'fr' ? 'Charte de Qualité' : 'Quality Charter' }, { href: "#", label: language === 'fr' ? "Politique d'Hygiène et Sécurité" : 'Hygiene & Safety Policy' } ]},
-      { span: 4, title: language === 'fr' ? 'Gestion et Indicateurs' : 'Management & Indicators', links: [ { href: "#", label: language === 'fr' ? 'Gestion des Risques' : 'Risk Management' }, { href: "/reclamations-et-plaintes", label: language === 'fr' ? 'Réclamations et Plaintes' : 'Complaints & Claims' }, { href: "#", label: language === 'fr' ? 'Indicateurs de Qualité' : 'Quality Indicators' } ]},
+      { span: 4, title: language === 'fr' ? 'Politiques et Chartes' : 'Policies & Charters', links: [ { href: "/politique-de-qualite", label: language === 'fr' ? "Politique de Qualité" : 'Quality Policy' }, { href: "/charte-de-qualite", label: language === 'fr' ? 'Charte de Qualité' : 'Quality Charter' }, { href: "/coming-soon", label: language === 'fr' ? "Politique d'Hygiène et Sécurité" : 'Hygiene & Safety Policy' } ]},
+      { span: 4, title: language === 'fr' ? 'Gestion et Indicateurs' : 'Management & Indicators', links: [ { href: "/coming-soon", label: language === 'fr' ? 'Gestion des Risques' : 'Risk Management' }, { href: "/reclamations-et-plaintes", label: language === 'fr' ? 'Réclamations et Plaintes' : 'Complaints & Claims' }, { href: "/coming-soon", label: language === 'fr' ? 'Indicateurs de Qualité' : 'Quality Indicators' } ]},
       { span: 4, title: language === 'fr' ? 'Contrôle Qualité' : 'Quality Control', links: [ { href: "/controle-qualite", label: language === 'fr' ? 'Contrôle Qualité Interne et Externe' : 'Internal & External Quality Control' } ]},
     ]
   };
@@ -118,19 +118,19 @@ const MainNavigation = () => {
         span: 6,
         title: t('whoWeAre'),
         links: [
-          { href: "#", label: t('ourVision') },
-          { href: "#", label: t('ourStandards') },
-          { href: "#", label: t('ourStrategy') },
-          { href: "#", label: t('ourObjectives') },
+          { href: "/coming-soon", label: t('ourVision') },
+          { href: "/coming-soon", label: t('ourStandards') },
+          { href: "/coming-soon", label: t('ourStrategy') },
+          { href: "/coming-soon", label: t('ourObjectives') },
         ]
       },
       {
         span: 6,
         title: language === 'fr' ? 'Organisation' : 'Organization',
         links: [
-          { href: "#", label: t('organizationalChart') },
-          { href: "#", label: language === 'fr' ? 'Notre Équipe' : 'Our Team' },
-          { href: "#", label: language === 'fr' ? 'Nos Valeurs' : 'Our Values' },
+          { href: "/coming-soon", label: t('organizationalChart') },
+          { href: "/coming-soon", label: language === 'fr' ? 'Notre Équipe' : 'Our Team' },
+          { href: "/coming-soon", label: language === 'fr' ? 'Nos Valeurs' : 'Our Values' },
         ]
       },
     ]
@@ -164,7 +164,7 @@ const MainNavigation = () => {
                 <MegaMenuItemPro trigger={language === 'fr' ? 'Assurance Qualité' : 'Quality Assurance'} professionalsMenu={professionalsMenu} />
                 <MegaMenuItem trigger={t('patients')} columns={patientsMenu} itemsInRow={1} />
                 <li className="relative">
-                  <Link href="#careers" className="inline-flex h-10 items-center justify-center px-4 py-2 text-base font-[500] text-[#333] transition-colors hover:text-[#0a6ed1]">
+                  <Link href="/coming-soon" className="inline-flex h-10 items-center justify-center px-4 py-2 text-base font-[500] text-[#333] transition-colors hover:text-[#0a6ed1]">
                     {t('careers')}
                   </Link>
                 </li>
@@ -258,7 +258,7 @@ const MainNavigation = () => {
               <MobileAccordionItem trigger={t('patients')} menu={patientsMenu} />
             </Accordion>
             <div className="mt-4 sm:mt-6 border-t border-gray-200 pt-4 sm:pt-6">
-              <Link href="#careers" className="text-base sm:text-lg font-medium text-[#0B3D5F] block py-2" onClick={toggleMobileMenu}>
+              <Link href="/coming-soon" className="text-base sm:text-lg font-medium text-[#0B3D5F] block py-2" onClick={toggleMobileMenu}>
                 {t('careers')}
               </Link>
             </div>
