@@ -174,11 +174,10 @@ const MainNavigation = () => {
                 <Button
                   onClick={toggleLanguage}
                   size="sm"
-                  variant="ghost"
-                  className="h-9 md:h-10 px-2 md:px-3 rounded-md text-[#0B3D5F] hover:bg-[#0B3D5F]/5 hover:text-[#0a6ed1] transition-colors border border-[#E0E0E0] font-medium"
+                  className="h-9 md:h-10 px-2 md:px-3 rounded-md bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 text-white hover:from-cyan-500 hover:via-blue-600 hover:to-purple-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:scale-105 border-0"
                 >
                   <Languages className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1 md:mr-1.5" />
-                  <span className="text-xs md:text-sm">{language.toUpperCase()}</span>
+                  <span className="text-xs md:text-sm font-bold">{language.toUpperCase()}</span>
                 </Button>
 
                 {user ? (
@@ -212,13 +211,13 @@ const MainNavigation = () => {
                 ) : (
                   <div className="flex items-center gap-1.5 md:gap-2">
                     <Link href="/login">
-                      <Button size="sm" variant="ghost" className="h-9 md:h-10 px-2 md:px-4 rounded-md text-[#0B3D5F] hover:bg-[#0B3D5F]/5 transition-colors border border-[#E0E0E0] font-medium">
+                      <Button size="sm" className="h-9 md:h-10 px-2 md:px-4 rounded-md bg-white text-[#0B3D5F] border-2 border-[#0B3D5F] hover:bg-[#0B3D5F] hover:text-white transition-all font-medium shadow-sm">
                         <LogIn className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1 md:mr-1.5" />
                         <span className="text-xs md:text-sm">{language === 'fr' ? 'Connexion' : 'Login'}</span>
                       </Button>
                     </Link>
                     <Link href="/signup">
-                      <Button size="sm" className="h-9 md:h-10 px-2 md:px-4 rounded-md bg-[#0B3D5F] text-white hover:bg-[#0B4D6F] transition-colors font-medium">
+                      <Button size="sm" className="h-9 md:h-10 px-2 md:px-4 rounded-md bg-[#0B3D5F] text-white hover:bg-[#0B4D6F] transition-all font-medium shadow-sm">
                         <UserPlus className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1 md:mr-1.5" />
                         <span className="text-xs md:text-sm">{language === 'fr' ? 'Inscription' : 'Sign Up'}</span>
                       </Button>
@@ -296,13 +295,13 @@ const MainNavigation = () => {
               ) : (
                 <div className="flex flex-col gap-3">
                   <Link href="/login" onClick={toggleMobileMenu}>
-                    <Button variant="outline" className="w-full justify-start text-[#0B3D5F] hover:bg-[#0B3D5F]/5 min-h-[44px] text-sm sm:text-base">
+                    <Button className="w-full justify-start bg-white text-[#0B3D5F] border-2 border-[#0B3D5F] hover:bg-[#0B3D5F] hover:text-white transition-all min-h-[44px] text-sm sm:text-base shadow-sm">
                       <LogIn className="h-4 w-4 mr-2" />
                       {language === 'fr' ? 'Connexion' : 'Login'}
                     </Button>
                   </Link>
                   <Link href="/signup" onClick={toggleMobileMenu}>
-                    <Button className="w-full justify-start bg-[#0B3D5F] text-white hover:bg-[#0B4D6F] min-h-[44px] text-sm sm:text-base">
+                    <Button className="w-full justify-start bg-[#0B3D5F] text-white hover:bg-[#0B4D6F] transition-all min-h-[44px] text-sm sm:text-base shadow-sm">
                       <UserPlus className="h-4 w-4 mr-2" />
                       {language === 'fr' ? 'Inscription' : 'Sign Up'}
                     </Button>
@@ -311,11 +310,10 @@ const MainNavigation = () => {
               )}
               <Button
                 onClick={toggleLanguage}
-                variant="outline"
-                className="w-full justify-start text-[#0B3D5F] hover:bg-[#0B3D5F]/5 min-h-[44px] text-sm sm:text-base"
+                className="w-full justify-start bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 text-white hover:from-cyan-500 hover:via-blue-600 hover:to-purple-700 transition-all duration-300 min-h-[44px] text-sm sm:text-base shadow-lg font-medium"
               >
                 <Languages className="h-4 w-4 mr-2" />
-                <span>{t('language')}: {language.toUpperCase()}</span>
+                <span className="font-bold">{t('language')}: {language.toUpperCase()}</span>
               </Button>
             </div>
         </div>

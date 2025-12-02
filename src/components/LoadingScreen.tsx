@@ -5,87 +5,64 @@ import React from 'react';
 export default function LoadingScreen() {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
-      <div className="flex flex-col items-center justify-center">
-        <label className="loading-title">Loading ...</label>
-        <span className="loading-circle sp1">
-          <span className="loading-circle sp2">
-            <span className="loading-circle sp3"></span>
-          </span>
-        </span>
-      </div>
+      <ul className="loader">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
 
       <style jsx>{`
-        .loading-title {
+        @keyframes pound {
+          to {
+            transform: scale(1.2);
+            box-shadow: 1px 2px 3px 0 rgba(0, 0, 0, 0.65), 2px 6px 12px 0 rgba(0, 0, 0, 0.5), 3px 8px 15px 0 rgba(0, 0, 0, 0.45)
+          }
+        }
+
+        ul.loader {
           display: block;
-          text-align: center;
-          font-size: 20px;
-          font-family: 'Inter', sans-serif;
-          font-weight: bold;
-          padding-bottom: 15px;
-          color: #888;
+          position: relative;
+          width: 5em;
+          margin: 0;
+          padding: 0;
         }
 
-        .loading-circle {
+        .loader li {
+          list-style: none;
           display: block;
-          border-left: 5px solid;
-          border-top-left-radius: 100%;
-          border-top: 5px solid;
-          margin: 5px;
-          animation-name: Loader_611;
-          animation-duration: 1500ms;
-          animation-timing-function: linear;
-          animation-delay: 0s;
-          animation-iteration-count: infinite;
-          animation-direction: normal;
-          animation-fill-mode: forwards;
+          float: left;
+          width: 0.5em;
+          height: 3em;
+          margin: 0 0.5em 0 0;
+          background: #635863;
+          background: -moz-linear-gradient(top, #635863 0%, #3d353b 100%);
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#635863),  color-stop(100%,#3d353b));
+          background: -webkit-linear-gradient(top, #635863 0%,#3d353b 100%);
+          background: -o-linear-gradient(top, #635863 0%,#3d353b 100%);
+          background: -ms-linear-gradient(top, #635863 0%,#3d353b 100%);
+          background: linear-gradient(to bottom, #635863 0%,#3d353b 100%);
+          box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.0), 1px 1px 1px 0 rgba(0, 0, 0, 0.0), 1px 1px 1px 0 rgba(0, 0, 0, 0.0);
+          animation: pound .7s ease-in-out infinite alternate;
+          animation-delay: 0.05s;
+          transform-origin: center;
         }
 
-        .sp1 {
-          border-left-color: #F44336;
-          border-top-color: #F44336;
-          width: 40px;
-          height: 40px;
+        .loader li:nth-child(2) {
+          animation-delay: 0.20s;
         }
 
-        .sp2 {
-          border-left-color: #FFC107;
-          border-top-color: #FFC107;
-          width: 30px;
-          height: 30px;
+        .loader li:nth-child(3) {
+          animation-delay: 0.35s;
         }
 
-        .sp3 {
-          width: 20px;
-          height: 20px;
-          border-left-color: #8bc34a;
-          border-top-color: #8bc34a;
+        .loader li:nth-child(4) {
+          animation-delay: 0.50s;
         }
 
-        @keyframes Loader_611 {
-          0% {
-            transform: rotate(0deg);
-            transform-origin: right bottom;
-          }
-
-          25% {
-            transform: rotate(90deg);
-            transform-origin: right bottom;
-          }
-
-          50% {
-            transform: rotate(180deg);
-            transform-origin: right bottom;
-          }
-
-          75% {
-            transform: rotate(270deg);
-            transform-origin: right bottom;
-          }
-
-          100% {
-            transform: rotate(360deg);
-            transform-origin: right bottom;
-          }
+        .loader li:nth-child(5) {
+          animation-delay: 0.65s;
         }
       `}</style>
     </div>
