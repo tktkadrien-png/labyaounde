@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./global.css";
 import { LanguageProvider } from "@/lib/contents/LanguageContext";
+import GlobalLoadingProvider from "@/components/GlobalLoadingProvider";
 
 export const metadata: Metadata = {
   title: "Lab Yaoundé - Laboratoires de biologie médicale",
@@ -16,7 +17,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         <LanguageProvider>
-          {children}
+          <GlobalLoadingProvider>
+            {children}
+          </GlobalLoadingProvider>
         </LanguageProvider>
       </body>
     </html>

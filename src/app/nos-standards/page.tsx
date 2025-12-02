@@ -117,8 +117,22 @@ export default function NosStandardsPage() {
           </div>
         </section>
 
-        {/* Introduction */}
+        {/* Image Section */}
         <section className="py-12 sm:py-16 lg:py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative h-[400px] md:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/standards-hero.png"
+                alt={language === 'fr' ? 'Nos Standards - Laboratoire' : 'Our Standards - Laboratory'}
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Introduction */}
+        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-2xl p-8 sm:p-10 lg:p-12 shadow-2xl text-white">

@@ -8,6 +8,7 @@ import ResultsAccess from "@/components/sections/results-access";
 import JobOpenings from "@/components/sections/job-openings";
 import ThreePillars from "@/components/sections/three-pillars";
 import NewsArticles from "@/components/sections/news-articles";
+import NotreReferentiel from "@/components/sections/notre-referentiel";
 import Footer from "@/components/sections/footer";
 import FloatingReviewWidget from "@/components/sections/floating-review-widget";
 
@@ -22,6 +23,7 @@ export default function HomePage() {
         <PatientJourneyCards />
         <Newsletter />
         <ResultsAccess />
+        <NotreReferentiel />
         <JobOpenings />
         <ThreePillars />
         <NewsArticles />

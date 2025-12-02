@@ -104,6 +104,20 @@ export default function NotreVisionPage() {
           </div>
         </section>
 
+        {/* Image Section */}
+        <section className="py-12 sm:py-16 lg:py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative h-[400px] md:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/vision-hero.png"
+                alt={language === 'fr' ? 'Notre Vision - Laboratoire' : 'Our Vision - Laboratory'}
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </section>
+
         {/* Two Main Objectives */}
         <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

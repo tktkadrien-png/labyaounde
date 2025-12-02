@@ -100,11 +100,27 @@ export default function MicrobiologiePage() {
                 </div>
               </div>
 
+              <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/microbiologie-hero.png"
+                  alt="Microbiologie automatisée"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Additional Images Section */}
+        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="grid grid-cols-2 gap-4">
                 <div className="relative h-64 rounded-2xl overflow-hidden shadow-xl">
                   <Image
                     src="/pexels-artempodrez-5726705.jpg"
-                    alt="Microbiologie automatisée"
+                    alt="Microbiologie"
                     fill
                     className="object-cover hover:scale-110 transition-transform duration-500"
                   />
