@@ -118,8 +118,8 @@ const MainNavigation = () => {
         span: 6,
         title: t('whoWeAre'),
         links: [
-          { href: "/coming-soon", label: t('ourVision') },
-          { href: "/coming-soon", label: t('ourStandards') },
+          { href: "/notre-vision", label: t('ourVision') },
+          { href: "/nos-standards", label: t('ourStandards') },
           { href: "/coming-soon", label: t('ourStrategy') },
           { href: "/coming-soon", label: t('ourObjectives') },
         ]
