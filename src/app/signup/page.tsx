@@ -149,15 +149,33 @@ export default function SignupPage() {
     }
   };
 
-  // Social auth handlers (placeholder for future implementation)
+  // Social auth handlers
   const handleGoogleAuth = async () => {
-    // TODO: Implement Google OAuth with Supabase
-    console.log("Google auth - to be implemented");
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/laisser-un-avis`,
+        },
+      });
+      if (error) throw error;
+    } catch (error: any) {
+      setError(error.message);
+    }
   };
 
   const handleAppleAuth = async () => {
-    // TODO: Implement Apple OAuth with Supabase
-    console.log("Apple auth - to be implemented");
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'apple',
+        options: {
+          redirectTo: `${window.location.origin}/laisser-un-avis`,
+        },
+      });
+      if (error) throw error;
+    } catch (error: any) {
+      setError(error.message);
+    }
   };
 
   return (
