@@ -1,0 +1,267 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Animated Button Styles - Inspired by Gumroad */
+@layer components {
+  .btn-animated {
+    @apply relative cursor-pointer border border-gray-900 rounded px-8 py-3 bg-gray-900 text-white transition-all duration-200;
+  }
+
+  .btn-animated:hover {
+    @apply -translate-x-1 -translate-y-1 bg-pink-400 text-gray-900;
+    box-shadow: 0.25rem 0.25rem var(--tw-shadow-color, #000);
+  }
+
+  .btn-animated:active {
+    @apply translate-x-0 translate-y-0;
+    box-shadow: none;
+  }
+
+  /* Primary Button Variant */
+  .btn-animated-primary {
+    @apply relative cursor-pointer border border-[#0B3D5F] rounded-lg px-8 py-3 bg-[#0B3D5F] text-white transition-all duration-200 font-semibold;
+  }
+
+  .btn-animated-primary:hover {
+    @apply -translate-x-1 -translate-y-1 bg-[#ff90e8] text-gray-900;
+    box-shadow: 0.25rem 0.25rem #0B3D5F;
+  }
+
+  .btn-animated-primary:active {
+    @apply translate-x-0 translate-y-0;
+    box-shadow: none;
+  }
+
+  /* Secondary Button with Arrow */
+  .btn-arrow {
+    @apply relative border-0 rounded-2xl text-white px-7 py-4 bg-[#645bff] flex items-center gap-2 font-bold transition-all duration-200;
+  }
+
+  .btn-arrow:hover {
+    @apply bg-gray-900;
+  }
+
+  .btn-arrow .arrow-wrapper {
+    @apply flex justify-center items-center;
+  }
+
+  .btn-arrow .arrow {
+    @apply relative bg-[#645bff] h-0.5 transition-all duration-200;
+    width: 10px;
+    margin-top: 1px;
+  }
+
+  .btn-arrow .arrow::before {
+    @apply absolute border-white border-r-2 border-b-2 inline-block transition-all duration-200;
+    content: "";
+    box-sizing: border-box;
+    top: -3px;
+    right: 3px;
+    padding: 3px;
+    transform: rotate(-45deg);
+  }
+
+  .btn-arrow:hover .arrow {
+    @apply bg-white;
+  }
+
+  .btn-arrow:hover .arrow::before {
+    right: 0;
+  }
+}
+
+/* Page Loading Animation */
+.page-loader {
+  @apply fixed inset-0 z-50 flex items-center justify-center bg-white;
+  animation: fadeOut 0.5s ease-in-out 0.5s forwards;
+}
+
+.page-loader.loading {
+  animation: none;
+}
+
+.loader {
+  display: block;
+  width: 84px;
+  height: 84px;
+  position: relative;
+}
+
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #0B3D5F;
+  transform: translate(-50%, -100%) scale(0);
+  animation: push_loader 2s infinite linear;
+}
+
+.loader:after {
+  animation-delay: 1s;
+}
+
+@keyframes push_loader {
+  0%,
+  50% {
+    transform: translate(-50%, 0%) scale(1);
+  }
+
+  100% {
+    transform: translate(-50%, -100%) scale(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Form Input Styles */
+.form-input {
+  @apply w-full px-4 py-3 border-1.5 border-gray-300 rounded-lg transition-all duration-200;
+}
+
+.form-input:focus {
+  @apply outline-none border-blue-500;
+}
+
+.form-input-wrapper {
+  @apply border-1.5 border-gray-300 rounded-lg h-12 flex items-center px-3 transition-all duration-200;
+}
+
+.form-input-wrapper:focus-within {
+  @apply border-blue-500;
+}
+
+/* Floating Label Animation */
+.floating-label {
+  @apply relative;
+}
+
+.floating-label input {
+  @apply w-full pt-6 pb-2 px-3 outline-0 border border-gray-400 rounded-lg;
+}
+
+.floating-label span {
+  @apply absolute left-3 top-4 text-gray-500 text-sm cursor-text transition-all duration-300;
+}
+
+.floating-label input:placeholder-shown + span {
+  @apply top-4 text-sm;
+}
+
+.floating-label input:focus + span,
+.floating-label input:valid + span,
+.floating-label input:not(:placeholder-shown) + span {
+  @apply top-1 text-xs font-semibold;
+}
+
+.floating-label input:valid + span {
+  @apply text-green-600;
+}
+
+.floating-label input:focus + span {
+  @apply text-blue-600;
+}
+
+/* Pulse Animation for Signup Title */
+.title-pulse::after {
+  animation: pulse 1s linear infinite;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* Light Button Animation for Login */
+.light-button button.bt {
+  @apply relative h-52 flex items-end outline-none bg-transparent border-none cursor-pointer;
+}
+
+.light-button button.bt .button-holder {
+  @apply flex flex-col items-center justify-center h-24 w-24 bg-gray-900 rounded text-gray-900 font-bold transition-all duration-300;
+  outline: #0f0f0f 2px solid;
+  outline-offset: 20px;
+}
+
+.light-button button.bt .button-holder svg {
+  @apply h-12 fill-gray-900 transition-all duration-300;
+}
+
+.light-button button.bt .light-holder {
+  @apply absolute h-52 w-24 flex flex-col items-center;
+}
+
+.light-button button.bt .light-holder .dot {
+  @apply absolute top-0 w-2.5 h-2.5 bg-gray-900 rounded-full z-10;
+}
+
+.light-button button.bt .light-holder .light {
+  @apply absolute top-0 w-52 h-52 bg-transparent;
+  clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
+}
+
+.light-button button.bt:hover .button-holder svg {
+  @apply fill-blue-600;
+}
+
+.light-button button.bt:hover .button-holder {
+  @apply text-blue-600;
+  outline: rgba(88, 101, 242, 1) 2px solid;
+  outline-offset: 2px;
+}
+
+.light-button button.bt:hover .light-holder .light {
+  background: linear-gradient(
+    180deg,
+    rgba(88, 101, 242, 1) 0%,
+    rgba(255, 255, 255, 0) 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
