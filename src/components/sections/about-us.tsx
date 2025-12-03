@@ -56,8 +56,15 @@ const AboutUs = () => {
       {/* Hero Section with Image */}
       <div className="relative h-[600px] lg:h-[700px]">
         {/* Background Image */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0B3D5F]/95 via-[#0B4D6F]/90 to-[#063251]/95">
-          <div className="absolute inset-0 bg-[url('/images/lab-bg.jpg')] bg-cover bg-center opacity-20"></div>
+        <div className="absolute inset-0">
+          <Image
+            src="/images/pexels-polina-tankilevitch-3735716.jpg"
+            alt="Laboratory background"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0B3D5F]/95 via-[#0B4D6F]/90 to-[#063251]/95"></div>
         </div>
 
         {/* Decorative elements */}

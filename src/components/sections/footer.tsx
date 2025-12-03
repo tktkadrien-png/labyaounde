@@ -7,7 +7,7 @@ import {
   MapPin,
   FileText,
   Facebook,
-  Linkedin,
+  Instagram,
   ArrowUp,
   Phone,
   Mail,
@@ -72,6 +72,25 @@ const footerColumns: FooterColumnProps[] = [
 ];
 
 const GOOGLE_MAPS_URL = "https://www.google.com/maps/search/?api=1&query=VFGR%2BMGH%2C+Cite+Verte%2C+Yaound%C3%A9%2C+Cameroon";
+
+const SOCIAL_LINKS = {
+  facebook: "https://www.facebook.com/profile.php?id=61584110146922",
+  tiktok: "https://www.tiktok.com/@laby.cite.vert?_r=1&_t=ZS-91ob0aa4ZUN",
+  instagram: "https://www.instagram.com/labyciteverte/",
+};
+
+// TikTok Icon Component
+const TikTokIcon = ({ size = 20, className = "" }: { size?: number; className?: string }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+  >
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z"/>
+  </svg>
+);
 
 const FooterColumn = ({ title, links }: FooterColumnProps) => (
   <div>
@@ -179,18 +198,31 @@ const Footer = () => {
                   <span className="text-white/60 text-sm hidden lg:block">Suivez-nous</span>
                   <div className="flex gap-3">
                     <a
-                      href="#"
+                      href={SOCIAL_LINKS.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       aria-label="Facebook"
                       className="w-10 h-10 rounded-full bg-white/10 hover:bg-cyan-500 flex items-center justify-center transition-all duration-300"
                     >
                       <Facebook size={20} className="text-white" />
                     </a>
                     <a
-                      href="#"
-                      aria-label="LinkedIn"
+                      href={SOCIAL_LINKS.tiktok}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="TikTok"
                       className="w-10 h-10 rounded-full bg-white/10 hover:bg-cyan-500 flex items-center justify-center transition-all duration-300"
                     >
-                      <Linkedin size={20} className="text-white" />
+                      <TikTokIcon size={20} className="text-white" />
+                    </a>
+                    <a
+                      href={SOCIAL_LINKS.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Instagram"
+                      className="w-10 h-10 rounded-full bg-white/10 hover:bg-cyan-500 flex items-center justify-center transition-all duration-300"
+                    >
+                      <Instagram size={20} className="text-white" />
                     </a>
                   </div>
                 </div>
