@@ -1,19 +1,49 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import TopNavigationBar from "@/components/sections/top-navigation-bar";
 import MainNavigation from "@/components/sections/main-navigation";
 import Footer from "@/components/sections/footer";
-import { Briefcase, ChevronRight, ArrowLeft, Mail, FileText } from "lucide-react";
+import { Briefcase, ChevronRight, ArrowLeft, Mail, FileText, Calendar, MapPin } from "lucide-react";
 import { useLanguage } from "@/lib/contents/LanguageContext";
+import { supabase } from "@/lib/supabase";
+
+interface JobOffer {
+  id: string;
+  title: string;
+  location: string;
+  type: string;
+  date: string;
+  description: string;
+  requirements?: string;
+}
 
 export default function OffresEmploiStagesPage() {
   const { language } = useLanguage();
+  const [jobOffers, setJobOffers] = useState<JobOffer[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // Empty array - no job offers currently
-  const jobOffers: any[] = [];
+  useEffect(() => {
+    fetchJobOffers();
+  }, []);
+
+  const fetchJobOffers = async () => {
+    setLoading(true);
+    const { data, error } = await supabase
+      .from('job_offers')
+      .select('*')
+      .eq('is_published', true)
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Error fetching job offers:', error);
+    } else {
+      setJobOffers(data || []);
+    }
+    setLoading(false);
+  };
 
   return (
     <>
@@ -72,10 +102,19 @@ export default function OffresEmploiStagesPage() {
           </div>
         </section>
 
-        {/* Empty State Section */}
+        {/* Job Offers Section */}
         <section className="py-12 sm:py-16 lg:py-20">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white rounded-2xl shadow-lg border-2 border-gray-100 p-12 text-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {loading ? (
+              <div className="text-center py-20">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0B3D5F] mx-auto"></div>
+                <p className="text-gray-600 mt-4">
+                  {language === 'fr' ? 'Chargement des offres...' : 'Loading offers...'}
+                </p>
+              </div>
+            ) : jobOffers.length === 0 ? (
+              <div className="max-w-4xl mx-auto">
+                <div className="bg-white rounded-2xl shadow-lg border-2 border-gray-100 p-12 text-center">
               <div className="w-20 h-20 bg-gradient-to-br from-[#0B3D5F]/10 to-[#0B4D6F]/10 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Briefcase className="w-10 h-10 text-[#0B3D5F]" />
               </div>
@@ -109,10 +148,11 @@ export default function OffresEmploiStagesPage() {
                   {language === 'fr' ? 'Voir les Actualités' : 'View News'}
                 </Link>
               </div>
-            </div>
+              </div>
 
-            {/* Info Cards */}
-            <div className="grid md:grid-cols-2 gap-6 mt-12">
+              {/* Info Cards */}
+              <div className="max-w-4xl mx-auto">
+                <div className="grid md:grid-cols-2 gap-6 mt-12">
               <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
                   {language === 'fr' ? 'Pourquoi nous rejoindre ?' : 'Why join us?'}
@@ -152,7 +192,54 @@ export default function OffresEmploiStagesPage() {
                   </li>
                 </ul>
               </div>
-            </div>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-6">
+                {jobOffers.map((job) => (
+                  <div key={job.id} className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                      <div className="flex-1">
+                        <div className="flex items-start gap-4">
+                          <div className="w-14 h-14 bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-xl flex items-center justify-center flex-shrink-0">
+                            <Briefcase className="w-7 h-7 text-white" />
+                          </div>
+                          <div>
+                            <h3 className="text-2xl font-bold text-gray-900 mb-2">{job.title}</h3>
+                            <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-3">
+                              <div className="flex items-center gap-2">
+                                <MapPin className="w-4 h-4 text-[#0B3D5F]" />
+                                {job.location}
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <Calendar className="w-4 h-4 text-[#0B3D5F]" />
+                                {job.date}
+                              </div>
+                              <span className="bg-[#0B3D5F]/10 text-[#0B3D5F] px-3 py-1 rounded-full font-medium">
+                                {job.type}
+                              </span>
+                            </div>
+                            <p className="text-gray-700 leading-relaxed mb-2">{job.description}</p>
+                            {job.requirements && (
+                              <p className="text-gray-600 text-sm">
+                                <strong>Requis:</strong> {job.requirements}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                      <Link
+                        href="/signup"
+                        className="inline-flex items-center justify-center gap-2 bg-[#0B3D5F] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#0B4D6F] transition-all hover:scale-105 shadow-lg whitespace-nowrap"
+                      >
+                        {language === 'fr' ? 'Postuler' : 'Apply'}
+                        <ChevronRight className="w-5 h-5" />
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </section>
       </main>

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import TopNavigationBar from "@/components/sections/top-navigation-bar";
@@ -8,54 +8,58 @@ import MainNavigation from "@/components/sections/main-navigation";
 import Footer from "@/components/sections/footer";
 import { Briefcase, Calendar, MapPin, ChevronRight, Newspaper, TrendingUp } from "lucide-react";
 import { useLanguage } from "@/lib/contents/LanguageContext";
+import { supabase } from "@/lib/supabase";
+
+interface JobOffer {
+  id: string;
+  title: string;
+  location: string;
+  type: string;
+  date: string;
+  description: string;
+}
+
+interface Actualite {
+  id: string;
+  title: string;
+  excerpt: string;
+  image_url?: string;
+  date: string;
+}
 
 export default function CarrieresPage() {
   const { language } = useLanguage();
+  const [jobOffers, setJobOffers] = useState<JobOffer[]>([]);
+  const [news, setNews] = useState<Actualite[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const jobOffers = [
-    {
-      title: "Biologiste Médical",
-      location: "Yaoundé, Cameroun",
-      type: "CDI",
-      date: "Décembre 2025",
-      description: "Nous recherchons un biologiste médical expérimenté pour rejoindre notre équipe.",
-    },
-    {
-      title: "Technicien de Laboratoire",
-      location: "Yaoundé, Cameroun",
-      type: "CDD",
-      date: "Décembre 2025",
-      description: "Poste de technicien de laboratoire spécialisé en biochimie clinique.",
-    },
-    {
-      title: "Stage - Assistant Laboratoire",
-      location: "Yaoundé, Cameroun",
-      type: "Stage",
-      date: "Janvier 2026",
-      description: "Stage de 6 mois pour étudiant en biologie médicale.",
-    },
-  ];
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  const news = [
-    {
-      title: "Nouvelle technologie PCR en temps réel",
-      date: "15 Novembre 2025",
-      image: "/images/pexels-artempodrez-5726705.jpg",
-      excerpt: "Notre laboratoire s'équipe d'une nouvelle technologie PCR permettant des analyses plus rapides et précises.",
-    },
-    {
-      title: "Certification ISO 15189 renouvelée",
-      date: "10 Novembre 2025",
-      image: "/images/pexels-artempodrez-5726837.jpg",
-      excerpt: "Lab Yaoundé renouvelle sa certification ISO 15189, témoignant de notre engagement qualité.",
-    },
-    {
-      title: "Journée portes ouvertes",
-      date: "5 Novembre 2025",
-      image: "/images/pexels-artempodrez-5726706.jpg",
-      excerpt: "Retrouvez-nous le 20 décembre pour découvrir nos installations et rencontrer notre équipe.",
-    },
-  ];
+  const fetchData = async () => {
+    setLoading(true);
+
+    // Fetch job offers
+    const { data: jobsData } = await supabase
+      .from('job_offers')
+      .select('*')
+      .eq('is_published', true)
+      .order('created_at', { ascending: false })
+      .limit(3);
+
+    // Fetch actualités
+    const { data: newsData } = await supabase
+      .from('actualites')
+      .select('*')
+      .eq('is_published', true)
+      .order('created_at', { ascending: false })
+      .limit(3);
+
+    setJobOffers(jobsData || []);
+    setNews(newsData || []);
+    setLoading(false);
+  };
 
   return (
     <>
@@ -118,28 +122,43 @@ export default function CarrieresPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-              {news.map((item, index) => (
-                <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                  <div className="relative h-48">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                      <Calendar className="w-4 h-4" />
-                      {item.date}
+            {loading ? (
+              <div className="text-center py-12">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0B3D5F] mx-auto"></div>
+              </div>
+            ) : news.length === 0 ? (
+              <div className="text-center py-12">
+                <Newspaper className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                <p className="text-gray-600">
+                  {language === 'fr' ? 'Aucune actualité pour le moment' : 'No news at the moment'}
+                </p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                {news.map((item) => (
+                  <div key={item.id} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                    {item.image_url && (
+                      <div className="relative h-48">
+                        <Image
+                          src={item.image_url}
+                          alt={item.title}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    )}
+                    <div className="p-6">
+                      <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                        <Calendar className="w-4 h-4" />
+                        {item.date}
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{item.excerpt}</p>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{item.excerpt}</p>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
 
             <div className="text-center">
               <Link
@@ -173,9 +192,21 @@ export default function CarrieresPage() {
               </p>
             </div>
 
-            <div className="space-y-6 mb-12">
-              {jobOffers.map((job, index) => (
-                <div key={index} className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300">
+            {loading ? (
+              <div className="text-center py-12">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0B3D5F] mx-auto"></div>
+              </div>
+            ) : jobOffers.length === 0 ? (
+              <div className="text-center py-12">
+                <Briefcase className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                <p className="text-gray-600">
+                  {language === 'fr' ? 'Aucune offre pour le moment' : 'No offers at the moment'}
+                </p>
+              </div>
+            ) : (
+              <div className="space-y-6 mb-12">
+                {jobOffers.map((job) => (
+                  <div key={job.id} className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-start gap-4">
@@ -211,7 +242,8 @@ export default function CarrieresPage() {
                   </div>
                 </div>
               ))}
-            </div>
+              </div>
+            )}
 
             <div className="text-center">
               <Link

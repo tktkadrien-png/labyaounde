@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import TopNavigationBar from "@/components/sections/top-navigation-bar";
@@ -8,33 +8,44 @@ import MainNavigation from "@/components/sections/main-navigation";
 import Footer from "@/components/sections/footer";
 import { Calendar, ChevronRight, Newspaper, ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/lib/contents/LanguageContext";
+import { supabase } from "@/lib/supabase";
+
+interface Actualite {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  image_url?: string;
+  category: string;
+  date: string;
+  is_published: boolean;
+  created_at: string;
+}
 
 export default function ActualitesPage() {
   const { language } = useLanguage();
+  const [news, setNews] = useState<Actualite[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const news = [
-    {
-      title: "Nouvelle technologie PCR en temps réel",
-      date: "15 Novembre 2025",
-      image: "/images/pexels-artempodrez-5726705.jpg",
-      excerpt: "Notre laboratoire s'équipe d'une nouvelle technologie PCR permettant des analyses plus rapides et précises.",
-      category: "Technologie",
-    },
-    {
-      title: "Certification ISO 15189 renouvelée",
-      date: "10 Novembre 2025",
-      image: "/images/pexels-artempodrez-5726837.jpg",
-      excerpt: "Lab Yaoundé renouvelle sa certification ISO 15189, témoignant de notre engagement qualité.",
-      category: "Certification",
-    },
-    {
-      title: "Journée portes ouvertes",
-      date: "5 Novembre 2025",
-      image: "/images/pexels-artempodrez-5726706.jpg",
-      excerpt: "Retrouvez-nous le 20 décembre pour découvrir nos installations et rencontrer notre équipe.",
-      category: "Événement",
-    },
-  ];
+  useEffect(() => {
+    fetchActualites();
+  }, []);
+
+  const fetchActualites = async () => {
+    setLoading(true);
+    const { data, error } = await supabase
+      .from('actualites')
+      .select('*')
+      .eq('is_published', true)
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Error fetching actualites:', error);
+    } else {
+      setNews(data || []);
+    }
+    setLoading(false);
+  };
 
   return (
     <>
@@ -94,40 +105,14 @@ export default function ActualitesPage() {
         {/* News Grid Section */}
         <section className="py-12 sm:py-16 lg:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {news.map((item, index) => (
-                <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                  <div className="relative h-56">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-[#0B3D5F] text-white px-3 py-1 rounded-full text-xs font-semibold">
-                        {item.category}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                      <Calendar className="w-4 h-4" />
-                      {item.date}
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight">{item.title}</h3>
-                    <p className="text-gray-600 leading-relaxed mb-4">{item.excerpt}</p>
-                    <button className="inline-flex items-center gap-2 text-[#0B3D5F] font-semibold hover:gap-3 transition-all">
-                      {language === 'fr' ? 'Lire plus' : 'Read more'}
-                      <ChevronRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Empty State - Can be shown when no news */}
-            {news.length === 0 && (
+            {loading ? (
+              <div className="text-center py-20">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0B3D5F] mx-auto"></div>
+                <p className="text-gray-600 mt-4">
+                  {language === 'fr' ? 'Chargement des actualités...' : 'Loading news...'}
+                </p>
+              </div>
+            ) : news.length === 0 ? (
               <div className="text-center py-20">
                 <Newspaper className="w-16 h-16 text-gray-400 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
@@ -138,6 +123,40 @@ export default function ActualitesPage() {
                     ? 'Revenez bientôt pour découvrir nos dernières actualités'
                     : 'Come back soon to discover our latest news'}
                 </p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {news.map((item) => (
+                  <div key={item.id} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                    {item.image_url && (
+                      <div className="relative h-56">
+                        <Image
+                          src={item.image_url}
+                          alt={item.title}
+                          fill
+                          className="object-cover"
+                        />
+                        <div className="absolute top-4 left-4">
+                          <span className="bg-[#0B3D5F] text-white px-3 py-1 rounded-full text-xs font-semibold">
+                            {item.category}
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                    <div className="p-6">
+                      <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                        <Calendar className="w-4 h-4" />
+                        {item.date}
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight">{item.title}</h3>
+                      <p className="text-gray-600 leading-relaxed mb-4">{item.excerpt}</p>
+                      <button className="inline-flex items-center gap-2 text-[#0B3D5F] font-semibold hover:gap-3 transition-all">
+                        {language === 'fr' ? 'Lire plus' : 'Read more'}
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
               </div>
             )}
           </div>
