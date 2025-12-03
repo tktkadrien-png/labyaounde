@@ -56,9 +56,9 @@ const footerColumns: FooterColumnProps[] = [
   {
     title: "Carrières",
     links: [
-      { href: "#", text: "Offres d'emploi" },
-      { href: "#", text: "Pourquoi nous rejoindre" },
-      { href: "#", text: "Nos métiers" },
+      { href: "/carrieres#offres-emploi-stages", text: "Offres d'emploi" },
+      { href: "/carrieres#actualites", text: "Actualités" },
+      { href: "/carrieres", text: "Voir toutes les opportunités" },
     ],
   },
   {
