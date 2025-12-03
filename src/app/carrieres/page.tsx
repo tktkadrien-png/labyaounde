@@ -1,0 +1,236 @@
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import TopNavigationBar from "@/components/sections/top-navigation-bar";
+import MainNavigation from "@/components/sections/main-navigation";
+import Footer from "@/components/sections/footer";
+import { Briefcase, Calendar, MapPin, ChevronRight, Newspaper, TrendingUp } from "lucide-react";
+import { useLanguage } from "@/lib/contents/LanguageContext";
+
+export default function CarrieresPage() {
+  const { language } = useLanguage();
+
+  const jobOffers = [
+    {
+      title: "Biologiste Médical",
+      location: "Yaoundé, Cameroun",
+      type: "CDI",
+      date: "Décembre 2025",
+      description: "Nous recherchons un biologiste médical expérimenté pour rejoindre notre équipe.",
+    },
+    {
+      title: "Technicien de Laboratoire",
+      location: "Yaoundé, Cameroun",
+      type: "CDD",
+      date: "Décembre 2025",
+      description: "Poste de technicien de laboratoire spécialisé en biochimie clinique.",
+    },
+    {
+      title: "Stage - Assistant Laboratoire",
+      location: "Yaoundé, Cameroun",
+      type: "Stage",
+      date: "Janvier 2026",
+      description: "Stage de 6 mois pour étudiant en biologie médicale.",
+    },
+  ];
+
+  const news = [
+    {
+      title: "Nouvelle technologie PCR en temps réel",
+      date: "15 Novembre 2025",
+      image: "/images/pexels-artempodrez-5726705.jpg",
+      excerpt: "Notre laboratoire s'équipe d'une nouvelle technologie PCR permettant des analyses plus rapides et précises.",
+    },
+    {
+      title: "Certification ISO 15189 renouvelée",
+      date: "10 Novembre 2025",
+      image: "/images/pexels-artempodrez-5726837.jpg",
+      excerpt: "Lab Yaoundé renouvelle sa certification ISO 15189, témoignant de notre engagement qualité.",
+    },
+    {
+      title: "Journée portes ouvertes",
+      date: "5 Novembre 2025",
+      image: "/images/pexels-artempodrez-5726706.jpg",
+      excerpt: "Retrouvez-nous le 20 décembre pour découvrir nos installations et rencontrer notre équipe.",
+    },
+  ];
+
+  return (
+    <>
+      <TopNavigationBar />
+      <MainNavigation />
+
+      <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+        {/* Hero Section */}
+        <section className="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
+          <div className="absolute inset-0">
+            <Image
+              src="/images/vision-hero.png"
+              alt={language === 'fr' ? 'Carrières' : 'Careers'}
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0B3D5F]/95 via-[#0B3D5F]/85 to-[#0B3D5F]/70"></div>
+          </div>
+
+          <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+            <div className="max-w-3xl">
+              <div className="flex items-center gap-2 mb-4">
+                <Link href="/" className="text-white/80 hover:text-white text-sm sm:text-base transition-colors">
+                  {language === 'fr' ? 'Accueil' : 'Home'}
+                </Link>
+                <ChevronRight className="w-4 h-4 text-white/60" />
+                <span className="text-white text-sm sm:text-base">{language === 'fr' ? 'Carrières' : 'Careers'}</span>
+              </div>
+
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+                {language === 'fr' ? 'Carrières & Actualités' : 'Careers & News'}
+              </h1>
+              <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-6 sm:mb-8 leading-relaxed">
+                {language === 'fr'
+                  ? "Rejoignez notre équipe et suivez nos actualités"
+                  : 'Join our team and follow our news'}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Actualités Section */}
+        <section id="actualites" className="py-12 sm:py-16 lg:py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 bg-[#0B3D5F]/10 px-4 py-2 rounded-full mb-4">
+                <Newspaper className="w-5 h-5 text-[#0B3D5F]" />
+                <span className="text-[#0B3D5F] font-semibold text-sm">
+                  {language === 'fr' ? 'Actualités' : 'News'}
+                </span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                {language === 'fr' ? 'Nos Dernières Actualités' : 'Our Latest News'}
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+                {language === 'fr'
+                  ? 'Restez informé des dernières nouvelles de notre laboratoire'
+                  : 'Stay informed about our laboratory latest news'}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {news.map((item, index) => (
+                <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                  <div className="relative h-48">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                      <Calendar className="w-4 h-4" />
+                      {item.date}
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{item.excerpt}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Job Offers Section */}
+        <section id="offres-emploi-stages" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 bg-[#0B3D5F]/10 px-4 py-2 rounded-full mb-4">
+                <Briefcase className="w-5 h-5 text-[#0B3D5F]" />
+                <span className="text-[#0B3D5F] font-semibold text-sm">
+                  {language === 'fr' ? 'Emploi & Stages' : 'Jobs & Internships'}
+                </span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                {language === 'fr' ? 'Offres d\'Emploi et Stages' : 'Job Offers and Internships'}
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+                {language === 'fr'
+                  ? 'Découvrez nos opportunités de carrière et rejoignez une équipe passionnée'
+                  : 'Discover our career opportunities and join a passionate team'}
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              {jobOffers.map((job, index) => (
+                <div key={index} className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <div className="flex-1">
+                      <div className="flex items-start gap-4">
+                        <div className="w-14 h-14 bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-xl flex items-center justify-center flex-shrink-0">
+                          <Briefcase className="w-7 h-7 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-bold text-gray-900 mb-2">{job.title}</h3>
+                          <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-3">
+                            <div className="flex items-center gap-2">
+                              <MapPin className="w-4 h-4 text-[#0B3D5F]" />
+                              {job.location}
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Calendar className="w-4 h-4 text-[#0B3D5F]" />
+                              {job.date}
+                            </div>
+                            <span className="bg-[#0B3D5F]/10 text-[#0B3D5F] px-3 py-1 rounded-full font-medium">
+                              {job.type}
+                            </span>
+                          </div>
+                          <p className="text-gray-700 leading-relaxed">{job.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <Link
+                      href="/signup"
+                      className="inline-flex items-center justify-center gap-2 bg-[#0B3D5F] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#0B4D6F] transition-all hover:scale-105 shadow-lg whitespace-nowrap"
+                    >
+                      {language === 'fr' ? 'Postuler' : 'Apply'}
+                      <ChevronRight className="w-5 h-5" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-12 sm:py-16 lg:py-20 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-2xl p-8 sm:p-12 text-white">
+              <TrendingUp className="w-16 h-16 mx-auto mb-6" />
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6">
+                {language === 'fr' ? 'Vous ne trouvez pas ce que vous cherchez ?' : 'Can\'t find what you\'re looking for?'}
+              </h2>
+              <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                {language === 'fr'
+                  ? 'Envoyez-nous votre candidature spontanée, nous sommes toujours à la recherche de talents'
+                  : 'Send us your spontaneous application, we are always looking for talent'}
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 bg-white text-[#0B3D5F] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all hover:scale-105 shadow-lg"
+              >
+                {language === 'fr' ? 'Nous Contacter' : 'Contact Us'}
+                <ChevronRight className="w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </>
+  );
+}
