@@ -44,29 +44,31 @@ const footerColumns: FooterColumnProps[] = [
     ],
   },
   {
-    title: "Professionnels de santé",
+    title: "Assurance qualité",
     links: [
-      { href: "#", text: "Espace prescripteurs" },
-      { href: "#", text: "Espace infirmiers" },
-      { href: "#", text: "Documents pratiques" },
-      { href: "#", text: "Informations" },
-      { href: "#", text: "Questions fréquentes" },
+      { href: "/charte-de-qualite", text: "Charte de qualité" },
+      { href: "/controle-qualite", text: "Contrôle qualité" },
+      { href: "#", text: "Accréditations" },
+      { href: "#", text: "Certifications" },
+      { href: "#", text: "Normes & standards" },
     ],
   },
   {
     title: "Carrières",
     links: [
-      { href: "/carrieres#offres-emploi-stages", text: "Offres d'emploi" },
-      { href: "/carrieres#actualites", text: "Actualités" },
+      { href: "/carrieres/offres-emploi-stages", text: "Offres d'emploi" },
+      { href: "/carrieres/actualites", text: "Actualités" },
       { href: "/carrieres", text: "Voir toutes les opportunités" },
     ],
   },
   {
-    title: "Expertise LabYaounde",
+    title: "Nos services",
     links: [
-      { href: "#", text: "Nos spécialités" },
-      { href: "#", text: "Expertise & innovation" },
-      { href: "#", text: "Accréditations" },
+      { href: "/nos-services", text: "Analyses médicales" },
+      { href: "/nos-services#biologie", text: "Biologie clinique" },
+      { href: "/nos-services#immunologie", text: "Immunologie" },
+      { href: "/nos-services#microbiologie", text: "Microbiologie" },
+      { href: "/nos-services#hematologie", text: "Hématologie" },
     ],
   },
 ];

@@ -118,7 +118,7 @@ export default function CarrieresPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
               {news.map((item, index) => (
                 <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                   <div className="relative h-48">
@@ -139,6 +139,16 @@ export default function CarrieresPage() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            <div className="text-center">
+              <Link
+                href="/carrieres/actualites"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-[#0B3D5F] to-[#0B4D6F] text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all hover:scale-105 shadow-lg"
+              >
+                {language === 'fr' ? 'Voir toutes nos actualités' : 'View all our news'}
+                <ChevronRight className="w-5 h-5" />
+              </Link>
             </div>
           </div>
         </section>
@@ -163,7 +173,7 @@ export default function CarrieresPage() {
               </p>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-6 mb-12">
               {jobOffers.map((job, index) => (
                 <div key={index} className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -201,6 +211,16 @@ export default function CarrieresPage() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            <div className="text-center">
+              <Link
+                href="/carrieres/offres-emploi-stages"
+                className="inline-flex items-center gap-2 bg-white border-2 border-[#0B3D5F] text-[#0B3D5F] px-8 py-4 rounded-xl font-semibold hover:bg-[#0B3D5F] hover:text-white transition-all hover:scale-105 shadow-lg"
+              >
+                {language === 'fr' ? 'Voir toutes les offres' : 'View all offers'}
+                <ChevronRight className="w-5 h-5" />
+              </Link>
             </div>
           </div>
         </section>

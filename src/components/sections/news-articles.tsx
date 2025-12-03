@@ -105,7 +105,7 @@ const NewsArticles = () => {
         </div>
         <div className="mt-14 text-center">
           <a
-            href="#"
+            href="/carrieres/actualites"
             className="inline-flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3.5 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
           >
             Voir toutes nos actualités

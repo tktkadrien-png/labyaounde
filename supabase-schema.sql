@@ -215,5 +215,99 @@ CREATE POLICY "Admin can view all profiles"
     );
 
 -- ============================================
+-- Create job_offers table for careers page
+-- ============================================
+
+CREATE TABLE IF NOT EXISTS public.job_offers (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    title TEXT NOT NULL,
+    location TEXT NOT NULL,
+    type TEXT NOT NULL CHECK (type IN ('CDI', 'CDD', 'Stage', 'Freelance')),
+    date TEXT NOT NULL,
+    description TEXT NOT NULL,
+    requirements TEXT,
+    is_published BOOLEAN DEFAULT false,
+    created_by UUID REFERENCES auth.users(id) ON DELETE SET NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW()),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW())
+);
+
+-- Create indexes for job_offers
+CREATE INDEX IF NOT EXISTS job_offers_is_published_idx ON public.job_offers(is_published);
+CREATE INDEX IF NOT EXISTS job_offers_created_at_idx ON public.job_offers(created_at DESC);
+CREATE INDEX IF NOT EXISTS job_offers_type_idx ON public.job_offers(type);
+
+-- Enable RLS for job_offers
+ALTER TABLE public.job_offers ENABLE ROW LEVEL SECURITY;
+
+-- Policy: Anyone can view published job offers
+CREATE POLICY "Anyone can view published job offers"
+    ON public.job_offers
+    FOR SELECT
+    USING (is_published = true);
+
+-- Policy: Admin can manage all job offers
+CREATE POLICY "Admin can manage all job offers"
+    ON public.job_offers
+    FOR ALL
+    USING (
+        auth.jwt() ->> 'email' = 'Labyaounde@gmail.com'
+        OR (auth.jwt() -> 'user_metadata' ->> 'is_admin')::boolean = true
+    );
+
+-- Create trigger for job_offers updated_at
+CREATE TRIGGER set_job_offers_updated_at
+    BEFORE UPDATE ON public.job_offers
+    FOR EACH ROW
+    EXECUTE FUNCTION public.handle_updated_at();
+
+-- ============================================
+-- Create actualites table for news/updates
+-- ============================================
+
+CREATE TABLE IF NOT EXISTS public.actualites (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    title TEXT NOT NULL,
+    excerpt TEXT NOT NULL,
+    content TEXT NOT NULL,
+    image_url TEXT,
+    category TEXT DEFAULT 'Général',
+    date TEXT NOT NULL,
+    is_published BOOLEAN DEFAULT false,
+    created_by UUID REFERENCES auth.users(id) ON DELETE SET NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW()),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW())
+);
+
+-- Create indexes for actualites
+CREATE INDEX IF NOT EXISTS actualites_is_published_idx ON public.actualites(is_published);
+CREATE INDEX IF NOT EXISTS actualites_created_at_idx ON public.actualites(created_at DESC);
+CREATE INDEX IF NOT EXISTS actualites_category_idx ON public.actualites(category);
+
+-- Enable RLS for actualites
+ALTER TABLE public.actualites ENABLE ROW LEVEL SECURITY;
+
+-- Policy: Anyone can view published actualites
+CREATE POLICY "Anyone can view published actualites"
+    ON public.actualites
+    FOR SELECT
+    USING (is_published = true);
+
+-- Policy: Admin can manage all actualites
+CREATE POLICY "Admin can manage all actualites"
+    ON public.actualites
+    FOR ALL
+    USING (
+        auth.jwt() ->> 'email' = 'Labyaounde@gmail.com'
+        OR (auth.jwt() -> 'user_metadata' ->> 'is_admin')::boolean = true
+    );
+
+-- Create trigger for actualites updated_at
+CREATE TRIGGER set_actualites_updated_at
+    BEFORE UPDATE ON public.actualites
+    FOR EACH ROW
+    EXECUTE FUNCTION public.handle_updated_at();
+
+-- ============================================
 -- Success! Your database schema is now set up.
 -- ============================================

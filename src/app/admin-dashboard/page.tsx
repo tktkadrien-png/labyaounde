@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   Star, LogOut, Mail, User, Calendar, MessageSquare, Filter, Search,
-  Users, FileText, TrendingUp, BarChart3, RefreshCw
+  Users, FileText, TrendingUp, BarChart3, RefreshCw, Briefcase, Newspaper, ArrowRight
 } from "lucide-react";
 import TopNavigationBar from "@/components/sections/top-navigation-bar";
 import MainNavigation from "@/components/sections/main-navigation";
@@ -333,6 +334,33 @@ export default function AdminDashboard() {
                     </div>
                   </div>
                 </div>
+              </div>
+
+              {/* Quick Access Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                <Link
+                  href="/admin-dashboard/job-offers"
+                  className="bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-lg shadow-lg p-6 hover:shadow-xl transition-all group"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <Briefcase className="w-10 h-10 text-white" />
+                    <ArrowRight className="w-6 h-6 text-white/70 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Gestion des Offres d'Emploi</h3>
+                  <p className="text-white/80 text-sm">Créer et gérer les offres d'emploi et stages</p>
+                </Link>
+
+                <Link
+                  href="/admin-dashboard/actualites"
+                  className="bg-gradient-to-br from-cyan-600 to-cyan-700 rounded-lg shadow-lg p-6 hover:shadow-xl transition-all group"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <Newspaper className="w-10 h-10 text-white" />
+                    <ArrowRight className="w-6 h-6 text-white/70 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Gestion des Actualités</h3>
+                  <p className="text-white/80 text-sm">Créer et gérer les actualités du laboratoire</p>
+                </Link>
               </div>
 
               {/* Recent Reviews */}
