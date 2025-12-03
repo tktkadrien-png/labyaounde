@@ -91,11 +91,11 @@ export default function DoisJePrendreRDV() {
               </div>
             </div>
             <div className={`grid md:grid-cols-3 gap-6 transition-all duration-700 ${infoVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 border-2 border-green-200 hover:shadow-lg transition-all">
-                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mb-4">
+              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border-2 border-blue-200 hover:shadow-lg transition-all">
+                <div className="w-12 h-12 bg-[#0B3D5F] rounded-full flex items-center justify-center mb-4">
                   <Check className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-green-900 mb-2">80% Sans RDV</h3>
+                <h3 className="text-xl font-bold text-[#0B3D5F] mb-2">80% Sans RDV</h3>
                 <p className="text-gray-700">La plupart des analyses courantes ne nécessitent aucun rendez-vous</p>
               </div>
 
@@ -133,11 +133,11 @@ export default function DoisJePrendreRDV() {
                   />
                 </div>
                 <div className="lg:w-2/3 text-center lg:text-left">
-                  <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-6 py-3 rounded-full mb-4">
+                  <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-6 py-3 rounded-full mb-4">
                     <Check className="w-5 h-5" />
                     <span className="text-sm font-semibold">Accès Libre - Sans Rendez-vous</span>
                   </div>
-                  <h2 className="text-3xl lg:text-5xl font-bold text-green-900 mb-4">
+                  <h2 className="text-3xl lg:text-5xl font-bold text-[#0B3D5F] mb-4">
                     Analyses Accessibles Sans Rendez-vous
                   </h2>
                   <p className="text-xl text-gray-600">
@@ -146,15 +146,15 @@ export default function DoisJePrendreRDV() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 lg:p-12 shadow-2xl border-l-8 border-green-500 mb-8">
+              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 lg:p-12 shadow-2xl border-l-8 border-[#0B3D5F] mb-8">
                 <div className="grid lg:grid-cols-2 gap-8">
                   {/* Analyses de sang courantes */}
-                  <div className="bg-white rounded-xl p-6 shadow-lg border border-green-200">
+                  <div className="bg-white rounded-xl p-6 shadow-lg border border-blue-200">
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-[#0B3D5F] rounded-full flex items-center justify-center">
                         <Droplet className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-green-900">Analyses de Sang Courantes</h3>
+                      <h3 className="text-2xl font-bold text-[#0B3D5F]">Analyses de Sang Courantes</h3>
                     </div>
                     <ul className="space-y-4">
                       {[
@@ -165,8 +165,8 @@ export default function DoisJePrendreRDV() {
                         { name: "Transaminases", desc: "Vérifie la santé du foie" },
                         { name: "TSH", desc: "Fonction de la thyroïde" }
                       ].map((item, index) => (
-                        <li key={index} className="flex items-start gap-3 group hover:bg-green-50 p-2 rounded-lg transition-all">
-                          <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                        <li key={index} className="flex items-start gap-3 group hover:bg-blue-50 p-2 rounded-lg transition-all">
+                          <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
                           <div>
                             <span className="font-semibold text-gray-900">{item.name}</span>
                             <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
@@ -177,12 +177,12 @@ export default function DoisJePrendreRDV() {
                   </div>
 
                   {/* Tests de dépistage */}
-                  <div className="bg-white rounded-xl p-6 shadow-lg border border-green-200">
+                  <div className="bg-white rounded-xl p-6 shadow-lg border border-blue-200">
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-[#0B3D5F] rounded-full flex items-center justify-center">
                         <Activity className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-green-900">Tests de Dépistage Rapide</h3>
+                      <h3 className="text-2xl font-bold text-[#0B3D5F]">Tests de Dépistage Rapide</h3>
                     </div>
                     <ul className="space-y-4">
                       {[
@@ -193,12 +193,12 @@ export default function DoisJePrendreRDV() {
                         { name: "CRP (Protéine C-Réactive)", desc: "Détection de l'inflammation", time: "2-3h" },
                         { name: "Sérologie rapide", desc: "HIV, Hépatite B et C", time: "4-6h" }
                       ].map((item, index) => (
-                        <li key={index} className="flex items-start gap-3 group hover:bg-green-50 p-2 rounded-lg transition-all">
-                          <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                        <li key={index} className="flex items-start gap-3 group hover:bg-blue-50 p-2 rounded-lg transition-all">
+                          <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
                           <div className="flex-1">
                             <div className="flex items-start justify-between">
                               <span className="font-semibold text-gray-900">{item.name}</span>
-                              <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">{item.time}</span>
+                              <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full">{item.time}</span>
                             </div>
                             <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
                           </div>
@@ -208,12 +208,12 @@ export default function DoisJePrendreRDV() {
                   </div>
 
                   {/* Bilans complets */}
-                  <div className="bg-white rounded-xl p-6 shadow-lg border border-green-200">
+                  <div className="bg-white rounded-xl p-6 shadow-lg border border-blue-200">
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-[#0B3D5F] rounded-full flex items-center justify-center">
                         <FileText className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-green-900">Bilans Complets</h3>
+                      <h3 className="text-2xl font-bold text-[#0B3D5F]">Bilans Complets</h3>
                     </div>
                     <ul className="space-y-4">
                       {[
@@ -223,8 +223,8 @@ export default function DoisJePrendreRDV() {
                         { name: "Bilan diabétique", desc: "Glycémie, HbA1c" },
                         { name: "Bilan rénal", desc: "Créatinine, urée, clairance" }
                       ].map((item, index) => (
-                        <li key={index} className="flex items-start gap-3 group hover:bg-green-50 p-2 rounded-lg transition-all">
-                          <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                        <li key={index} className="flex items-start gap-3 group hover:bg-blue-50 p-2 rounded-lg transition-all">
+                          <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
                           <div>
                             <span className="font-semibold text-gray-900">{item.name}</span>
                             <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
@@ -235,12 +235,12 @@ export default function DoisJePrendreRDV() {
                   </div>
 
                   {/* Autres analyses */}
-                  <div className="bg-white rounded-xl p-6 shadow-lg border border-green-200">
+                  <div className="bg-white rounded-xl p-6 shadow-lg border border-blue-200">
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-[#0B3D5F] rounded-full flex items-center justify-center">
                         <Search className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-green-900">Analyses Spécialisées</h3>
+                      <h3 className="text-2xl font-bold text-[#0B3D5F]">Analyses Spécialisées</h3>
                     </div>
                     <ul className="space-y-4">
                       {[
@@ -250,8 +250,8 @@ export default function DoisJePrendreRDV() {
                         { name: "Coagulation", desc: "TP, INR, TCA" },
                         { name: "Marqueurs cardiaques", desc: "Troponine (si urgence)" }
                       ].map((item, index) => (
-                        <li key={index} className="flex items-start gap-3 group hover:bg-green-50 p-2 rounded-lg transition-all">
-                          <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                        <li key={index} className="flex items-start gap-3 group hover:bg-blue-50 p-2 rounded-lg transition-all">
+                          <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
                           <div>
                             <span className="font-semibold text-gray-900">{item.name}</span>
                             <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
@@ -266,7 +266,7 @@ export default function DoisJePrendreRDV() {
                   <div className="flex items-start gap-3">
                     <Info className="w-6 h-6 text-green-700 flex-shrink-0 mt-1" />
                     <div>
-                      <h4 className="font-bold text-green-900 mb-2 text-lg">💡 Conseil Pratique</h4>
+                      <h4 className="font-bold text-[#0B3D5F] mb-2 text-lg">💡 Conseil Pratique</h4>
                       <p className="text-gray-700 leading-relaxed">
                         <strong>Venez de préférence le matin à jeun</strong> (entre 7h30 et 10h00) pour éviter l'affluence.
                         Apportez votre carte Vitale, votre mutuelle et votre ordonnance. Les résultats sont généralement disponibles
@@ -587,22 +587,22 @@ export default function DoisJePrendreRDV() {
                         </ul>
                       </div>
 
-                      <div className="bg-green-50 p-5 rounded-lg border border-green-200">
-                        <h4 className="font-bold text-green-900 mb-3 flex items-center gap-2">
+                      <div className="bg-blue-50 p-5 rounded-lg border border-blue-200">
+                        <h4 className="font-bold text-[#0B3D5F] mb-3 flex items-center gap-2">
                           <Check className="w-5 h-5" />
                           ✅ Autorisé pendant le jeûne
                         </h4>
                         <ul className="space-y-2 text-sm text-gray-700">
                           <li className="flex items-center gap-2">
-                            <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                            <span className="w-2 h-2 bg-[#0B3D5F] rounded-full"></span>
                             <span><strong>Eau plate</strong> - à volonté</span>
                           </li>
                           <li className="flex items-center gap-2">
-                            <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                            <span className="w-2 h-2 bg-[#0B3D5F] rounded-full"></span>
                             <span><strong>Médicaments habituels</strong> - sauf avis contraire</span>
                           </li>
                           <li className="flex items-center gap-2">
-                            <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                            <span className="w-2 h-2 bg-[#0B3D5F] rounded-full"></span>
                             <span><strong>Se brosser les dents</strong> - sans avaler</span>
                           </li>
                         </ul>
@@ -663,7 +663,7 @@ export default function DoisJePrendreRDV() {
                               <span>Pas de travaux physiques importants</span>
                             </li>
                             <li className="flex items-start gap-2">
-                              <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                              <Check className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
                               <span>Marche et activités légères autorisées</span>
                             </li>
                           </ul>
@@ -687,8 +687,6 @@ export default function DoisJePrendreRDV() {
                       <ul className="space-y-3">
                         {[
                           { icon: "📋", name: "Ordonnance médicale", desc: "Si prescrite par votre médecin" },
-                          { icon: "💳", name: "Carte Vitale", desc: "Pour le remboursement Sécurité Sociale" },
-                          { icon: "🏥", name: "Carte de mutuelle", desc: "Pour le tiers payant" },
                           { icon: "🪪", name: "Pièce d'identité", desc: "Carte nationale ou passeport" },
                           { icon: "📄", name: "Anciens résultats", desc: "Si analyses de suivi" }
                         ].map((item, index) => (
@@ -887,9 +885,9 @@ export default function DoisJePrendreRDV() {
                         </ul>
                       </div>
 
-                      <div className={`bg-white rounded-lg p-4 border-2 ${example.rdv ? 'border-red-300 bg-red-50/50' : 'border-green-300 bg-green-50/50'}`}>
+                      <div className={`bg-white rounded-lg p-4 border-2 ${example.rdv ? 'border-red-300 bg-red-50/50' : 'border-blue-300 bg-blue-50/50'}`}>
                         <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
-                          {example.rdv ? <AlertCircle className="w-5 h-5 text-red-600" /> : <Check className="w-5 h-5 text-green-600" />}
+                          {example.rdv ? <AlertCircle className="w-5 h-5 text-red-600" /> : <Check className="w-5 h-5 text-blue-600" />}
                           {example.rdv ? 'Rendez-vous OBLIGATOIRE' : 'Sans rendez-vous'}
                         </h4>
                       </div>
@@ -1105,14 +1103,6 @@ export default function DoisJePrendreRDV() {
                     answer: "Oui, nous accueillons les enfants de tout âge. Notre équipe est formée aux prélèvements pédiatriques :\n• **Nouveau-nés et nourrissons** : Prélèvement au talon ou veine\n• **Enfants** : Techniques adaptées, environnement rassurant\n• **Adolescents** : Possibilité de venir seul avec autorisation parentale écrite\n\nPour les jeunes enfants, nous recommandons de prendre rendez-vous pour éviter l'attente. Vous pouvez utiliser notre crème anesthésiante EMLA (sur ordonnance) 1h avant la venue."
                   },
                   {
-                    question: "Combien coûtent les analyses ?",
-                    answer: "Les tarifs sont fixés par la Nomenclature de la Sécurité Sociale (tarifs conventionnés) :\n• **Avec ordonnance** : Remboursement à 60% par l'Assurance Maladie, le reste par votre mutuelle\n• **Tiers payant** : Pas d'avance de frais si vous avez une mutuelle partenaire\n• **Sans ordonnance** : Tarifs libres, devis fourni avant le prélèvement\n\nExemples de tarifs (avec ordonnance) :\n• NFS : 9,45 € (remboursé 5,67 €)\n• Glycémie : 3,78 € (remboursé 2,27 €)\n• Bilan lipidique complet : ~20 € (remboursé ~12 €)\n• TSH : 12,60 € (remboursé 7,56 €)"
-                  },
-                  {
-                    question: "Acceptez-vous la carte Vitale et le tiers payant ?",
-                    answer: "Oui, nous acceptons :\n• **Carte Vitale** : Lecture directe pour transmission à l'Assurance Maladie\n• **Tiers payant Sécurité Sociale** : Pour les patients en ALD, CMU-C, femmes enceintes\n• **Tiers payant mutuelle** : Avec la plupart des mutuelles partenaires (vérifier lors de l'accueil)\n\nSi vous n'avez pas votre carte Vitale, nous établissons une feuille de soins papier que vous enverrez à votre caisse d'Assurance Maladie."
-                  },
-                  {
                     question: "Comment créer mon espace patient en ligne ?",
                     answer: "La création est simple et sécurisée :\n1. Lors de votre première visite, demandez l'activation de votre espace patient\n2. Vous recevrez un SMS avec un lien d'activation\n3. Créez votre mot de passe personnel\n4. Accédez à tous vos résultats 24h/24\n\nAvantages de l'espace patient :\n• Consultation immédiate des résultats\n• Historique de toutes vos analyses\n• Téléchargement et impression des documents\n• Partage sécurisé avec votre médecin\n• Notifications automatiques par SMS/email"
                   },
@@ -1201,7 +1191,7 @@ export default function DoisJePrendreRDV() {
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border-2 border-white/20 hover:bg-white/15 transition-all">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center">
+                    <div className="w-16 h-16 bg-[#0B3D5F] rounded-full flex items-center justify-center">
                       <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                       </svg>
@@ -1222,7 +1212,7 @@ export default function DoisJePrendreRDV() {
                     href="https://wa.me/237XXXXXXXXX"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl"
+                    className="inline-flex items-center gap-3 bg-[#0B3D5F] hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
