@@ -113,87 +113,90 @@ export default function OffresEmploiStagesPage() {
                 </p>
               </div>
             ) : jobOffers.length === 0 ? (
-              <div className="max-w-4xl mx-auto">
-                <div className="bg-white rounded-2xl shadow-lg border-2 border-gray-100 p-12 text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-[#0B3D5F]/10 to-[#0B4D6F]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Briefcase className="w-10 h-10 text-[#0B3D5F]" />
-              </div>
+              <>
+                <div className="max-w-4xl mx-auto">
+                  <div className="bg-white rounded-2xl shadow-lg border-2 border-gray-100 p-12 text-center">
+                    <div className="w-20 h-20 bg-gradient-to-br from-[#0B3D5F]/10 to-[#0B4D6F]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <Briefcase className="w-10 h-10 text-[#0B3D5F]" />
+                    </div>
 
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                {language === 'fr'
-                  ? 'Pas d\'offres d\'emploi et stage pour le moment'
-                  : 'No job offers or internships at the moment'}
-              </h2>
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                      {language === 'fr'
+                        ? 'Pas d\'offres d\'emploi et stage pour le moment'
+                        : 'No job offers or internships at the moment'}
+                    </h2>
 
-              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                {language === 'fr'
-                  ? 'Nous n\'avons actuellement aucune offre d\'emploi ou de stage disponible. Cependant, nous sommes toujours à la recherche de talents. N\'hésitez pas à nous envoyer votre candidature spontanée.'
-                  : 'We currently have no job or internship offers available. However, we are always looking for talent. Feel free to send us your spontaneous application.'}
-              </p>
+                    <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                      {language === 'fr'
+                        ? 'Nous n\'avons actuellement aucune offre d\'emploi ou de stage disponible. Cependant, nous sommes toujours à la recherche de talents. N\'hésitez pas à nous envoyer votre candidature spontanée.'
+                        : 'We currently have no job or internship offers available. However, we are always looking for talent. Feel free to send us your spontaneous application.'}
+                    </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#0B3D5F] to-[#0B4D6F] text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all hover:scale-105 shadow-lg"
-                >
-                  <Mail className="w-5 h-5" />
-                  {language === 'fr' ? 'Candidature Spontanée' : 'Spontaneous Application'}
-                </Link>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                      <Link
+                        href="/contact"
+                        className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#0B3D5F] to-[#0B4D6F] text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all hover:scale-105 shadow-lg"
+                      >
+                        <Mail className="w-5 h-5" />
+                        {language === 'fr' ? 'Candidature Spontanée' : 'Spontaneous Application'}
+                      </Link>
 
-                <Link
-                  href="/carrieres/actualites"
-                  className="inline-flex items-center justify-center gap-2 bg-white text-[#0B3D5F] border-2 border-[#0B3D5F] px-8 py-4 rounded-xl font-semibold hover:bg-[#0B3D5F] hover:text-white transition-all"
-                >
-                  <FileText className="w-5 h-5" />
-                  {language === 'fr' ? 'Voir les Actualités' : 'View News'}
-                </Link>
-              </div>
-              </div>
-
-              {/* Info Cards */}
-              <div className="max-w-4xl mx-auto">
-                <div className="grid md:grid-cols-2 gap-6 mt-12">
-              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {language === 'fr' ? 'Pourquoi nous rejoindre ?' : 'Why join us?'}
-                </h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <ChevronRight className="w-5 h-5 text-[#0B3D5F] flex-shrink-0 mt-0.5" />
-                    <span>{language === 'fr' ? 'Environnement de travail moderne et équipé' : 'Modern and well-equipped work environment'}</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <ChevronRight className="w-5 h-5 text-[#0B3D5F] flex-shrink-0 mt-0.5" />
-                    <span>{language === 'fr' ? 'Équipe passionnée et professionnelle' : 'Passionate and professional team'}</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <ChevronRight className="w-5 h-5 text-[#0B3D5F] flex-shrink-0 mt-0.5" />
-                    <span>{language === 'fr' ? 'Opportunités de formation continue' : 'Continuous training opportunities'}</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-100">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {language === 'fr' ? 'Processus de candidature' : 'Application process'}
-                </h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <ChevronRight className="w-5 h-5 text-[#0B3D5F] flex-shrink-0 mt-0.5" />
-                    <span>{language === 'fr' ? 'Envoyez votre CV et lettre de motivation' : 'Send your CV and cover letter'}</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <ChevronRight className="w-5 h-5 text-[#0B3D5F] flex-shrink-0 mt-0.5" />
-                    <span>{language === 'fr' ? 'Nous vous contacterons pour un entretien' : 'We will contact you for an interview'}</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <ChevronRight className="w-5 h-5 text-[#0B3D5F] flex-shrink-0 mt-0.5" />
-                    <span>{language === 'fr' ? 'Réponse sous 2 semaines maximum' : 'Response within 2 weeks maximum'}</span>
-                  </li>
-                </ul>
-              </div>
+                      <Link
+                        href="/carrieres/actualites"
+                        className="inline-flex items-center justify-center gap-2 bg-white text-[#0B3D5F] border-2 border-[#0B3D5F] px-8 py-4 rounded-xl font-semibold hover:bg-[#0B3D5F] hover:text-white transition-all"
+                      >
+                        <FileText className="w-5 h-5" />
+                        {language === 'fr' ? 'Voir les Actualités' : 'View News'}
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-              </div>
+
+                {/* Info Cards */}
+                <div className="max-w-4xl mx-auto">
+                  <div className="grid md:grid-cols-2 gap-6 mt-12">
+                    <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-100">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3">
+                        {language === 'fr' ? 'Pourquoi nous rejoindre ?' : 'Why join us?'}
+                      </h3>
+                      <ul className="space-y-2 text-gray-700">
+                        <li className="flex items-start gap-2">
+                          <ChevronRight className="w-5 h-5 text-[#0B3D5F] flex-shrink-0 mt-0.5" />
+                          <span>{language === 'fr' ? 'Environnement de travail moderne et équipé' : 'Modern and well-equipped work environment'}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <ChevronRight className="w-5 h-5 text-[#0B3D5F] flex-shrink-0 mt-0.5" />
+                          <span>{language === 'fr' ? 'Équipe passionnée et professionnelle' : 'Passionate and professional team'}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <ChevronRight className="w-5 h-5 text-[#0B3D5F] flex-shrink-0 mt-0.5" />
+                          <span>{language === 'fr' ? 'Opportunités de formation continue' : 'Continuous training opportunities'}</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-100">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3">
+                        {language === 'fr' ? 'Processus de candidature' : 'Application process'}
+                      </h3>
+                      <ul className="space-y-2 text-gray-700">
+                        <li className="flex items-start gap-2">
+                          <ChevronRight className="w-5 h-5 text-[#0B3D5F] flex-shrink-0 mt-0.5" />
+                          <span>{language === 'fr' ? 'Envoyez votre CV et lettre de motivation' : 'Send your CV and cover letter'}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <ChevronRight className="w-5 h-5 text-[#0B3D5F] flex-shrink-0 mt-0.5" />
+                          <span>{language === 'fr' ? 'Nous vous contacterons pour un entretien' : 'We will contact you for an interview'}</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <ChevronRight className="w-5 h-5 text-[#0B3D5F] flex-shrink-0 mt-0.5" />
+                          <span>{language === 'fr' ? 'Réponse sous 2 semaines maximum' : 'Response within 2 weeks maximum'}</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </>
             ) : (
               <div className="space-y-6">
                 {jobOffers.map((job) => (
