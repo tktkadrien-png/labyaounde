@@ -41,16 +41,8 @@ export default function JobOffersAdmin() {
   });
 
   useEffect(() => {
-    checkAdminAuth();
     fetchJobOffers();
   }, []);
-
-  const checkAdminAuth = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session || session.user.email !== 'Labyaounde@gmail.com') {
-      router.push('/login');
-    }
-  };
 
   const fetchJobOffers = async () => {
     setLoading(true);
@@ -69,9 +61,6 @@ export default function JobOffersAdmin() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return;
 
     if (editingOffer) {
       // Update existing offer
@@ -97,7 +86,7 @@ export default function JobOffersAdmin() {
         .from('job_offers')
         .insert([{
           ...formData,
-          created_by: user.id,
+          created_by: null,
         }]);
 
       if (error) {

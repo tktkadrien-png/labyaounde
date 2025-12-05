@@ -143,14 +143,6 @@ export default function JobOpenings() {
 
             <div className="text-center group">
               <div className="inline-flex items-center justify-center w-14 h-14 bg-white/10 backdrop-blur-sm rounded-xl mb-3 group-hover:bg-white/20 transition-colors">
-                <Globe className="w-7 h-7 text-cyan-400" />
-              </div>
-              <p className="text-3xl md:text-4xl font-bold text-white">160+</p>
-              <p className="text-white/70 text-sm mt-1">Laboratoires en France</p>
-            </div>
-
-            <div className="text-center group">
-              <div className="inline-flex items-center justify-center w-14 h-14 bg-white/10 backdrop-blur-sm rounded-xl mb-3 group-hover:bg-white/20 transition-colors">
                 <Clock className="w-7 h-7 text-cyan-400" />
               </div>
               <p className="text-3xl md:text-4xl font-bold text-white">24h</p>

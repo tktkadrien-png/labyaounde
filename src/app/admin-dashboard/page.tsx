@@ -28,6 +28,11 @@ export default function AdminDashboard() {
   const { language } = useLanguage();
   const [activeTab, setActiveTab] = useState<"overview" | "reviews">("overview");
 
+  // Auth state
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
   // Stats en temps réel
   const [stats, setStats] = useState({
     totalUsers: 0,
@@ -83,28 +88,41 @@ export default function AdminDashboard() {
   const currentContent = content[language];
 
   useEffect(() => {
-    checkAdminAuth();
+    // Vérifier si déjà authentifié dans le sessionStorage
+    const authStatus = sessionStorage.getItem('adminAuthenticated');
+    if (authStatus === 'true') {
+      setIsAuthenticated(true);
+      fetchAllData();
+    } else {
+      setLoading(false);
+    }
   }, []);
 
   useEffect(() => {
-    // Mise à jour automatique toutes les 10 secondes
+    // Mise à jour automatique toutes les 10 secondes seulement si authentifié
+    if (!isAuthenticated) return;
+
     const interval = setInterval(() => {
       fetchAllData();
     }, 10000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isAuthenticated]);
 
   useEffect(() => {
     filterReviews();
   }, [searchTerm, statusFilter, reviews]);
 
-  const checkAdminAuth = async () => {
-    try {
-      // Accès libre au dashboard - pas de vérification
-      await fetchAllData();
-    } catch (error) {
-      console.error("Auth error:", error);
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Mot de passe admin: LabYaounde2025!
+    if (password === 'LabYaounde2025!') {
+      setIsAuthenticated(true);
+      sessionStorage.setItem('adminAuthenticated', 'true');
+      setError("");
+      fetchAllData();
+    } else {
+      setError("Mot de passe incorrect");
     }
   };
 
@@ -215,8 +233,66 @@ export default function AdminDashboard() {
   };
 
   const handleLogout = () => {
-    router.push("/");
+    setIsAuthenticated(false);
+    sessionStorage.removeItem('adminAuthenticated');
+    setPassword("");
   };
+
+  // Si pas authentifié, afficher le formulaire de connexion
+  if (!isAuthenticated) {
+    return (
+      <>
+        <TopNavigationBar />
+        <MainNavigation />
+
+        <main className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4">
+          <div className="max-w-md w-full">
+            <div className="bg-white rounded-2xl shadow-xl p-8">
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-full mb-4">
+                  <User className="w-8 h-8 text-white" />
+                </div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">Accès Admin</h2>
+                <p className="text-gray-600">Entrez le mot de passe pour accéder au tableau de bord</p>
+              </div>
+
+              <form onSubmit={handleLogin} className="space-y-6">
+                <div>
+                  <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Mot de passe
+                  </label>
+                  <input
+                    type="password"
+                    id="password"
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                      setError("");
+                    }}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0B3D5F] focus:border-transparent"
+                    placeholder="Entrez le mot de passe admin"
+                    required
+                  />
+                  {error && (
+                    <p className="text-red-600 text-sm mt-2">{error}</p>
+                  )}
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-[#0B3D5F] to-[#0B4D6F] text-white py-3 rounded-xl font-semibold hover:shadow-xl transition-all"
+                >
+                  Se connecter
+                </button>
+              </form>
+            </div>
+          </div>
+        </main>
+
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>

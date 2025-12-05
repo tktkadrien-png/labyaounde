@@ -41,16 +41,8 @@ export default function ActualitesAdmin() {
   });
 
   useEffect(() => {
-    checkAdminAuth();
     fetchActualites();
   }, []);
-
-  const checkAdminAuth = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session || session.user.email !== 'Labyaounde@gmail.com') {
-      router.push('/login');
-    }
-  };
 
   const fetchActualites = async () => {
     setLoading(true);
@@ -69,9 +61,6 @@ export default function ActualitesAdmin() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return;
 
     if (editingActualite) {
       // Update existing actualite
@@ -97,7 +86,7 @@ export default function ActualitesAdmin() {
         .from('actualites')
         .insert([{
           ...formData,
-          created_by: user.id,
+          created_by: null,
         }]);
 
       if (error) {
