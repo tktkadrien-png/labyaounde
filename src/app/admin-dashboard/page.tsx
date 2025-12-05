@@ -115,8 +115,8 @@ export default function AdminDashboard() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Mot de passe admin: LabYaounde2025!
-    if (password === 'LabYaounde2025!') {
+    // Mot de passe admin: LABYAOUNDE2025ADMIN
+    if (password === 'LABYAOUNDE2025ADMIN') {
       setIsAuthenticated(true);
       sessionStorage.setItem('adminAuthenticated', 'true');
       setError("");

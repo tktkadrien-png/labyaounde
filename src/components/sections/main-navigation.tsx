@@ -164,7 +164,7 @@ const MainNavigation = () => {
                 <MegaMenuItemPro trigger={language === 'fr' ? 'Assurance Qualité' : 'Quality Assurance'} professionalsMenu={professionalsMenu} />
                 <MegaMenuItem trigger={t('patients')} columns={patientsMenu} itemsInRow={1} />
                 <li className="relative">
-                  <Link href="/coming-soon" className="inline-flex h-10 items-center justify-center px-4 py-2 text-base font-[500] text-[#333] transition-colors hover:text-[#0a6ed1]">
+                  <Link href="/carrieres/offres-emploi-stages" className="inline-flex h-10 items-center justify-center px-4 py-2 text-base font-[500] text-[#333] transition-colors hover:text-[#0a6ed1]">
                     {t('careers')}
                   </Link>
                 </li>
@@ -257,7 +257,7 @@ const MainNavigation = () => {
               <MobileAccordionItem trigger={t('patients')} menu={patientsMenu} />
             </Accordion>
             <div className="mt-4 sm:mt-6 border-t border-gray-200 pt-4 sm:pt-6">
-              <Link href="/coming-soon" className="text-base sm:text-lg font-medium text-[#0B3D5F] block py-2" onClick={toggleMobileMenu}>
+              <Link href="/carrieres/offres-emploi-stages" className="text-base sm:text-lg font-medium text-[#0B3D5F] block py-2" onClick={toggleMobileMenu}>
                 {t('careers')}
               </Link>
             </div>

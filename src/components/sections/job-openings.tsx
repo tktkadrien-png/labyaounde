@@ -121,40 +121,54 @@ export default function JobOpenings() {
           ))}
         </div>
 
-        {/* Expertise Internationale Stats */}
-        <div className="mt-16 bg-gradient-to-br from-[#0B3D5F] to-cyan-800 py-12 px-8 rounded-2xl shadow-xl">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
-              Expertise à l&apos;internationale
-            </h3>
-            <p className="text-white/70 text-sm md:text-base max-w-xl mx-auto">
-              LabYaounde, votre partenaire de confiance pour des analyses médicales de qualité mondiale
-            </p>
+        {/* Expertise Internationale Stats - Restyled */}
+        <div className="mt-16 relative overflow-hidden bg-gradient-to-br from-[#0B3D5F] via-[#0a5082] to-[#0078BF] py-16 px-8 rounded-3xl shadow-2xl">
+          {/* Decorative Background Elements */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 right-0 w-72 h-72 bg-white rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-300 rounded-full blur-3xl"></div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            <div className="text-center group">
-              <div className="inline-flex items-center justify-center w-14 h-14 bg-white/10 backdrop-blur-sm rounded-xl mb-3 group-hover:bg-white/20 transition-colors">
-                <Briefcase className="w-7 h-7 text-cyan-400" />
+          {/* Content */}
+          <div className="relative z-10">
+            <div className="text-center mb-12">
+              <div className="inline-block mb-4">
+                <span className="bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-semibold border border-white/30">
+                  Excellence Internationale
+                </span>
               </div>
-              <p className="text-3xl md:text-4xl font-bold text-white">27+</p>
-              <p className="text-white/70 text-sm mt-1">Postes à pourvoir</p>
+              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
+                Expertise à l&apos;internationale
+              </h3>
+              <p className="text-white/90 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+                LabYaounde, votre partenaire de confiance pour des analyses médicales de qualité mondiale
+              </p>
             </div>
 
-            <div className="text-center group">
-              <div className="inline-flex items-center justify-center w-14 h-14 bg-white/10 backdrop-blur-sm rounded-xl mb-3 group-hover:bg-white/20 transition-colors">
-                <Clock className="w-7 h-7 text-cyan-400" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+              <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 text-center group hover:bg-white/15 hover:scale-105 transition-all duration-300 shadow-xl">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-2xl mb-4 group-hover:rotate-6 transition-transform duration-300 shadow-lg">
+                  <Briefcase className="w-8 h-8 text-white" />
+                </div>
+                <p className="text-4xl md:text-5xl font-bold text-white mb-2 group-hover:scale-110 transition-transform duration-300">27+</p>
+                <p className="text-white/90 text-sm md:text-base font-medium">Postes à pourvoir</p>
               </div>
-              <p className="text-3xl md:text-4xl font-bold text-white">24h</p>
-              <p className="text-white/70 text-sm mt-1">Délai résultats</p>
-            </div>
 
-            <div className="text-center group">
-              <div className="inline-flex items-center justify-center w-14 h-14 bg-white/10 backdrop-blur-sm rounded-xl mb-3 group-hover:bg-white/20 transition-colors">
-                <Award className="w-7 h-7 text-cyan-400" />
+              <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 text-center group hover:bg-white/15 hover:scale-105 transition-all duration-300 shadow-xl">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-2xl mb-4 group-hover:rotate-6 transition-transform duration-300 shadow-lg">
+                  <Clock className="w-8 h-8 text-white" />
+                </div>
+                <p className="text-4xl md:text-5xl font-bold text-white mb-2 group-hover:scale-110 transition-transform duration-300">24h</p>
+                <p className="text-white/90 text-sm md:text-base font-medium">Délai résultats</p>
               </div>
-              <p className="text-3xl md:text-4xl font-bold text-white">100%</p>
-              <p className="text-white/70 text-sm mt-1">Certifié qualité</p>
+
+              <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 text-center group hover:bg-white/15 hover:scale-105 transition-all duration-300 shadow-xl sm:col-span-2 lg:col-span-1">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-400 to-amber-600 rounded-2xl mb-4 group-hover:rotate-6 transition-transform duration-300 shadow-lg">
+                  <Award className="w-8 h-8 text-white" />
+                </div>
+                <p className="text-4xl md:text-5xl font-bold text-white mb-2 group-hover:scale-110 transition-transform duration-300">100%</p>
+                <p className="text-white/90 text-sm md:text-base font-medium">Certifié qualité</p>
+              </div>
             </div>
           </div>
         </div>
