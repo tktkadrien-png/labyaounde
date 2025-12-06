@@ -84,14 +84,11 @@ export default function JobOffersAdmin() {
       // Create new offer
       const { error } = await supabase
         .from('job_offers')
-        .insert([{
-          ...formData,
-          created_by: null,
-        }]);
+        .insert([formData]);
 
       if (error) {
         console.error('Error creating job offer:', error);
-        alert('Erreur lors de la création de l\'offre');
+        alert(`Erreur lors de la création de l'offre: ${error.message}\n\nDétails: ${JSON.stringify(error, null, 2)}`);
       } else {
         alert('Offre créée avec succès!');
         resetForm();

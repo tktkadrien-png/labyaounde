@@ -82,16 +82,13 @@ export default function ActualitesAdmin() {
       }
     } else {
       // Create new actualite
-      const { error } = await supabase
+      const { error} = await supabase
         .from('actualites')
-        .insert([{
-          ...formData,
-          created_by: null,
-        }]);
+        .insert([formData]);
 
       if (error) {
         console.error('Error creating actualite:', error);
-        alert('Erreur lors de la création');
+        alert(`Erreur lors de la création: ${error.message}\n\nDétails: ${JSON.stringify(error, null, 2)}`);
       } else {
         alert('Actualité créée avec succès!');
         resetForm();
