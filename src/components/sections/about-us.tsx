@@ -15,7 +15,8 @@ const AboutUs = () => {
     fr: {
       title: "A PROPOS DE NOUS",
       subtitle: "Laboratoire d'Analyses Biologiques de Yaoundé",
-      description: `Le Laboratoire d'Analyses Biologiques de Yaoundé (LABY) est une entreprise privée, créée en juin 2012, dans le souci d'apporter au Cameroun et dans la sous région, un service de qualité en analyses médicales et biologiques conformément aux normes internationales.`,
+      description: `Nous sommes une  équipe entièrement dévouée à votre service, et justifiant d'une expertise qui s'appuie sur le respect strict des normes ISO 15189.
+Nous nous engageons à répondre avec exigence et professionnalisme à vos attentes et à bâtir ensemble, une relation de confiance solide et durable. Votre bien-être est notre priorité `,
       stats: [
         { icon: Users, value: "10+", label: "Années d'expérience" },
         { icon: Award, value: "ISO", label: "Certifié" },
@@ -31,7 +32,8 @@ const AboutUs = () => {
     en: {
       title: "ABOUT US",
       subtitle: "Yaoundé Biological Analysis Laboratory",
-      description: `The Yaoundé Biological Analysis Laboratory (LABY) is a private company, created in June 2012, with the aim of providing Cameroon and the sub-region with quality medical and biological analysis services in accordance with international standards.`,
+      description: `We are a team fully dedicated to serving you, with proven expertise grounded in strict compliance with ISO 15189 standards.
+We are committed to meeting your expectations with rigor and professionalism, and to building together a strong and lasting relationship of trust. Your well-being is our priority`,
       stats: [
         { icon: Users, value: "10+", label: "Years of Experience" },
         { icon: Award, value: "ISO", label: "Certified" },
@@ -69,7 +71,7 @@ const AboutUs = () => {
 
         {/* Decorative elements */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-96 h-96 bg-cyan-300 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-20 left-10 w-96 h-96 bg-yellow-400 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-400 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
 
@@ -87,12 +89,12 @@ const AboutUs = () => {
               </h1>
 
               {/* Subtitle */}
-              <p className="text-xl lg:text-2xl text-cyan-300 font-light mb-8">
+              <p className="text-xl lg:text-2xl text-yellow-400 font-light mb-8">
                 {currentContent.subtitle}
               </p>
 
               {/* Decorative line */}
-              <div className="w-32 h-1.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mb-10"></div>
+              <div className="w-32 h-1.5 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full mb-10"></div>
 
               {/* Description */}
               <p className="text-lg lg:text-xl text-white/90 leading-relaxed max-w-3xl mb-12">
@@ -106,9 +108,9 @@ const AboutUs = () => {
                     key={index}
                     href={button.href}
                     className="px-8 py-4 bg-white text-[#0B3D5F] font-semibold rounded-lg
-                      hover:bg-cyan-50 hover:shadow-xl hover:shadow-cyan-500/30
+                      hover:bg-yellow-50 hover:shadow-xl hover:shadow-yellow-500/30
                       transition-all duration-300 transform hover:scale-105 hover:-translate-y-1
-                      border-2 border-transparent hover:border-cyan-400"
+                      border-2 border-transparent hover:border-yellow-400"
                   >
                     {button.text}
                   </Link>
@@ -144,7 +146,7 @@ const AboutUs = () => {
                   }`}
                 >
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-2xl mb-4 shadow-lg">
-                    <Icon className="w-8 h-8 text-cyan-300" />
+                    <Icon className="w-8 h-8 text-yellow-400" />
                   </div>
                   <div className="text-4xl font-bold text-[#0B3D5F] mb-2">{stat.value}</div>
                   <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
