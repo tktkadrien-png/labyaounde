@@ -66,13 +66,13 @@ We are committed to meeting your expectations with rigor and professionalism, an
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0B3D5F]/95 via-[#0B4D6F]/90 to-[#063251]/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#2916F5]/95 via-[#157DEC]/90 to-[#0909FF]/95"></div>
         </div>
 
         {/* Decorative elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-10 w-96 h-96 bg-yellow-400 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-400 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#1589FF] rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
 
         {/* Content */}
@@ -107,7 +107,7 @@ We are committed to meeting your expectations with rigor and professionalism, an
                   <Link
                     key={index}
                     href={button.href}
-                    className="px-8 py-4 bg-white text-[#0B3D5F] font-semibold rounded-lg
+                    className="px-8 py-4 bg-white text-[#2916F5] font-semibold rounded-lg
                       hover:bg-yellow-50 hover:shadow-xl hover:shadow-yellow-500/30
                       transition-all duration-300 transform hover:scale-105 hover:-translate-y-1
                       border-2 border-transparent hover:border-yellow-400"
@@ -145,10 +145,10 @@ We are committed to meeting your expectations with rigor and professionalism, an
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                   }`}
                 >
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-2xl mb-4 shadow-lg">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-2xl mb-4 shadow-lg">
                     <Icon className="w-8 h-8 text-yellow-400" />
                   </div>
-                  <div className="text-4xl font-bold text-[#0B3D5F] mb-2">{stat.value}</div>
+                  <div className="text-4xl font-bold text-[#2916F5] mb-2">{stat.value}</div>
                   <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
                 </div>
               );

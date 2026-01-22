@@ -28,7 +28,7 @@ export default function NotreVisionPage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0B3D5F]/95 via-[#0B3D5F]/85 to-[#0B3D5F]/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#2916F5]/95 via-[#2916F5]/85 to-[#2916F5]/70"></div>
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
@@ -74,9 +74,9 @@ export default function NotreVisionPage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-[#0B3D5F]/10 px-4 py-2 rounded-full mb-6">
-                <Target className="w-5 h-5 text-[#0B3D5F]" />
-                <span className="text-[#0B3D5F] font-semibold text-sm sm:text-base">
+              <div className="inline-flex items-center gap-2 bg-[#2916F5]/10 px-4 py-2 rounded-full mb-6">
+                <Target className="w-5 h-5 text-[#2916F5]" />
+                <span className="text-[#2916F5] font-semibold text-sm sm:text-base">
                   {language === 'fr' ? 'Notre Engagement' : 'Our Commitment'}
                 </span>
               </div>
@@ -125,7 +125,7 @@ export default function NotreVisionPage() {
               {/* First Objective */}
               <div className="bg-white rounded-2xl p-8 sm:p-10 shadow-2xl border border-gray-100 hover:shadow-3xl transition-all duration-300">
                 <div className="flex items-start gap-6 mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-2xl flex items-center justify-center flex-shrink-0">
                     <Microscope className="w-8 h-8 text-white" />
                   </div>
                   <div>
@@ -142,16 +142,16 @@ export default function NotreVisionPage() {
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-[#0B3D5F]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Shield className="w-3.5 h-3.5 text-[#0B3D5F]" />
+                    <div className="w-6 h-6 bg-[#2916F5]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Shield className="w-3.5 h-3.5 text-[#2916F5]" />
                     </div>
                     <span className="text-gray-700">
                       {language === 'fr' ? 'Électrophorèse capillaire' : 'Capillary electrophoresis'}
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-[#0B3D5F]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Shield className="w-3.5 h-3.5 text-[#0B3D5F]" />
+                    <div className="w-6 h-6 bg-[#2916F5]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Shield className="w-3.5 h-3.5 text-[#2916F5]" />
                     </div>
                     <span className="text-gray-700">
                       {language === 'fr'
@@ -166,7 +166,7 @@ export default function NotreVisionPage() {
               {/* Second Objective */}
               <div className="bg-white rounded-2xl p-8 sm:p-10 shadow-2xl border border-gray-100 hover:shadow-3xl transition-all duration-300">
                 <div className="flex items-start gap-6 mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-2xl flex items-center justify-center flex-shrink-0">
                     <HeartPulse className="w-8 h-8 text-white" />
                   </div>
                   <div>
@@ -181,24 +181,24 @@ export default function NotreVisionPage() {
                     : 'Provide practitioners with accurate, reliable and stable results within a relatively short timeframe, enabling them to be more effective in patient care.'
                   }
                 </p>
-                <div className="bg-gradient-to-br from-[#0B3D5F]/5 to-[#0B4D6F]/5 rounded-xl p-6 border border-[#0B3D5F]/10">
+                <div className="bg-gradient-to-br from-[#2916F5]/5 to-[#157DEC]/5 rounded-xl p-6 border border-[#2916F5]/10">
                   <div className="flex items-center gap-3 mb-3">
-                    <Users className="w-6 h-6 text-[#0B3D5F]" />
+                    <Users className="w-6 h-6 text-[#2916F5]" />
                     <h4 className="text-lg font-bold text-gray-900">
                       {language === 'fr' ? 'Avantages clés' : 'Key benefits'}
                     </h4>
                   </div>
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start gap-2">
-                      <span className="text-[#0B3D5F] font-bold">•</span>
+                      <span className="text-[#2916F5] font-bold">•</span>
                       <span>{language === 'fr' ? 'Résultats précis et fiables' : 'Accurate and reliable results'}</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#0B3D5F] font-bold">•</span>
+                      <span className="text-[#2916F5] font-bold">•</span>
                       <span>{language === 'fr' ? 'Délai de rendu rapide' : 'Fast turnaround time'}</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#0B3D5F] font-bold">•</span>
+                      <span className="text-[#2916F5] font-bold">•</span>
                       <span>{language === 'fr' ? 'Meilleure prise en charge des patients' : 'Better patient care'}</span>
                     </li>
                   </ul>
@@ -226,14 +226,14 @@ export default function NotreVisionPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/signup"
-                className="inline-flex items-center justify-center gap-2 bg-[#0B3D5F] text-white px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-[#0B4D6F] transition-all hover:scale-105 shadow-lg"
+                className="inline-flex items-center justify-center gap-2 bg-[#2916F5] text-white px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-[#157DEC] transition-all hover:scale-105 shadow-lg"
               >
                 {language === 'fr' ? 'Créer un Compte' : 'Create an Account'}
                 <ChevronRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/nos-standards"
-                className="inline-flex items-center justify-center gap-2 bg-transparent text-[#0B3D5F] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-[#0B3D5F] hover:bg-[#0B3D5F] hover:text-white transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-transparent text-[#2916F5] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-[#2916F5] hover:bg-[#2916F5] hover:text-white transition-all"
               >
                 {language === 'fr' ? 'Nos Standards' : 'Our Standards'}
               </Link>

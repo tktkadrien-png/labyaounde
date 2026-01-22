@@ -10,15 +10,15 @@ export default function NotreReferentiel() {
   const { language } = useLanguage();
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#0B3D5F]/5 to-white">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#2916F5]/5 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
             {/* Left Side - Content */}
             <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 bg-[#0B3D5F]/10 px-4 py-2 rounded-full mb-6 w-fit">
-                <BookOpen className="w-5 h-5 text-[#0B3D5F]" />
-                <span className="text-[#0B3D5F] font-semibold text-sm">
+              <div className="inline-flex items-center gap-2 bg-[#2916F5]/10 px-4 py-2 rounded-full mb-6 w-fit">
+                <BookOpen className="w-5 h-5 text-[#2916F5]" />
+                <span className="text-[#2916F5] font-semibold text-sm">
                   {language === 'fr' ? 'Ressources' : 'Resources'}
                 </span>
               </div>
@@ -38,7 +38,7 @@ export default function NotreReferentiel() {
                 href="https://labtestsonline.org"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-[#0B3D5F] to-[#0B4D6F] text-white px-8 py-4 rounded-xl font-semibold text-base hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-fit group"
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-[#2916F5] to-[#157DEC] text-white px-8 py-4 rounded-xl font-semibold text-base hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-fit group"
               >
                 <span>{language === 'fr' ? 'Visiter Labtest Online' : 'Visit Labtest Online'}</span>
                 <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -48,16 +48,16 @@ export default function NotreReferentiel() {
             {/* Right Side - Logo */}
             <div className="relative h-[300px] lg:h-full min-h-[400px] bg-gradient-to-br from-gray-50 to-white flex items-center justify-center p-8">
               <div className="relative w-full h-full max-w-md">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#0B3D5F]/5 to-transparent rounded-2xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#2916F5]/5 to-transparent rounded-2xl"></div>
                 <div className="relative w-full h-full flex items-center justify-center">
                   {/* Labtest Online Logo Placeholder */}
                   <div className="relative w-48 h-48 sm:w-64 sm:h-64">
-                    <div className="absolute inset-0 bg-white rounded-2xl shadow-xl flex items-center justify-center border-4 border-[#0B3D5F]/10">
+                    <div className="absolute inset-0 bg-white rounded-2xl shadow-xl flex items-center justify-center border-4 border-[#2916F5]/10">
                       <div className="text-center p-6">
-                        <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-full flex items-center justify-center">
+                        <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-full flex items-center justify-center">
                           <BookOpen className="w-8 h-8 text-white" />
                         </div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-[#0B3D5F] mb-2">
+                        <h3 className="text-xl sm:text-2xl font-bold text-[#2916F5] mb-2">
                           Lab Tests
                         </h3>
                         <p className="text-sm sm:text-base text-gray-600 font-semibold">
@@ -75,8 +75,8 @@ export default function NotreReferentiel() {
         {/* Additional Info Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all">
-            <div className="w-12 h-12 bg-[#0B3D5F]/10 rounded-xl flex items-center justify-center mb-4">
-              <BookOpen className="w-6 h-6 text-[#0B3D5F]" />
+            <div className="w-12 h-12 bg-[#2916F5]/10 rounded-xl flex items-center justify-center mb-4">
+              <BookOpen className="w-6 h-6 text-[#2916F5]" />
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-2">
               {language === 'fr' ? 'Informations Détaillées' : 'Detailed Information'}
@@ -90,8 +90,8 @@ export default function NotreReferentiel() {
           </div>
 
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all">
-            <div className="w-12 h-12 bg-[#0B3D5F]/10 rounded-xl flex items-center justify-center mb-4">
-              <svg className="w-6 h-6 text-[#0B3D5F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-12 h-12 bg-[#2916F5]/10 rounded-xl flex items-center justify-center mb-4">
+              <svg className="w-6 h-6 text-[#2916F5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
@@ -107,8 +107,8 @@ export default function NotreReferentiel() {
           </div>
 
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all">
-            <div className="w-12 h-12 bg-[#0B3D5F]/10 rounded-xl flex items-center justify-center mb-4">
-              <svg className="w-6 h-6 text-[#0B3D5F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-12 h-12 bg-[#2916F5]/10 rounded-xl flex items-center justify-center mb-4">
+              <svg className="w-6 h-6 text-[#2916F5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
               </svg>
             </div>

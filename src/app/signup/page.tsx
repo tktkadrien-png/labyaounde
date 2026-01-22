@@ -147,7 +147,7 @@ export default function SignupPage() {
     <>
       <TopNavigationBar />
       <MainNavigation />
-      <main className="min-h-screen bg-gradient-to-br from-[#0B3D5F] via-[#0B4D6F] to-[#063251] flex items-center justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <main className="min-h-screen bg-gradient-to-br from-[#2916F5] via-[#157DEC] to-[#0909FF] flex items-center justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         {/* Animated background circles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#ff90e8]/10 rounded-full blur-3xl animate-pulse"></div>
@@ -161,9 +161,9 @@ export default function SignupPage() {
             <div className="text-center relative">
               <div className="inline-flex items-center justify-center relative mb-4">
                 {/* Pulsing circles decoration */}
-                <div className="absolute w-20 h-20 bg-[#0B3D5F]/20 rounded-full animate-ping"></div>
+                <div className="absolute w-20 h-20 bg-[#2916F5]/20 rounded-full animate-ping"></div>
                 <div className="absolute w-16 h-16 bg-[#ff90e8]/30 rounded-full animate-pulse"></div>
-                <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] flex items-center justify-center shadow-lg">
+                <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-[#2916F5] to-[#157DEC] flex items-center justify-center shadow-lg">
                   <User className="w-8 h-8 text-white" />
                 </div>
               </div>
@@ -198,7 +198,7 @@ export default function SignupPage() {
                       ? "border-green-500 focus:border-green-600"
                       : touched.fullName && !isFieldValid("fullName")
                       ? "border-red-500 focus:border-red-600"
-                      : "border-gray-300 focus:border-[#0B3D5F]"
+                      : "border-gray-300 focus:border-[#2916F5]"
                   }`}
                 />
                 <span className={`absolute left-4 transition-all duration-300 pointer-events-none ${
@@ -224,7 +224,7 @@ export default function SignupPage() {
                       ? "border-green-500 focus:border-green-600"
                       : touched.email && !isFieldValid("email")
                       ? "border-red-500 focus:border-red-600"
-                      : "border-gray-300 focus:border-[#0B3D5F]"
+                      : "border-gray-300 focus:border-[#2916F5]"
                   }`}
                 />
                 <span className={`absolute left-4 transition-all duration-300 pointer-events-none ${
@@ -250,7 +250,7 @@ export default function SignupPage() {
                       ? "border-green-500 focus:border-green-600"
                       : touched.password && !isFieldValid("password")
                       ? "border-red-500 focus:border-red-600"
-                      : "border-gray-300 focus:border-[#0B3D5F]"
+                      : "border-gray-300 focus:border-[#2916F5]"
                   }`}
                 />
                 <span className={`absolute left-4 transition-all duration-300 pointer-events-none ${
@@ -283,7 +283,7 @@ export default function SignupPage() {
                       ? "border-green-500 focus:border-green-600"
                       : touched.confirmPassword && !isFieldValid("confirmPassword")
                       ? "border-red-500 focus:border-red-600"
-                      : "border-gray-300 focus:border-[#0B3D5F]"
+                      : "border-gray-300 focus:border-[#2916F5]"
                   }`}
                 />
                 <span className={`absolute left-4 transition-all duration-300 pointer-events-none ${
@@ -305,7 +305,7 @@ export default function SignupPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full relative border-0 rounded-2xl text-white px-7 py-4 bg-gradient-to-r from-[#0B3D5F] to-[#0B4D6F] flex items-center justify-center gap-3 font-bold transition-all duration-200 hover:from-[#0B4D6F] hover:to-[#063251] transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none group"
+                className="w-full relative border-0 rounded-2xl text-white px-7 py-4 bg-gradient-to-r from-[#2916F5] to-[#157DEC] flex items-center justify-center gap-3 font-bold transition-all duration-200 hover:from-[#157DEC] hover:to-[#0909FF] transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none group"
               >
                 {loading ? (
                   <>
@@ -329,7 +329,7 @@ export default function SignupPage() {
             <div className="text-center pt-4 border-t border-gray-200">
               <p className="text-sm text-gray-600">
                 {currentContent.hasAccount}{" "}
-                <Link href="/login" className="font-semibold text-[#0B3D5F] hover:text-[#0B4D6F] transition-colors hover:underline">
+                <Link href="/login" className="font-semibold text-[#2916F5] hover:text-[#157DEC] transition-colors hover:underline">
                   {currentContent.loginLink}
                 </Link>
               </p>

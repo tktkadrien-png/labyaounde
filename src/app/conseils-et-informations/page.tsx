@@ -58,7 +58,7 @@ export default function ConseilsEtInformations() {
 
       <main className="bg-gray-50">
         {/* Hero Section */}
-        <section ref={heroRef as React.RefObject<HTMLElement>} className="bg-gradient-to-br from-[#0B3D5F] via-cyan-800 to-blue-900 text-white py-20 lg:py-32 relative overflow-hidden">
+        <section ref={heroRef as React.RefObject<HTMLElement>} className="bg-gradient-to-br from-[#2916F5] via-cyan-800 to-blue-900 text-white py-20 lg:py-32 relative overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
@@ -71,7 +71,7 @@ export default function ConseilsEtInformations() {
           </div>
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>
-            <div className="absolute bottom-10 right-10 w-96 h-96 bg-cyan-300 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#1589FF] rounded-full blur-3xl"></div>
           </div>
 
           <div className={`max-w-[1200px] mx-auto px-6 relative z-10 transition-all duration-700 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -104,7 +104,7 @@ export default function ConseilsEtInformations() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0B3D5F]/80 to-transparent flex items-center">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#2916F5]/80 to-transparent flex items-center">
                   <div className="p-8 text-white max-w-xl">
                     <h2 className="text-3xl lg:text-5xl font-bold mb-4">
                       {t('welcomeGuide')}
@@ -118,8 +118,8 @@ export default function ConseilsEtInformations() {
 
               <div className="grid md:grid-cols-3 gap-8 mb-12">
                 <Link href="/dois-je-prendre-rdv" className="group">
-                  <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 border-2 border-blue-200 hover:border-blue-400 hover:shadow-xl transition-all h-full">
-                    <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <div className="bg-gradient-to-br from-[#1589FF]/10 to-[#1589FF]/10 rounded-2xl p-8 border-2 border-[#1589FF]/30 hover:border-blue-400 hover:shadow-xl transition-all h-full">
+                    <div className="w-16 h-16 bg-[#1589FF]/100 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                       <Info className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-2xl font-bold text-blue-900 mb-3">{t('needAppointmentQuestion')}</h3>
@@ -170,7 +170,7 @@ export default function ConseilsEtInformations() {
         </section>
 
         {/* Conseils Avant le Prelevement */}
-        <section ref={section2Ref as React.RefObject<HTMLElement>} className="py-20 lg:py-24 bg-gradient-to-br from-blue-50 to-cyan-50">
+        <section ref={section2Ref as React.RefObject<HTMLElement>} className="py-20 lg:py-24 bg-gradient-to-br from-[#1589FF]/10 to-[#1589FF]/10">
           <div className="max-w-[1200px] mx-auto px-6">
             <div className={`transition-all duration-700 ${section2Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               {/* Section Header with Image */}
@@ -184,11 +184,11 @@ export default function ConseilsEtInformations() {
                   />
                 </div>
                 <div className="lg:w-2/3 text-center lg:text-left">
-                  <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-6 py-3 rounded-full mb-4">
+                  <div className="inline-flex items-center gap-2 bg-[#1589FF]/20 text-blue-700 px-6 py-3 rounded-full mb-4">
                     <Lightbulb className="w-5 h-5" />
                     <span className="text-sm font-semibold">{t('beforeYourVisit')}</span>
                   </div>
-                  <h2 className="text-3xl lg:text-5xl font-bold text-[#0B3D5F] mb-4">
+                  <h2 className="text-3xl lg:text-5xl font-bold text-[#2916F5] mb-4">
                     {t('beforeSamplingAdvice')}
                   </h2>
                 </div>
@@ -196,9 +196,9 @@ export default function ConseilsEtInformations() {
 
               <div className="grid lg:grid-cols-2 gap-8">
                 {/* La Veille */}
-                <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-blue-200">
+                <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-[#1589FF]/30">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-14 h-14 bg-blue-500 rounded-full flex items-center justify-center">
+                    <div className="w-14 h-14 bg-[#1589FF]/100 rounded-full flex items-center justify-center">
                       <Clock className="w-7 h-7 text-white" />
                     </div>
                     <h3 className="text-2xl font-bold text-blue-900">{t('dayBeforeSampling')}</h3>
@@ -206,7 +206,7 @@ export default function ConseilsEtInformations() {
 
                   <ul className="space-y-4">
                     {dayBeforeTips.map((item, index) => (
-                      <li key={index} className="flex items-start gap-4 p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-all">
+                      <li key={index} className="flex items-start gap-4 p-4 bg-[#1589FF]/10 rounded-lg hover:bg-[#1589FF]/20 transition-all">
                         <span className="text-3xl flex-shrink-0">{item.icon}</span>
                         <div>
                           <h4 className="font-bold text-gray-900 mb-1">{item.title}</h4>
@@ -218,9 +218,9 @@ export default function ConseilsEtInformations() {
                 </div>
 
                 {/* Le Jour J */}
-                <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-cyan-200">
+                <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-[#1589FF]/30">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-14 h-14 bg-cyan-500 rounded-full flex items-center justify-center">
+                    <div className="w-14 h-14 bg-#1589FF/100 rounded-full flex items-center justify-center">
                       <Activity className="w-7 h-7 text-white" />
                     </div>
                     <h3 className="text-2xl font-bold text-cyan-900">{t('samplingDay')}</h3>
@@ -228,7 +228,7 @@ export default function ConseilsEtInformations() {
 
                   <ul className="space-y-4">
                     {samplingDayTips.map((item, index) => (
-                      <li key={index} className="flex items-start gap-4 p-4 bg-cyan-50 rounded-lg hover:bg-cyan-100 transition-all">
+                      <li key={index} className="flex items-start gap-4 p-4 bg-#1589FF/10 rounded-lg hover:bg-[#1589FF]/20 transition-all">
                         <span className="text-3xl flex-shrink-0">{item.icon}</span>
                         <div>
                           <h4 className="font-bold text-gray-900 mb-1">{item.title}</h4>
@@ -241,7 +241,7 @@ export default function ConseilsEtInformations() {
               </div>
 
               {/* CTA Preparation */}
-              <div className="mt-12 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl p-8 text-white text-center">
+              <div className="mt-12 bg-gradient-to-r from-blue-600 to-[#2916F5] rounded-2xl p-8 text-white text-center">
                 <h3 className="text-2xl font-bold mb-4">{t('fullPrepGuide')}</h3>
                 <p className="text-white/90 mb-6 max-w-2xl mx-auto">
                   {t('fullPrepGuideDesc')}
@@ -278,7 +278,7 @@ export default function ConseilsEtInformations() {
                     <Droplet className="w-5 h-5" />
                     <span className="text-sm font-semibold">{t('medicalInfo')}</span>
                   </div>
-                  <h2 className="text-3xl lg:text-5xl font-bold text-[#0B3D5F] mb-4">
+                  <h2 className="text-3xl lg:text-5xl font-bold text-[#2916F5] mb-4">
                     {t('understandAnalysis')}
                   </h2>
                   <p className="text-xl text-gray-600">
@@ -307,7 +307,7 @@ export default function ConseilsEtInformations() {
                     <h3 className="text-lg font-bold text-gray-900 mb-3">{analyse.name}</h3>
 
                     <div className="space-y-3">
-                      <div className="bg-blue-50 p-3 rounded-lg">
+                      <div className="bg-[#1589FF]/10 p-3 rounded-lg">
                         <p className="text-xs font-semibold text-blue-900 mb-1">{t('whatIsIt')}</p>
                         <p className="text-sm text-gray-700">{analyse.what}</p>
                       </div>
@@ -386,9 +386,9 @@ export default function ConseilsEtInformations() {
                   </ul>
                 </div>
 
-                <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-blue-200">
+                <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-[#1589FF]/30">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-14 h-14 bg-blue-500 rounded-full flex items-center justify-center">
+                    <div className="w-14 h-14 bg-[#1589FF]/100 rounded-full flex items-center justify-center">
                       <Heart className="w-7 h-7 text-white" />
                     </div>
                     <h3 className="text-2xl font-bold text-blue-900">{t('confidentialityTitle')}</h3>
@@ -396,7 +396,7 @@ export default function ConseilsEtInformations() {
 
                   <ul className="space-y-4">
                     {confidentialityItems.map((item, index) => (
-                      <li key={index} className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg">
+                      <li key={index} className="flex items-start gap-3 p-3 bg-[#1589FF]/10 rounded-lg">
                         <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
                         <div>
                           <h4 className="font-bold text-gray-900 mb-1">{item.title}</h4>
@@ -412,7 +412,7 @@ export default function ConseilsEtInformations() {
         </section>
 
         {/* CTA Final */}
-        <section ref={ctaRef as React.RefObject<HTMLElement>} className="py-20 lg:py-28 bg-gradient-to-br from-cyan-600 via-blue-700 to-blue-900 text-white">
+        <section ref={ctaRef as React.RefObject<HTMLElement>} className="py-20 lg:py-28 bg-gradient-to-br from-[#2916F5] via-blue-700 to-blue-900 text-white">
           <div className="max-w-[1200px] mx-auto px-6">
             <div className={`text-center transition-all duration-700 ${ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <Users className="w-20 h-20 mx-auto mb-6 text-white/90" />
@@ -426,7 +426,7 @@ export default function ConseilsEtInformations() {
               <div className="flex flex-wrap gap-6 justify-center">
                 <Link
                   href="/dois-je-prendre-rdv"
-                  className="inline-flex items-center gap-3 bg-white text-cyan-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl text-lg"
+                  className="inline-flex items-center gap-3 bg-white text-[#0909FF] px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl text-lg"
                 >
                   <Info className="w-6 h-6" />
                   {t('appointmentGuide')}

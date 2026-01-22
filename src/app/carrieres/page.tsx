@@ -77,7 +77,7 @@ export default function CarrieresPage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0B3D5F]/95 via-[#0B3D5F]/85 to-[#0B3D5F]/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#2916F5]/95 via-[#2916F5]/85 to-[#2916F5]/70"></div>
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
@@ -106,9 +106,9 @@ export default function CarrieresPage() {
         <section id="actualites" className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-[#0B3D5F]/10 px-4 py-2 rounded-full mb-4">
-                <Newspaper className="w-5 h-5 text-[#0B3D5F]" />
-                <span className="text-[#0B3D5F] font-semibold text-sm">
+              <div className="inline-flex items-center gap-2 bg-[#2916F5]/10 px-4 py-2 rounded-full mb-4">
+                <Newspaper className="w-5 h-5 text-[#2916F5]" />
+                <span className="text-[#2916F5] font-semibold text-sm">
                   {language === 'fr' ? 'Actualités' : 'News'}
                 </span>
               </div>
@@ -124,7 +124,7 @@ export default function CarrieresPage() {
 
             {loading ? (
               <div className="text-center py-12">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0B3D5F] mx-auto"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#2916F5] mx-auto"></div>
               </div>
             ) : news.length === 0 ? (
               <div className="text-center py-12">
@@ -163,7 +163,7 @@ export default function CarrieresPage() {
             <div className="text-center">
               <Link
                 href="/carrieres/actualites"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-[#0B3D5F] to-[#0B4D6F] text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all hover:scale-105 shadow-lg"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-[#2916F5] to-[#157DEC] text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all hover:scale-105 shadow-lg"
               >
                 {language === 'fr' ? 'Voir toutes nos actualités' : 'View all our news'}
                 <ChevronRight className="w-5 h-5" />
@@ -176,9 +176,9 @@ export default function CarrieresPage() {
         <section id="offres-emploi-stages" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-[#0B3D5F]/10 px-4 py-2 rounded-full mb-4">
-                <Briefcase className="w-5 h-5 text-[#0B3D5F]" />
-                <span className="text-[#0B3D5F] font-semibold text-sm">
+              <div className="inline-flex items-center gap-2 bg-[#2916F5]/10 px-4 py-2 rounded-full mb-4">
+                <Briefcase className="w-5 h-5 text-[#2916F5]" />
+                <span className="text-[#2916F5] font-semibold text-sm">
                   {language === 'fr' ? 'Emploi & Stages' : 'Jobs & Internships'}
                 </span>
               </div>
@@ -194,7 +194,7 @@ export default function CarrieresPage() {
 
             {loading ? (
               <div className="text-center py-12">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0B3D5F] mx-auto"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#2916F5] mx-auto"></div>
               </div>
             ) : jobOffers.length === 0 ? (
               <div className="text-center py-12">
@@ -210,21 +210,21 @@ export default function CarrieresPage() {
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-start gap-4">
-                        <div className="w-14 h-14 bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-xl flex items-center justify-center flex-shrink-0">
+                        <div className="w-14 h-14 bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-xl flex items-center justify-center flex-shrink-0">
                           <Briefcase className="w-7 h-7 text-white" />
                         </div>
                         <div>
                           <h3 className="text-2xl font-bold text-gray-900 mb-2">{job.title}</h3>
                           <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-3">
                             <div className="flex items-center gap-2">
-                              <MapPin className="w-4 h-4 text-[#0B3D5F]" />
+                              <MapPin className="w-4 h-4 text-[#2916F5]" />
                               {job.location}
                             </div>
                             <div className="flex items-center gap-2">
-                              <Calendar className="w-4 h-4 text-[#0B3D5F]" />
+                              <Calendar className="w-4 h-4 text-[#2916F5]" />
                               {job.date}
                             </div>
-                            <span className="bg-[#0B3D5F]/10 text-[#0B3D5F] px-3 py-1 rounded-full font-medium">
+                            <span className="bg-[#2916F5]/10 text-[#2916F5] px-3 py-1 rounded-full font-medium">
                               {job.type}
                             </span>
                           </div>
@@ -234,7 +234,7 @@ export default function CarrieresPage() {
                     </div>
                     <Link
                       href="/signup"
-                      className="inline-flex items-center justify-center gap-2 bg-[#0B3D5F] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#0B4D6F] transition-all hover:scale-105 shadow-lg whitespace-nowrap"
+                      className="inline-flex items-center justify-center gap-2 bg-[#2916F5] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#157DEC] transition-all hover:scale-105 shadow-lg whitespace-nowrap"
                     >
                       {language === 'fr' ? 'Postuler' : 'Apply'}
                       <ChevronRight className="w-5 h-5" />
@@ -248,7 +248,7 @@ export default function CarrieresPage() {
             <div className="text-center">
               <Link
                 href="/carrieres/offres-emploi-stages"
-                className="inline-flex items-center gap-2 bg-white border-2 border-[#0B3D5F] text-[#0B3D5F] px-8 py-4 rounded-xl font-semibold hover:bg-[#0B3D5F] hover:text-white transition-all hover:scale-105 shadow-lg"
+                className="inline-flex items-center gap-2 bg-white border-2 border-[#2916F5] text-[#2916F5] px-8 py-4 rounded-xl font-semibold hover:bg-[#2916F5] hover:text-white transition-all hover:scale-105 shadow-lg"
               >
                 {language === 'fr' ? 'Voir toutes les offres' : 'View all offers'}
                 <ChevronRight className="w-5 h-5" />
@@ -260,7 +260,7 @@ export default function CarrieresPage() {
         {/* CTA Section */}
         <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-2xl p-8 sm:p-12 text-white">
+            <div className="bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-2xl p-8 sm:p-12 text-white">
               <TrendingUp className="w-16 h-16 mx-auto mb-6" />
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6">
                 {language === 'fr' ? 'Vous ne trouvez pas ce que vous cherchez ?' : 'Can\'t find what you\'re looking for?'}
@@ -272,7 +272,7 @@ export default function CarrieresPage() {
               </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-white text-[#0B3D5F] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all hover:scale-105 shadow-lg"
+                className="inline-flex items-center justify-center gap-2 bg-white text-[#2916F5] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all hover:scale-105 shadow-lg"
               >
                 {language === 'fr' ? 'Nous Contacter' : 'Contact Us'}
                 <ChevronRight className="w-5 h-5" />

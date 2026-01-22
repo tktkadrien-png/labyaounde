@@ -14,7 +14,7 @@ const ResultsAccess = () => {
 
           {/* Left Column */}
           <div>
-            <h2 className="text-[36px] font-bold text-[#0B3D5F] mb-4">
+            <h2 className="text-[36px] font-bold text-[#2916F5] mb-4">
               {t('resultsTitle')}
             </h2>
             <p className="text-[18px] text-gray-600 leading-[1.6] mb-8">
@@ -34,7 +34,7 @@ const ResultsAccess = () => {
                   </p>
                 </div>
                 <div className="mt-auto">
-                   <a href="#" className="inline-block bg-[#0891B2] text-white font-semibold py-3 px-5 rounded hover:bg-cyan-700 transition-colors text-center w-full sm:w-auto">
+                   <a href="#" className="inline-block bg-[#0891B2] text-white font-semibold py-3 px-5 rounded hover:bg-[#0909FF] transition-colors text-center w-full sm:w-auto">
                     {t('getResults')}
                   </a>
                 </div>

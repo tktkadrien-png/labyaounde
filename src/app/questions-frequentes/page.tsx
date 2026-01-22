@@ -10,7 +10,7 @@ import { HelpCircle, ChevronDown, ChevronUp, Star, MessageSquare, User } from "l
 import { useLanguage } from "@/lib/contents/LanguageContext";
 import { supabase } from "@/lib/supabase";
 
-export default function QuestionsFre quentesPage() {
+export default function QuestionsFrequentesPage() {
   const { language } = useLanguage();
   const router = useRouter();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -129,7 +129,7 @@ export default function QuestionsFre quentesPage() {
 
       <main className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-[#0B3D5F] via-[#0B4D6F] to-[#063251] text-white py-20">
+        <section className="bg-gradient-to-br from-[#2916F5] via-[#157DEC] to-[#0909FF] text-white py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <HelpCircle className="w-20 h-20 mx-auto mb-6" />
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">{currentContent.title}</h1>
@@ -145,23 +145,23 @@ export default function QuestionsFre quentesPage() {
               {currentContent.faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl border-2 border-gray-100 overflow-hidden hover:border-[#0B3D5F] hover:shadow-lg transition-all"
+                  className="bg-white rounded-2xl border-2 border-gray-100 overflow-hidden hover:border-[#2916F5] hover:shadow-lg transition-all"
                 >
                   <button
                     onClick={() => toggleFaq(index)}
                     className="w-full p-6 flex items-center justify-between text-left hover:bg-gray-50 transition-all"
                   >
                     <div className="flex items-start gap-4 flex-1">
-                      <div className="w-10 h-10 bg-[#0B3D5F]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                        <HelpCircle className="w-5 h-5 text-[#0B3D5F]" />
+                      <div className="w-10 h-10 bg-[#2916F5]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <HelpCircle className="w-5 h-5 text-[#2916F5]" />
                       </div>
                       <h3 className="text-xl font-bold text-gray-900 pr-4">{faq.question}</h3>
                     </div>
                     <div className="flex-shrink-0">
                       {openFaq === index ? (
-                        <ChevronUp className="w-6 h-6 text-[#0B3D5F]" />
+                        <ChevronUp className="w-6 h-6 text-[#2916F5]" />
                       ) : (
-                        <ChevronDown className="w-6 h-6 text-[#0B3D5F]" />
+                        <ChevronDown className="w-6 h-6 text-[#2916F5]" />
                       )}
                     </div>
                   </button>
@@ -180,9 +180,9 @@ export default function QuestionsFre quentesPage() {
         </section>
 
         {/* Review Section */}
-        <section className="py-16 bg-gradient-to-br from-blue-50 to-cyan-50">
+        <section className="py-16 bg-gradient-to-br from-[#1589FF]/10 to-[#1589FF]/10">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white rounded-2xl p-8 lg:p-12 shadow-xl border-2 border-blue-200 text-center">
+            <div className="bg-white rounded-2xl p-8 lg:p-12 shadow-xl border-2 border-[#1589FF]/30 text-center">
               <div className="flex justify-center mb-6">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <Star key={star} className="w-10 h-10 text-yellow-400 fill-yellow-400" />
@@ -200,7 +200,7 @@ export default function QuestionsFre quentesPage() {
 
               <button
                 onClick={handleReviewClick}
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-[#0B3D5F] to-[#0B4D6F] text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all transform hover:scale-105"
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-[#2916F5] to-[#157DEC] text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all transform hover:scale-105"
               >
                 <MessageSquare className="w-6 h-6" />
                 {isAuthenticated ? currentContent.review.authenticatedButton : currentContent.review.unauthenticatedButton}
@@ -212,13 +212,13 @@ export default function QuestionsFre quentesPage() {
         {/* Contact CTA */}
         <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-2xl p-8 lg:p-12 text-white shadow-2xl">
+            <div className="bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-2xl p-8 lg:p-12 text-white shadow-2xl">
               <HelpCircle className="w-16 h-16 mx-auto mb-6" />
               <h2 className="text-3xl lg:text-4xl font-bold mb-4">{currentContent.contact.title}</h2>
               <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">{currentContent.contact.description}</p>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 bg-white text-[#0B3D5F] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="inline-flex items-center gap-3 bg-white text-[#2916F5] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 {currentContent.contact.button}
               </Link>

@@ -28,7 +28,7 @@ export default function PolitiqueDeQualitePage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0B3D5F]/95 via-[#0B3D5F]/85 to-[#0B3D5F]/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#2916F5]/95 via-[#2916F5]/85 to-[#2916F5]/70"></div>
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
@@ -72,9 +72,9 @@ export default function PolitiqueDeQualitePage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-[#0B3D5F]/10 px-4 py-2 rounded-full mb-6">
-                <Target className="w-5 h-5 text-[#0B3D5F]" />
-                <span className="text-[#0B3D5F] font-semibold text-sm sm:text-base">{language === 'fr' ? 'Portée' : 'Scope'}</span>
+              <div className="inline-flex items-center gap-2 bg-[#2916F5]/10 px-4 py-2 rounded-full mb-6">
+                <Target className="w-5 h-5 text-[#2916F5]" />
+                <span className="text-[#2916F5] font-semibold text-sm sm:text-base">{language === 'fr' ? 'Portée' : 'Scope'}</span>
               </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
                 {language === 'fr' ? "Champ d'Application" : 'Scope of Application'}
@@ -90,7 +90,7 @@ export default function PolitiqueDeQualitePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              <div className="bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-2xl p-8 text-white shadow-xl text-center">
+              <div className="bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-2xl p-8 text-white shadow-xl text-center">
                 <BookOpen className="w-12 h-12 mb-4 mx-auto" />
                 <h3 className="text-xl sm:text-2xl font-bold mb-3">{language === 'fr' ? 'Pré-analytique' : 'Pre-analytical'}</h3>
                 <p className="text-white/90 leading-relaxed">
@@ -101,7 +101,7 @@ export default function PolitiqueDeQualitePage() {
                 </p>
               </div>
 
-              <div className="bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-2xl p-8 text-white shadow-xl text-center">
+              <div className="bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-2xl p-8 text-white shadow-xl text-center">
                 <Shield className="w-12 h-12 mb-4 mx-auto" />
                 <h3 className="text-xl sm:text-2xl font-bold mb-3">{language === 'fr' ? 'Analytique' : 'Analytical'}</h3>
                 <p className="text-white/90 leading-relaxed">
@@ -112,7 +112,7 @@ export default function PolitiqueDeQualitePage() {
                 </p>
               </div>
 
-              <div className="bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-2xl p-8 text-white shadow-xl text-center">
+              <div className="bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-2xl p-8 text-white shadow-xl text-center">
                 <FileText className="w-12 h-12 mb-4 mx-auto" />
                 <h3 className="text-xl sm:text-2xl font-bold mb-3">{language === 'fr' ? 'Post-analytique' : 'Post-analytical'}</h3>
                 <p className="text-white/90 leading-relaxed">
@@ -130,9 +130,9 @@ export default function PolitiqueDeQualitePage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-[#0B3D5F]/10 px-4 py-2 rounded-full mb-6">
-                <Users className="w-5 h-5 text-[#0B3D5F]" />
-                <span className="text-[#0B3D5F] font-semibold text-sm sm:text-base">{language === 'fr' ? 'Responsabilités' : 'Responsibilities'}</span>
+              <div className="inline-flex items-center gap-2 bg-[#2916F5]/10 px-4 py-2 rounded-full mb-6">
+                <Users className="w-5 h-5 text-[#2916F5]" />
+                <span className="text-[#2916F5] font-semibold text-sm sm:text-base">{language === 'fr' ? 'Responsabilités' : 'Responsibilities'}</span>
               </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
                 {language === 'fr' ? 'Responsabilités' : 'Responsibilities'}
@@ -148,7 +148,7 @@ export default function PolitiqueDeQualitePage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
               <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
                 <div className="flex items-start gap-6 mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-2xl flex items-center justify-center flex-shrink-0">
                     <Shield className="w-8 h-8 text-white" />
                   </div>
                   <div>
@@ -167,7 +167,7 @@ export default function PolitiqueDeQualitePage() {
 
               <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
                 <div className="flex items-start gap-6 mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-2xl flex items-center justify-center flex-shrink-0">
                     <Users className="w-8 h-8 text-white" />
                   </div>
                   <div>
@@ -243,10 +243,10 @@ export default function PolitiqueDeQualitePage() {
               ].map((commitment, index) => (
                 <div
                   key={index}
-                  className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 lg:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#0B3D5F]/20 hover:-translate-y-1"
+                  className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 lg:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#2916F5]/20 hover:-translate-y-1"
                 >
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-xl flex items-center justify-center flex-shrink-0">
                       <CheckCircle className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1">
@@ -268,9 +268,9 @@ export default function PolitiqueDeQualitePage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-[#0B3D5F]/10 px-4 py-2 rounded-full mb-6">
-                <Award className="w-5 h-5 text-[#0B3D5F]" />
-                <span className="text-[#0B3D5F] font-semibold text-sm sm:text-base">
+              <div className="inline-flex items-center gap-2 bg-[#2916F5]/10 px-4 py-2 rounded-full mb-6">
+                <Award className="w-5 h-5 text-[#2916F5]" />
+                <span className="text-[#2916F5] font-semibold text-sm sm:text-base">
                   {language === 'fr' ? 'Normes & Conformité' : 'Standards & Compliance'}
                 </span>
               </div>
@@ -312,7 +312,7 @@ export default function PolitiqueDeQualitePage() {
                     key={index}
                     className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 text-center"
                   >
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-2xl flex items-center justify-center mx-auto mb-6">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-3">{standard.title}</h3>
@@ -330,7 +330,7 @@ export default function PolitiqueDeQualitePage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <div className="bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-2xl p-8 sm:p-10 lg:p-12 shadow-2xl text-white">
+              <div className="bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-2xl p-8 sm:p-10 lg:p-12 shadow-2xl text-white">
                 <div className="flex flex-col md:flex-row items-start gap-8">
                   <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/20">
                     <FileText className="w-10 h-10 text-white" />
@@ -370,14 +370,14 @@ export default function PolitiqueDeQualitePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/signup"
-                className="inline-flex items-center justify-center gap-2 bg-[#0B3D5F] text-white px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-[#0B4D6F] transition-all hover:scale-105 shadow-lg"
+                className="inline-flex items-center justify-center gap-2 bg-[#2916F5] text-white px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-[#157DEC] transition-all hover:scale-105 shadow-lg"
               >
                 {language === 'fr' ? 'Créer un Compte' : 'Create an Account'}
                 <ChevronRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/charte-de-qualite"
-                className="inline-flex items-center justify-center gap-2 bg-transparent text-[#0B3D5F] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-[#0B3D5F] hover:bg-[#0B3D5F] hover:text-white transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-transparent text-[#2916F5] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-[#2916F5] hover:bg-[#2916F5] hover:text-white transition-all"
               >
                 {language === 'fr' ? 'Notre Charte de Qualité' : 'Our Quality Charter'}
               </Link>

@@ -36,7 +36,7 @@ const PillarCard = ({ icon: Icon, title, description, tags }: PillarCardData) =>
   <div className="bg-white rounded-xl p-8 shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex flex-col text-left">
     <div className="flex items-center gap-4">
       <Icon className="h-9 w-9 text-[#F97316] flex-shrink-0" />
-      <h3 className="text-2xl font-semibold text-[#0B3D5F] inline-block pb-2 border-b-[3px] border-[#F97316]">
+      <h3 className="text-2xl font-semibold text-[#2916F5] inline-block pb-2 border-b-[3px] border-[#F97316]">
         {title}
       </h3>
     </div>

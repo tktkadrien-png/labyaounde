@@ -122,8 +122,8 @@ export default function ReviewPage() {
               </p>
               <a
                 href="/"
-                className="inline-block px-6 py-3 bg-[#0B3D5F] text-white font-medium text-sm rounded-md
-                  hover:bg-[#0B4D6F] transition-colors duration-200"
+                className="inline-block px-6 py-3 bg-[#2916F5] text-white font-medium text-sm rounded-md
+                  hover:bg-[#157DEC] transition-colors duration-200"
               >
                 {currentContent.backButton}
               </a>
@@ -148,7 +148,7 @@ export default function ReviewPage() {
         <div className="max-w-2xl mx-auto">
           {/* Modern Header */}
           <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] shadow-lg mb-6">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-[#2916F5] to-[#157DEC] shadow-lg mb-6">
               <Star className="w-8 h-8 text-white" />
             </div>
             <h1 className="text-4xl font-bold text-gray-900 mb-3">
@@ -204,7 +204,7 @@ export default function ReviewPage() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder={currentContent.namePlaceholder}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0B3D5F] focus:border-transparent transition-all placeholder:text-gray-400"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2916F5] focus:border-transparent transition-all placeholder:text-gray-400"
                 />
               </div>
 
@@ -219,7 +219,7 @@ export default function ReviewPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={currentContent.emailPlaceholder}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0B3D5F] focus:border-transparent transition-all placeholder:text-gray-400"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2916F5] focus:border-transparent transition-all placeholder:text-gray-400"
                 />
               </div>
 
@@ -234,7 +234,7 @@ export default function ReviewPage() {
                   onChange={(e) => setComment(e.target.value)}
                   placeholder={currentContent.commentPlaceholder}
                   rows={6}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0B3D5F] focus:border-transparent transition-all resize-none placeholder:text-gray-400"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2916F5] focus:border-transparent transition-all resize-none placeholder:text-gray-400"
                 />
               </div>
 
@@ -243,8 +243,8 @@ export default function ReviewPage() {
                 <button
                   type="submit"
                   disabled={!rating || loading}
-                  className="w-full px-6 py-4 bg-gradient-to-r from-[#0B3D5F] to-[#0B4D6F] text-white font-semibold text-base rounded-xl
-                    hover:from-[#0B4D6F] hover:to-[#063251] transition-all duration-200
+                  className="w-full px-6 py-4 bg-gradient-to-r from-[#2916F5] to-[#157DEC] text-white font-semibold text-base rounded-xl
+                    hover:from-[#157DEC] hover:to-[#0909FF] transition-all duration-200
                     disabled:opacity-50 disabled:cursor-not-allowed
                     flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
                 >

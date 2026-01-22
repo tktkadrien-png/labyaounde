@@ -162,7 +162,7 @@ export default function ProfilePage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0B3D5F]"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#2916F5]"></div>
       </div>
     );
   }
@@ -177,7 +177,7 @@ export default function ProfilePage() {
           <div className="mb-8">
             <button
               onClick={() => router.back()}
-              className="flex items-center gap-2 text-[#0B3D5F] hover:text-[#0B4D6F] mb-4 transition-colors"
+              className="flex items-center gap-2 text-[#2916F5] hover:text-[#157DEC] mb-4 transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
               {currentContent.backButton}
@@ -191,7 +191,7 @@ export default function ProfilePage() {
             {/* Avatar Section */}
             <div className="flex flex-col items-center mb-8 pb-8 border-b border-gray-200">
               <div className="relative group">
-                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] flex items-center justify-center text-white text-4xl font-bold overflow-hidden">
+                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#2916F5] to-[#157DEC] flex items-center justify-center text-white text-4xl font-bold overflow-hidden">
                   {avatarUrl ? (
                     <Image src={avatarUrl} alt="Profile" width={128} height={128} className="w-full h-full object-cover" />
                   ) : (
@@ -199,7 +199,7 @@ export default function ProfilePage() {
                   )}
                 </div>
                 <label htmlFor="avatar-upload" className="absolute bottom-0 right-0 bg-white rounded-full p-2 shadow-lg border-2 border-gray-200 hover:bg-gray-50 transition-colors cursor-pointer">
-                  <Camera className="w-5 h-5 text-[#0B3D5F]" />
+                  <Camera className="w-5 h-5 text-[#2916F5]" />
                   <input
                     id="avatar-upload"
                     type="file"
@@ -244,7 +244,7 @@ export default function ProfilePage() {
                     required
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0B3D5F] focus:border-transparent transition-all"
+                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2916F5] focus:border-transparent transition-all"
                   />
                 </div>
               </div>
@@ -284,7 +284,7 @@ export default function ProfilePage() {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+237 XXX XX XX XX"
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0B3D5F] focus:border-transparent transition-all"
+                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2916F5] focus:border-transparent transition-all"
                   />
                 </div>
               </div>
@@ -293,7 +293,7 @@ export default function ProfilePage() {
               <button
                 type="submit"
                 disabled={saving}
-                className="w-full flex justify-center items-center gap-2 py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-[#0B3D5F] to-[#0B4D6F] hover:from-[#0B4D6F] hover:to-[#063251] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0B3D5F] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-[1.02]"
+                className="w-full flex justify-center items-center gap-2 py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-[#2916F5] to-[#157DEC] hover:from-[#157DEC] hover:to-[#0909FF] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2916F5] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-[1.02]"
               >
                 {saving ? (
                   <>

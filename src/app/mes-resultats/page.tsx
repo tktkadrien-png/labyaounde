@@ -148,7 +148,7 @@ export default function ResultsPage() {
     const styles = {
       pending: "bg-yellow-100 text-yellow-800 border-yellow-300",
       ready: "bg-green-100 text-green-800 border-green-300",
-      viewed: "bg-blue-100 text-blue-800 border-blue-300",
+      viewed: "bg-[#1589FF]/20 text-blue-800 border-blue-300",
     };
     const labels = {
       pending: currentContent.pending,
@@ -161,7 +161,7 @@ export default function ResultsPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0B3D5F]"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#2916F5]"></div>
       </div>
     );
   }
@@ -176,7 +176,7 @@ export default function ResultsPage() {
           <div className="mb-8">
             <button
               onClick={() => router.back()}
-              className="flex items-center gap-2 text-[#0B3D5F] hover:text-[#0B4D6F] mb-4 transition-colors"
+              className="flex items-center gap-2 text-[#2916F5] hover:text-[#157DEC] mb-4 transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
               {currentContent.backButton}
@@ -223,7 +223,7 @@ export default function ResultsPage() {
                         <tr key={result.id} className="hover:bg-gray-50 transition-colors">
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="flex items-center">
-                              <FileText className="w-5 h-5 text-[#0B3D5F] mr-3" />
+                              <FileText className="w-5 h-5 text-[#2916F5] mr-3" />
                               <div>
                                 <div className="text-sm font-medium text-gray-900">{result.test_name}</div>
                                 {result.notes && <div className="text-xs text-gray-500">{result.notes}</div>}
@@ -253,7 +253,7 @@ export default function ResultsPage() {
                               <button
                                 onClick={() => handleView(result)}
                                 disabled={!result.file_url}
-                                className="inline-flex items-center gap-1 px-3 py-2 bg-[#0B3D5F] text-white rounded-lg hover:bg-[#0B4D6F] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="inline-flex items-center gap-1 px-3 py-2 bg-[#2916F5] text-white rounded-lg hover:bg-[#157DEC] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                               >
                                 <Eye className="w-4 h-4" />
                                 {currentContent.view}
@@ -283,7 +283,7 @@ export default function ResultsPage() {
                     <div key={result.id} className="p-6 space-y-4">
                       <div className="flex items-start justify-between">
                         <div className="flex items-start gap-3">
-                          <FileText className="w-5 h-5 text-[#0B3D5F] mt-1" />
+                          <FileText className="w-5 h-5 text-[#2916F5] mt-1" />
                           <div>
                             <h3 className="font-medium text-gray-900">{result.test_name}</h3>
                             <p className="text-sm text-gray-600">{result.test_type}</p>
@@ -302,7 +302,7 @@ export default function ResultsPage() {
                         <button
                           onClick={() => handleView(result)}
                           disabled={!result.file_url}
-                          className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2 bg-[#0B3D5F] text-white rounded-lg hover:bg-[#0B4D6F] transition-colors disabled:opacity-50"
+                          className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2 bg-[#2916F5] text-white rounded-lg hover:bg-[#157DEC] transition-colors disabled:opacity-50"
                         >
                           <Eye className="w-4 h-4" />
                           {currentContent.view}

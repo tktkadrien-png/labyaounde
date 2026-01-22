@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   images: {
     remotePatterns: [
       {
@@ -10,12 +11,17 @@ const nextConfig: NextConfig = {
         pathname: '/storage/v1/**',
       },
     ],
+    unoptimized: true,
   },
   typescript: {
     ignoreBuildErrors: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  experimental: {
+    workerThreads: false,
+    cpus: 1,
   },
 };
 

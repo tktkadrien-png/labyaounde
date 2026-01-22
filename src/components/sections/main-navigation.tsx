@@ -164,7 +164,7 @@ const MainNavigation = () => {
                 <MegaMenuItemPro trigger={language === 'fr' ? 'Assurance Qualité' : 'Quality Assurance'} professionalsMenu={professionalsMenu} />
                 <MegaMenuItem trigger={t('patients')} columns={patientsMenu} itemsInRow={1} />
                 <li className="relative">
-                  <Link href="/carrieres/offres-emploi-stages" className="inline-flex h-10 items-center justify-center px-4 py-2 text-base font-[500] text-[#333] transition-colors hover:text-[#0a6ed1]">
+                  <Link href="/carrieres/offres-emploi-stages" className="inline-flex h-10 items-center justify-center px-4 py-2 text-base font-[500] text-[#333] transition-colors hover:text-[#1589FF]">
                     {t('careers')}
                   </Link>
                 </li>
@@ -174,7 +174,7 @@ const MainNavigation = () => {
                 <Button
                   onClick={toggleLanguage}
                   size="sm"
-                  className="h-9 md:h-10 px-2 md:px-3 rounded-md bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 text-white hover:from-cyan-500 hover:via-blue-600 hover:to-purple-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:scale-105 border-0"
+                  className="h-9 md:h-10 px-2 md:px-3 rounded-md bg-gradient-to-r from-[#1589FF] via-[#157DEC] to-[#2916F5] text-white hover:from-[#1E90FF] hover:via-[#1589FF] hover:to-[#0909FF] transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:scale-105 border-0"
                 >
                   <Languages className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1 md:mr-1.5" />
                   <span className="text-xs md:text-sm font-bold">{language.toUpperCase()}</span>
@@ -184,7 +184,7 @@ const MainNavigation = () => {
                   <div className="relative">
                     <button
                       onClick={() => setShowUserMenu(!showUserMenu)}
-                      className="flex items-center gap-1.5 md:gap-2 h-9 md:h-10 px-2 md:px-4 rounded-md bg-[#0B3D5F] text-white hover:bg-[#0B4D6F] transition-colors font-medium"
+                      className="flex items-center gap-1.5 md:gap-2 h-9 md:h-10 px-2 md:px-4 rounded-md bg-[#2916F5] text-white hover:bg-[#157DEC] transition-colors font-medium"
                     >
                       <User className="h-3.5 w-3.5 md:h-4 md:w-4" />
                       <span className="text-xs md:text-sm truncate max-w-[100px] md:max-w-none">{user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
@@ -211,13 +211,13 @@ const MainNavigation = () => {
                 ) : (
                   <div className="flex items-center gap-1.5 md:gap-2">
                     <Link href="/login">
-                      <Button size="sm" className="h-9 md:h-10 px-2 md:px-4 rounded-md bg-white text-[#0B3D5F] border-2 border-[#0B3D5F] hover:bg-[#0B3D5F] hover:text-white transition-all font-medium shadow-sm">
+                      <Button size="sm" className="h-9 md:h-10 px-2 md:px-4 rounded-md bg-white text-[#2916F5] border-2 border-[#2916F5] hover:bg-[#157DEC] hover:text-white transition-all font-medium shadow-sm">
                         <LogIn className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1 md:mr-1.5" />
                         <span className="text-xs md:text-sm">{language === 'fr' ? 'Connexion' : 'Login'}</span>
                       </Button>
                     </Link>
                     <Link href="/signup">
-                      <Button size="sm" className="h-9 md:h-10 px-2 md:px-4 rounded-md bg-[#0B3D5F] text-white hover:bg-[#0B4D6F] transition-all font-medium shadow-sm">
+                      <Button size="sm" className="h-9 md:h-10 px-2 md:px-4 rounded-md bg-[#2916F5] text-white hover:bg-[#157DEC] transition-all font-medium shadow-sm">
                         <UserPlus className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1 md:mr-1.5" />
                         <span className="text-xs md:text-sm">{language === 'fr' ? 'Inscription' : 'Sign Up'}</span>
                       </Button>
@@ -233,9 +233,9 @@ const MainNavigation = () => {
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6 md:h-7 md:w-7 text-[#0B3D5F]" />
+                <X className="h-6 w-6 md:h-7 md:w-7 text-[#2916F5]" />
               ) : (
-                <Menu className="h-6 w-6 md:h-7 md:w-7 text-[#0B3D5F]" />
+                <Menu className="h-6 w-6 md:h-7 md:w-7 text-[#2916F5]" />
               )}
             </button>
           </div>
@@ -257,29 +257,29 @@ const MainNavigation = () => {
               <MobileAccordionItem trigger={t('patients')} menu={patientsMenu} />
             </Accordion>
             <div className="mt-4 sm:mt-6 border-t border-gray-200 pt-4 sm:pt-6">
-              <Link href="/carrieres/offres-emploi-stages" className="text-base sm:text-lg font-medium text-[#0B3D5F] block py-2" onClick={toggleMobileMenu}>
+              <Link href="/carrieres/offres-emploi-stages" className="text-base sm:text-lg font-medium text-[#2916F5] block py-2" onClick={toggleMobileMenu}>
                 {t('careers')}
               </Link>
             </div>
             <div className="mt-4 sm:mt-6 flex flex-col space-y-3 sm:space-y-4 border-t border-gray-200 pt-4 sm:pt-6">
               {user ? (
                 <>
-                  <div className="flex items-center gap-3 px-3 sm:px-4 py-3 bg-[#0B3D5F]/5 rounded-lg">
-                    <User className="h-5 w-5 text-[#0B3D5F] flex-shrink-0" />
-                    <span className="font-medium text-[#0B3D5F] text-sm sm:text-base truncate">{user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
+                  <div className="flex items-center gap-3 px-3 sm:px-4 py-3 bg-[#2916F5]/5 rounded-lg">
+                    <User className="h-5 w-5 text-[#2916F5] flex-shrink-0" />
+                    <span className="font-medium text-[#2916F5] text-sm sm:text-base truncate">{user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
                   </div>
                   <Link href="/profile" onClick={toggleMobileMenu}>
-                    <Button variant="outline" className="w-full justify-start text-[#0B3D5F] hover:bg-[#0B3D5F]/5 min-h-[44px] text-sm sm:text-base">
+                    <Button variant="outline" className="w-full justify-start text-[#2916F5] hover:bg-[#157DEC]/5 min-h-[44px] text-sm sm:text-base">
                       {language === 'fr' ? 'Mon profil' : 'My Profile'}
                     </Button>
                   </Link>
                   <Link href="/mes-resultats" onClick={toggleMobileMenu}>
-                    <Button variant="outline" className="w-full justify-start text-[#0B3D5F] hover:bg-[#0B3D5F]/5 min-h-[44px] text-sm sm:text-base">
+                    <Button variant="outline" className="w-full justify-start text-[#2916F5] hover:bg-[#157DEC]/5 min-h-[44px] text-sm sm:text-base">
                       {language === 'fr' ? 'Mes résultats' : 'My Results'}
                     </Button>
                   </Link>
                   <Link href="/laisser-un-avis" onClick={toggleMobileMenu}>
-                    <Button variant="outline" className="w-full justify-start text-[#0B3D5F] hover:bg-[#0B3D5F]/5 min-h-[44px] text-sm sm:text-base">
+                    <Button variant="outline" className="w-full justify-start text-[#2916F5] hover:bg-[#157DEC]/5 min-h-[44px] text-sm sm:text-base">
                       {language === 'fr' ? 'Laisser un avis' : 'Leave a Review'}
                     </Button>
                   </Link>
@@ -295,13 +295,13 @@ const MainNavigation = () => {
               ) : (
                 <div className="flex flex-col gap-3">
                   <Link href="/login" onClick={toggleMobileMenu}>
-                    <Button className="w-full justify-start bg-white text-[#0B3D5F] border-2 border-[#0B3D5F] hover:bg-[#0B3D5F] hover:text-white transition-all min-h-[44px] text-sm sm:text-base shadow-sm">
+                    <Button className="w-full justify-start bg-white text-[#2916F5] border-2 border-[#2916F5] hover:bg-[#157DEC] hover:text-white transition-all min-h-[44px] text-sm sm:text-base shadow-sm">
                       <LogIn className="h-4 w-4 mr-2" />
                       {language === 'fr' ? 'Connexion' : 'Login'}
                     </Button>
                   </Link>
                   <Link href="/signup" onClick={toggleMobileMenu}>
-                    <Button className="w-full justify-start bg-[#0B3D5F] text-white hover:bg-[#0B4D6F] transition-all min-h-[44px] text-sm sm:text-base shadow-sm">
+                    <Button className="w-full justify-start bg-[#2916F5] text-white hover:bg-[#157DEC] transition-all min-h-[44px] text-sm sm:text-base shadow-sm">
                       <UserPlus className="h-4 w-4 mr-2" />
                       {language === 'fr' ? 'Inscription' : 'Sign Up'}
                     </Button>
@@ -310,7 +310,7 @@ const MainNavigation = () => {
               )}
               <Button
                 onClick={toggleLanguage}
-                className="w-full justify-start bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 text-white hover:from-cyan-500 hover:via-blue-600 hover:to-purple-700 transition-all duration-300 min-h-[44px] text-sm sm:text-base shadow-lg font-medium"
+                className="w-full justify-start bg-gradient-to-r from-[#1589FF] via-[#157DEC] to-[#2916F5] text-white hover:from-[#1E90FF] hover:via-[#1589FF] hover:to-[#0909FF] transition-all duration-300 min-h-[44px] text-sm sm:text-base shadow-lg font-medium"
               >
                 <Languages className="h-4 w-4 mr-2" />
                 <span className="font-bold">{t('language')}: {language.toUpperCase()}</span>
@@ -327,7 +327,7 @@ const MegaMenuItem = ({ trigger, columns, itemsInRow }: { trigger: string, colum
   
   return (
     <li className="relative group">
-      <button className="inline-flex h-10 items-center justify-center px-4 py-2 text-base font-[500] text-[#333] transition-colors hover:text-[#0a6ed1]">
+      <button className="inline-flex h-10 items-center justify-center px-4 py-2 text-base font-[500] text-[#333] transition-colors hover:text-[#1589FF]">
         {trigger}
       </button>
       
@@ -335,13 +335,13 @@ const MegaMenuItem = ({ trigger, columns, itemsInRow }: { trigger: string, colum
         <div className={`grid ${gridCols} gap-[40px]`}>
           {columns.map((col) => (
             <div key={col.title} className="w-full">
-              <h3 className="mb-[10px] text-[17px] font-semibold text-[#063f73]">{col.title}</h3>
+              <h3 className="mb-[10px] text-[17px] font-semibold text-[#2916F5]">{col.title}</h3>
               <ul className="space-y-0">
                 {col.links.map((link) => (
                   <li key={link.label}>
                     <Link 
                       href={link.href} 
-                      className="block py-[5px] text-[15px] text-[#333] no-underline hover:text-[#0a6ed1] transition-colors"
+                      className="block py-[5px] text-[15px] text-[#333] no-underline hover:text-[#1589FF] transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -374,15 +374,15 @@ const MegaMenuItemPro = ({ trigger, professionalsMenu }: { trigger: string, prof
 
   return (
     <li className="relative group">
-      <button className="inline-flex h-10 items-center justify-center px-4 py-2 text-base font-[500] text-[#333] transition-colors hover:text-[#0a6ed1]">
+      <button className="inline-flex h-10 items-center justify-center px-4 py-2 text-base font-[500] text-[#333] transition-colors hover:text-[#1589FF]">
         {trigger}
       </button>
 
-      <div className={`absolute top-full left-1/2 -translate-x-1/2 w-[700px] bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-[opacity,visibility] duration-[250ms] ease-[ease] rounded-[12px] shadow-[0_8px_40px_rgba(0,0,0,0.12)] z-50 overflow-hidden ${isAboutMenu ? 'border-2 border-cyan-100' : ''}`}>
+      <div className={`absolute top-full left-1/2 -translate-x-1/2 w-[700px] bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-[opacity,visibility] duration-[250ms] ease-[ease] rounded-[12px] shadow-[0_8px_40px_rgba(0,0,0,0.12)] z-50 overflow-hidden ${isAboutMenu ? 'border-2 border-[#1589FF]/30' : ''}`}>
         {isAboutMenu && (
-          <div className="bg-gradient-to-r from-[#0B3D5F] to-[#0B4D6F] px-6 py-4">
+          <div className="bg-gradient-to-r from-[#2916F5] to-[#157DEC] px-6 py-4">
             <h2 className="text-white font-bold text-lg">Découvrez notre laboratoire</h2>
-            <p className="text-cyan-200 text-sm mt-1">Excellence & Innovation depuis 2012</p>
+            <p className="text-[#1589FF]/70 text-sm mt-1">Excellence & Innovation depuis 2012</p>
           </div>
         )}
 
@@ -390,13 +390,13 @@ const MegaMenuItemPro = ({ trigger, professionalsMenu }: { trigger: string, prof
           {professionalsMenu.columns.map((col: any, index: number) => (
             <div key={index} className={`${getColSpanClass(col.span)} ${isAboutMenu ? 'relative' : ''}`}>
               {isAboutMenu && index === 0 && (
-                <div className="absolute -left-3 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full"></div>
+                <div className="absolute -left-3 top-0 bottom-0 w-1 bg-gradient-to-b from-[#1589FF] to-[#2916F5] rounded-full"></div>
               )}
 
               {col.title && (
-                <h3 className={`mb-3 font-bold ${isAboutMenu ? 'text-[17px] text-[#0B3D5F] flex items-center' : 'text-[15px] text-[#063f73]'}`}>
+                <h3 className={`mb-3 font-bold ${isAboutMenu ? 'text-[17px] text-[#2916F5] flex items-center' : 'text-[15px] text-[#2916F5]'}`}>
                   {isAboutMenu && index === 0 && (
-                    <span className="inline-block w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
+                    <span className="inline-block w-2 h-2 bg-[#1589FF] rounded-full mr-2"></span>
                   )}
                   {col.title}
                 </h3>
@@ -409,17 +409,17 @@ const MegaMenuItemPro = ({ trigger, professionalsMenu }: { trigger: string, prof
                       href={link.href}
                       className={`group/link flex items-center py-2 no-underline transition-all ${
                         isAboutMenu
-                          ? 'text-[15px] text-gray-700 hover:text-[#0B3D5F] hover:translate-x-1'
-                          : 'text-[14px] text-[#333] hover:text-[#0a6ed1]'
+                          ? 'text-[15px] text-gray-700 hover:text-[#2916F5] hover:translate-x-1'
+                          : 'text-[14px] text-[#333] hover:text-[#1589FF]'
                       }`}
                     >
                       {isAboutMenu && (
-                        <span className="inline-block w-1.5 h-1.5 bg-gray-300 group-hover/link:bg-cyan-400 rounded-full mr-2 transition-colors"></span>
+                        <span className="inline-block w-1.5 h-1.5 bg-gray-300 group-hover/link:bg-[#1589FF] rounded-full mr-2 transition-colors"></span>
                       )}
                       <span className={isAboutMenu ? 'font-medium' : ''}>{link.label}</span>
                       {isAboutMenu && (
                         <span className="ml-auto opacity-0 group-hover/link:opacity-100 transition-opacity">
-                          <svg className="w-4 h-4 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-4 h-4 text-[#1589FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
                         </span>
@@ -433,9 +433,9 @@ const MegaMenuItemPro = ({ trigger, professionalsMenu }: { trigger: string, prof
         </div>
 
         {isAboutMenu && (
-          <div className="bg-gradient-to-r from-cyan-50 to-blue-50 px-6 py-3 border-t border-cyan-100">
+          <div className="bg-gradient-to-r from-[#1589FF]/10 to-[#2916F5]/10 px-6 py-3 border-t border-[#1589FF]/30">
             <p className="text-sm text-gray-600 text-center">
-              <span className="font-semibold text-[#0B3D5F]">Besoin d'aide?</span> Contactez-nous au (+237) 242 04 68 50
+              <span className="font-semibold text-[#2916F5]">Besoin d'aide?</span> Contactez-nous au (+237) 242 04 68 50
             </p>
           </div>
         )}
@@ -446,16 +446,16 @@ const MegaMenuItemPro = ({ trigger, professionalsMenu }: { trigger: string, prof
 
 const MobileAccordionItem = ({ trigger, menu }: { trigger: string, menu: MegaMenuColumn[] }) => (
     <AccordionItem value={trigger.toLowerCase()} className="border-b">
-        <AccordionTrigger className="text-base sm:text-lg font-medium text-[#0B3D5F] no-underline hover:no-underline py-3">{trigger}</AccordionTrigger>
+        <AccordionTrigger className="text-base sm:text-lg font-medium text-[#2916F5] no-underline hover:no-underline py-3">{trigger}</AccordionTrigger>
         <AccordionContent>
             <div className="pl-3 sm:pl-4 space-y-3 sm:space-y-4">
                 {menu.map(col => (
                     <div key={col.title}>
-                        <h4 className="mb-2 font-semibold text-[#0B3D5F] text-sm sm:text-base">{col.title}</h4>
+                        <h4 className="mb-2 font-semibold text-[#2916F5] text-sm sm:text-base">{col.title}</h4>
                         <ul className="space-y-2 pl-2">
                             {col.links.map(link => (
                                 <li key={link.label} className="min-h-[44px] flex items-center">
-                                    <Link href={link.href} className="text-[#0B3D5F] text-sm sm:text-base py-2 block w-full hover:text-[#0a6ed1] transition-colors">
+                                    <Link href={link.href} className="text-[#2916F5] text-sm sm:text-base py-2 block w-full hover:text-[#1589FF] transition-colors">
                                         {link.label}
                                     </Link>
                                 </li>
@@ -470,16 +470,16 @@ const MobileAccordionItem = ({ trigger, menu }: { trigger: string, menu: MegaMen
 
 const MobileAccordionItemPro = ({ trigger, professionalsMenu }: { trigger: string, professionalsMenu: any }) => (
   <AccordionItem value={trigger.toLowerCase()} className="border-b">
-      <AccordionTrigger className="text-base sm:text-lg font-medium text-[#0B3D5F] no-underline hover:no-underline py-3">{trigger}</AccordionTrigger>
+      <AccordionTrigger className="text-base sm:text-lg font-medium text-[#2916F5] no-underline hover:no-underline py-3">{trigger}</AccordionTrigger>
       <AccordionContent>
           <div className="pl-3 sm:pl-4 space-y-3 sm:space-y-4">
               {professionalsMenu.columns.map((col: any, index: number) => (
                   <div key={index}>
-                      {col.title && <h4 className="mb-2 font-semibold text-[#0B3D5F] text-sm sm:text-base">{col.title}</h4>}
+                      {col.title && <h4 className="mb-2 font-semibold text-[#2916F5] text-sm sm:text-base">{col.title}</h4>}
                       <ul className="space-y-2 pl-2">
                           {col.links.map((link: any) => (
                               <li key={link.label} className="min-h-[44px] flex items-center">
-                                  <Link href={link.href} className="text-[#0B3D5F] text-sm sm:text-base py-2 block w-full hover:text-[#0a6ed1] transition-colors">
+                                  <Link href={link.href} className="text-[#2916F5] text-sm sm:text-base py-2 block w-full hover:text-[#1589FF] transition-colors">
                                       {link.label}
                                   </Link>
                               </li>

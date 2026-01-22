@@ -249,7 +249,7 @@ export default function AdminDashboard() {
           <div className="max-w-md w-full">
             <div className="bg-white rounded-2xl shadow-xl p-8">
               <div className="text-center mb-8">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-full mb-4">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-full mb-4">
                   <User className="w-8 h-8 text-white" />
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">Accès Admin</h2>
@@ -269,7 +269,7 @@ export default function AdminDashboard() {
                       setPassword(e.target.value);
                       setError("");
                     }}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0B3D5F] focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2916F5] focus:border-transparent"
                     placeholder="Entrez le mot de passe admin"
                     required
                   />
@@ -280,7 +280,7 @@ export default function AdminDashboard() {
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-[#0B3D5F] to-[#0B4D6F] text-white py-3 rounded-xl font-semibold hover:shadow-xl transition-all"
+                  className="w-full bg-gradient-to-r from-[#2916F5] to-[#157DEC] text-white py-3 rounded-xl font-semibold hover:shadow-xl transition-all"
                 >
                   Se connecter
                 </button>
@@ -331,7 +331,7 @@ export default function AdminDashboard() {
                   onClick={() => setActiveTab("overview")}
                   className={`pb-3 sm:pb-4 px-1 border-b-2 font-medium text-xs sm:text-sm transition-colors whitespace-nowrap min-h-[44px] flex items-center ${
                     activeTab === "overview"
-                      ? "border-[#0B3D5F] text-[#0B3D5F]"
+                      ? "border-[#2916F5] text-[#2916F5]"
                       : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
                   }`}
                 >
@@ -342,7 +342,7 @@ export default function AdminDashboard() {
                   onClick={() => setActiveTab("reviews")}
                   className={`pb-3 sm:pb-4 px-1 border-b-2 font-medium text-xs sm:text-sm transition-colors whitespace-nowrap min-h-[44px] flex items-center ${
                     activeTab === "reviews"
-                      ? "border-[#0B3D5F] text-[#0B3D5F]"
+                      ? "border-[#2916F5] text-[#2916F5]"
                       : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
                   }`}
                 >
@@ -366,7 +366,7 @@ export default function AdminDashboard() {
                       <p className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">{stats.totalUsers}</p>
                       <p className="text-xs text-green-600 mt-1">+{stats.todayUsers} {currentContent.newToday.toLowerCase()}</p>
                     </div>
-                    <div className="p-2 sm:p-3 bg-blue-100 rounded-full flex-shrink-0">
+                    <div className="p-2 sm:p-3 bg-[#1589FF]/20 rounded-full flex-shrink-0">
                       <Users className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
                     </div>
                   </div>
@@ -416,7 +416,7 @@ export default function AdminDashboard() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <Link
                   href="/admin-dashboard/job-offers"
-                  className="bg-gradient-to-br from-[#0B3D5F] to-[#0B4D6F] rounded-lg shadow-lg p-6 hover:shadow-xl transition-all group"
+                  className="bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-lg shadow-lg p-6 hover:shadow-xl transition-all group"
                 >
                   <div className="flex items-start justify-between mb-4">
                     <Briefcase className="w-10 h-10 text-white" />
@@ -428,7 +428,7 @@ export default function AdminDashboard() {
 
                 <Link
                   href="/admin-dashboard/actualites"
-                  className="bg-gradient-to-br from-cyan-600 to-cyan-700 rounded-lg shadow-lg p-6 hover:shadow-xl transition-all group"
+                  className="bg-gradient-to-br from-[#2916F5] to-[#0909FF] rounded-lg shadow-lg p-6 hover:shadow-xl transition-all group"
                 >
                   <div className="flex items-start justify-between mb-4">
                     <Newspaper className="w-10 h-10 text-white" />
@@ -488,7 +488,7 @@ export default function AdminDashboard() {
                       placeholder={currentContent.search}
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full pl-9 sm:pl-10 pr-3 sm:pr-4 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-md focus:ring-2 focus:ring-[#0B3D5F] focus:border-transparent min-h-[44px]"
+                      className="w-full pl-9 sm:pl-10 pr-3 sm:pr-4 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-md focus:ring-2 focus:ring-[#2916F5] focus:border-transparent min-h-[44px]"
                     />
                   </div>
                 </div>
@@ -496,7 +496,7 @@ export default function AdminDashboard() {
                   <select
                     value={statusFilter}
                     onChange={(e) => setStatusFilter(e.target.value as any)}
-                    className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-md focus:ring-2 focus:ring-[#0B3D5F] focus:border-transparent min-h-[44px]"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-md focus:ring-2 focus:ring-[#2916F5] focus:border-transparent min-h-[44px]"
                   >
                     <option value="all">{currentContent.all}</option>
                     <option value="5">5 {currentContent.stars}</option>

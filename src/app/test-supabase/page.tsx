@@ -80,7 +80,7 @@ export default function TestSupabasePage() {
         style={{
           padding: "1rem 2rem",
           fontSize: "1rem",
-          background: "#0B3D5F",
+          background: "#2916F5",
           color: "white",
           border: "none",
           borderRadius: "8px",
