@@ -17,8 +17,8 @@ export default function NotreReferentiel() {
             {/* Left Side - Content */}
             <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
               <div className="inline-flex items-center gap-2 bg-[#2916F5]/10 px-4 py-2 rounded-full mb-6 w-fit">
-                <BookOpen className="w-5 h-5 text-[#2916F5]" />
-                <span className="text-[#2916F5] font-semibold text-sm">
+                <BookOpen className="w-5 h-5 text-[#FE5000]" />
+                <span className="text-[#FE5000] font-semibold text-sm">
                   {language === 'fr' ? 'Ressources' : 'Resources'}
                 </span>
               </div>
@@ -75,8 +75,8 @@ export default function NotreReferentiel() {
         {/* Additional Info Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all">
-            <div className="w-12 h-12 bg-[#2916F5]/10 rounded-xl flex items-center justify-center mb-4">
-              <BookOpen className="w-6 h-6 text-[#2916F5]" />
+            <div className="w-12 h-12 bg-[#FE5000]/10 rounded-xl flex items-center justify-center mb-4">
+              <BookOpen className="w-6 h-6 text-[#FE5000]" />
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-2">
               {language === 'fr' ? 'Informations Détaillées' : 'Detailed Information'}
@@ -90,8 +90,8 @@ export default function NotreReferentiel() {
           </div>
 
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all">
-            <div className="w-12 h-12 bg-[#2916F5]/10 rounded-xl flex items-center justify-center mb-4">
-              <svg className="w-6 h-6 text-[#2916F5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-12 h-12 bg-[#FE5000]/10 rounded-xl flex items-center justify-center mb-4">
+              <svg className="w-6 h-6 text-[#FE5000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
@@ -107,8 +107,8 @@ export default function NotreReferentiel() {
           </div>
 
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all">
-            <div className="w-12 h-12 bg-[#2916F5]/10 rounded-xl flex items-center justify-center mb-4">
-              <svg className="w-6 h-6 text-[#2916F5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-12 h-12 bg-[#FE5000]/10 rounded-xl flex items-center justify-center mb-4">
+              <svg className="w-6 h-6 text-[#FE5000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
               </svg>
             </div>

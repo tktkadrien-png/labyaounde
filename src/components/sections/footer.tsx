@@ -99,7 +99,7 @@ const FooterColumn = ({ title, links }: FooterColumnProps) => (
     <h3 className="text-lg font-bold text-white mb-5 relative">
       <span className="relative">
         {title}
-        <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-[#1589FF]"></span>
+        <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-[#FE5000]"></span>
       </span>
     </h3>
     <ul className="space-y-3 mt-6">
@@ -107,9 +107,9 @@ const FooterColumn = ({ title, links }: FooterColumnProps) => (
         <li key={index}>
           <Link
             href={link.href}
-            className="text-sm text-white/80 hover:text-[#1589FF] transition-colors duration-200 flex items-center gap-2 group"
+            className="text-sm text-white/80 hover:text-[#FE5000] transition-colors duration-200 flex items-center gap-2 group"
           >
-            <span className="w-1.5 h-1.5 bg-[#1589FF] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+            <span className="w-1.5 h-1.5 bg-[#FE5000] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
             {link.text}
           </Link>
         </li>
@@ -180,7 +180,7 @@ const Footer = () => {
                     href={GOOGLE_MAPS_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-[#1589FF] hover:bg-[#1E90FF] text-white rounded-lg px-6 py-3 font-semibold flex items-center gap-3 transition-all duration-300 shadow-lg hover:shadow-[#1589FF]/30 hover:scale-105"
+                    className="bg-[#FE5000] hover:bg-[#1E90FF] text-white rounded-lg px-6 py-3 font-semibold flex items-center gap-3 transition-all duration-300 shadow-lg hover:shadow-[#1589FF]/30 hover:scale-105"
                   >
                     <MapPin size={20} />
                     Trouver mon Laboratoire
@@ -204,7 +204,7 @@ const Footer = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Facebook"
-                      className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#1589FF] flex items-center justify-center transition-all duration-300"
+                      className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#FE5000] flex items-center justify-center transition-all duration-300"
                     >
                       <Facebook size={20} className="text-white" />
                     </a>
@@ -213,7 +213,7 @@ const Footer = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="TikTok"
-                      className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#1589FF] flex items-center justify-center transition-all duration-300"
+                      className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#FE5000] flex items-center justify-center transition-all duration-300"
                     >
                       <TikTokIcon size={20} className="text-white" />
                     </a>
@@ -222,7 +222,7 @@ const Footer = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Instagram"
-                      className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#1589FF] flex items-center justify-center transition-all duration-300"
+                      className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#FE5000] flex items-center justify-center transition-all duration-300"
                     >
                       <Instagram size={20} className="text-white" />
                     </a>
@@ -239,7 +239,7 @@ const Footer = () => {
               <div className="lg:col-span-4">
                 <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
                   <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                    <span className="w-10 h-10 bg-[#1589FF] rounded-lg flex items-center justify-center">
+                    <span className="w-10 h-10 bg-[#FE5000] rounded-lg flex items-center justify-center">
                       <Phone size={20} />
                     </span>
                     Contactez-nous
@@ -250,13 +250,13 @@ const Footer = () => {
                       href={GOOGLE_MAPS_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-start gap-3 text-white/80 hover:text-[#1589FF] transition-colors group"
+                      className="flex items-start gap-3 text-white/80 hover:text-[#FE5000] transition-colors group"
                     >
-                      <MapPin size={20} className="text-[#1589FF] flex-shrink-0 mt-0.5" />
+                      <MapPin size={20} className="text-[#FE5000] flex-shrink-0 mt-0.5" />
                       <div>
                         <p className="text-sm font-medium">Carrefour Ancien Bâtiments</p>
                         <p className="text-xs text-white/60">Cité verte Batiment B01 Yaounde 2 Rue 2.711</p>
-                        <span className="text-xs text-[#1589FF] flex items-center gap-1 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span className="text-xs text-[#FE5000] flex items-center gap-1 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
                           Voir sur Google Maps <ExternalLink size={12} />
                         </span>
                       </div>
@@ -264,9 +264,9 @@ const Footer = () => {
 
                     <a
                       href="tel:+237600000000"
-                      className="flex items-center gap-3 text-white/80 hover:text-[#1589FF] transition-colors"
+                      className="flex items-center gap-3 text-white/80 hover:text-[#FE5000] transition-colors"
                     >
-                      <Phone size={20} className="text-[#1589FF] flex-shrink-0" />
+                      <Phone size={20} className="text-[#FE5000] flex-shrink-0" />
                       <div>
                         <p className="text-sm font-medium">+237 6XX XX XX XX</p>
                         <p className="text-xs text-white/60">Appelez-nous</p>
@@ -275,9 +275,9 @@ const Footer = () => {
 
                     <a
                       href="mailto:contact@labyaounde.cm"
-                      className="flex items-center gap-3 text-white/80 hover:text-[#1589FF] transition-colors"
+                      className="flex items-center gap-3 text-white/80 hover:text-[#FE5000] transition-colors"
                     >
-                      <Mail size={20} className="text-[#1589FF] flex-shrink-0" />
+                      <Mail size={20} className="text-[#FE5000] flex-shrink-0" />
                       <div>
                         <p className="text-sm font-medium">contact@labyaounde.cm</p>
                         <p className="text-xs text-white/60">Écrivez-nous</p>
@@ -285,7 +285,7 @@ const Footer = () => {
                     </a>
 
                     <div className="flex items-start gap-3 text-white/80">
-                      <Clock size={20} className="text-[#1589FF] flex-shrink-0 mt-0.5" />
+                      <Clock size={20} className="text-[#FE5000] flex-shrink-0 mt-0.5" />
                       <div>
                         <p className="text-sm font-medium">Horaires d&apos;ouverture</p>
                         <p className="text-xs text-white/60">Lun-Sam: 7h30-18h00</p>
@@ -323,7 +323,7 @@ const Footer = () => {
                             <li key={index}>
                               <Link
                                 href={link.href}
-                                className="text-sm text-white/70 hover:text-[#1589FF] transition-colors"
+                                className="text-sm text-white/70 hover:text-[#FE5000] transition-colors"
                               >
                                 {link.text}
                               </Link>
@@ -343,24 +343,24 @@ const Footer = () => {
             <div className="max-w-[1200px] mx-auto px-6 py-6">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                 <p className="text-sm text-white/60 text-center md:text-left">
-                  © 2025 <span className="text-[#1589FF] font-semibold">LABYAOUNDE</span>. Tous droits réservés
+                  © 2025 <span className="text-[#FE5000] font-semibold">LABYAOUNDE</span>. Tous droits réservés
                 </p>
                 <div className="flex gap-x-6 gap-y-2 flex-wrap justify-center">
                   <Link
                     href="#"
-                    className="text-sm text-white/60 hover:text-[#1589FF] transition-colors"
+                    className="text-sm text-white/60 hover:text-[#FE5000] transition-colors"
                   >
                     Mentions légales
                   </Link>
                   <Link
                     href="#"
-                    className="text-sm text-white/60 hover:text-[#1589FF] transition-colors"
+                    className="text-sm text-white/60 hover:text-[#FE5000] transition-colors"
                   >
                     Politique de confidentialité
                   </Link>
                   <Link
                     href="#"
-                    className="text-sm text-white/60 hover:text-[#1589FF] transition-colors"
+                    className="text-sm text-white/60 hover:text-[#FE5000] transition-colors"
                   >
                     Conditions d&apos;utilisation
                   </Link>

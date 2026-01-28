@@ -87,10 +87,10 @@ export default function AdminLoginPage() {
       <main className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full">
           {/* Modern Card with Admin Theme */}
-          <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 space-y-8 border-t-4 border-red-500">
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 space-y-8 border-t-4 border-[#FE5000]">
             {/* Header */}
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-red-600 to-red-700 rounded-full mb-4 shadow-lg">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#FE5000] to-[#CC4000] rounded-full mb-4 shadow-lg">
                 <Shield className="w-8 h-8 text-white" />
               </div>
               <h2 className="text-3xl font-bold text-gray-900">
@@ -99,9 +99,9 @@ export default function AdminLoginPage() {
               <p className="mt-2 text-sm text-gray-600">{currentContent.subtitle}</p>
 
               {/* Admin Badge */}
-              <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-red-100 rounded-full">
-                <Shield className="w-4 h-4 text-red-600" />
-                <span className="text-sm font-semibold text-red-600">
+              <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-[#FE5000]/10 rounded-full">
+                <Shield className="w-4 h-4 text-[#FE5000]" />
+                <span className="text-sm font-semibold text-[#FE5000]">
                   {language === "fr" ? "Espace Administrateur" : "Administrator Area"}
                 </span>
               </div>
@@ -131,7 +131,7 @@ export default function AdminLoginPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder={currentContent.emailPlaceholder}
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all placeholder:text-gray-400"
+                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FE5000] focus:border-transparent transition-all placeholder:text-gray-400"
                   />
                 </div>
               </div>
@@ -152,7 +152,7 @@ export default function AdminLoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder={currentContent.passwordPlaceholder}
-                    className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all placeholder:text-gray-400"
+                    className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FE5000] focus:border-transparent transition-all placeholder:text-gray-400"
                   />
                   <button
                     type="button"
@@ -168,7 +168,7 @@ export default function AdminLoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex justify-center items-center gap-2 py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-[1.02]"
+                className="w-full flex justify-center items-center gap-2 py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-[#FE5000] to-[#CC4000] hover:from-[#CC4000] hover:to-[#FE5000] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FE5000] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-[1.02]"
               >
                 {loading ? (
                   <>
@@ -198,14 +198,14 @@ export default function AdminLoginPage() {
             <div className="text-center">
               <p className="text-sm text-gray-600">
                 {currentContent.noAccount}{" "}
-                <a href="/admin-register" className="font-semibold text-red-600 hover:text-red-700 transition-colors">
+                <a href="/admin-register" className="font-semibold text-[#FE5000] hover:text-[#CC4000] transition-colors">
                   {currentContent.registerLink}
                 </a>
               </p>
             </div>
 
             {/* Warning Notice */}
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+            <div className="bg-[#FE5000]/10 border border-[#FE5000]/30 rounded-lg p-4">
               <p className="text-xs text-yellow-800 text-center">
                 <strong>{language === "fr" ? "Avertissement:" : "Warning:"}</strong>{" "}
                 {language === "fr"

@@ -30,14 +30,14 @@ const Newsletter = () => {
           className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#2916F5]/95 via-[#2916F5]/85 to-[#0909FF]/95" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a2e]/95 via-[#16213e]/90 to-[#0f3460]/85" />
       </div>
 
       <div className="relative z-10 container mx-auto px-4">
         <div className="max-w-xl mx-auto">
           {/* Icon */}
           <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#1589FF]/30 to-[#2916F5]/20 backdrop-blur-md rounded-2xl mb-8 border border-white/10 shadow-xl">
-            <Bell className="w-10 h-10 text-[#1589FF]" />
+            <Bell className="w-10 h-10 text-white" />
           </div>
 
           {/* Title */}
@@ -93,17 +93,17 @@ const Newsletter = () => {
           <div className="mt-16 flex items-center justify-center gap-8 md:gap-12">
             <div className="text-center">
               <p className="text-3xl md:text-4xl font-bold text-white">5K+</p>
-              <p className="text-white/50 text-xs mt-1">Abonnés</p>
+              <p className="text-white/70 text-xs mt-1 font-medium">Abonnés</p>
             </div>
-            <div className="w-px h-10 bg-white/20"></div>
+            <div className="w-px h-10 bg-white/40"></div>
             <div className="text-center">
               <p className="text-3xl md:text-4xl font-bold text-white">24h</p>
-              <p className="text-white/50 text-xs mt-1">Résultats</p>
+              <p className="text-white/70 text-xs mt-1 font-medium">Résultats</p>
             </div>
-            <div className="w-px h-10 bg-white/20"></div>
+            <div className="w-px h-10 bg-white/40"></div>
             <div className="text-center">
               <p className="text-3xl md:text-4xl font-bold text-white">100%</p>
-              <p className="text-white/50 text-xs mt-1">Sécurisé</p>
+              <p className="text-white/70 text-xs mt-1 font-medium">Sécurisé</p>
             </div>
           </div>
         </div>

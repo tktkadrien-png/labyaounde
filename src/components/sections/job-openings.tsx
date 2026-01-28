@@ -38,7 +38,7 @@ const JobCard = ({
             {icon}
           </div>
           <div className="flex items-center gap-2 bg-white/70 px-3 py-1.5 rounded-full text-sm font-semibold text-gray-700">
-            <Briefcase className="w-4 h-4 text-gray-500" />
+            <Briefcase className="w-4 h-4 text-[#FE5000]" />
             {postCount} {t('positions')}
           </div>
         </div>
@@ -49,7 +49,7 @@ const JobCard = ({
         <ul className="mt-6 space-y-2.5">
           {features.map((feature, index) => (
             <li key={index} className="flex items-center text-slate-600">
-              <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
+              <Check className="w-5 h-5 text-[#FE5000] mr-2 flex-shrink-0" />
               <span>{feature}</span>
             </li>
           ))}
@@ -74,7 +74,7 @@ export default function JobOpenings() {
 
   const jobCards = [
     {
-      icon: <Users className="w-8 h-8 text-[#0078BF]" />,
+      icon: <Users className="w-8 h-8 text-[#FE5000]" />,
       iconBgColor: 'bg-[#D6EFFF]',
       cardBgColor: 'bg-[#EFF8FF]',
       postCount: 18,
@@ -85,7 +85,7 @@ export default function JobOpenings() {
       ctaLink: '#',
     },
     {
-      icon: <Microscope className="w-8 h-8 text-[#2d8659]" />,
+      icon: <Microscope className="w-8 h-8 text-[#FE5000]" />,
       iconBgColor: 'bg-[#D9F5E9]',
       cardBgColor: 'bg-[#F0FAF7]',
       postCount: 2,

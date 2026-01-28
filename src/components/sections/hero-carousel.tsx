@@ -116,7 +116,7 @@ export default function HeroCarousel() {
                 <div className="absolute inset-0 flex items-center">
                   <div className="container px-4 sm:px-6 md:px-8">
                     <div className="w-full sm:w-4/5 md:w-3/5 lg:w-1/2 xl:w-2/5">
-                      <div className="w-12 h-1 sm:w-16 bg-[#1589FF] mb-4 sm:mb-6 rounded-full" />
+                      <div className="w-12 h-1 sm:w-16 bg-[#FE5000] mb-4 sm:mb-6 rounded-full" />
 
                       <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-white drop-shadow-lg">
                         {slide.title}

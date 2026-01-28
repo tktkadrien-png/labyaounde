@@ -180,7 +180,7 @@ export default function QuickReviewPopup({ isOpen, onClose }: QuickReviewPopupPr
                       <Star
                         className={`w-12 h-12 transition-all duration-200 ${
                           star <= (hoverRating || rating)
-                            ? "text-yellow-400 fill-yellow-400 drop-shadow-lg"
+                            ? "text-[#FE5000] fill-[#FE5000] drop-shadow-lg"
                             : "text-gray-300 group-hover:text-gray-400"
                         }`}
                       />

@@ -51,7 +51,7 @@ const JourneyCard: React.FC<JourneyCardProps> = ({
     <div className="relative z-10 flex flex-col h-full">
       <div>
         <div className="bg-white/25 backdrop-blur-sm p-3 rounded-lg inline-block mb-4">
-          <Icon className="w-7 h-7 text-white" />
+          <Icon className="w-7 h-7 text-[#FE5000]" />
         </div>
         <h3 className="text-xl lg:text-2xl font-bold text-white drop-shadow-sm">{title}</h3>
         <p className="text-white/90 mt-1 text-sm lg:text-base">{subtitle}</p>
@@ -60,7 +60,7 @@ const JourneyCard: React.FC<JourneyCardProps> = ({
       <ul className="space-y-2.5 mt-5 mb-6">
         {list.map((item, i) => (
           <li key={i} className="flex items-start gap-2.5">
-            <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-white" />
+            <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#FE5000]" />
             <span className="text-sm text-white/95">{item}</span>
           </li>
         ))}
@@ -103,8 +103,8 @@ const PatientJourneyCards = () => {
       buttonLink: "/conseils-et-informations",
       imageUrl: "/images/cdc-wDxFn_dBEC0-unsplash(1).jpg",
       imageAlt: "Woman looking at her phone while preparing for a medical appointment",
-      buttonTextColor: "text-[#0369A1]",
-      buttonIconBgColor: "bg-[#0369A1]",
+      buttonTextColor: "text-[#FE5000]",
+      buttonIconBgColor: "bg-[#FE5000]",
     },
     {
       title: t('duringTitle'),
@@ -121,8 +121,8 @@ const PatientJourneyCards = () => {
       buttonLink: "/conseils-et-informations",
       imageUrl: "/images/paul-einerhand-bKd9KEELfmg-unsplash.jpg",
       imageAlt: "Smiling pregnant woman during a medical consultation",
-      buttonTextColor: "text-[#1E3A8A]",
-      buttonIconBgColor: "bg-[#1E3A8A]",
+      buttonTextColor: "text-[#FE5000]",
+      buttonIconBgColor: "bg-[#FE5000]",
     },
     {
       title: t('afterTitle'),
@@ -139,8 +139,8 @@ const PatientJourneyCards = () => {
       buttonLink: "/conseils-et-informations",
       imageUrl: "/images/thisisengineering-bcqDxjddPGk-unsplash.jpg",
       imageAlt: "Man giving a thumbs up after receiving his medical results",
-      buttonTextColor: "text-[#0369A1]",
-      buttonIconBgColor: "bg-[#0369A1]",
+      buttonTextColor: "text-[#FE5000]",
+      buttonIconBgColor: "bg-[#FE5000]",
     },
   ];
 

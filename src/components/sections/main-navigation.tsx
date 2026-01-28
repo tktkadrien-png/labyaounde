@@ -145,14 +145,14 @@ const MainNavigation = () => {
         )}
       >
         <div className="container mx-auto max-w-[1200px] px-4 sm:px-6 md:px-8 lg:px-[30px] py-3 md:py-[15px]">
-          <div className="flex h-16 sm:h-20 md:h-24 lg:h-[110px] items-center justify-between">
+          <div className="flex h-24 sm:h-28 md:h-32 lg:h-[160px] items-center justify-between">
             <Link href="/" aria-label="Lab Yaoundé Home" className="flex items-center relative">
               <Image
                 src="/images/images.png"
                 alt="Lab Yaoundé Logo"
-                width={200}
-                height={90}
-                className="h-12 sm:h-16 md:h-20 lg:h-[90px] w-auto object-contain hover:opacity-90 transition-opacity"
+                width={350}
+                height={150}
+                className="h-24 sm:h-28 md:h-32 lg:h-[180px] w-auto object-contain hover:opacity-90 transition-opacity"
                 priority
               />
             </Link>
@@ -211,13 +211,13 @@ const MainNavigation = () => {
                 ) : (
                   <div className="flex items-center gap-1.5 md:gap-2">
                     <Link href="/login">
-                      <Button size="sm" className="h-9 md:h-10 px-2 md:px-4 rounded-md bg-white text-[#2916F5] border-2 border-[#2916F5] hover:bg-[#157DEC] hover:text-white transition-all font-medium shadow-sm">
+                      <Button size="sm" className="h-9 md:h-10 px-2 md:px-4 rounded-md bg-white text-[#FE5000] border-2 border-[#FE5000] hover:bg-[#FE5000] hover:text-white transition-all font-medium shadow-sm">
                         <LogIn className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1 md:mr-1.5" />
                         <span className="text-xs md:text-sm">{language === 'fr' ? 'Connexion' : 'Login'}</span>
                       </Button>
                     </Link>
                     <Link href="/signup">
-                      <Button size="sm" className="h-9 md:h-10 px-2 md:px-4 rounded-md bg-[#2916F5] text-white hover:bg-[#157DEC] transition-all font-medium shadow-sm">
+                      <Button size="sm" className="h-9 md:h-10 px-2 md:px-4 rounded-md bg-[#FE5000] text-white hover:bg-[#CC4000] transition-all font-medium shadow-sm">
                         <UserPlus className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1 md:mr-1.5" />
                         <span className="text-xs md:text-sm">{language === 'fr' ? 'Inscription' : 'Sign Up'}</span>
                       </Button>
@@ -295,13 +295,13 @@ const MainNavigation = () => {
               ) : (
                 <div className="flex flex-col gap-3">
                   <Link href="/login" onClick={toggleMobileMenu}>
-                    <Button className="w-full justify-start bg-white text-[#2916F5] border-2 border-[#2916F5] hover:bg-[#157DEC] hover:text-white transition-all min-h-[44px] text-sm sm:text-base shadow-sm">
+                    <Button className="w-full justify-start bg-white text-[#FE5000] border-2 border-[#FE5000] hover:bg-[#FE5000] hover:text-white transition-all min-h-[44px] text-sm sm:text-base shadow-sm">
                       <LogIn className="h-4 w-4 mr-2" />
                       {language === 'fr' ? 'Connexion' : 'Login'}
                     </Button>
                   </Link>
                   <Link href="/signup" onClick={toggleMobileMenu}>
-                    <Button className="w-full justify-start bg-[#2916F5] text-white hover:bg-[#157DEC] transition-all min-h-[44px] text-sm sm:text-base shadow-sm">
+                    <Button className="w-full justify-start bg-[#FE5000] text-white hover:bg-[#CC4000] transition-all min-h-[44px] text-sm sm:text-base shadow-sm">
                       <UserPlus className="h-4 w-4 mr-2" />
                       {language === 'fr' ? 'Inscription' : 'Sign Up'}
                     </Button>

@@ -156,10 +156,10 @@ export default function AdminRegisterPage() {
       <main className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full">
           {/* Modern Card with Admin Theme */}
-          <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 space-y-8 border-t-4 border-red-500">
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 space-y-8 border-t-4 border-[#FE5000]">
             {/* Header */}
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-red-600 to-red-700 rounded-full mb-4 shadow-lg">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#FE5000] to-[#CC4000] rounded-full mb-4 shadow-lg">
                 <Shield className="w-8 h-8 text-white" />
               </div>
               <h2 className="text-3xl font-bold text-gray-900">
@@ -185,13 +185,13 @@ export default function AdminRegisterPage() {
               )}
 
               {/* Secret Code - First field for security */}
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <div className="bg-[#FE5000]/10 border border-[#FE5000]/30 rounded-lg p-4">
                 <label htmlFor="secretCode" className="block text-sm font-medium text-gray-700 mb-1">
                   {currentContent.secretCodeLabel} <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Key className="h-5 w-5 text-yellow-600" />
+                    <Key className="h-5 w-5 text-[#FE5000]" />
                   </div>
                   <input
                     id="secretCode"
@@ -200,10 +200,10 @@ export default function AdminRegisterPage() {
                     value={secretCode}
                     onChange={(e) => setSecretCode(e.target.value)}
                     placeholder={currentContent.secretCodePlaceholder}
-                    className="block w-full pl-10 pr-3 py-3 border border-yellow-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all placeholder:text-gray-400 bg-white"
+                    className="block w-full pl-10 pr-3 py-3 border border-[#FE5000]/50 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all placeholder:text-gray-400 bg-white"
                   />
                 </div>
-                <p className="mt-2 text-xs text-yellow-800">
+                <p className="mt-2 text-xs text-[#FE5000]">
                   {language === "fr"
                     ? "Seuls les propriétaires autorisés de Lab Yaounde ont ce code"
                     : "Only authorized Lab Yaounde owners have this code"}
@@ -349,8 +349,8 @@ export default function AdminRegisterPage() {
             </div>
 
             {/* Warning Notice */}
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-              <p className="text-xs text-yellow-800 text-center">
+            <div className="bg-[#FE5000]/10 border border-[#FE5000]/30 rounded-lg p-4">
+              <p className="text-xs text-[#FE5000] text-center">
                 <strong>{language === "fr" ? "Avertissement:" : "Warning:"}</strong>{" "}
                 {language === "fr"
                   ? "Cette zone est strictement réservée aux administrateurs autorisés de Lab Yaounde."

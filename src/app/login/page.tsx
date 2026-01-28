@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Mail, Lock, Eye, EyeOff, LogIn, Sparkles } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, LogIn, Sparkles, AlertCircle, CheckCircle } from "lucide-react";
 import TopNavigationBar from "@/components/sections/top-navigation-bar";
 import MainNavigation from "@/components/sections/main-navigation";
 import Footer from "@/components/sections/footer";
@@ -18,9 +18,24 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [emailFocused, setEmailFocused] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
+  const [showResetForm, setShowResetForm] = useState(false);
+  const [resetEmail, setResetEmail] = useState("");
+  const [resetLoading, setResetLoading] = useState(false);
+
+  // Check if user is already logged in
+  useEffect(() => {
+    const checkUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        router.push("/");
+      }
+    };
+    checkUser();
+  }, [router]);
 
   const content = {
     fr: {
@@ -37,6 +52,16 @@ export default function LoginPage() {
       rememberMe: "Se souvenir de moi",
       forgotPassword: "Mot de passe oublié?",
       adminAccess: "Accès Administrateur",
+      invalidCredentials: "Email ou mot de passe incorrect",
+      emailRequired: "Veuillez entrer votre adresse email",
+      passwordRequired: "Veuillez entrer votre mot de passe",
+      resetPasswordTitle: "Réinitialiser le mot de passe",
+      resetPasswordDesc: "Entrez votre email pour recevoir un lien de réinitialisation",
+      sendResetLink: "Envoyer le lien",
+      backToLogin: "Retour à la connexion",
+      resetEmailSent: "Un email de réinitialisation a été envoyé à votre adresse",
+      resetEmailError: "Erreur lors de l'envoi de l'email",
+      networkError: "Erreur de connexion. Vérifiez votre connexion internet.",
     },
     en: {
       title: "Welcome Back",
@@ -52,32 +77,112 @@ export default function LoginPage() {
       rememberMe: "Remember me",
       forgotPassword: "Forgot password?",
       adminAccess: "Admin Access",
+      invalidCredentials: "Invalid email or password",
+      emailRequired: "Please enter your email address",
+      passwordRequired: "Please enter your password",
+      resetPasswordTitle: "Reset Password",
+      resetPasswordDesc: "Enter your email to receive a reset link",
+      sendResetLink: "Send Reset Link",
+      backToLogin: "Back to login",
+      resetEmailSent: "A reset email has been sent to your address",
+      resetEmailError: "Error sending reset email",
+      networkError: "Connection error. Check your internet connection.",
     },
   };
 
   const currentContent = content[language];
 
+  const validateForm = () => {
+    if (!email.trim()) {
+      setError(currentContent.emailRequired);
+      return false;
+    }
+    if (!password) {
+      setError(currentContent.passwordRequired);
+      return false;
+    }
+    return true;
+  };
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setSuccess("");
+
+    if (!validateForm()) return;
+
     setLoading(true);
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
+      const { data, error: authError } = await supabase.auth.signInWithPassword({
+        email: email.trim().toLowerCase(),
         password,
       });
 
-      if (error) throw error;
+      if (authError) {
+        // Handle specific error messages without showing technical details
+        if (authError.message.includes("Invalid login credentials") ||
+            authError.message.includes("invalid") ||
+            authError.message.includes("Invalid")) {
+          setError(currentContent.invalidCredentials);
+        } else if (authError.message.includes("Email not confirmed")) {
+          setError(language === 'fr'
+            ? "Veuillez confirmer votre email avant de vous connecter"
+            : "Please confirm your email before logging in");
+        } else {
+          // For any other error (network, fetch, etc), show generic message
+          setError(currentContent.invalidCredentials);
+        }
+        setLoading(false);
+        return;
+      }
 
-      router.push("/laisser-un-avis");
-    } catch (error: any) {
-      setError(error.message);
+      if (data?.user) {
+        // Successful login - redirect to home
+        setSuccess(language === 'fr' ? "Connexion réussie!" : "Login successful!");
+        router.push("/");
+        router.refresh();
+      }
+    } catch (err: any) {
+      // Don't show technical errors to user
+      setError(currentContent.invalidCredentials);
     } finally {
       setLoading(false);
     }
   };
 
+  const handlePasswordReset = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    setSuccess("");
+
+    if (!resetEmail.trim()) {
+      setError(currentContent.emailRequired);
+      return;
+    }
+
+    setResetLoading(true);
+
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(resetEmail.trim().toLowerCase(), {
+        redirectTo: `${window.location.origin}/reset-password`,
+      });
+
+      if (error) throw error;
+
+      setSuccess(currentContent.resetEmailSent);
+      setTimeout(() => {
+        setShowResetForm(false);
+        setResetEmail("");
+        setSuccess("");
+      }, 5000);
+    } catch (error: any) {
+      // Don't show technical errors
+      setError(currentContent.resetEmailError);
+    } finally {
+      setResetLoading(false);
+    }
+  };
 
   return (
     <>
@@ -95,173 +200,261 @@ export default function LoginPage() {
         <div className="max-w-md w-full relative z-10">
           {/* Modern Card with entrance animation */}
           <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl p-8 sm:p-10 space-y-8 transform transition-all duration-500 hover:shadow-3xl animate-fadeIn">
-            {/* Header with sparkle icon */}
-            <div className="text-center space-y-3">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#2916F5] via-[#157DEC] to-[#0909FF] rounded-2xl mb-4 shadow-xl transform transition-transform hover:scale-110 hover:rotate-6 duration-300">
-                <Sparkles className="w-10 h-10 text-white animate-pulse" />
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#2916F5] to-[#157DEC] bg-clip-text text-transparent">
-                {currentContent.title}
-              </h2>
-              <p className="text-base text-gray-600">{currentContent.subtitle}</p>
-            </div>
-
-            {/* Form */}
-            <form onSubmit={handleLogin} className="space-y-6">
-              {error && (
-                <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg animate-slideDown">
-                  <div className="flex items-center">
-                    <svg className="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd"/>
-                    </svg>
-                    <p className="text-sm text-red-700">{error}</p>
+            {showResetForm ? (
+              /* Password Reset Form */
+              <>
+                <div className="text-center space-y-3">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#FE5000] to-[#CC4000] rounded-2xl mb-4 shadow-xl">
+                    <Mail className="w-10 h-10 text-white" />
                   </div>
+                  <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#2916F5] to-[#157DEC] bg-clip-text text-transparent">
+                    {currentContent.resetPasswordTitle}
+                  </h2>
+                  <p className="text-base text-gray-600">{currentContent.resetPasswordDesc}</p>
                 </div>
-              )}
 
-              {/* Email Field with Floating Label */}
-              <div className="relative">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none transition-all duration-200 z-10">
-                  <Mail className={`h-5 w-5 transition-colors duration-200 ${emailFocused || email ? 'text-[#2916F5]' : 'text-gray-400'}`} />
-                </div>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  onFocus={() => setEmailFocused(true)}
-                  onBlur={() => setEmailFocused(false)}
-                  placeholder=" "
-                  className="peer block w-full pl-12 pr-4 py-4 text-base border-2 border-gray-200 rounded-xl focus:ring-0 focus:border-[#2916F5] transition-all duration-300 placeholder-transparent bg-white"
-                />
-                <label
-                  htmlFor="email"
-                  className={`absolute left-12 transition-all duration-200 pointer-events-none ${
-                    emailFocused || email
-                      ? '-top-2.5 left-3 text-xs bg-white px-2 text-[#2916F5] font-semibold'
-                      : 'top-4 text-base text-gray-500'
-                  }`}
-                >
-                  {currentContent.emailLabel}
-                </label>
-              </div>
-
-              {/* Password Field with Floating Label */}
-              <div className="relative">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none transition-all duration-200 z-10">
-                  <Lock className={`h-5 w-5 transition-colors duration-200 ${passwordFocused || password ? 'text-[#2916F5]' : 'text-gray-400'}`} />
-                </div>
-                <input
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  onFocus={() => setPasswordFocused(true)}
-                  onBlur={() => setPasswordFocused(false)}
-                  placeholder=" "
-                  className="peer block w-full pl-12 pr-12 py-4 text-base border-2 border-gray-200 rounded-xl focus:ring-0 focus:border-[#2916F5] transition-all duration-300 placeholder-transparent bg-white"
-                />
-                <label
-                  htmlFor="password"
-                  className={`absolute left-12 transition-all duration-200 pointer-events-none ${
-                    passwordFocused || password
-                      ? '-top-2.5 left-3 text-xs bg-white px-2 text-[#2916F5] font-semibold'
-                      : 'top-4 text-base text-gray-500'
-                  }`}
-                >
-                  {currentContent.passwordLabel}
-                </label>
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#2916F5] transition-colors duration-200 z-10"
-                >
-                  {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-                </button>
-              </div>
-
-              {/* Remember Me & Forgot Password */}
-              <div className="flex items-center justify-between">
-                <label className="flex items-center group cursor-pointer">
-                  <div className="relative">
-                    <input
-                      type="checkbox"
-                      checked={rememberMe}
-                      onChange={(e) => setRememberMe(e.target.checked)}
-                      className="sr-only peer"
-                    />
-                    <div className="w-5 h-5 border-2 border-gray-300 rounded peer-checked:bg-[#2916F5] peer-checked:border-[#2916F5] transition-all duration-200 flex items-center justify-center">
-                      <svg className={`w-3 h-3 text-white transition-opacity duration-200 ${rememberMe ? 'opacity-100' : 'opacity-0'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7"/>
-                      </svg>
+                <form onSubmit={handlePasswordReset} className="space-y-6">
+                  {error && (
+                    <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg flex items-center gap-3">
+                      <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0" />
+                      <p className="text-sm text-red-700">{error}</p>
                     </div>
-                  </div>
-                  <span className="ml-2 text-sm text-gray-600 group-hover:text-gray-900 transition-colors">
-                    {currentContent.rememberMe}
-                  </span>
-                </label>
-                <Link
-                  href="/forgot-password"
-                  className="text-sm font-medium text-[#2916F5] hover:text-[#157DEC] transition-colors duration-200"
-                >
-                  {currentContent.forgotPassword}
-                </Link>
-              </div>
-
-              {/* Submit Button with Light Animation */}
-              <button
-                type="submit"
-                disabled={loading}
-                className="relative w-full overflow-hidden group py-4 px-6 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-[#2916F5] via-[#157DEC] to-[#0909FF] hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-[1.02]"
-              >
-                {/* Animated light effect */}
-                <div className="absolute inset-0 w-full h-full">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
-                </div>
-
-                <div className="relative flex justify-center items-center gap-2">
-                  {loading ? (
-                    <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      <span>{currentContent.loading}</span>
-                    </>
-                  ) : (
-                    <>
-                      <LogIn className="w-5 h-5" />
-                      <span>{currentContent.loginButton}</span>
-                    </>
                   )}
+
+                  {success && (
+                    <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-lg flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                      <p className="text-sm text-green-700">{success}</p>
+                    </div>
+                  )}
+
+                  <div className="relative">
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none z-10">
+                      <Mail className="h-5 w-5 text-gray-400" />
+                    </div>
+                    <input
+                      type="email"
+                      value={resetEmail}
+                      onChange={(e) => setResetEmail(e.target.value)}
+                      placeholder={currentContent.emailPlaceholder}
+                      className="block w-full pl-12 pr-4 py-4 text-base border-2 border-gray-200 rounded-xl focus:ring-0 focus:border-[#2916F5] transition-all duration-300 bg-white"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={resetLoading}
+                    className="relative w-full overflow-hidden group py-4 px-6 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-[#2916F5] via-[#157DEC] to-[#0909FF] hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                  >
+                    {resetLoading ? (
+                      <div className="flex justify-center items-center gap-2">
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        <span>Envoi...</span>
+                      </div>
+                    ) : (
+                      currentContent.sendResetLink
+                    )}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowResetForm(false);
+                      setError("");
+                      setSuccess("");
+                    }}
+                    className="w-full text-center text-[#2916F5] hover:text-[#157DEC] font-medium transition-colors"
+                  >
+                    {currentContent.backToLogin}
+                  </button>
+                </form>
+              </>
+            ) : (
+              /* Login Form */
+              <>
+                {/* Header with sparkle icon */}
+                <div className="text-center space-y-3">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#FE5000] to-[#CC4000] rounded-2xl mb-4 shadow-xl transform transition-transform hover:scale-110 hover:rotate-6 duration-300">
+                    <Sparkles className="w-10 h-10 text-white animate-pulse" />
+                  </div>
+                  <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#2916F5] to-[#157DEC] bg-clip-text text-transparent">
+                    {currentContent.title}
+                  </h2>
+                  <p className="text-base text-gray-600">{currentContent.subtitle}</p>
                 </div>
-              </button>
-            </form>
 
-            {/* Sign up link */}
-            <div className="text-center pt-2">
-              <p className="text-sm text-gray-600">
-                {currentContent.noAccount}{" "}
-                <Link
-                  href="/signup"
-                  className="font-semibold text-[#2916F5] hover:text-[#157DEC] transition-colors duration-200 hover:underline"
-                >
-                  {currentContent.signupLink}
-                </Link>
-              </p>
-            </div>
+                {/* Form */}
+                <form onSubmit={handleLogin} className="space-y-6">
+                  {error && (
+                    <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg animate-slideDown flex items-center gap-3">
+                      <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0" />
+                      <p className="text-sm text-red-700">{error}</p>
+                    </div>
+                  )}
 
-            {/* Admin Access Link */}
-            <div className="text-center pt-4 border-t border-gray-200">
-              <Link
-                href="/admin-access"
-                className="inline-flex items-center gap-2 text-sm text-red-600 hover:text-red-700 font-semibold transition-all duration-200 hover:gap-3 group"
-              >
-                <svg className="w-5 h-5 transition-transform group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-                {currentContent.adminAccess}
-              </Link>
-            </div>
+                  {success && (
+                    <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-lg flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                      <p className="text-sm text-green-700">{success}</p>
+                    </div>
+                  )}
+
+                  {/* Email Field with Floating Label */}
+                  <div className="relative">
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none transition-all duration-200 z-10">
+                      <Mail className={`h-5 w-5 transition-colors duration-200 ${emailFocused || email ? 'text-[#2916F5]' : 'text-gray-400'}`} />
+                    </div>
+                    <input
+                      id="email"
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        setError("");
+                      }}
+                      onFocus={() => setEmailFocused(true)}
+                      onBlur={() => setEmailFocused(false)}
+                      placeholder=" "
+                      className="peer block w-full pl-12 pr-4 py-4 text-base border-2 border-gray-200 rounded-xl focus:ring-0 focus:border-[#2916F5] transition-all duration-300 placeholder-transparent bg-white"
+                    />
+                    <label
+                      htmlFor="email"
+                      className={`absolute left-12 transition-all duration-200 pointer-events-none ${
+                        emailFocused || email
+                          ? '-top-2.5 left-3 text-xs bg-white px-2 text-[#2916F5] font-semibold'
+                          : 'top-4 text-base text-gray-500'
+                      }`}
+                    >
+                      {currentContent.emailLabel}
+                    </label>
+                  </div>
+
+                  {/* Password Field with Floating Label */}
+                  <div className="relative">
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none transition-all duration-200 z-10">
+                      <Lock className={`h-5 w-5 transition-colors duration-200 ${passwordFocused || password ? 'text-[#2916F5]' : 'text-gray-400'}`} />
+                    </div>
+                    <input
+                      id="password"
+                      type={showPassword ? "text" : "password"}
+                      required
+                      value={password}
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                        setError("");
+                      }}
+                      onFocus={() => setPasswordFocused(true)}
+                      onBlur={() => setPasswordFocused(false)}
+                      placeholder=" "
+                      className="peer block w-full pl-12 pr-12 py-4 text-base border-2 border-gray-200 rounded-xl focus:ring-0 focus:border-[#2916F5] transition-all duration-300 placeholder-transparent bg-white"
+                    />
+                    <label
+                      htmlFor="password"
+                      className={`absolute left-12 transition-all duration-200 pointer-events-none ${
+                        passwordFocused || password
+                          ? '-top-2.5 left-3 text-xs bg-white px-2 text-[#2916F5] font-semibold'
+                          : 'top-4 text-base text-gray-500'
+                      }`}
+                    >
+                      {currentContent.passwordLabel}
+                    </label>
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#2916F5] transition-colors duration-200 z-10"
+                    >
+                      {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                    </button>
+                  </div>
+
+                  {/* Remember Me & Forgot Password */}
+                  <div className="flex items-center justify-between">
+                    <label className="flex items-center group cursor-pointer">
+                      <div className="relative">
+                        <input
+                          type="checkbox"
+                          checked={rememberMe}
+                          onChange={(e) => setRememberMe(e.target.checked)}
+                          className="sr-only peer"
+                        />
+                        <div className="w-5 h-5 border-2 border-gray-300 rounded peer-checked:bg-[#2916F5] peer-checked:border-[#2916F5] transition-all duration-200 flex items-center justify-center">
+                          <svg className={`w-3 h-3 text-white transition-opacity duration-200 ${rememberMe ? 'opacity-100' : 'opacity-0'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7"/>
+                          </svg>
+                        </div>
+                      </div>
+                      <span className="ml-2 text-sm text-gray-600 group-hover:text-gray-900 transition-colors">
+                        {currentContent.rememberMe}
+                      </span>
+                    </label>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowResetForm(true);
+                        setResetEmail(email);
+                        setError("");
+                      }}
+                      className="text-sm font-medium text-[#2916F5] hover:text-[#157DEC] transition-colors duration-200"
+                    >
+                      {currentContent.forgotPassword}
+                    </button>
+                  </div>
+
+                  {/* Submit Button with Light Animation */}
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="relative w-full overflow-hidden group py-4 px-6 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-[#2916F5] via-[#157DEC] to-[#0909FF] hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-[1.02]"
+                  >
+                    {/* Animated light effect */}
+                    <div className="absolute inset-0 w-full h-full">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
+                    </div>
+
+                    <div className="relative flex justify-center items-center gap-2">
+                      {loading ? (
+                        <>
+                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          <span>{currentContent.loading}</span>
+                        </>
+                      ) : (
+                        <>
+                          <LogIn className="w-5 h-5" />
+                          <span>{currentContent.loginButton}</span>
+                        </>
+                      )}
+                    </div>
+                  </button>
+                </form>
+
+                {/* Sign up link */}
+                <div className="text-center pt-2">
+                  <p className="text-sm text-gray-600">
+                    {currentContent.noAccount}{" "}
+                    <Link
+                      href="/signup"
+                      className="font-semibold text-[#2916F5] hover:text-[#157DEC] transition-colors duration-200 hover:underline"
+                    >
+                      {currentContent.signupLink}
+                    </Link>
+                  </p>
+                </div>
+
+                {/* Admin Access Link */}
+                <div className="text-center pt-4 border-t border-gray-200">
+                  <Link
+                    href="/admin-dashboard"
+                    className="inline-flex items-center gap-2 text-sm text-[#FE5000] hover:text-[#CC4000] font-semibold transition-all duration-200 hover:gap-3 group"
+                  >
+                    <svg className="w-5 h-5 transition-transform group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                    {currentContent.adminAccess}
+                  </Link>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </main>

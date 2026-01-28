@@ -25,7 +25,7 @@ const ResultsAccess = () => {
               {/* Card 1: Consulter */}
               <div className="bg-white p-6 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.1)] flex flex-col">
                 <div>
-                  <FileText className="h-12 w-12 text-[#0891B2] mb-4" strokeWidth={1.5} />
+                  <FileText className="h-12 w-12 text-[#FE5000] mb-4" strokeWidth={1.5} />
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     {t('consultResults')}
                   </h3>
@@ -34,7 +34,7 @@ const ResultsAccess = () => {
                   </p>
                 </div>
                 <div className="mt-auto">
-                   <a href="#" className="inline-block bg-[#0891B2] text-white font-semibold py-3 px-5 rounded hover:bg-[#0909FF] transition-colors text-center w-full sm:w-auto">
+                   <a href="#" className="inline-block bg-[#FE5000] text-white font-semibold py-3 px-5 rounded hover:bg-[#CC4000] transition-colors text-center w-full sm:w-auto">
                     {t('getResults')}
                   </a>
                 </div>
@@ -43,7 +43,7 @@ const ResultsAccess = () => {
               {/* Card 2: Interpréter */}
               <div className="bg-white p-6 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.1)] flex flex-col">
                 <div>
-                   <User className="h-12 w-12 text-[#0F172A] mb-4" strokeWidth={1.5} />
+                   <User className="h-12 w-12 text-[#FE5000] mb-4" strokeWidth={1.5} />
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     {t('interpretResults')}
                   </h3>
@@ -52,7 +52,7 @@ const ResultsAccess = () => {
                   </p>
                 </div>
                 <div className="mt-auto">
-                   <a href="#" className="inline-block bg-[#0F172A] text-white font-semibold py-3 px-5 rounded hover:bg-slate-800 transition-colors text-center w-full sm:w-auto">
+                   <a href="#" className="inline-block bg-[#FE5000] text-white font-semibold py-3 px-5 rounded hover:bg-[#CC4000] transition-colors text-center w-full sm:w-auto">
                     {t('contactBiologist')}
                   </a>
                 </div>

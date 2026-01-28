@@ -27,7 +27,7 @@ const TopNavigationBar = () => {
   const { t } = useLanguage();
 
   return (
-    <header className="bg-gradient-to-r from-[#2916F5] to-[#157DEC] border-b border-[#2916F5]/20">
+    <header className="bg-gradient-to-r from-[#0A1628] to-[#1E3A5F] border-b border-[#1E3A5F]/20">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-10 py-3 sm:py-2.5 lg:py-2">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-3 sm:gap-4 lg:gap-0 text-white">
           {/* Left side - Contact info */}
@@ -77,7 +77,7 @@ const TopNavigationBar = () => {
               </a>
 
               {/* Admin Access Button */}
-              <Link href="/admin-login" aria-label="Admin Login" className="ml-1 sm:ml-2 flex items-center justify-center w-8 h-8 bg-red-600 hover:bg-red-700 rounded-full text-white font-bold text-xs transition-all hover:scale-110 shadow-lg">
+              <Link href="/admin-login" aria-label="Admin Login" className="ml-1 sm:ml-2 flex items-center justify-center w-8 h-8 bg-[#FE5000] hover:bg-[#CC4000] rounded-full text-white font-bold text-xs transition-all hover:scale-110 shadow-lg">
                 <Shield className="h-4 w-4" />
               </Link>
             </div>

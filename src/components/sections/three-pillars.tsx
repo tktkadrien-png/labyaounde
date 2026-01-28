@@ -35,8 +35,8 @@ interface PillarCardData {
 const PillarCard = ({ icon: Icon, title, description, tags }: PillarCardData) => (
   <div className="bg-white rounded-xl p-8 shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex flex-col text-left">
     <div className="flex items-center gap-4">
-      <Icon className="h-9 w-9 text-[#F97316] flex-shrink-0" />
-      <h3 className="text-2xl font-semibold text-[#2916F5] inline-block pb-2 border-b-[3px] border-[#F97316]">
+      <Icon className="h-9 w-9 text-[#FE5000] flex-shrink-0" />
+      <h3 className="text-2xl font-semibold text-[#2916F5] inline-block pb-2 border-b-[3px] border-[#FE5000]">
         {title}
       </h3>
     </div>
@@ -69,7 +69,7 @@ const ThreePillars = () => {
 
       <div className="relative container mx-auto px-6 max-w-[1200px]">
         <div className={`max-w-4xl transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-block bg-[#F97316] text-white text-xs font-bold uppercase rounded-full px-4 py-1.5 mb-4">
+          <span className="inline-block bg-[#FE5000] text-white text-xs font-bold uppercase rounded-full px-4 py-1.5 mb-4">
             Notre ADN
           </span>
           <h2 className="text-[40px] font-bold leading-tight mb-4">
