@@ -63,7 +63,7 @@ const ThreePillars = () => {
   return (
     <section ref={ref as React.RefObject<HTMLElement>} className="relative py-20 text-white">
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0891B2] to-[#0369A1]"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#FE5000] to-[#CC4000]"></div>
         <div className="absolute inset-0 bg-black opacity-20"></div>
       </div>
 

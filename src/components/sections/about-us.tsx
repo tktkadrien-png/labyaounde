@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useScrollAnimation } from "@/lib/useScrollAnimation";
 import { useLanguage } from "@/lib/contents/LanguageContext";
 import { Award, Target, TrendingUp, Users } from "lucide-react";
@@ -10,6 +9,21 @@ import { Award, Target, TrendingUp, Users } from "lucide-react";
 const AboutUs = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
   const { language } = useLanguage();
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
+  // Video URLs - local files in public folder
+  const videos = [
+    "/videos/004c1ffa-bb86-45f6-9773-006274bec081.mp4",
+    "/videos/f8c03bc4-4522-4b07-b248-aaaa0bca55ac.mp4"
+  ];
+
+  // Auto-slide videos every 10 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentVideoIndex((prev) => (prev + 1) % videos.length);
+    }, 10000);
+    return () => clearInterval(interval);
+  }, [videos.length]);
 
   const content = {
     fr: {
@@ -55,24 +69,48 @@ We are committed to meeting your expectations with rigor and professionalism, an
       ref={ref as React.RefObject<HTMLElement>}
       className="relative overflow-hidden bg-white"
     >
-      {/* Hero Section with Image */}
+      {/* Hero Section with Video Background */}
       <div className="relative h-[600px] lg:h-[700px]">
-        {/* Background Image */}
+        {/* Video Background with Auto-Slide */}
         <div className="absolute inset-0">
-          <Image
-            src="/images/pexels-polina-tankilevitch-3735716.jpg"
-            alt="Laboratory background"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a2e]/95 via-[#16213e]/90 to-[#0f3460]/85"></div>
+          {videos.map((video, index) => (
+            <video
+              key={index}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                index === currentVideoIndex ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <source src={video} type="video/mp4" />
+            </video>
+          ))}
+          {/* Sky Blue Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#87CEEB]/85 via-[#00BFFF]/80 to-[#1E90FF]/85"></div>
         </div>
 
         {/* Decorative elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-10 w-96 h-96 bg-[#FE5000] rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#FE5000] rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+
+        {/* Video Indicators */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+          {videos.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentVideoIndex(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === currentVideoIndex
+                  ? "bg-white w-8"
+                  : "bg-white/50 hover:bg-white/75"
+              }`}
+              aria-label={`Go to video ${index + 1}`}
+            />
+          ))}
         </div>
 
         {/* Content */}
@@ -84,12 +122,12 @@ We are committed to meeting your expectations with rigor and professionalism, an
               }`}
             >
               {/* Title */}
-              <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 tracking-tight">
+              <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 tracking-tight drop-shadow-lg">
                 {currentContent.title}
               </h1>
 
               {/* Subtitle */}
-              <p className="text-xl lg:text-2xl text-white font-light mb-8">
+              <p className="text-xl lg:text-2xl text-white font-light mb-8 drop-shadow-md">
                 {currentContent.subtitle}
               </p>
 
@@ -97,7 +135,7 @@ We are committed to meeting your expectations with rigor and professionalism, an
               <div className="w-32 h-1.5 bg-gradient-to-r from-[#FE5000] to-[#CC4000] rounded-full mb-10"></div>
 
               {/* Description */}
-              <p className="text-lg lg:text-xl text-white/90 leading-relaxed max-w-3xl mb-12">
+              <p className="text-lg lg:text-xl text-white/95 leading-relaxed max-w-3xl mb-12 drop-shadow-md">
                 {currentContent.description}
               </p>
 
@@ -107,8 +145,8 @@ We are committed to meeting your expectations with rigor and professionalism, an
                   <Link
                     key={index}
                     href={button.href}
-                    className="px-8 py-4 bg-white text-[#0A1628] font-semibold rounded-lg
-                      hover:bg-[#FE5000]/10 hover:shadow-xl hover:shadow-[#FE5000]/30
+                    className="px-8 py-4 bg-white text-[#1E90FF] font-semibold rounded-lg
+                      hover:bg-[#FE5000] hover:text-white hover:shadow-xl hover:shadow-[#FE5000]/30
                       transition-all duration-300 transform hover:scale-105 hover:-translate-y-1
                       border-2 border-transparent hover:border-[#FE5000]"
                   >

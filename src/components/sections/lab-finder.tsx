@@ -30,7 +30,7 @@ const Newsletter = () => {
           className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a2e]/95 via-[#16213e]/90 to-[#0f3460]/85" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#87CEEB]/90 via-[#00BFFF]/85 to-[#1E90FF]/90" />
       </div>
 
       <div className="relative z-10 container mx-auto px-4">
