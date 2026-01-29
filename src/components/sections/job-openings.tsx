@@ -98,7 +98,7 @@ export default function JobOpenings() {
   ];
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="bg-white py-16">
+    <section ref={ref as React.RefObject<HTMLElement>} className="bg-gradient-to-br from-[#fef3c7] via-[#fef9c3] to-[#fefce8] py-16">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="text-4xl font-bold text-[#0047AB]">

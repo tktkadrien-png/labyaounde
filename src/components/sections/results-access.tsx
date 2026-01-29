@@ -8,7 +8,7 @@ const ResultsAccess = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="bg-gray-100 py-16 lg:py-24">
+    <section className="bg-gradient-to-br from-[#dbeafe] via-[#e0e7ff] to-[#c7d2fe] py-16 lg:py-24">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
 

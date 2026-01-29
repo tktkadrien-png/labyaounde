@@ -79,7 +79,7 @@ const NewsArticles = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="bg-gray-50 py-20 lg:py-24">
+    <section ref={ref as React.RefObject<HTMLElement>} className="bg-gradient-to-b from-[#f1f5f9] via-[#e2e8f0] to-[#cbd5e1] py-20 lg:py-24">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className={`text-center mb-14 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="inline-block bg-[#00CED1]/20 text-[#0909FF] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">

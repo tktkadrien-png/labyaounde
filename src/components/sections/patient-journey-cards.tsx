@@ -145,7 +145,7 @@ const PatientJourneyCards = () => {
   ];
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="bg-white py-20 lg:py-24">
+    <section ref={ref as React.RefObject<HTMLElement>} className="bg-gradient-to-b from-[#f0f9ff] to-[#e0f2fe] py-20 lg:py-24">
       <div className="container">
         <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="text-3xl lg:text-4xl font-bold text-[#003B5C] leading-tight">
