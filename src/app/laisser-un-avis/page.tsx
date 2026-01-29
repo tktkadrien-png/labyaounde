@@ -242,8 +242,8 @@ export default function ReviewPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="/"
-                  className="inline-block px-8 py-4 bg-gradient-to-r from-[#2916F5] to-[#157DEC] text-white font-semibold rounded-xl
-                    hover:from-[#157DEC] hover:to-[#0909FF] transition-all duration-200 shadow-lg hover:shadow-xl"
+                  className="inline-block px-8 py-4 bg-gradient-to-r from-[#0047AB] to-[#0080FF] text-white font-semibold rounded-xl
+                    hover:from-[#0080FF] hover:to-[#0909FF] transition-all duration-200 shadow-lg hover:shadow-xl"
                 >
                   {currentContent.backButton}
                 </a>
@@ -264,7 +264,7 @@ export default function ReviewPage() {
         <MainNavigation />
         <main className="min-h-screen bg-gradient-to-br from-gray-50 to-white flex items-center justify-center">
           <div className="text-center">
-            <div className="w-12 h-12 border-4 border-[#2916F5] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <div className="w-12 h-12 border-4 border-[#0047AB] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
             <p className="text-gray-600">{language === 'fr' ? 'Chargement...' : 'Loading...'}</p>
           </div>
         </main>
@@ -279,7 +279,7 @@ export default function ReviewPage() {
       <MainNavigation />
       <main className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-[#2916F5] via-[#157DEC] to-[#0909FF] text-white py-16">
+        <section className="bg-gradient-to-br from-[#0047AB] via-[#0080FF] to-[#0909FF] text-white py-16">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-sm mb-6">
               <Star className="w-10 h-10 text-[#FE5000]" />
@@ -363,7 +363,7 @@ export default function ReviewPage() {
                       <select
                         value={serviceType}
                         onChange={(e) => setServiceType(e.target.value)}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2916F5] focus:border-transparent transition-all appearance-none bg-white cursor-pointer"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0047AB] focus:border-transparent transition-all appearance-none bg-white cursor-pointer"
                       >
                         <option value="">{currentContent.serviceTypePlaceholder}</option>
                         {currentContent.serviceTypes.map((type) => (
@@ -387,7 +387,7 @@ export default function ReviewPage() {
                       value={visitDate}
                       onChange={(e) => setVisitDate(e.target.value)}
                       max={new Date().toISOString().split('T')[0]}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2916F5] focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0047AB] focus:border-transparent transition-all"
                     />
                   </div>
 
@@ -403,7 +403,7 @@ export default function ReviewPage() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder={currentContent.namePlaceholder}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2916F5] focus:border-transparent transition-all placeholder:text-gray-400"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0047AB] focus:border-transparent transition-all placeholder:text-gray-400"
                     />
                   </div>
 
@@ -421,7 +421,7 @@ export default function ReviewPage() {
                   </div>
 
                   {/* Would Recommend */}
-                  <div className="bg-gradient-to-br from-[#2916F5]/5 to-[#157DEC]/5 rounded-2xl p-5">
+                  <div className="bg-gradient-to-br from-[#0047AB]/5 to-[#0080FF]/5 rounded-2xl p-5">
                     <label className="block text-sm font-semibold text-gray-700 mb-4">
                       <ThumbsUp className="w-4 h-4 inline mr-2" />
                       {currentContent.recommendLabel}
@@ -464,7 +464,7 @@ export default function ReviewPage() {
                       onChange={(e) => setComment(e.target.value)}
                       placeholder={currentContent.commentPlaceholder}
                       rows={5}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2916F5] focus:border-transparent transition-all resize-none placeholder:text-gray-400"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0047AB] focus:border-transparent transition-all resize-none placeholder:text-gray-400"
                     />
                   </div>
 
@@ -473,8 +473,8 @@ export default function ReviewPage() {
                     <button
                       type="submit"
                       disabled={!rating || loading}
-                      className="w-full px-6 py-4 bg-gradient-to-r from-[#2916F5] to-[#157DEC] text-white font-semibold text-base rounded-xl
-                        hover:from-[#157DEC] hover:to-[#0909FF] transition-all duration-200
+                      className="w-full px-6 py-4 bg-gradient-to-r from-[#0047AB] to-[#0080FF] text-white font-semibold text-base rounded-xl
+                        hover:from-[#0080FF] hover:to-[#0909FF] transition-all duration-200
                         disabled:opacity-50 disabled:cursor-not-allowed
                         flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
                     >
@@ -516,7 +516,7 @@ export default function ReviewPage() {
                     >
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-12 h-12 bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                          <div className="w-12 h-12 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-full flex items-center justify-center text-white font-bold text-lg">
                             {review.name.charAt(0).toUpperCase()}
                           </div>
                           <div>
@@ -542,7 +542,7 @@ export default function ReviewPage() {
                       </div>
 
                       {review.service_type && (
-                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#2916F5]/10 text-[#2916F5] rounded-full text-xs font-medium mb-3">
+                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-[#0047AB]/10 text-[#0047AB] rounded-full text-xs font-medium mb-3">
                           <Stethoscope className="w-3 h-3" />
                           {getServiceLabel(review.service_type)}
                         </div>
@@ -562,7 +562,7 @@ export default function ReviewPage() {
                   {existingReviews.length > 3 && (
                     <button
                       onClick={() => setShowAllReviews(!showAllReviews)}
-                      className="w-full py-3 text-[#2916F5] font-medium hover:bg-[#2916F5]/5 rounded-xl transition-colors flex items-center justify-center gap-2"
+                      className="w-full py-3 text-[#0047AB] font-medium hover:bg-[#0047AB]/5 rounded-xl transition-colors flex items-center justify-center gap-2"
                     >
                       {showAllReviews ? currentContent.showLess : currentContent.showMore}
                       <ChevronDown className={`w-5 h-5 transition-transform ${showAllReviews ? 'rotate-180' : ''}`} />

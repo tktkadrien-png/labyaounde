@@ -110,7 +110,7 @@ export default function HeroCarousel() {
                   className="object-cover object-center scale-105 transition-transform duration-[8000ms] ease-out group-hover:scale-100"
                   priority={index === 0}
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#2916F5]/80 via-[#157DEC]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0047AB]/80 via-[#0080FF]/40 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
                 <div className="absolute inset-0 flex items-center">
@@ -131,7 +131,7 @@ export default function HeroCarousel() {
                       <Link href={slide.buttonLink} passHref>
                         <Button
                           asChild
-                          className="mt-5 sm:mt-8 bg-[#1589FF] hover:bg-[#157DEC] text-white border-none rounded-lg px-5 py-5 sm:px-8 sm:py-6 text-sm sm:text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group min-h-[44px]"
+                          className="mt-5 sm:mt-8 bg-[#00CED1] hover:bg-[#0080FF] text-white border-none rounded-lg px-5 py-5 sm:px-8 sm:py-6 text-sm sm:text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group min-h-[44px]"
                         >
                           <a>
                             {slide.buttonText}

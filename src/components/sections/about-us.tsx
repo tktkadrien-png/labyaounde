@@ -87,8 +87,8 @@ We are committed to meeting your expectations with rigor and professionalism, an
               <source src={video} type="video/mp4" />
             </video>
           ))}
-          {/* Sky Blue Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#87CEEB]/85 via-[#00BFFF]/80 to-[#1E90FF]/85"></div>
+          {/* Blue Palette Overlay - using 5 blue colors */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#ADD8E6]/85 via-[#0047AB]/80 to-[#0080FF]/85"></div>
         </div>
 
         {/* Decorative elements */}
@@ -145,7 +145,7 @@ We are committed to meeting your expectations with rigor and professionalism, an
                   <Link
                     key={index}
                     href={button.href}
-                    className="px-8 py-4 bg-white text-[#1E90FF] font-semibold rounded-lg
+                    className="px-8 py-4 bg-white text-[#0047AB] font-semibold rounded-lg
                       hover:bg-[#FE5000] hover:text-white hover:shadow-xl hover:shadow-[#FE5000]/30
                       transition-all duration-300 transform hover:scale-105 hover:-translate-y-1
                       border-2 border-transparent hover:border-[#FE5000]"

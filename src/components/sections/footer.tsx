@@ -149,7 +149,7 @@ const Footer = () => {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#2916F5]/95 via-[#157DEC]/90 to-[#0909FF]/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0047AB]/95 via-[#0080FF]/90 to-[#0909FF]/95"></div>
         </div>
 
         {/* Content */}
@@ -180,7 +180,7 @@ const Footer = () => {
                     href={GOOGLE_MAPS_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-[#FE5000] hover:bg-[#1E90FF] text-white rounded-lg px-6 py-3 font-semibold flex items-center gap-3 transition-all duration-300 shadow-lg hover:shadow-[#1589FF]/30 hover:scale-105"
+                    className="bg-[#FE5000] hover:bg-[#1E90FF] text-white rounded-lg px-6 py-3 font-semibold flex items-center gap-3 transition-all duration-300 shadow-lg hover:shadow-[#00CED1]/30 hover:scale-105"
                   >
                     <MapPin size={20} />
                     Trouver mon Laboratoire
@@ -376,7 +376,7 @@ const Footer = () => {
         <button
           onClick={scrollToTop}
           aria-label="Retour en haut"
-          className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-[#1589FF] to-[#2916F5] text-white flex items-center justify-center shadow-lg hover:shadow-[#1589FF]/40 hover:scale-110 transition-all duration-300"
+          className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-[#00CED1] to-[#0047AB] text-white flex items-center justify-center shadow-lg hover:shadow-[#00CED1]/40 hover:scale-110 transition-all duration-300"
         >
           <ArrowUp size={24} />
         </button>

@@ -73,7 +73,7 @@ export default function NosStandardsPage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#2916F5]/95 via-[#2916F5]/85 to-[#2916F5]/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0047AB]/95 via-[#0047AB]/85 to-[#0047AB]/70"></div>
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
@@ -135,7 +135,7 @@ export default function NosStandardsPage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <div className="bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-2xl p-8 sm:p-10 lg:p-12 shadow-2xl text-white">
+              <div className="bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-2xl p-8 sm:p-10 lg:p-12 shadow-2xl text-white">
                 <div className="flex items-start gap-6 mb-6">
                   <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/20">
                     <BookOpen className="w-8 h-8 text-white" />
@@ -179,7 +179,7 @@ export default function NosStandardsPage() {
                   className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="flex items-start gap-4 mb-6">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-xl flex items-center justify-center flex-shrink-0">
                       {index === 3 ? (
                         <Shield className="w-7 h-7 text-white" />
                       ) : index === 5 ? (
@@ -190,7 +190,7 @@ export default function NosStandardsPage() {
                     </div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-gray-900 mb-2">{standard.name}</h3>
-                      <p className="text-sm font-semibold text-[#2916F5] mb-3">
+                      <p className="text-sm font-semibold text-[#0047AB] mb-3">
                         {language === 'fr' ? standard.fullNameFr : standard.fullName}
                       </p>
                     </div>
@@ -217,7 +217,7 @@ export default function NosStandardsPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 sm:p-10 shadow-xl border border-gray-100">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-2xl mb-6">
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-2xl mb-6">
                   <Shield className="w-10 h-10 text-white" />
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
@@ -252,14 +252,14 @@ export default function NosStandardsPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/signup"
-                className="inline-flex items-center justify-center gap-2 bg-[#2916F5] text-white px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-[#157DEC] transition-all hover:scale-105 shadow-lg"
+                className="inline-flex items-center justify-center gap-2 bg-[#0047AB] text-white px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-[#0080FF] transition-all hover:scale-105 shadow-lg"
               >
                 {language === 'fr' ? 'Créer un Compte' : 'Create an Account'}
                 <ChevronRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/notre-vision"
-                className="inline-flex items-center justify-center gap-2 bg-transparent text-[#2916F5] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-[#2916F5] hover:bg-[#2916F5] hover:text-white transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-transparent text-[#0047AB] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-[#0047AB] hover:bg-[#0047AB] hover:text-white transition-all"
               >
                 {language === 'fr' ? 'Notre Vision' : 'Our Vision'}
               </Link>

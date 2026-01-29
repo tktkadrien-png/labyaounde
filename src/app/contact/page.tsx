@@ -99,7 +99,7 @@ export default function ContactPage() {
 
       <main className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-[#2916F5] via-[#157DEC] to-[#0909FF] text-white py-20">
+        <section className="bg-gradient-to-br from-[#0047AB] via-[#0080FF] to-[#0909FF] text-white py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Mail className="w-20 h-20 mx-auto mb-6" />
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">{currentContent.title}</h1>
@@ -117,8 +117,8 @@ export default function ContactPage() {
 
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               {/* Address */}
-              <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-100 hover:border-[#2916F5] hover:shadow-xl transition-all duration-300">
-                <div className="w-14 h-14 bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-xl flex items-center justify-center mb-6">
+              <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-100 hover:border-[#0047AB] hover:shadow-xl transition-all duration-300">
+                <div className="w-14 h-14 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-xl flex items-center justify-center mb-6">
                   <MapPin className="w-7 h-7 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">{currentContent.contactInfo.address.title}</h3>
@@ -129,7 +129,7 @@ export default function ContactPage() {
                   href={GOOGLE_MAPS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-[#2916F5] font-semibold hover:gap-3 transition-all"
+                  className="inline-flex items-center gap-2 text-[#0047AB] font-semibold hover:gap-3 transition-all"
                 >
                   {currentContent.mapButton}
                   <ExternalLink className="w-4 h-4" />
@@ -137,22 +137,22 @@ export default function ContactPage() {
               </div>
 
               {/* Email */}
-              <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-100 hover:border-[#2916F5] hover:shadow-xl transition-all duration-300">
-                <div className="w-14 h-14 bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-xl flex items-center justify-center mb-6">
+              <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-100 hover:border-[#0047AB] hover:shadow-xl transition-all duration-300">
+                <div className="w-14 h-14 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-xl flex items-center justify-center mb-6">
                   <Mail className="w-7 h-7 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">{currentContent.contactInfo.email.title}</h3>
                 <a
                   href={`mailto:${currentContent.contactInfo.email.details}`}
-                  className="text-[#2916F5] text-lg font-semibold hover:underline"
+                  className="text-[#0047AB] text-lg font-semibold hover:underline"
                 >
                   {currentContent.contactInfo.email.details}
                 </a>
               </div>
 
               {/* Hours */}
-              <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-100 hover:border-[#2916F5] hover:shadow-xl transition-all duration-300">
-                <div className="w-14 h-14 bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-xl flex items-center justify-center mb-6">
+              <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-100 hover:border-[#0047AB] hover:shadow-xl transition-all duration-300">
+                <div className="w-14 h-14 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-xl flex items-center justify-center mb-6">
                   <Clock className="w-7 h-7 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">{currentContent.contactInfo.hours.title}</h3>

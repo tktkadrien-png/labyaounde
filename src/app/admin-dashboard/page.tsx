@@ -1,11 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
   Star, LogOut, Mail, User, Calendar, MessageSquare, Filter, Search,
-  Users, FileText, TrendingUp, BarChart3, RefreshCw, Briefcase, Newspaper, ArrowRight
+  Users, FileText, TrendingUp, BarChart3, RefreshCw, Briefcase, Newspaper,
+  ArrowRight, ArrowUp, ArrowDown, Clock, CheckCircle, XCircle, Eye,
+  Activity, PieChart, CalendarDays, ChevronRight, Bell, Settings,
+  ThumbsUp, ThumbsDown, Trash2
 } from "lucide-react";
 import TopNavigationBar from "@/components/sections/top-navigation-bar";
 import MainNavigation from "@/components/sections/main-navigation";
@@ -20,75 +23,163 @@ interface Review {
   email: string;
   rating: number;
   comment: string;
+  service_type?: string;
+  would_recommend?: boolean;
+  status?: string;
   created_at: string;
+}
+
+interface Actualite {
+  id: string;
+  title: string;
+  is_published: boolean;
+  created_at: string;
+}
+
+interface JobOffer {
+  id: string;
+  title: string;
+  is_published: boolean;
+  created_at: string;
+}
+
+interface DailyStats {
+  date: string;
+  reviews: number;
+  users: number;
 }
 
 export default function AdminDashboard() {
   const router = useRouter();
   const { language } = useLanguage();
-  const [activeTab, setActiveTab] = useState<"overview" | "reviews">("overview");
+  const [activeTab, setActiveTab] = useState<"overview" | "reviews" | "analytics">("overview");
+  const [timePeriod, setTimePeriod] = useState<"day" | "week" | "month" | "year">("week");
 
   // Auth state
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  // Stats en temps réel
-  const [stats, setStats] = useState({
-    totalUsers: 0,
-    todayUsers: 0,
-    totalReviews: 0,
-    todayReviews: 0,
-    avgRating: 0,
-  });
-
+  // Data states
   const [reviews, setReviews] = useState<Review[]>([]);
+  const [actualites, setActualites] = useState<Actualite[]>([]);
+  const [jobOffers, setJobOffers] = useState<JobOffer[]>([]);
   const [filteredReviews, setFilteredReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState<"all" | "5" | "4" | "3" | "2" | "1">("all");
 
+  // Stats
+  const [stats, setStats] = useState({
+    totalUsers: 0,
+    todayUsers: 0,
+    weekUsers: 0,
+    monthUsers: 0,
+    totalReviews: 0,
+    todayReviews: 0,
+    weekReviews: 0,
+    monthReviews: 0,
+    avgRating: 0,
+    totalActualites: 0,
+    publishedActualites: 0,
+    totalJobOffers: 0,
+    publishedJobOffers: 0,
+    recommendRate: 0,
+    ratingDistribution: { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 },
+  });
+
+  const [dailyStats, setDailyStats] = useState<DailyStats[]>([]);
+
   const content = {
     fr: {
-      dashboard: "Tableau de Bord",
+      dashboard: "Tableau de Bord Administrateur",
       overview: "Vue d'ensemble",
-      reviewsTab: "Avis",
-      totalUsers: "Total Utilisateurs",
-      newToday: "Nouveaux Aujourd'hui",
+      reviewsTab: "Gestion Avis",
+      analytics: "Analytiques",
+      totalUsers: "Utilisateurs",
+      newToday: "Aujourd'hui",
+      thisWeek: "Cette semaine",
+      thisMonth: "Ce mois",
+      thisYear: "Cette année",
       totalReviews: "Total Avis",
-      reviewsToday: "Avis Aujourd'hui",
+      reviewsToday: "Avis aujourd'hui",
       avgRating: "Note Moyenne",
-      search: "Rechercher...",
+      search: "Rechercher par nom, email...",
       filterBy: "Filtrer par note",
       all: "Tous",
       stars: "étoiles",
-      noReviews: "Aucun avis",
+      noReviews: "Aucun avis trouvé",
       refresh: "Actualiser",
       logout: "Déconnexion",
+      quickActions: "Actions Rapides",
+      recentActivity: "Activité Récente",
+      performanceOverview: "Performance",
+      contentManagement: "Gestion Contenu",
+      actualites: "Actualités",
+      jobOffers: "Offres d'emploi",
+      published: "Publiées",
+      drafts: "Brouillons",
+      day: "Jour",
+      week: "Semaine",
+      month: "Mois",
+      year: "Année",
+      ratingDistribution: "Distribution des Notes",
+      recommendRate: "Taux de Recommandation",
+      trendsOverTime: "Tendances",
+      delete: "Supprimer",
+      approve: "Approuver",
+      reject: "Rejeter",
+      pending: "En attente",
+      approved: "Approuvé",
+      rejected: "Rejeté",
     },
     en: {
-      dashboard: "Dashboard",
+      dashboard: "Admin Dashboard",
       overview: "Overview",
-      reviewsTab: "Reviews",
-      totalUsers: "Total Users",
-      newToday: "New Today",
+      reviewsTab: "Review Management",
+      analytics: "Analytics",
+      totalUsers: "Users",
+      newToday: "Today",
+      thisWeek: "This week",
+      thisMonth: "This month",
+      thisYear: "This year",
       totalReviews: "Total Reviews",
-      reviewsToday: "Reviews Today",
+      reviewsToday: "Reviews today",
       avgRating: "Average Rating",
-      search: "Search...",
+      search: "Search by name, email...",
       filterBy: "Filter by rating",
       all: "All",
       stars: "stars",
-      noReviews: "No reviews",
+      noReviews: "No reviews found",
       refresh: "Refresh",
       logout: "Logout",
+      quickActions: "Quick Actions",
+      recentActivity: "Recent Activity",
+      performanceOverview: "Performance",
+      contentManagement: "Content Management",
+      actualites: "News",
+      jobOffers: "Job Offers",
+      published: "Published",
+      drafts: "Drafts",
+      day: "Day",
+      week: "Week",
+      month: "Month",
+      year: "Year",
+      ratingDistribution: "Rating Distribution",
+      recommendRate: "Recommendation Rate",
+      trendsOverTime: "Trends",
+      delete: "Delete",
+      approve: "Approve",
+      reject: "Reject",
+      pending: "Pending",
+      approved: "Approved",
+      rejected: "Rejected",
     }
   };
 
   const currentContent = content[language];
 
   useEffect(() => {
-    // Vérifier si déjà authentifié dans le sessionStorage
     const authStatus = sessionStorage.getItem('adminAuthenticated');
     if (authStatus === 'true') {
       setIsAuthenticated(true);
@@ -99,13 +190,10 @@ export default function AdminDashboard() {
   }, []);
 
   useEffect(() => {
-    // Mise à jour automatique toutes les 10 secondes seulement si authentifié
     if (!isAuthenticated) return;
-
     const interval = setInterval(() => {
       fetchAllData();
-    }, 10000);
-
+    }, 30000); // Refresh every 30 seconds
     return () => clearInterval(interval);
   }, [isAuthenticated]);
 
@@ -115,14 +203,13 @@ export default function AdminDashboard() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Mot de passe admin: LABYAOUNDE2025ADMIN
     if (password === 'LABYAOUNDE2025ADMIN') {
       setIsAuthenticated(true);
       sessionStorage.setItem('adminAuthenticated', 'true');
       setError("");
       fetchAllData();
     } else {
-      setError("Mot de passe incorrect");
+      setError(language === 'fr' ? "Mot de passe incorrect" : "Incorrect password");
     }
   };
 
@@ -130,48 +217,14 @@ export default function AdminDashboard() {
     setLoading(true);
     try {
       await Promise.all([
-        fetchUsers(),
         fetchReviews(),
+        fetchActualites(),
+        fetchJobOffers(),
       ]);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
       setLoading(false);
-    }
-  };
-
-  const fetchUsers = async () => {
-    try {
-      // Compter les utilisateurs uniques à partir des avis
-      const { data: reviewsData, error } = await supabase
-        .from("reviews")
-        .select("user_id, created_at");
-
-      if (error) {
-        console.error("Error fetching users from reviews:", error);
-        return;
-      }
-
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-
-      // Utilisateurs uniques
-      const uniqueUsers = new Set(reviewsData?.map(r => r.user_id) || []);
-      const totalUsers = uniqueUsers.size;
-
-      // Nouveaux utilisateurs aujourd'hui
-      const todayUsers = reviewsData?.filter(r => {
-        const createdAt = new Date(r.created_at);
-        return createdAt >= today;
-      }).length || 0;
-
-      setStats(prev => ({
-        ...prev,
-        totalUsers,
-        todayUsers,
-      }));
-    } catch (error) {
-      console.error("Error in fetchUsers:", error);
     }
   };
 
@@ -188,29 +241,145 @@ export default function AdminDashboard() {
       }
 
       setReviews(data || []);
-
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-
-      const totalReviews = data?.length || 0;
-      const todayReviews = data?.filter(r => {
-        const createdAt = new Date(r.created_at);
-        return createdAt >= today;
-      }).length || 0;
-
-      const avgRating = totalReviews > 0
-        ? data.reduce((sum, r) => sum + r.rating, 0) / totalReviews
-        : 0;
-
-      setStats(prev => ({
-        ...prev,
-        totalReviews,
-        todayReviews,
-        avgRating: Number(avgRating.toFixed(1))
-      }));
+      calculateStats(data || []);
     } catch (error) {
       console.error("Error in fetchReviews:", error);
     }
+  };
+
+  const fetchActualites = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("actualites")
+        .select("id, title, is_published, created_at")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error("Error fetching actualites:", error);
+        return;
+      }
+
+      setActualites(data || []);
+      setStats(prev => ({
+        ...prev,
+        totalActualites: data?.length || 0,
+        publishedActualites: data?.filter(a => a.is_published).length || 0,
+      }));
+    } catch (error) {
+      console.error("Error in fetchActualites:", error);
+    }
+  };
+
+  const fetchJobOffers = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("job_offers")
+        .select("id, title, is_published, created_at")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error("Error fetching job offers:", error);
+        return;
+      }
+
+      setJobOffers(data || []);
+      setStats(prev => ({
+        ...prev,
+        totalJobOffers: data?.length || 0,
+        publishedJobOffers: data?.filter(j => j.is_published).length || 0,
+      }));
+    } catch (error) {
+      console.error("Error in fetchJobOffers:", error);
+    }
+  };
+
+  const calculateStats = (reviewsData: Review[]) => {
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const weekAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
+    const monthAgo = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000);
+
+    // Get unique users
+    const uniqueUsers = new Set(reviewsData.map(r => r.user_id));
+    const totalUsers = uniqueUsers.size;
+
+    // Today's users
+    const todayReviewUsers = new Set(
+      reviewsData
+        .filter(r => new Date(r.created_at) >= today)
+        .map(r => r.user_id)
+    );
+
+    // Week users
+    const weekReviewUsers = new Set(
+      reviewsData
+        .filter(r => new Date(r.created_at) >= weekAgo)
+        .map(r => r.user_id)
+    );
+
+    // Month users
+    const monthReviewUsers = new Set(
+      reviewsData
+        .filter(r => new Date(r.created_at) >= monthAgo)
+        .map(r => r.user_id)
+    );
+
+    // Reviews counts
+    const todayReviews = reviewsData.filter(r => new Date(r.created_at) >= today).length;
+    const weekReviews = reviewsData.filter(r => new Date(r.created_at) >= weekAgo).length;
+    const monthReviews = reviewsData.filter(r => new Date(r.created_at) >= monthAgo).length;
+
+    // Average rating
+    const avgRating = reviewsData.length > 0
+      ? reviewsData.reduce((sum, r) => sum + r.rating, 0) / reviewsData.length
+      : 0;
+
+    // Rating distribution
+    const ratingDistribution = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
+    reviewsData.forEach(r => {
+      if (r.rating >= 1 && r.rating <= 5) {
+        ratingDistribution[r.rating as keyof typeof ratingDistribution]++;
+      }
+    });
+
+    // Recommendation rate
+    const recommendCount = reviewsData.filter(r => r.would_recommend === true).length;
+    const recommendRate = reviewsData.length > 0
+      ? Math.round((recommendCount / reviewsData.length) * 100)
+      : 0;
+
+    // Calculate daily stats for charts
+    const last7Days: DailyStats[] = [];
+    for (let i = 6; i >= 0; i--) {
+      const date = new Date(today.getTime() - i * 24 * 60 * 60 * 1000);
+      const dateStr = date.toISOString().split('T')[0];
+      const dayReviews = reviewsData.filter(r =>
+        r.created_at.startsWith(dateStr)
+      );
+      const dayUsers = new Set(dayReviews.map(r => r.user_id));
+
+      last7Days.push({
+        date: date.toLocaleDateString(language === 'fr' ? 'fr-FR' : 'en-US', { weekday: 'short' }),
+        reviews: dayReviews.length,
+        users: dayUsers.size,
+      });
+    }
+    setDailyStats(last7Days);
+
+    setStats(prev => ({
+      ...prev,
+      totalUsers,
+      todayUsers: todayReviewUsers.size,
+      weekUsers: weekReviewUsers.size,
+      monthUsers: monthReviewUsers.size,
+      totalReviews: reviewsData.length,
+      todayReviews,
+      weekReviews,
+      monthReviews,
+      avgRating: Number(avgRating.toFixed(1)),
+      ratingDistribution,
+      recommendRate,
+    }));
   };
 
   const filterReviews = () => {
@@ -232,63 +401,98 @@ export default function AdminDashboard() {
     setFilteredReviews(filtered);
   };
 
+  const handleDeleteReview = async (id: string) => {
+    if (!confirm(language === 'fr' ? 'Supprimer cet avis?' : 'Delete this review?')) return;
+
+    const { error } = await supabase
+      .from('reviews')
+      .delete()
+      .eq('id', id);
+
+    if (!error) {
+      fetchReviews();
+    }
+  };
+
+  const handleUpdateReviewStatus = async (id: string, status: string) => {
+    const { error } = await supabase
+      .from('reviews')
+      .update({ status })
+      .eq('id', id);
+
+    if (!error) {
+      fetchReviews();
+    }
+  };
+
   const handleLogout = () => {
     setIsAuthenticated(false);
     sessionStorage.removeItem('adminAuthenticated');
     setPassword("");
   };
 
-  // Si pas authentifié, afficher le formulaire de connexion
+  const getStatsByPeriod = () => {
+    switch (timePeriod) {
+      case "day":
+        return { users: stats.todayUsers, reviews: stats.todayReviews, label: currentContent.newToday };
+      case "week":
+        return { users: stats.weekUsers, reviews: stats.weekReviews, label: currentContent.thisWeek };
+      case "month":
+        return { users: stats.monthUsers, reviews: stats.monthReviews, label: currentContent.thisMonth };
+      default:
+        return { users: stats.totalUsers, reviews: stats.totalReviews, label: currentContent.thisYear };
+    }
+  };
+
+  const periodStats = getStatsByPeriod();
+
+  // Login form
   if (!isAuthenticated) {
     return (
       <>
         <TopNavigationBar />
         <MainNavigation />
-
-        <main className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4">
+        <main className="min-h-screen bg-gradient-to-br from-[#0047AB] via-[#0080FF] to-[#0909FF] flex items-center justify-center py-12 px-4">
           <div className="max-w-md w-full">
-            <div className="bg-white rounded-2xl shadow-xl p-8">
+            <div className="bg-white rounded-2xl shadow-2xl p-8">
               <div className="text-center mb-8">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-full mb-4">
-                  <User className="w-8 h-8 text-white" />
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-2xl mb-4 shadow-lg">
+                  <Settings className="w-10 h-10 text-white" />
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">Accès Admin</h2>
-                <p className="text-gray-600">Entrez le mot de passe pour accéder au tableau de bord</p>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                  {language === 'fr' ? 'Accès Administrateur' : 'Admin Access'}
+                </h2>
+                <p className="text-gray-600">
+                  {language === 'fr' ? 'Entrez le mot de passe pour continuer' : 'Enter password to continue'}
+                </p>
               </div>
 
               <form onSubmit={handleLogin} className="space-y-6">
                 <div>
-                  <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Mot de passe
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    {language === 'fr' ? 'Mot de passe' : 'Password'}
                   </label>
                   <input
                     type="password"
-                    id="password"
                     value={password}
-                    onChange={(e) => {
-                      setPassword(e.target.value);
-                      setError("");
-                    }}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2916F5] focus:border-transparent"
-                    placeholder="Entrez le mot de passe admin"
+                    onChange={(e) => { setPassword(e.target.value); setError(""); }}
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#0047AB] focus:border-transparent"
+                    placeholder="••••••••••••"
                     required
                   />
-                  {error && (
-                    <p className="text-red-600 text-sm mt-2">{error}</p>
-                  )}
+                  {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-[#2916F5] to-[#157DEC] text-white py-3 rounded-xl font-semibold hover:shadow-xl transition-all"
+                  className="w-full bg-gradient-to-r from-[#0047AB] to-[#0080FF] text-white py-4 rounded-xl font-semibold hover:shadow-xl transition-all"
                 >
-                  Se connecter
+                  {language === 'fr' ? 'Se connecter' : 'Login'}
                 </button>
               </form>
             </div>
           </div>
         </main>
-
         <Footer />
       </>
     );
@@ -299,24 +503,29 @@ export default function AdminDashboard() {
       <TopNavigationBar />
       <MainNavigation />
 
-      <main className="min-h-screen bg-gray-50 py-4 sm:py-6 md:py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header */}
-          <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-4 sm:mb-6">
+      <main className="min-h-screen bg-gray-100">
+        {/* Top Header Bar */}
+        <div className="bg-gradient-to-r from-[#0047AB] via-[#0080FF] to-[#0909FF] text-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">{currentContent.dashboard}</h1>
-              <div className="flex gap-2 sm:gap-3 w-full sm:w-auto">
+              <div>
+                <h1 className="text-2xl sm:text-3xl font-bold">{currentContent.dashboard}</h1>
+                <p className="text-white/80 text-sm mt-1">
+                  {language === 'fr' ? 'Gérez votre laboratoire efficacement' : 'Manage your laboratory efficiently'}
+                </p>
+              </div>
+              <div className="flex items-center gap-3">
                 <button
                   onClick={fetchAllData}
                   disabled={loading}
-                  className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50 min-h-[44px] flex-1 sm:flex-initial text-sm sm:text-base"
+                  className="flex items-center gap-2 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors"
                 >
                   <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
                   <span className="hidden sm:inline">{currentContent.refresh}</span>
                 </button>
                 <button
                   onClick={handleLogout}
-                  className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors min-h-[44px] flex-1 sm:flex-initial text-sm sm:text-base"
+                  className="flex items-center gap-2 px-4 py-2 bg-red-500/80 hover:bg-red-500 rounded-lg transition-colors"
                 >
                   <LogOut className="w-4 h-4" />
                   <span className="hidden sm:inline">{currentContent.logout}</span>
@@ -324,79 +533,120 @@ export default function AdminDashboard() {
               </div>
             </div>
 
-            {/* Tabs */}
-            <div className="mt-4 sm:mt-6 border-b border-gray-200 -mx-4 sm:mx-0 px-4 sm:px-0">
-              <nav className="flex gap-4 sm:gap-8 overflow-x-auto">
+            {/* Time Period Selector */}
+            <div className="flex gap-2 mt-6">
+              {(["day", "week", "month", "year"] as const).map((period) => (
                 <button
-                  onClick={() => setActiveTab("overview")}
-                  className={`pb-3 sm:pb-4 px-1 border-b-2 font-medium text-xs sm:text-sm transition-colors whitespace-nowrap min-h-[44px] flex items-center ${
-                    activeTab === "overview"
-                      ? "border-[#2916F5] text-[#2916F5]"
-                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                  key={period}
+                  onClick={() => setTimePeriod(period)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                    timePeriod === period
+                      ? 'bg-white text-[#0047AB]'
+                      : 'bg-white/20 hover:bg-white/30'
                   }`}
                 >
-                  <BarChart3 className="w-4 h-4 inline mr-1.5 sm:mr-2" />
-                  {currentContent.overview}
+                  {currentContent[period]}
                 </button>
-                <button
-                  onClick={() => setActiveTab("reviews")}
-                  className={`pb-3 sm:pb-4 px-1 border-b-2 font-medium text-xs sm:text-sm transition-colors whitespace-nowrap min-h-[44px] flex items-center ${
-                    activeTab === "reviews"
-                      ? "border-[#2916F5] text-[#2916F5]"
-                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-                  }`}
-                >
-                  <MessageSquare className="w-4 h-4 inline mr-1.5 sm:mr-2" />
-                  {currentContent.reviewsTab}
-                </button>
-              </nav>
+              ))}
             </div>
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          {/* Navigation Tabs */}
+          <div className="bg-white rounded-xl shadow-sm mb-6 p-1 inline-flex">
+            <button
+              onClick={() => setActiveTab("overview")}
+              className={`px-6 py-3 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${
+                activeTab === "overview"
+                  ? "bg-[#0047AB] text-white"
+                  : "text-gray-600 hover:bg-gray-100"
+              }`}
+            >
+              <BarChart3 className="w-4 h-4" />
+              {currentContent.overview}
+            </button>
+            <button
+              onClick={() => setActiveTab("reviews")}
+              className={`px-6 py-3 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${
+                activeTab === "reviews"
+                  ? "bg-[#0047AB] text-white"
+                  : "text-gray-600 hover:bg-gray-100"
+              }`}
+            >
+              <MessageSquare className="w-4 h-4" />
+              {currentContent.reviewsTab}
+              {reviews.length > 0 && (
+                <span className="bg-[#FE5000] text-white text-xs px-2 py-0.5 rounded-full">
+                  {reviews.length}
+                </span>
+              )}
+            </button>
+            <button
+              onClick={() => setActiveTab("analytics")}
+              className={`px-6 py-3 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${
+                activeTab === "analytics"
+                  ? "bg-[#0047AB] text-white"
+                  : "text-gray-600 hover:bg-gray-100"
+              }`}
+            >
+              <PieChart className="w-4 h-4" />
+              {currentContent.analytics}
+            </button>
           </div>
 
           {/* Overview Tab */}
           {activeTab === "overview" && (
-            <div className="space-y-4 sm:space-y-6">
-              {/* Stats Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                {/* Total Users */}
-                <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
+            <div className="space-y-6">
+              {/* Stats Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {/* Users Card */}
+                <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-[#0047AB]">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-xs sm:text-sm font-medium text-gray-600">{currentContent.totalUsers}</p>
-                      <p className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">{stats.totalUsers}</p>
-                      <p className="text-xs text-green-600 mt-1">+{stats.todayUsers} {currentContent.newToday.toLowerCase()}</p>
+                      <p className="text-sm text-gray-500 font-medium">{currentContent.totalUsers}</p>
+                      <p className="text-3xl font-bold text-gray-900 mt-1">{stats.totalUsers}</p>
+                      <div className="flex items-center gap-1 mt-2">
+                        <ArrowUp className="w-4 h-4 text-green-500" />
+                        <span className="text-sm text-green-600 font-medium">+{periodStats.users}</span>
+                        <span className="text-xs text-gray-500">{periodStats.label}</span>
+                      </div>
                     </div>
-                    <div className="p-2 sm:p-3 bg-[#1589FF]/20 rounded-full flex-shrink-0">
-                      <Users className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
+                    <div className="p-4 bg-[#0047AB]/10 rounded-xl">
+                      <Users className="w-8 h-8 text-[#0047AB]" />
                     </div>
                   </div>
                 </div>
 
-                {/* Total Reviews */}
-                <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
+                {/* Reviews Card */}
+                <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-[#FE5000]">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-xs sm:text-sm font-medium text-gray-600">{currentContent.totalReviews}</p>
-                      <p className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">{stats.totalReviews}</p>
-                      <p className="text-xs text-green-600 mt-1">+{stats.todayReviews} {currentContent.reviewsToday.toLowerCase()}</p>
+                      <p className="text-sm text-gray-500 font-medium">{currentContent.totalReviews}</p>
+                      <p className="text-3xl font-bold text-gray-900 mt-1">{stats.totalReviews}</p>
+                      <div className="flex items-center gap-1 mt-2">
+                        <ArrowUp className="w-4 h-4 text-green-500" />
+                        <span className="text-sm text-green-600 font-medium">+{periodStats.reviews}</span>
+                        <span className="text-xs text-gray-500">{periodStats.label}</span>
+                      </div>
                     </div>
-                    <div className="p-2 sm:p-3 bg-yellow-100 rounded-full flex-shrink-0">
-                      <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-600" />
+                    <div className="p-4 bg-[#FE5000]/10 rounded-xl">
+                      <MessageSquare className="w-8 h-8 text-[#FE5000]" />
                     </div>
                   </div>
                 </div>
 
-                {/* Average Rating */}
-                <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 sm:col-span-2 lg:col-span-1">
+                {/* Rating Card */}
+                <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-yellow-500">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-xs sm:text-sm font-medium text-gray-600">{currentContent.avgRating}</p>
-                      <p className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">{stats.avgRating} / 5</p>
-                      <div className="flex gap-1 mt-1">
+                      <p className="text-sm text-gray-500 font-medium">{currentContent.avgRating}</p>
+                      <p className="text-3xl font-bold text-gray-900 mt-1">{stats.avgRating}/5</p>
+                      <div className="flex gap-1 mt-2">
                         {[1, 2, 3, 4, 5].map(star => (
                           <Star
                             key={star}
-                            className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
+                            className={`w-4 h-4 ${
                               star <= Math.round(stats.avgRating)
                                 ? 'text-yellow-400 fill-yellow-400'
                                 : 'text-gray-300'
@@ -405,71 +655,159 @@ export default function AdminDashboard() {
                         ))}
                       </div>
                     </div>
-                    <div className="p-2 sm:p-3 bg-green-100 rounded-full flex-shrink-0">
-                      <Star className="w-5 h-5 sm:w-6 sm:h-6 text-green-600" />
+                    <div className="p-4 bg-yellow-100 rounded-xl">
+                      <Star className="w-8 h-8 text-yellow-600" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Recommendation Card */}
+                <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-green-500">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm text-gray-500 font-medium">{currentContent.recommendRate}</p>
+                      <p className="text-3xl font-bold text-gray-900 mt-1">{stats.recommendRate}%</p>
+                      <div className="flex items-center gap-1 mt-2">
+                        <ThumbsUp className="w-4 h-4 text-green-500" />
+                        <span className="text-sm text-green-600">{language === 'fr' ? 'Recommandent' : 'Recommend'}</span>
+                      </div>
+                    </div>
+                    <div className="p-4 bg-green-100 rounded-xl">
+                      <ThumbsUp className="w-8 h-8 text-green-600" />
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Quick Access Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                <Link
-                  href="/admin-dashboard/job-offers"
-                  className="bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-lg shadow-lg p-6 hover:shadow-xl transition-all group"
-                >
-                  <div className="flex items-start justify-between mb-4">
-                    <Briefcase className="w-10 h-10 text-white" />
-                    <ArrowRight className="w-6 h-6 text-white/70 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Gestion des Offres d'Emploi</h3>
-                  <p className="text-white/80 text-sm">Créer et gérer les offres d'emploi et stages</p>
-                </Link>
+              {/* Content Management & Quick Actions */}
+              <div className="grid lg:grid-cols-3 gap-6">
+                {/* Content Management */}
+                <div className="lg:col-span-2 bg-white rounded-xl shadow-sm p-6">
+                  <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <FileText className="w-5 h-5 text-[#0047AB]" />
+                    {currentContent.contentManagement}
+                  </h2>
 
-                <Link
-                  href="/admin-dashboard/actualites"
-                  className="bg-gradient-to-br from-[#2916F5] to-[#0909FF] rounded-lg shadow-lg p-6 hover:shadow-xl transition-all group"
-                >
-                  <div className="flex items-start justify-between mb-4">
-                    <Newspaper className="w-10 h-10 text-white" />
-                    <ArrowRight className="w-6 h-6 text-white/70 group-hover:translate-x-1 transition-transform" />
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    {/* Actualités */}
+                    <Link
+                      href="/admin-dashboard/actualites"
+                      className="group p-5 bg-gradient-to-br from-[#0047AB]/5 to-[#0080FF]/10 rounded-xl border-2 border-transparent hover:border-[#0047AB] transition-all"
+                    >
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="p-3 bg-[#0047AB] rounded-lg">
+                          <Newspaper className="w-6 h-6 text-white" />
+                        </div>
+                        <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-[#0047AB] group-hover:translate-x-1 transition-all" />
+                      </div>
+                      <h3 className="font-bold text-gray-900 mb-1">{currentContent.actualites}</h3>
+                      <div className="flex gap-4 text-sm">
+                        <span className="text-gray-600">{stats.totalActualites} total</span>
+                        <span className="text-green-600">{stats.publishedActualites} {currentContent.published.toLowerCase()}</span>
+                      </div>
+                    </Link>
+
+                    {/* Job Offers */}
+                    <Link
+                      href="/admin-dashboard/job-offers"
+                      className="group p-5 bg-gradient-to-br from-[#FE5000]/5 to-[#FE5000]/10 rounded-xl border-2 border-transparent hover:border-[#FE5000] transition-all"
+                    >
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="p-3 bg-[#FE5000] rounded-lg">
+                          <Briefcase className="w-6 h-6 text-white" />
+                        </div>
+                        <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-[#FE5000] group-hover:translate-x-1 transition-all" />
+                      </div>
+                      <h3 className="font-bold text-gray-900 mb-1">{currentContent.jobOffers}</h3>
+                      <div className="flex gap-4 text-sm">
+                        <span className="text-gray-600">{stats.totalJobOffers} total</span>
+                        <span className="text-green-600">{stats.publishedJobOffers} {currentContent.published.toLowerCase()}</span>
+                      </div>
+                    </Link>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Gestion des Actualités</h3>
-                  <p className="text-white/80 text-sm">Créer et gérer les actualités du laboratoire</p>
-                </Link>
+                </div>
+
+                {/* Quick Stats Chart */}
+                <div className="bg-white rounded-xl shadow-sm p-6">
+                  <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <Activity className="w-5 h-5 text-[#0047AB]" />
+                    {currentContent.trendsOverTime}
+                  </h2>
+
+                  <div className="space-y-3">
+                    {dailyStats.map((day, index) => (
+                      <div key={index} className="flex items-center gap-3">
+                        <span className="text-xs text-gray-500 w-10">{day.date}</span>
+                        <div className="flex-1 h-6 bg-gray-100 rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-gradient-to-r from-[#0047AB] to-[#0080FF] rounded-full transition-all"
+                            style={{ width: `${Math.min((day.reviews / Math.max(...dailyStats.map(d => d.reviews), 1)) * 100, 100)}%` }}
+                          ></div>
+                        </div>
+                        <span className="text-sm font-medium text-gray-700 w-8">{day.reviews}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
 
               {/* Recent Reviews */}
-              <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
-                <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">Derniers Avis</h2>
-                <div className="space-y-3 sm:space-y-4">
+              <div className="bg-white rounded-xl shadow-sm p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+                    <MessageSquare className="w-5 h-5 text-[#0047AB]" />
+                    {currentContent.recentActivity}
+                  </h2>
+                  <button
+                    onClick={() => setActiveTab("reviews")}
+                    className="text-sm text-[#0047AB] hover:underline flex items-center gap-1"
+                  >
+                    {language === 'fr' ? 'Voir tout' : 'View all'}
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+
+                <div className="space-y-4">
                   {reviews.slice(0, 5).map((review) => (
-                    <div key={review.id} className="border-b border-gray-200 pb-3 sm:pb-4 last:border-0">
-                      <div className="flex items-start justify-between">
-                        <div className="flex-1 min-w-0">
-                          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                            <p className="font-medium text-gray-900 text-sm sm:text-base truncate">{review.name}</p>
-                            <div className="flex gap-0.5">
-                              {[1, 2, 3, 4, 5].map(star => (
-                                <Star
-                                  key={star}
-                                  className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
-                                    star <= review.rating
-                                      ? 'text-yellow-400 fill-yellow-400'
-                                      : 'text-gray-300'
-                                  }`}
-                                />
-                              ))}
-                            </div>
+                    <div key={review.id} className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
+                      <div className="w-10 h-10 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
+                        {review.name.charAt(0).toUpperCase()}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="font-semibold text-gray-900">{review.name}</span>
+                          <div className="flex gap-0.5">
+                            {[1, 2, 3, 4, 5].map(star => (
+                              <Star
+                                key={star}
+                                className={`w-3.5 h-3.5 ${
+                                  star <= review.rating
+                                    ? 'text-yellow-400 fill-yellow-400'
+                                    : 'text-gray-300'
+                                }`}
+                              />
+                            ))}
                           </div>
-                          <p className="text-xs sm:text-sm text-gray-600 mt-1 line-clamp-2">{review.comment}</p>
-                          <p className="text-xs text-gray-400 mt-1">
-                            {new Date(review.created_at).toLocaleDateString('fr-FR')} à {new Date(review.created_at).toLocaleTimeString('fr-FR')}
-                          </p>
                         </div>
+                        <p className="text-sm text-gray-600 line-clamp-2">{review.comment}</p>
+                        <p className="text-xs text-gray-400 mt-1">
+                          {new Date(review.created_at).toLocaleDateString(language === 'fr' ? 'fr-FR' : 'en-US', {
+                            day: 'numeric',
+                            month: 'short',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                          })}
+                        </p>
                       </div>
                     </div>
                   ))}
+
+                  {reviews.length === 0 && (
+                    <div className="text-center py-8 text-gray-500">
+                      <MessageSquare className="w-12 h-12 mx-auto mb-3 text-gray-300" />
+                      <p>{currentContent.noReviews}</p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -477,69 +815,214 @@ export default function AdminDashboard() {
 
           {/* Reviews Tab */}
           {activeTab === "reviews" && (
-            <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
+            <div className="bg-white rounded-xl shadow-sm p-6">
               {/* Filters */}
-              <div className="mb-4 sm:mb-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <div className="flex-1">
-                  <div className="relative">
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 sm:w-5 sm:h-5" />
-                    <input
-                      type="text"
-                      placeholder={currentContent.search}
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full pl-9 sm:pl-10 pr-3 sm:pr-4 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-md focus:ring-2 focus:ring-[#2916F5] focus:border-transparent min-h-[44px]"
-                    />
-                  </div>
+              <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                <div className="flex-1 relative">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <input
+                    type="text"
+                    placeholder={currentContent.search}
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#0047AB] focus:border-transparent"
+                  />
                 </div>
-                <div className="w-full sm:w-48">
-                  <select
-                    value={statusFilter}
-                    onChange={(e) => setStatusFilter(e.target.value as any)}
-                    className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base border border-gray-300 rounded-md focus:ring-2 focus:ring-[#2916F5] focus:border-transparent min-h-[44px]"
-                  >
-                    <option value="all">{currentContent.all}</option>
-                    <option value="5">5 {currentContent.stars}</option>
-                    <option value="4">4 {currentContent.stars}</option>
-                    <option value="3">3 {currentContent.stars}</option>
-                    <option value="2">2 {currentContent.stars}</option>
-                    <option value="1">1 {currentContent.stars}</option>
-                  </select>
-                </div>
+                <select
+                  value={statusFilter}
+                  onChange={(e) => setStatusFilter(e.target.value as any)}
+                  className="px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#0047AB] focus:border-transparent"
+                >
+                  <option value="all">{currentContent.all}</option>
+                  <option value="5">5 {currentContent.stars}</option>
+                  <option value="4">4 {currentContent.stars}</option>
+                  <option value="3">3 {currentContent.stars}</option>
+                  <option value="2">2 {currentContent.stars}</option>
+                  <option value="1">1 {currentContent.stars}</option>
+                </select>
               </div>
 
               {/* Reviews List */}
               <div className="space-y-4">
                 {filteredReviews.length === 0 ? (
-                  <p className="text-center text-gray-500 py-8">{currentContent.noReviews}</p>
+                  <div className="text-center py-12 text-gray-500">
+                    <MessageSquare className="w-16 h-16 mx-auto mb-4 text-gray-300" />
+                    <p className="text-lg">{currentContent.noReviews}</p>
+                  </div>
                 ) : (
                   filteredReviews.map((review) => (
-                    <div key={review.id} className="border border-gray-200 rounded-lg p-4 hover:border-gray-300 transition-colors">
-                      <div className="flex items-start justify-between mb-2">
-                        <div>
-                          <p className="font-medium text-gray-900">{review.name}</p>
-                          <p className="text-sm text-gray-500">{review.email}</p>
+                    <div key={review.id} className="border-2 border-gray-100 rounded-xl p-6 hover:border-gray-200 transition-colors">
+                      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                        <div className="flex items-start gap-4">
+                          <div className="w-12 h-12 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
+                            {review.name.charAt(0).toUpperCase()}
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-3 mb-1">
+                              <span className="font-bold text-gray-900">{review.name}</span>
+                              <div className="flex gap-0.5">
+                                {[1, 2, 3, 4, 5].map(star => (
+                                  <Star
+                                    key={star}
+                                    className={`w-4 h-4 ${
+                                      star <= review.rating
+                                        ? 'text-yellow-400 fill-yellow-400'
+                                        : 'text-gray-300'
+                                    }`}
+                                  />
+                                ))}
+                              </div>
+                              {review.would_recommend && (
+                                <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full flex items-center gap-1">
+                                  <ThumbsUp className="w-3 h-3" />
+                                  {language === 'fr' ? 'Recommande' : 'Recommends'}
+                                </span>
+                              )}
+                            </div>
+                            <p className="text-sm text-gray-500 mb-2">{review.email}</p>
+                            {review.service_type && (
+                              <span className="text-xs bg-[#0047AB]/10 text-[#0047AB] px-2 py-1 rounded-full mb-2 inline-block">
+                                {review.service_type}
+                              </span>
+                            )}
+                            <p className="text-gray-700 mt-2">{review.comment}</p>
+                            <p className="text-xs text-gray-400 mt-2">
+                              {new Date(review.created_at).toLocaleDateString(language === 'fr' ? 'fr-FR' : 'en-US', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric',
+                                hour: '2-digit',
+                                minute: '2-digit'
+                              })}
+                            </p>
+                          </div>
                         </div>
-                        <div className="flex gap-0.5">
-                          {[1, 2, 3, 4, 5].map(star => (
-                            <Star
-                              key={star}
-                              className={`w-5 h-5 ${
-                                star <= review.rating
-                                  ? 'text-yellow-400 fill-yellow-400'
-                                  : 'text-gray-300'
-                              }`}
-                            />
-                          ))}
+
+                        <div className="flex gap-2 sm:flex-col">
+                          <button
+                            onClick={() => handleDeleteReview(review.id)}
+                            className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                            title={currentContent.delete}
+                          >
+                            <Trash2 className="w-5 h-5" />
+                          </button>
                         </div>
                       </div>
-                      <p className="text-gray-700 mb-2">{review.comment}</p>
-                      <p className="text-xs text-gray-400">
-                        {new Date(review.created_at).toLocaleDateString('fr-FR')} à {new Date(review.created_at).toLocaleTimeString('fr-FR')}
-                      </p>
                     </div>
                   ))
                 )}
+              </div>
+            </div>
+          )}
+
+          {/* Analytics Tab */}
+          {activeTab === "analytics" && (
+            <div className="space-y-6">
+              {/* Rating Distribution */}
+              <div className="grid lg:grid-cols-2 gap-6">
+                <div className="bg-white rounded-xl shadow-sm p-6">
+                  <h2 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
+                    <BarChart3 className="w-5 h-5 text-[#0047AB]" />
+                    {currentContent.ratingDistribution}
+                  </h2>
+
+                  <div className="space-y-4">
+                    {[5, 4, 3, 2, 1].map(rating => {
+                      const count = stats.ratingDistribution[rating as keyof typeof stats.ratingDistribution];
+                      const percentage = stats.totalReviews > 0 ? (count / stats.totalReviews) * 100 : 0;
+
+                      return (
+                        <div key={rating} className="flex items-center gap-4">
+                          <div className="flex items-center gap-1 w-20">
+                            <span className="font-medium text-gray-700">{rating}</span>
+                            <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                          </div>
+                          <div className="flex-1 h-8 bg-gray-100 rounded-full overflow-hidden">
+                            <div
+                              className={`h-full rounded-full transition-all ${
+                                rating >= 4 ? 'bg-green-500' : rating === 3 ? 'bg-yellow-500' : 'bg-red-500'
+                              }`}
+                              style={{ width: `${percentage}%` }}
+                            ></div>
+                          </div>
+                          <span className="text-sm font-medium text-gray-600 w-16 text-right">
+                            {count} ({Math.round(percentage)}%)
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Summary Stats */}
+                <div className="bg-white rounded-xl shadow-sm p-6">
+                  <h2 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
+                    <TrendingUp className="w-5 h-5 text-[#0047AB]" />
+                    {currentContent.performanceOverview}
+                  </h2>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="p-4 bg-blue-50 rounded-xl text-center">
+                      <p className="text-3xl font-bold text-[#0047AB]">{stats.totalReviews}</p>
+                      <p className="text-sm text-gray-600">{currentContent.totalReviews}</p>
+                    </div>
+                    <div className="p-4 bg-green-50 rounded-xl text-center">
+                      <p className="text-3xl font-bold text-green-600">{stats.recommendRate}%</p>
+                      <p className="text-sm text-gray-600">{currentContent.recommendRate}</p>
+                    </div>
+                    <div className="p-4 bg-yellow-50 rounded-xl text-center">
+                      <p className="text-3xl font-bold text-yellow-600">{stats.avgRating}</p>
+                      <p className="text-sm text-gray-600">{currentContent.avgRating}</p>
+                    </div>
+                    <div className="p-4 bg-purple-50 rounded-xl text-center">
+                      <p className="text-3xl font-bold text-purple-600">{stats.totalUsers}</p>
+                      <p className="text-sm text-gray-600">{currentContent.totalUsers}</p>
+                    </div>
+                  </div>
+
+                  {/* Period comparison */}
+                  <div className="mt-6 p-4 bg-gray-50 rounded-xl">
+                    <h3 className="font-semibold text-gray-900 mb-3">{periodStats.label}</h3>
+                    <div className="flex justify-between">
+                      <div>
+                        <p className="text-2xl font-bold text-[#0047AB]">{periodStats.reviews}</p>
+                        <p className="text-xs text-gray-500">{language === 'fr' ? 'Nouveaux avis' : 'New reviews'}</p>
+                      </div>
+                      <div>
+                        <p className="text-2xl font-bold text-green-600">{periodStats.users}</p>
+                        <p className="text-xs text-gray-500">{language === 'fr' ? 'Utilisateurs actifs' : 'Active users'}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Weekly Trend Chart */}
+              <div className="bg-white rounded-xl shadow-sm p-6">
+                <h2 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
+                  <CalendarDays className="w-5 h-5 text-[#0047AB]" />
+                  {language === 'fr' ? 'Activité des 7 derniers jours' : 'Last 7 days activity'}
+                </h2>
+
+                <div className="flex items-end justify-between gap-2 h-48">
+                  {dailyStats.map((day, index) => {
+                    const maxReviews = Math.max(...dailyStats.map(d => d.reviews), 1);
+                    const height = (day.reviews / maxReviews) * 100;
+
+                    return (
+                      <div key={index} className="flex-1 flex flex-col items-center gap-2">
+                        <span className="text-sm font-medium text-gray-900">{day.reviews}</span>
+                        <div className="w-full bg-gray-100 rounded-t-lg relative" style={{ height: '160px' }}>
+                          <div
+                            className="absolute bottom-0 w-full bg-gradient-to-t from-[#0047AB] to-[#0080FF] rounded-t-lg transition-all"
+                            style={{ height: `${Math.max(height, 5)}%` }}
+                          ></div>
+                        </div>
+                        <span className="text-xs text-gray-500">{day.date}</span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           )}

@@ -61,7 +61,7 @@ export default function OffresEmploiStagesPage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#2916F5]/95 via-[#2916F5]/85 to-[#2916F5]/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0047AB]/95 via-[#0047AB]/85 to-[#0047AB]/70"></div>
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
@@ -107,7 +107,7 @@ export default function OffresEmploiStagesPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {loading ? (
               <div className="text-center py-20">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#2916F5] mx-auto"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0047AB] mx-auto"></div>
                 <p className="text-gray-600 mt-4">
                   {language === 'fr' ? 'Chargement des offres...' : 'Loading offers...'}
                 </p>
@@ -116,8 +116,8 @@ export default function OffresEmploiStagesPage() {
               <>
                 <div className="max-w-4xl mx-auto">
                   <div className="bg-white rounded-2xl shadow-lg border-2 border-gray-100 p-12 text-center">
-                    <div className="w-20 h-20 bg-gradient-to-br from-[#2916F5]/10 to-[#157DEC]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <Briefcase className="w-10 h-10 text-[#2916F5]" />
+                    <div className="w-20 h-20 bg-gradient-to-br from-[#0047AB]/10 to-[#0080FF]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <Briefcase className="w-10 h-10 text-[#0047AB]" />
                     </div>
 
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
@@ -135,7 +135,7 @@ export default function OffresEmploiStagesPage() {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                       <Link
                         href="/contact"
-                        className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#2916F5] to-[#157DEC] text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all hover:scale-105 shadow-lg"
+                        className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#0047AB] to-[#0080FF] text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all hover:scale-105 shadow-lg"
                       >
                         <Mail className="w-5 h-5" />
                         {language === 'fr' ? 'Candidature Spontanée' : 'Spontaneous Application'}
@@ -143,7 +143,7 @@ export default function OffresEmploiStagesPage() {
 
                       <Link
                         href="/carrieres/actualites"
-                        className="inline-flex items-center justify-center gap-2 bg-white text-[#2916F5] border-2 border-[#2916F5] px-8 py-4 rounded-xl font-semibold hover:bg-[#2916F5] hover:text-white transition-all"
+                        className="inline-flex items-center justify-center gap-2 bg-white text-[#0047AB] border-2 border-[#0047AB] px-8 py-4 rounded-xl font-semibold hover:bg-[#0047AB] hover:text-white transition-all"
                       >
                         <FileText className="w-5 h-5" />
                         {language === 'fr' ? 'Voir les Actualités' : 'View News'}
@@ -155,21 +155,21 @@ export default function OffresEmploiStagesPage() {
                 {/* Info Cards */}
                 <div className="max-w-4xl mx-auto">
                   <div className="grid md:grid-cols-2 gap-6 mt-12">
-                    <div className="bg-gradient-to-br from-[#1589FF]/10 to-[#1589FF]/10 rounded-xl p-6 border border-[#1589FF]/20">
+                    <div className="bg-gradient-to-br from-[#00CED1]/10 to-[#00CED1]/10 rounded-xl p-6 border border-[#00CED1]/20">
                       <h3 className="text-xl font-bold text-gray-900 mb-3">
                         {language === 'fr' ? 'Pourquoi nous rejoindre ?' : 'Why join us?'}
                       </h3>
                       <ul className="space-y-2 text-gray-700">
                         <li className="flex items-start gap-2">
-                          <ChevronRight className="w-5 h-5 text-[#2916F5] flex-shrink-0 mt-0.5" />
+                          <ChevronRight className="w-5 h-5 text-[#0047AB] flex-shrink-0 mt-0.5" />
                           <span>{language === 'fr' ? 'Environnement de travail moderne et équipé' : 'Modern and well-equipped work environment'}</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <ChevronRight className="w-5 h-5 text-[#2916F5] flex-shrink-0 mt-0.5" />
+                          <ChevronRight className="w-5 h-5 text-[#0047AB] flex-shrink-0 mt-0.5" />
                           <span>{language === 'fr' ? 'Équipe passionnée et professionnelle' : 'Passionate and professional team'}</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <ChevronRight className="w-5 h-5 text-[#2916F5] flex-shrink-0 mt-0.5" />
+                          <ChevronRight className="w-5 h-5 text-[#0047AB] flex-shrink-0 mt-0.5" />
                           <span>{language === 'fr' ? 'Opportunités de formation continue' : 'Continuous training opportunities'}</span>
                         </li>
                       </ul>
@@ -181,15 +181,15 @@ export default function OffresEmploiStagesPage() {
                       </h3>
                       <ul className="space-y-2 text-gray-700">
                         <li className="flex items-start gap-2">
-                          <ChevronRight className="w-5 h-5 text-[#2916F5] flex-shrink-0 mt-0.5" />
+                          <ChevronRight className="w-5 h-5 text-[#0047AB] flex-shrink-0 mt-0.5" />
                           <span>{language === 'fr' ? 'Envoyez votre CV et lettre de motivation' : 'Send your CV and cover letter'}</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <ChevronRight className="w-5 h-5 text-[#2916F5] flex-shrink-0 mt-0.5" />
+                          <ChevronRight className="w-5 h-5 text-[#0047AB] flex-shrink-0 mt-0.5" />
                           <span>{language === 'fr' ? 'Nous vous contacterons pour un entretien' : 'We will contact you for an interview'}</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <ChevronRight className="w-5 h-5 text-[#2916F5] flex-shrink-0 mt-0.5" />
+                          <ChevronRight className="w-5 h-5 text-[#0047AB] flex-shrink-0 mt-0.5" />
                           <span>{language === 'fr' ? 'Réponse sous 2 semaines maximum' : 'Response within 2 weeks maximum'}</span>
                         </li>
                       </ul>
@@ -204,21 +204,21 @@ export default function OffresEmploiStagesPage() {
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                       <div className="flex-1">
                         <div className="flex items-start gap-4">
-                          <div className="w-14 h-14 bg-gradient-to-br from-[#2916F5] to-[#157DEC] rounded-xl flex items-center justify-center flex-shrink-0">
+                          <div className="w-14 h-14 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-xl flex items-center justify-center flex-shrink-0">
                             <Briefcase className="w-7 h-7 text-white" />
                           </div>
                           <div>
                             <h3 className="text-2xl font-bold text-gray-900 mb-2">{job.title}</h3>
                             <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-3">
                               <div className="flex items-center gap-2">
-                                <MapPin className="w-4 h-4 text-[#2916F5]" />
+                                <MapPin className="w-4 h-4 text-[#0047AB]" />
                                 {job.location}
                               </div>
                               <div className="flex items-center gap-2">
-                                <Calendar className="w-4 h-4 text-[#2916F5]" />
+                                <Calendar className="w-4 h-4 text-[#0047AB]" />
                                 {job.date}
                               </div>
-                              <span className="bg-[#2916F5]/10 text-[#2916F5] px-3 py-1 rounded-full font-medium">
+                              <span className="bg-[#0047AB]/10 text-[#0047AB] px-3 py-1 rounded-full font-medium">
                                 {job.type}
                               </span>
                             </div>
@@ -233,7 +233,7 @@ export default function OffresEmploiStagesPage() {
                       </div>
                       <Link
                         href="/signup"
-                        className="inline-flex items-center justify-center gap-2 bg-[#2916F5] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#157DEC] transition-all hover:scale-105 shadow-lg whitespace-nowrap"
+                        className="inline-flex items-center justify-center gap-2 bg-[#0047AB] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#0080FF] transition-all hover:scale-105 shadow-lg whitespace-nowrap"
                       >
                         {language === 'fr' ? 'Postuler' : 'Apply'}
                         <ChevronRight className="w-5 h-5" />

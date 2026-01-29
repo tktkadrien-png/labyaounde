@@ -166,7 +166,7 @@ export default function JobOffersAdmin() {
           <div className="mb-8">
             <Link
               href="/admin-dashboard"
-              className="inline-flex items-center gap-2 text-[#2916F5] hover:text-[#157DEC] mb-4"
+              className="inline-flex items-center gap-2 text-[#0047AB] hover:text-[#0080FF] mb-4"
             >
               <ArrowLeft className="w-5 h-5" />
               Retour au tableau de bord
@@ -174,14 +174,14 @@ export default function JobOffersAdmin() {
             <div className="flex justify-between items-center">
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
-                  <Briefcase className="w-8 h-8 text-[#2916F5]" />
+                  <Briefcase className="w-8 h-8 text-[#0047AB]" />
                   Gestion des Offres d'Emploi
                 </h1>
                 <p className="text-gray-600 mt-2">Créer et gérer les offres d'emploi et stages</p>
               </div>
               <button
                 onClick={() => setShowForm(!showForm)}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-[#2916F5] to-[#157DEC] text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl transition-all"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-[#0047AB] to-[#0080FF] text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl transition-all"
               >
                 {showForm ? <X className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
                 {showForm ? 'Annuler' : 'Nouvelle Offre'}
@@ -206,7 +206,7 @@ export default function JobOffersAdmin() {
                       required
                       value={formData.title}
                       onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2916F5] focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0047AB] focus:border-transparent"
                       placeholder="Ex: Biologiste Médical"
                     />
                   </div>
@@ -220,7 +220,7 @@ export default function JobOffersAdmin() {
                       required
                       value={formData.location}
                       onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2916F5] focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0047AB] focus:border-transparent"
                       placeholder="Ex: Yaoundé, Cameroun"
                     />
                   </div>
@@ -233,7 +233,7 @@ export default function JobOffersAdmin() {
                       required
                       value={formData.type}
                       onChange={(e) => setFormData({ ...formData, type: e.target.value as any })}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2916F5] focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0047AB] focus:border-transparent"
                     >
                       <option value="CDI">CDI</option>
                       <option value="CDD">CDD</option>
@@ -251,7 +251,7 @@ export default function JobOffersAdmin() {
                       required
                       value={formData.date}
                       onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2916F5] focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0047AB] focus:border-transparent"
                       placeholder="Ex: Décembre 2025"
                     />
                   </div>
@@ -266,7 +266,7 @@ export default function JobOffersAdmin() {
                     rows={4}
                     value={formData.description}
                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2916F5] focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0047AB] focus:border-transparent"
                     placeholder="Description du poste..."
                   />
                 </div>
@@ -279,7 +279,7 @@ export default function JobOffersAdmin() {
                     rows={3}
                     value={formData.requirements}
                     onChange={(e) => setFormData({ ...formData, requirements: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2916F5] focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0047AB] focus:border-transparent"
                     placeholder="Compétences et qualifications requises..."
                   />
                 </div>
@@ -290,7 +290,7 @@ export default function JobOffersAdmin() {
                     id="is_published"
                     checked={formData.is_published}
                     onChange={(e) => setFormData({ ...formData, is_published: e.target.checked })}
-                    className="w-5 h-5 text-[#2916F5] rounded focus:ring-2 focus:ring-[#2916F5]"
+                    className="w-5 h-5 text-[#0047AB] rounded focus:ring-2 focus:ring-[#0047AB]"
                   />
                   <label htmlFor="is_published" className="text-sm font-semibold text-gray-700">
                     Publier immédiatement
@@ -300,7 +300,7 @@ export default function JobOffersAdmin() {
                 <div className="flex gap-4">
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-2 bg-gradient-to-r from-[#2916F5] to-[#157DEC] text-white px-8 py-3 rounded-xl font-semibold hover:shadow-xl transition-all"
+                    className="inline-flex items-center gap-2 bg-gradient-to-r from-[#0047AB] to-[#0080FF] text-white px-8 py-3 rounded-xl font-semibold hover:shadow-xl transition-all"
                   >
                     <Save className="w-5 h-5" />
                     {editingOffer ? 'Mettre à jour' : 'Créer'}
@@ -321,7 +321,7 @@ export default function JobOffersAdmin() {
           <div className="space-y-4">
             {loading ? (
               <div className="text-center py-12">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#2916F5] mx-auto"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0047AB] mx-auto"></div>
               </div>
             ) : jobOffers.length === 0 ? (
               <div className="bg-white rounded-2xl p-12 text-center">
@@ -343,7 +343,7 @@ export default function JobOffersAdmin() {
                         }`}>
                           {offer.is_published ? 'Publié' : 'Brouillon'}
                         </span>
-                        <span className="bg-[#2916F5]/10 text-[#2916F5] px-3 py-1 rounded-full text-xs font-semibold">
+                        <span className="bg-[#0047AB]/10 text-[#0047AB] px-3 py-1 rounded-full text-xs font-semibold">
                           {offer.type}
                         </span>
                       </div>
@@ -370,7 +370,7 @@ export default function JobOffersAdmin() {
                         className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
                         title="Modifier"
                       >
-                        <Edit className="w-5 h-5 text-[#2916F5]" />
+                        <Edit className="w-5 h-5 text-[#0047AB]" />
                       </button>
                       <button
                         onClick={() => handleDelete(offer.id)}

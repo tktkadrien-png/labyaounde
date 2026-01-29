@@ -200,7 +200,7 @@ export default function QuickReviewPopup({ isOpen, onClose }: QuickReviewPopupPr
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
                   placeholder={currentContent.commentPlaceholder}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2916F5] focus:border-transparent transition-all resize-none text-sm"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0047AB] focus:border-transparent transition-all resize-none text-sm"
                 />
               </div>
 
@@ -209,7 +209,7 @@ export default function QuickReviewPopup({ isOpen, onClose }: QuickReviewPopupPr
                 <button
                   type="submit"
                   disabled={loading || rating === 0}
-                  className="flex-1 flex justify-center items-center gap-2 py-3 px-4 bg-[#2916F5] text-white rounded-xl hover:bg-[#157DEC] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2916F5] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-semibold text-sm shadow-lg hover:shadow-xl"
+                  className="flex-1 flex justify-center items-center gap-2 py-3 px-4 bg-[#0047AB] text-white rounded-xl hover:bg-[#0080FF] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0047AB] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-semibold text-sm shadow-lg hover:shadow-xl"
                 >
                   {loading ? (
                     <>
@@ -230,7 +230,7 @@ export default function QuickReviewPopup({ isOpen, onClose }: QuickReviewPopupPr
                 <button
                   type="button"
                   onClick={handleDetailedReview}
-                  className="text-sm text-[#2916F5] hover:text-[#157DEC] font-medium transition-colors"
+                  className="text-sm text-[#0047AB] hover:text-[#0080FF] font-medium transition-colors"
                 >
                   {currentContent.detailedButton}
                 </button>

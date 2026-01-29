@@ -30,13 +30,13 @@ const Newsletter = () => {
           className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#87CEEB]/90 via-[#00BFFF]/85 to-[#1E90FF]/90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#ADD8E6]/90 via-[#0047AB]/85 to-[#0080FF]/90" />
       </div>
 
       <div className="relative z-10 container mx-auto px-4">
         <div className="max-w-xl mx-auto">
           {/* Icon */}
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#1589FF]/30 to-[#2916F5]/20 backdrop-blur-md rounded-2xl mb-8 border border-white/10 shadow-xl">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#00CED1]/30 to-[#0047AB]/20 backdrop-blur-md rounded-2xl mb-8 border border-white/10 shadow-xl">
             <Bell className="w-10 h-10 text-white" />
           </div>
 
@@ -63,20 +63,20 @@ const Newsletter = () => {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="relative group">
-                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40 group-focus-within:text-[#1589FF] transition-colors" />
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40 group-focus-within:text-[#00CED1] transition-colors" />
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Votre adresse email"
                     required
-                    className="w-full h-14 pl-12 pr-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#1589FF]/50 focus:border-[#1589FF]/50 focus:bg-white/15 transition-all"
+                    className="w-full h-14 pl-12 pr-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#00CED1]/50 focus:border-[#00CED1]/50 focus:bg-white/15 transition-all"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-[#1589FF] to-[#2916F5] hover:from-[#1E90FF] hover:to-[#1589FF] text-white font-semibold py-4 px-6 rounded-xl text-base transition-all duration-300 shadow-lg shadow-[#1589FF]/25 hover:shadow-xl hover:shadow-[#1589FF]/30 hover:scale-[1.02] flex items-center justify-center gap-3"
+                  className="w-full bg-gradient-to-r from-[#00CED1] to-[#0047AB] hover:from-[#0080FF] hover:to-[#00CED1] text-white font-semibold py-4 px-6 rounded-xl text-base transition-all duration-300 shadow-lg shadow-[#0047AB]/25 hover:shadow-xl hover:shadow-[#0047AB]/30 hover:scale-[1.02] flex items-center justify-center gap-3"
                 >
                   <span>S&apos;abonner</span>
                   <Send size={18} />

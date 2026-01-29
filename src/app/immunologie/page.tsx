@@ -43,7 +43,7 @@ export default function ImmunologiePage() {
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-                Immunologie & Sérologie
+                Immunologie Sérologie Infectieuse
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-6 sm:mb-8 leading-relaxed">
                 Plateforme technique automatisée pour analyses immunologiques complètes
@@ -224,11 +224,55 @@ export default function ImmunologiePage() {
 
                 <div className="space-y-6">
                   <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#7C3AED]">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Hépatites Virales</h3>
+                    <ul className="space-y-2 text-gray-600 text-sm sm:text-base">
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] mt-2 flex-shrink-0"></div>
+                        <span><strong>Hépatite A:</strong> IgM anti-VHA, IgG anti-VHA</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] mt-2 flex-shrink-0"></div>
+                        <span><strong>Hépatite B:</strong> AgHBs, Anti-HBs, Anti-HBc, AgHBe, Anti-HBe</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] mt-2 flex-shrink-0"></div>
+                        <span><strong>Hépatite C:</strong> Anti-VHC, Charge virale VHC</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] mt-2 flex-shrink-0"></div>
+                        <span><strong>Hépatite D & E:</strong> Anti-VHD, Anti-VHE</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#7C3AED]">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Fièvre Typhoïde & Infections Bactériennes</h3>
+                    <ul className="space-y-2 text-gray-600 text-sm sm:text-base">
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] mt-2 flex-shrink-0"></div>
+                        <span><strong>Test de Widal:</strong> Détection anticorps anti-Salmonella typhi (O et H)</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] mt-2 flex-shrink-0"></div>
+                        <span><strong>Syphilis:</strong> TPHA, VDRL, FTA-ABS</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] mt-2 flex-shrink-0"></div>
+                        <span><strong>Helicobacter pylori:</strong> Sérologie et test respiratoire</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] mt-2 flex-shrink-0"></div>
+                        <span><strong>Autres:</strong> ASLO, Mycoplasma, Chlamydia</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#7C3AED]">
                     <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Sérologies Virales</h3>
                     <ul className="space-y-2 text-gray-600 text-sm sm:text-base">
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] mt-2 flex-shrink-0"></div>
-                        <span>VIH 1 & 2, Hépatites A, B, C</span>
+                        <span>VIH 1 & 2 (Ag/Ac combiné)</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] mt-2 flex-shrink-0"></div>
@@ -241,28 +285,6 @@ export default function ImmunologiePage() {
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] mt-2 flex-shrink-0"></div>
                         <span>COVID-19 (anticorps IgG/IgM)</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#7C3AED]">
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Sérologies Bactériennes</h3>
-                    <ul className="space-y-2 text-gray-600 text-sm sm:text-base">
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] mt-2 flex-shrink-0"></div>
-                        <span>Syphilis (TPHA, VDRL)</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] mt-2 flex-shrink-0"></div>
-                        <span>Helicobacter pylori</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] mt-2 flex-shrink-0"></div>
-                        <span>Mycoplasma pneumoniae</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] mt-2 flex-shrink-0"></div>
-                        <span>ASLO, Widal et Félix</span>
                       </li>
                     </ul>
                   </div>

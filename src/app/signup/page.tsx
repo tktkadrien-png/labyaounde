@@ -212,11 +212,11 @@ export default function SignupPage() {
     <>
       <TopNavigationBar />
       <MainNavigation />
-      <main className="min-h-screen bg-gradient-to-br from-[#2916F5] via-[#157DEC] to-[#0909FF] flex items-center justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <main className="min-h-screen bg-gradient-to-br from-[#0047AB] via-[#0080FF] to-[#0909FF] flex items-center justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         {/* Animated background circles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#1589FF]/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#2916F5]/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#00CED1]/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#0047AB]/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
         </div>
 
         <div className="max-w-md w-full relative z-10">
@@ -227,7 +227,7 @@ export default function SignupPage() {
               <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#FE5000] to-[#CC4000] rounded-2xl mb-4 shadow-xl transform transition-transform hover:scale-110 hover:rotate-6 duration-300">
                 <UserPlus className="w-10 h-10 text-white" />
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#2916F5] to-[#157DEC] bg-clip-text text-transparent mb-2">
+              <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#0047AB] to-[#0080FF] bg-clip-text text-transparent mb-2">
                 {currentContent.title}
               </h2>
               <p className="text-base text-gray-600">
@@ -254,7 +254,7 @@ export default function SignupPage() {
               {/* Full Name */}
               <div className="relative">
                 <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none z-10">
-                  <User className={`h-5 w-5 transition-colors duration-200 ${nameFocused || fullName ? 'text-[#2916F5]' : 'text-gray-400'}`} />
+                  <User className={`h-5 w-5 transition-colors duration-200 ${nameFocused || fullName ? 'text-[#0047AB]' : 'text-gray-400'}`} />
                 </div>
                 <input
                   id="fullName"
@@ -268,13 +268,13 @@ export default function SignupPage() {
                   onFocus={() => setNameFocused(true)}
                   onBlur={() => setNameFocused(false)}
                   placeholder=" "
-                  className="peer block w-full pl-12 pr-4 py-4 text-base border-2 border-gray-200 rounded-xl focus:ring-0 focus:border-[#2916F5] transition-all duration-300 placeholder-transparent bg-white"
+                  className="peer block w-full pl-12 pr-4 py-4 text-base border-2 border-gray-200 rounded-xl focus:ring-0 focus:border-[#0047AB] transition-all duration-300 placeholder-transparent bg-white"
                 />
                 <label
                   htmlFor="fullName"
                   className={`absolute left-12 transition-all duration-200 pointer-events-none ${
                     nameFocused || fullName
-                      ? '-top-2.5 left-3 text-xs bg-white px-2 text-[#2916F5] font-semibold'
+                      ? '-top-2.5 left-3 text-xs bg-white px-2 text-[#0047AB] font-semibold'
                       : 'top-4 text-base text-gray-500'
                   }`}
                 >
@@ -285,7 +285,7 @@ export default function SignupPage() {
               {/* Email */}
               <div className="relative">
                 <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none z-10">
-                  <Mail className={`h-5 w-5 transition-colors duration-200 ${emailFocused || email ? 'text-[#2916F5]' : 'text-gray-400'}`} />
+                  <Mail className={`h-5 w-5 transition-colors duration-200 ${emailFocused || email ? 'text-[#0047AB]' : 'text-gray-400'}`} />
                 </div>
                 <input
                   id="email"
@@ -299,13 +299,13 @@ export default function SignupPage() {
                   onFocus={() => setEmailFocused(true)}
                   onBlur={() => setEmailFocused(false)}
                   placeholder=" "
-                  className="peer block w-full pl-12 pr-4 py-4 text-base border-2 border-gray-200 rounded-xl focus:ring-0 focus:border-[#2916F5] transition-all duration-300 placeholder-transparent bg-white"
+                  className="peer block w-full pl-12 pr-4 py-4 text-base border-2 border-gray-200 rounded-xl focus:ring-0 focus:border-[#0047AB] transition-all duration-300 placeholder-transparent bg-white"
                 />
                 <label
                   htmlFor="email"
                   className={`absolute left-12 transition-all duration-200 pointer-events-none ${
                     emailFocused || email
-                      ? '-top-2.5 left-3 text-xs bg-white px-2 text-[#2916F5] font-semibold'
+                      ? '-top-2.5 left-3 text-xs bg-white px-2 text-[#0047AB] font-semibold'
                       : 'top-4 text-base text-gray-500'
                   }`}
                 >
@@ -316,7 +316,7 @@ export default function SignupPage() {
               {/* Password */}
               <div className="relative">
                 <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none z-10">
-                  <Lock className={`h-5 w-5 transition-colors duration-200 ${passwordFocused || password ? 'text-[#2916F5]' : 'text-gray-400'}`} />
+                  <Lock className={`h-5 w-5 transition-colors duration-200 ${passwordFocused || password ? 'text-[#0047AB]' : 'text-gray-400'}`} />
                 </div>
                 <input
                   id="password"
@@ -330,13 +330,13 @@ export default function SignupPage() {
                   onFocus={() => setPasswordFocused(true)}
                   onBlur={() => setPasswordFocused(false)}
                   placeholder=" "
-                  className="peer block w-full pl-12 pr-12 py-4 text-base border-2 border-gray-200 rounded-xl focus:ring-0 focus:border-[#2916F5] transition-all duration-300 placeholder-transparent bg-white"
+                  className="peer block w-full pl-12 pr-12 py-4 text-base border-2 border-gray-200 rounded-xl focus:ring-0 focus:border-[#0047AB] transition-all duration-300 placeholder-transparent bg-white"
                 />
                 <label
                   htmlFor="password"
                   className={`absolute left-12 transition-all duration-200 pointer-events-none ${
                     passwordFocused || password
-                      ? '-top-2.5 left-3 text-xs bg-white px-2 text-[#2916F5] font-semibold'
+                      ? '-top-2.5 left-3 text-xs bg-white px-2 text-[#0047AB] font-semibold'
                       : 'top-4 text-base text-gray-500'
                   }`}
                 >
@@ -345,7 +345,7 @@ export default function SignupPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#2916F5] transition-colors z-10"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#0047AB] transition-colors z-10"
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -393,7 +393,7 @@ export default function SignupPage() {
               {/* Confirm Password */}
               <div className="relative">
                 <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none z-10">
-                  <Lock className={`h-5 w-5 transition-colors duration-200 ${confirmFocused || confirmPassword ? 'text-[#2916F5]' : 'text-gray-400'}`} />
+                  <Lock className={`h-5 w-5 transition-colors duration-200 ${confirmFocused || confirmPassword ? 'text-[#0047AB]' : 'text-gray-400'}`} />
                 </div>
                 <input
                   id="confirmPassword"
@@ -412,14 +412,14 @@ export default function SignupPage() {
                       ? 'border-red-300 focus:border-red-500'
                       : confirmPassword && password === confirmPassword
                       ? 'border-green-300 focus:border-green-500'
-                      : 'border-gray-200 focus:border-[#2916F5]'
+                      : 'border-gray-200 focus:border-[#0047AB]'
                   }`}
                 />
                 <label
                   htmlFor="confirmPassword"
                   className={`absolute left-12 transition-all duration-200 pointer-events-none ${
                     confirmFocused || confirmPassword
-                      ? '-top-2.5 left-3 text-xs bg-white px-2 text-[#2916F5] font-semibold'
+                      ? '-top-2.5 left-3 text-xs bg-white px-2 text-[#0047AB] font-semibold'
                       : 'top-4 text-base text-gray-500'
                   }`}
                 >
@@ -428,7 +428,7 @@ export default function SignupPage() {
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#2916F5] transition-colors z-10"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#0047AB] transition-colors z-10"
                 >
                   {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -446,7 +446,7 @@ export default function SignupPage() {
                     }}
                     className="sr-only peer"
                   />
-                  <div className="w-5 h-5 border-2 border-gray-300 rounded peer-checked:bg-[#2916F5] peer-checked:border-[#2916F5] transition-all duration-200 flex items-center justify-center">
+                  <div className="w-5 h-5 border-2 border-gray-300 rounded peer-checked:bg-[#0047AB] peer-checked:border-[#0047AB] transition-all duration-200 flex items-center justify-center">
                     <svg className={`w-3 h-3 text-white transition-opacity duration-200 ${acceptTerms ? 'opacity-100' : 'opacity-0'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7"/>
                     </svg>
@@ -461,7 +461,7 @@ export default function SignupPage() {
               <button
                 type="submit"
                 disabled={loading || !isPasswordStrong}
-                className="relative w-full overflow-hidden group py-4 px-6 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-[#2916F5] via-[#157DEC] to-[#0909FF] hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-[1.02]"
+                className="relative w-full overflow-hidden group py-4 px-6 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-[#0047AB] via-[#0080FF] to-[#0909FF] hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-[1.02]"
               >
                 {/* Animated light effect */}
                 <div className="absolute inset-0 w-full h-full">
@@ -488,7 +488,7 @@ export default function SignupPage() {
             <div className="text-center pt-4 border-t border-gray-200">
               <p className="text-sm text-gray-600">
                 {currentContent.hasAccount}{" "}
-                <Link href="/login" className="font-semibold text-[#2916F5] hover:text-[#157DEC] transition-colors hover:underline">
+                <Link href="/login" className="font-semibold text-[#0047AB] hover:text-[#0080FF] transition-colors hover:underline">
                   {currentContent.loginLink}
                 </Link>
               </p>

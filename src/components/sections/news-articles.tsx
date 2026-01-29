@@ -65,8 +65,8 @@ const ArticleCard = ({ article }: { article: Article }) => (
       fill
       className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-110"
     />
-    <div className="absolute inset-0 bg-gradient-to-t from-[#2916F5]/80 via-[#2916F5]/20 to-transparent"></div>
-    <div className="absolute top-4 left-4 z-10 bg-#1589FF/100 text-white text-xs font-bold py-1.5 px-3 rounded-md shadow-md">
+    <div className="absolute inset-0 bg-gradient-to-t from-[#0047AB]/80 via-[#0047AB]/20 to-transparent"></div>
+    <div className="absolute top-4 left-4 z-10 bg-#00CED1/100 text-white text-xs font-bold py-1.5 px-3 rounded-md shadow-md">
       LabYaounde
     </div>
     <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -82,10 +82,10 @@ const NewsArticles = () => {
     <section ref={ref as React.RefObject<HTMLElement>} className="bg-gray-50 py-20 lg:py-24">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className={`text-center mb-14 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-block bg-[#1589FF]/20 text-[#0909FF] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+          <span className="inline-block bg-[#00CED1]/20 text-[#0909FF] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
             Dernières nouvelles
           </span>
-          <h2 className="text-3xl lg:text-4xl font-bold text-[#2916F5]">
+          <h2 className="text-3xl lg:text-4xl font-bold text-[#0047AB]">
             Actualités
           </h2>
           <p className="mt-3 text-gray-600 max-w-xl mx-auto">
@@ -106,7 +106,7 @@ const NewsArticles = () => {
         <div className="mt-14 text-center">
           <a
             href="/carrieres/actualites"
-            className="inline-flex items-center justify-center gap-2 bg-#1589FF/100 hover:bg-[#2916F5] text-white font-semibold py-3.5 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
+            className="inline-flex items-center justify-center gap-2 bg-#00CED1/100 hover:bg-[#0047AB] text-white font-semibold py-3.5 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
           >
             Voir toutes nos actualités
             <ArrowRight size={20} className="transition-transform duration-300 group-hover:translate-x-1" />

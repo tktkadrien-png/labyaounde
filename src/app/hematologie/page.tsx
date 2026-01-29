@@ -6,7 +6,7 @@ import Link from "next/link";
 import TopNavigationBar from "@/components/sections/top-navigation-bar";
 import MainNavigation from "@/components/sections/main-navigation";
 import Footer from "@/components/sections/footer";
-import { Droplet, Activity, Clock, Shield, ChevronRight, FlaskConical } from "lucide-react";
+import { Droplet, Activity, Clock, Shield, ChevronRight, FlaskConical, Heart } from "lucide-react";
 
 export default function HematologiePage() {
   return (
@@ -193,6 +193,20 @@ export default function HematologiePage() {
                       <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Tests de Thrombophilie</h3>
                       <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
                         Recherche de mutations génétiques, déficits en protéine C, S et antithrombine III
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#DC2626] to-[#B91C1C] rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Heart className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Transfusion Sanguine</h3>
+                      <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                        Bilan pré-transfusionnel complet, compatibilité croisée, suivi post-transfusionnel et recherche d'anticorps anti-érythrocytaires
                       </p>
                     </div>
                   </div>
