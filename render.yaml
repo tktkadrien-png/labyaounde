@@ -2,7 +2,7 @@ services:
   - type: web
     name: labyaounde
     env: static
-    buildCommand: npm install && npm run build
+    buildCommand: NEXT_PUBLIC_SUPABASE_URL=https://aqppeaqlvtjrpztzoswk.supabase.co NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFxcHBlYXFsdnRqcnB6dHpvc3drIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQwNjgwMDUsImV4cCI6MjA3OTY0NDAwNX0.oXEmY-ECKnr2scwy6MzUc8AUv-Unohc21FZ_DBqfsfc npm install && npm run build
     staticPublishPath: ./out
     envVars:
       - key: NODE_VERSION
