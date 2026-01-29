@@ -122,12 +122,12 @@ We are committed to meeting your expectations with rigor and professionalism, an
               }`}
             >
               {/* Title */}
-              <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 tracking-tight drop-shadow-lg">
+              <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold text-[#0047AB] mb-4 tracking-tight drop-shadow-lg">
                 {currentContent.title}
               </h1>
 
               {/* Subtitle */}
-              <p className="text-xl lg:text-2xl text-white font-light mb-8 drop-shadow-md">
+              <p className="text-xl lg:text-2xl text-[#0047AB] font-semibold mb-8 drop-shadow-md">
                 {currentContent.subtitle}
               </p>
 
@@ -135,7 +135,7 @@ We are committed to meeting your expectations with rigor and professionalism, an
               <div className="w-32 h-1.5 bg-gradient-to-r from-[#FE5000] to-[#CC4000] rounded-full mb-10"></div>
 
               {/* Description */}
-              <p className="text-lg lg:text-xl text-white/95 leading-relaxed max-w-3xl mb-12 drop-shadow-md">
+              <p className="text-lg lg:text-xl text-[#0047AB]/90 leading-relaxed max-w-3xl mb-12 drop-shadow-md font-medium">
                 {currentContent.description}
               </p>
 

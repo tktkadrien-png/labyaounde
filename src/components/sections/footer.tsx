@@ -149,7 +149,7 @@ const Footer = () => {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0047AB]/95 via-[#0080FF]/90 to-[#0909FF]/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#4A90D9]/90 via-[#5BA3E0]/85 to-[#6BB8E8]/90"></div>
         </div>
 
         {/* Content */}
@@ -263,12 +263,12 @@ const Footer = () => {
                     </a>
 
                     <a
-                      href="tel:+237600000000"
-                      className="flex items-center gap-3 text-white/80 hover:text-[#FE5000] transition-colors"
+                      href="tel:+237242046850"
+                      className="flex items-center gap-3 text-white hover:text-[#00CED1] transition-colors"
                     >
-                      <Phone size={20} className="text-[#FE5000] flex-shrink-0" />
+                      <Phone size={20} className="text-[#00CED1] flex-shrink-0" />
                       <div>
-                        <p className="text-sm font-medium">+237 6XX XX XX XX</p>
+                        <p className="text-lg font-bold text-[#00CED1]">(+237) 242 04 68 50</p>
                         <p className="text-xs text-white/60">Appelez-nous</p>
                       </div>
                     </a>

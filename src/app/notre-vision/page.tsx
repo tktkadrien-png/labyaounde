@@ -28,7 +28,7 @@ export default function NotreVisionPage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0047AB]/95 via-[#0047AB]/85 to-[#0047AB]/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#5BA3E0]/90 via-[#6BB8E8]/85 to-[#87CEEB]/80"></div>
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
@@ -125,7 +125,7 @@ export default function NotreVisionPage() {
               {/* First Objective */}
               <div className="bg-white rounded-2xl p-8 sm:p-10 shadow-2xl border border-gray-100 hover:shadow-3xl transition-all duration-300">
                 <div className="flex items-start gap-6 mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#5BA3E0] to-[#87CEEB] rounded-2xl flex items-center justify-center flex-shrink-0">
                     <Microscope className="w-8 h-8 text-white" />
                   </div>
                   <div>
@@ -166,7 +166,7 @@ export default function NotreVisionPage() {
               {/* Second Objective */}
               <div className="bg-white rounded-2xl p-8 sm:p-10 shadow-2xl border border-gray-100 hover:shadow-3xl transition-all duration-300">
                 <div className="flex items-start gap-6 mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#5BA3E0] to-[#87CEEB] rounded-2xl flex items-center justify-center flex-shrink-0">
                     <HeartPulse className="w-8 h-8 text-white" />
                   </div>
                   <div>

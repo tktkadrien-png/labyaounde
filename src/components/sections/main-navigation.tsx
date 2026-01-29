@@ -164,7 +164,7 @@ const MainNavigation = () => {
                 <MegaMenuItemPro trigger={language === 'fr' ? 'Assurance Qualité' : 'Quality Assurance'} professionalsMenu={professionalsMenu} />
                 <MegaMenuItem trigger={t('patients')} columns={patientsMenu} itemsInRow={1} />
                 <li className="relative">
-                  <Link href="/carrieres/offres-emploi-stages" className="inline-flex h-10 items-center justify-center px-4 py-2 text-base font-[500] text-[#333] transition-colors hover:text-[#0047AB]">
+                  <Link href="/carrieres/offres-emploi-stages" className="inline-flex h-10 items-center justify-center px-4 py-2 text-base font-bold text-black transition-colors hover:text-[#0047AB]">
                     {t('careers')}
                   </Link>
                 </li>
@@ -327,7 +327,7 @@ const MegaMenuItem = ({ trigger, columns, itemsInRow }: { trigger: string, colum
   
   return (
     <li className="relative group">
-      <button className="inline-flex h-10 items-center justify-center px-4 py-2 text-base font-[500] text-[#333] transition-colors hover:text-[#0047AB]">
+      <button className="inline-flex h-10 items-center justify-center px-4 py-2 text-base font-bold text-black transition-colors hover:text-[#0047AB]">
         {trigger}
       </button>
       
@@ -374,7 +374,7 @@ const MegaMenuItemPro = ({ trigger, professionalsMenu }: { trigger: string, prof
 
   return (
     <li className="relative group">
-      <button className="inline-flex h-10 items-center justify-center px-4 py-2 text-base font-[500] text-[#333] transition-colors hover:text-[#0047AB]">
+      <button className="inline-flex h-10 items-center justify-center px-4 py-2 text-base font-bold text-black transition-colors hover:text-[#0047AB]">
         {trigger}
       </button>
 

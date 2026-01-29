@@ -63,7 +63,7 @@ export default function BiochimieClinikPage() {
         </section>
 
         {/* Technologies Section */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#e0f2fe] via-[#dbeafe] to-[#eff6ff]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div>
@@ -129,7 +129,7 @@ export default function BiochimieClinikPage() {
         </section>
 
         {/* Domaines d'Expertise */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#f0f9ff] via-[#e0f2fe] to-[#dbeafe]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
@@ -179,7 +179,7 @@ export default function BiochimieClinikPage() {
         </section>
 
         {/* Analyses Spécialisées */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#eff6ff] via-[#e0f2fe] to-[#f0f9ff]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div className="order-2 lg:order-1">
@@ -238,7 +238,7 @@ export default function BiochimieClinikPage() {
         </section>
 
         {/* Qualité et Traçabilité */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#0047AB] to-[#0080FF] text-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#5BA3E0] via-[#6BB8E8] to-[#87CEEB] text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div>
@@ -308,7 +308,7 @@ export default function BiochimieClinikPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#f0f9ff] to-[#e0f2fe]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
               Besoin d'une Analyse en Biochimie Clinique ?

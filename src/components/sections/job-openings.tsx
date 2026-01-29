@@ -1,6 +1,6 @@
 "use client";
 
-import { Users, Microscope, Check, ArrowRight, Briefcase, Globe, Award, Clock } from 'lucide-react';
+import { Users, Microscope, Check, ArrowRight, Briefcase, Award, Clock } from 'lucide-react';
 import { useLanguage } from '@/lib/contents/LanguageContext';
 import { useScrollAnimation } from '@/lib/useScrollAnimation';
 import React from 'react';
@@ -58,7 +58,7 @@ const JobCard = ({
       <div className="mt-auto pt-8">
         <a
           href={ctaLink}
-          className="w-full text-center bg-[#0078BF] text-white font-semibold py-3 rounded-md flex items-center justify-center gap-2 hover:bg-[#005f99] transition-colors"
+          className="w-full text-center bg-[#0047AB] text-white font-bold py-3 rounded-md flex items-center justify-center gap-2 hover:bg-[#003380] transition-colors shadow-lg"
         >
           {ctaText}
           <ArrowRight className="w-5 h-5" />
@@ -98,7 +98,7 @@ export default function JobOpenings() {
   ];
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="bg-gradient-to-br from-[#fef3c7] via-[#fef9c3] to-[#fefce8] py-16">
+    <section ref={ref as React.RefObject<HTMLElement>} className="bg-white py-16">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="text-4xl font-bold text-[#0047AB]">
