@@ -74,7 +74,7 @@ const FloatingReviewWidget = () => {
           </div>
 
           {/* Title */}
-          <h3 className="text-lg font-bold text-[#0047AB] mb-1">
+          <h3 className="text-lg font-bold text-[#0A065D] mb-1">
             {currentContent.title}
           </h3>
 

@@ -42,7 +42,7 @@ const JobCard = ({
             {postCount} {t('positions')}
           </div>
         </div>
-        <h3 className="mt-6 text-2xl font-semibold text-[#0047AB]">
+        <h3 className="mt-6 text-2xl font-semibold text-[#0A065D]">
           {title}
         </h3>
         <p className="mt-2 text-gray-600">{description}</p>
@@ -58,7 +58,7 @@ const JobCard = ({
       <div className="mt-auto pt-8">
         <a
           href={ctaLink}
-          className="w-full text-center bg-[#0047AB] text-white font-bold py-3 rounded-md flex items-center justify-center gap-2 hover:bg-[#003380] transition-colors shadow-lg"
+          className="w-full text-center bg-[#0A065D] text-white font-bold py-3 rounded-md flex items-center justify-center gap-2 hover:bg-[#003380] transition-colors shadow-lg"
         >
           {ctaText}
           <ArrowRight className="w-5 h-5" />
@@ -101,7 +101,7 @@ export default function JobOpenings() {
     <section ref={ref as React.RefObject<HTMLElement>} className="bg-white py-16">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="text-4xl font-bold text-[#0047AB]">
+          <h2 className="text-4xl font-bold text-[#0A065D]">
             {t('jobsTitle')}
           </h2>
           <p className="mt-4 text-lg text-gray-500 max-w-3xl mx-auto">
@@ -122,7 +122,7 @@ export default function JobOpenings() {
         </div>
 
         {/* Expertise Internationale Stats - Restyled */}
-        <div className="mt-16 relative overflow-hidden bg-gradient-to-br from-[#0047AB] via-[#0a5082] to-[#0078BF] py-16 px-8 rounded-3xl shadow-2xl">
+        <div className="mt-16 relative overflow-hidden bg-gradient-to-br from-[#0A065D] via-[#0a5082] to-[#0078BF] py-16 px-8 rounded-3xl shadow-2xl">
           {/* Decorative Background Elements */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 right-0 w-72 h-72 bg-white rounded-full blur-3xl"></div>
@@ -147,7 +147,7 @@ export default function JobOpenings() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
               <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 text-center group hover:bg-white/15 hover:scale-105 transition-all duration-300 shadow-xl">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#00CED1] to-[#0047AB] rounded-2xl mb-4 group-hover:rotate-6 transition-transform duration-300 shadow-lg">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#00CED1] to-[#0A065D] rounded-2xl mb-4 group-hover:rotate-6 transition-transform duration-300 shadow-lg">
                   <Briefcase className="w-8 h-8 text-white" />
                 </div>
                 <p className="text-4xl md:text-5xl font-bold text-white mb-2 group-hover:scale-110 transition-transform duration-300">27+</p>
@@ -176,7 +176,7 @@ export default function JobOpenings() {
         <div className="text-center mt-12">
           <a
             href="#"
-            className="bg-#00CED1/100 hover:bg-[#0047AB] text-white font-semibold py-3.5 px-8 rounded-lg inline-flex items-center justify-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl group"
+            className="bg-#00CED1/100 hover:bg-[#0A065D] text-white font-semibold py-3.5 px-8 rounded-lg inline-flex items-center justify-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl group"
           >
             {t('viewAllOffers')}
             <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />

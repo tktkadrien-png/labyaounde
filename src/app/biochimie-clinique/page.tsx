@@ -25,7 +25,7 @@ export default function BiochimieClinikPage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0047AB]/95 via-[#0047AB]/85 to-[#0047AB]/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0A065D]/95 via-[#0A065D]/85 to-[#0A065D]/70"></div>
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
@@ -67,9 +67,9 @@ export default function BiochimieClinikPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div>
-                <div className="inline-flex items-center gap-2 bg-[#0047AB]/10 px-4 py-2 rounded-full mb-6">
-                  <Microscope className="w-5 h-5 text-[#0047AB]" />
-                  <span className="text-[#0047AB] font-semibold text-sm sm:text-base">Technologies de Pointe</span>
+                <div className="inline-flex items-center gap-2 bg-[#0A065D]/10 px-4 py-2 rounded-full mb-6">
+                  <Microscope className="w-5 h-5 text-[#0A065D]" />
+                  <span className="text-[#0A065D] font-semibold text-sm sm:text-base">Technologies de Pointe</span>
                 </div>
 
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 leading-tight">
@@ -83,23 +83,23 @@ export default function BiochimieClinikPage() {
 
                   <ul className="space-y-3 text-base sm:text-lg">
                     <li className="flex items-start gap-3">
-                      <div className="w-2 h-2 rounded-full bg-[#0047AB] mt-2 flex-shrink-0"></div>
+                      <div className="w-2 h-2 rounded-full bg-[#0A065D] mt-2 flex-shrink-0"></div>
                       <span>Cinétique enzymatique</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="w-2 h-2 rounded-full bg-[#0047AB] mt-2 flex-shrink-0"></div>
+                      <div className="w-2 h-2 rounded-full bg-[#0A065D] mt-2 flex-shrink-0"></div>
                       <span>Colorimétrie</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="w-2 h-2 rounded-full bg-[#0047AB] mt-2 flex-shrink-0"></div>
+                      <div className="w-2 h-2 rounded-full bg-[#0A065D] mt-2 flex-shrink-0"></div>
                       <span>Turbidimétrie et néphélémetrie</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="w-2 h-2 rounded-full bg-[#0047AB] mt-2 flex-shrink-0"></div>
+                      <div className="w-2 h-2 rounded-full bg-[#0A065D] mt-2 flex-shrink-0"></div>
                       <span>Techniques immunoenzymatiques automatisées</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="w-2 h-2 rounded-full bg-[#0047AB] mt-2 flex-shrink-0"></div>
+                      <div className="w-2 h-2 rounded-full bg-[#0A065D] mt-2 flex-shrink-0"></div>
                       <span>Électrophorèse capillaire</span>
                     </li>
                   </ul>
@@ -165,9 +165,9 @@ export default function BiochimieClinikPage() {
               ].map((domain, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#0047AB]/20 hover:-translate-y-1"
+                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#0A065D]/20 hover:-translate-y-1"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-xl flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-xl flex items-center justify-center mb-4">
                     <domain.icon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">{domain.title}</h3>
@@ -194,9 +194,9 @@ export default function BiochimieClinikPage() {
               </div>
 
               <div className="order-1 lg:order-2">
-                <div className="inline-flex items-center gap-2 bg-[#0047AB]/10 px-4 py-2 rounded-full mb-6">
-                  <FlaskConical className="w-5 h-5 text-[#0047AB]" />
-                  <span className="text-[#0047AB] font-semibold text-sm sm:text-base">Analyses Avancées</span>
+                <div className="inline-flex items-center gap-2 bg-[#0A065D]/10 px-4 py-2 rounded-full mb-6">
+                  <FlaskConical className="w-5 h-5 text-[#0A065D]" />
+                  <span className="text-[#0A065D] font-semibold text-sm sm:text-base">Analyses Avancées</span>
                 </div>
 
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 leading-tight">
@@ -204,28 +204,28 @@ export default function BiochimieClinikPage() {
                 </h2>
 
                 <div className="space-y-6">
-                  <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#0047AB]">
+                  <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#0A065D]">
                     <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Vitaminologie</h3>
                     <p className="text-gray-600 text-sm sm:text-base">
                       Dosage complet des vitamines essentielles pour identifier les carences
                     </p>
                   </div>
 
-                  <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#0047AB]">
+                  <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#0A065D]">
                     <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Marqueurs Cardiaques</h3>
                     <p className="text-gray-600 text-sm sm:text-base">
                       Troponines, BNP et autres marqueurs pour le diagnostic cardiaque
                     </p>
                   </div>
 
-                  <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#0047AB]">
+                  <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#0A065D]">
                     <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Variants de l'Hémoglobine</h3>
                     <p className="text-gray-600 text-sm sm:text-base">
                       Dépistage des hémoglobinopathies par électrophorèse capillaire
                     </p>
                   </div>
 
-                  <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#0047AB]">
+                  <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#0A065D]">
                     <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Protéines par Immunofixation</h3>
                     <p className="text-gray-600 text-sm sm:text-base">
                       Identification précise des gammapathies monoclonales
@@ -276,7 +276,7 @@ export default function BiochimieClinikPage() {
                       href="https://www.labtestsonline.fr"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-white text-[#0047AB] px-6 py-3 rounded-lg font-semibold hover:bg-white/90 transition-all"
+                      className="inline-flex items-center gap-2 bg-white text-[#0A065D] px-6 py-3 rounded-lg font-semibold hover:bg-white/90 transition-all"
                     >
                       Visiter LabTests Online
                       <ChevronRight className="w-5 h-5" />
@@ -319,14 +319,14 @@ export default function BiochimieClinikPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/signup"
-                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#0047AB] to-[#0080FF] text-white px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:shadow-xl transition-all hover:scale-105"
+                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#0A065D] to-[#0080FF] text-white px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:shadow-xl transition-all hover:scale-105"
               >
                 Créer un Compte
                 <ChevronRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/#contact"
-                className="inline-flex items-center justify-center gap-2 bg-white text-[#0047AB] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-[#0047AB] hover:bg-[#0047AB] hover:text-white transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-white text-[#0A065D] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-[#0A065D] hover:bg-[#0A065D] hover:text-white transition-all"
               >
                 Nous Contacter
               </Link>

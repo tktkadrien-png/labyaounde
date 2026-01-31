@@ -149,7 +149,7 @@ const Footer = () => {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#4A90D9]/90 via-[#5BA3E0]/85 to-[#6BB8E8]/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1E3A5F]/95 via-[#2C4A6E]/90 to-[#34567A]/95"></div>
         </div>
 
         {/* Content */}
@@ -376,7 +376,7 @@ const Footer = () => {
         <button
           onClick={scrollToTop}
           aria-label="Retour en haut"
-          className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-[#00CED1] to-[#0047AB] text-white flex items-center justify-center shadow-lg hover:shadow-[#00CED1]/40 hover:scale-110 transition-all duration-300"
+          className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-[#00CED1] to-[#0A065D] text-white flex items-center justify-center shadow-lg hover:shadow-[#00CED1]/40 hover:scale-110 transition-all duration-300"
         >
           <ArrowUp size={24} />
         </button>

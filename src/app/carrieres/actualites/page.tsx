@@ -63,7 +63,7 @@ export default function ActualitesPage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0047AB]/95 via-[#0047AB]/85 to-[#0047AB]/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0A065D]/95 via-[#0A065D]/85 to-[#0A065D]/70"></div>
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
@@ -107,7 +107,7 @@ export default function ActualitesPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {loading ? (
               <div className="text-center py-20">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0047AB] mx-auto"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0A065D] mx-auto"></div>
                 <p className="text-gray-600 mt-4">
                   {language === 'fr' ? 'Chargement des actualités...' : 'Loading news...'}
                 </p>
@@ -137,7 +137,7 @@ export default function ActualitesPage() {
                           className="object-cover"
                         />
                         <div className="absolute top-4 left-4">
-                          <span className="bg-[#0047AB] text-white px-3 py-1 rounded-full text-xs font-semibold">
+                          <span className="bg-[#0A065D] text-white px-3 py-1 rounded-full text-xs font-semibold">
                             {item.category}
                           </span>
                         </div>
@@ -150,7 +150,7 @@ export default function ActualitesPage() {
                       </div>
                       <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight">{item.title}</h3>
                       <p className="text-gray-600 leading-relaxed mb-4">{item.excerpt}</p>
-                      <button className="inline-flex items-center gap-2 text-[#0047AB] font-semibold hover:gap-3 transition-all">
+                      <button className="inline-flex items-center gap-2 text-[#0A065D] font-semibold hover:gap-3 transition-all">
                         {language === 'fr' ? 'Lire plus' : 'Read more'}
                         <ChevronRight className="w-4 h-4" />
                       </button>
@@ -165,7 +165,7 @@ export default function ActualitesPage() {
         {/* CTA Section */}
         <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-2xl p-8 sm:p-12 text-white">
+            <div className="bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-2xl p-8 sm:p-12 text-white">
               <Newspaper className="w-16 h-16 mx-auto mb-6" />
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6">
                 {language === 'fr' ? 'Restez connecté' : 'Stay connected'}
@@ -177,7 +177,7 @@ export default function ActualitesPage() {
               </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-white text-[#0047AB] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all hover:scale-105 shadow-lg"
+                className="inline-flex items-center justify-center gap-2 bg-white text-[#0A065D] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all hover:scale-105 shadow-lg"
               >
                 {language === 'fr' ? 'Nous Contacter' : 'Contact Us'}
                 <ChevronRight className="w-5 h-5" />

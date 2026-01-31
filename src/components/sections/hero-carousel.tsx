@@ -110,7 +110,7 @@ export default function HeroCarousel() {
                   className="object-cover object-center scale-105 transition-transform duration-[8000ms] ease-out group-hover:scale-100"
                   priority={index === 0}
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0047AB]/80 via-[#0080FF]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0A065D]/80 via-[#0080FF]/40 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
                 <div className="absolute inset-0 flex items-center">

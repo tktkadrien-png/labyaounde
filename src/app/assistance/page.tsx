@@ -111,7 +111,7 @@ export default function AssistancePage() {
 
       <main className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-[#0047AB] via-[#0080FF] to-[#0909FF] text-white py-20">
+        <section className="bg-gradient-to-br from-[#0A065D] via-[#0080FF] to-[#0909FF] text-white py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Headphones className="w-20 h-20 mx-auto mb-6" />
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">{currentContent.title}</h1>
@@ -129,9 +129,9 @@ export default function AssistancePage() {
                 return (
                   <div
                     key={index}
-                    className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-100 hover:border-[#0047AB] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                    className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-100 hover:border-[#0A065D] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                   >
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-xl flex items-center justify-center mb-6">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-xl flex items-center justify-center mb-6">
                       <Icon className="w-7 h-7 text-white" />
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-3">{section.title}</h3>
@@ -139,14 +139,14 @@ export default function AssistancePage() {
                     <ul className="space-y-2 mb-6">
                       {section.details.map((detail, i) => (
                         <li key={i} className="text-sm text-gray-700 flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 bg-[#0047AB] rounded-full"></div>
+                          <div className="w-1.5 h-1.5 bg-[#0A065D] rounded-full"></div>
                           {detail}
                         </li>
                       ))}
                     </ul>
                     <Link
                       href={section.link}
-                      className="inline-flex items-center gap-2 text-[#0047AB] font-semibold hover:gap-3 transition-all"
+                      className="inline-flex items-center gap-2 text-[#0A065D] font-semibold hover:gap-3 transition-all"
                     >
                       {section.action}
                       <ChevronRight className="w-5 h-5" />
@@ -165,7 +165,7 @@ export default function AssistancePage() {
               {/* Schedule */}
               <div className="bg-gradient-to-br from-[#00CED1]/10 to-[#00CED1]/10 rounded-2xl p-8 border-2 border-[#00CED1]/30">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 bg-[#0047AB] rounded-xl flex items-center justify-center">
+                  <div className="w-12 h-12 bg-[#0A065D] rounded-xl flex items-center justify-center">
                     <Clock className="w-6 h-6 text-white" />
                   </div>
                   <h2 className="text-2xl font-bold text-gray-900">{currentContent.schedule.title}</h2>
@@ -174,7 +174,7 @@ export default function AssistancePage() {
                   {currentContent.schedule.items.map((item, index) => (
                     <div key={index} className="flex justify-between items-center bg-white p-4 rounded-xl">
                       <span className="font-semibold text-gray-900">{item.day}</span>
-                      <span className="text-[#0047AB] font-bold">{item.hours}</span>
+                      <span className="text-[#0A065D] font-bold">{item.hours}</span>
                     </div>
                   ))}
                 </div>
@@ -183,7 +183,7 @@ export default function AssistancePage() {
               {/* Location */}
               <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 border-2 border-purple-200">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 bg-[#0047AB] rounded-xl flex items-center justify-center">
+                  <div className="w-12 h-12 bg-[#0A065D] rounded-xl flex items-center justify-center">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <h2 className="text-2xl font-bold text-gray-900">{currentContent.location.title}</h2>
@@ -193,7 +193,7 @@ export default function AssistancePage() {
                   href="https://www.google.com/maps/search/?api=1&query=VFGR%2BMGH%2C+Cite+Verte%2C+Yaound%C3%A9%2C+Cameroon"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#0047AB] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#0080FF] transition-all shadow-lg"
+                  className="inline-flex items-center gap-2 bg-[#0A065D] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#0080FF] transition-all shadow-lg"
                 >
                   <MapPin className="w-5 h-5" />
                   {currentContent.location.action}

@@ -88,7 +88,7 @@ We are committed to meeting your expectations with rigor and professionalism, an
             </video>
           ))}
           {/* Blue Palette Overlay - using 5 blue colors */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#ADD8E6]/85 via-[#0047AB]/80 to-[#0080FF]/85"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#ADD8E6]/85 via-[#0A065D]/80 to-[#0080FF]/85"></div>
         </div>
 
         {/* Decorative elements */}
@@ -122,12 +122,12 @@ We are committed to meeting your expectations with rigor and professionalism, an
               }`}
             >
               {/* Title */}
-              <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold text-[#0047AB] mb-4 tracking-tight drop-shadow-lg">
+              <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold text-[#0A065D] mb-4 tracking-tight drop-shadow-lg">
                 {currentContent.title}
               </h1>
 
               {/* Subtitle */}
-              <p className="text-xl lg:text-2xl text-[#0047AB] font-semibold mb-8 drop-shadow-md">
+              <p className="text-xl lg:text-2xl text-[#F5F8FD] font-semibold mb-8 drop-shadow-md">
                 {currentContent.subtitle}
               </p>
 
@@ -135,9 +135,10 @@ We are committed to meeting your expectations with rigor and professionalism, an
               <div className="w-32 h-1.5 bg-gradient-to-r from-[#FE5000] to-[#CC4000] rounded-full mb-10"></div>
 
               {/* Description */}
-              <p className="text-lg lg:text-xl text-[#0047AB]/90 leading-relaxed max-w-3xl mb-12 drop-shadow-md font-medium">
-                {currentContent.description}
-              </p>
+              <p className="text-lg lg:text-xl text-[#0A065D] leading-relaxed max-w-3xl mb-12 drop-shadow-md font-bold">
+  {currentContent.description}
+</p>
+
 
               {/* Buttons */}
               <div className="flex flex-wrap gap-4">
@@ -145,10 +146,10 @@ We are committed to meeting your expectations with rigor and professionalism, an
                   <Link
                     key={index}
                     href={button.href}
-                    className="px-8 py-4 bg-white text-[#0047AB] font-semibold rounded-lg
-                      hover:bg-[#FE5000] hover:text-white hover:shadow-xl hover:shadow-[#FE5000]/30
+                    className="px-8 py-4 bg-white text-[#0A065D] font-semibold rounded-lg
+                      hover:bg-[#062A63] hover:text-white hover:shadow-xl hover:shadow-[#FE5000]/30
                       transition-all duration-300 transform hover:scale-105 hover:-translate-y-1
-                      border-2 border-transparent hover:border-[#FE5000]"
+                      border-2 border-transparent hover:border-[#062A63]"
                   >
                     {button.text}
                   </Link>
@@ -176,8 +177,8 @@ We are committed to meeting your expectations with rigor and professionalism, an
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#FE5000] to-[#CC4000] rounded-2xl mb-4 shadow-lg">
                     <Icon className="w-8 h-8 text-white" />
                   </div>
-                  <div className="text-4xl font-bold text-[#FE5000] mb-2">{stat.value}</div>
-                  <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+                  <div className="text-4xl font-bold text-[#0A065D] mb-2">{stat.value}</div>
+                  <div className="text-sm text-[#0A065D] font-medium">{stat.label}</div>
                 </div>
               );
             })}

@@ -452,11 +452,11 @@ export default function AdminDashboard() {
       <>
         <TopNavigationBar />
         <MainNavigation />
-        <main className="min-h-screen bg-gradient-to-br from-[#0047AB] via-[#0080FF] to-[#0909FF] flex items-center justify-center py-12 px-4">
+        <main className="min-h-screen bg-gradient-to-br from-[#0A065D] via-[#0080FF] to-[#0909FF] flex items-center justify-center py-12 px-4">
           <div className="max-w-md w-full">
             <div className="bg-white rounded-2xl shadow-2xl p-8">
               <div className="text-center mb-8">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-2xl mb-4 shadow-lg">
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-2xl mb-4 shadow-lg">
                   <Settings className="w-10 h-10 text-white" />
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">
@@ -476,7 +476,7 @@ export default function AdminDashboard() {
                     type="password"
                     value={password}
                     onChange={(e) => { setPassword(e.target.value); setError(""); }}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#0047AB] focus:border-transparent"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#0A065D] focus:border-transparent"
                     placeholder="••••••••••••"
                     required
                   />
@@ -485,7 +485,7 @@ export default function AdminDashboard() {
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-[#0047AB] to-[#0080FF] text-white py-4 rounded-xl font-semibold hover:shadow-xl transition-all"
+                  className="w-full bg-gradient-to-r from-[#0A065D] to-[#0080FF] text-white py-4 rounded-xl font-semibold hover:shadow-xl transition-all"
                 >
                   {language === 'fr' ? 'Se connecter' : 'Login'}
                 </button>
@@ -505,7 +505,7 @@ export default function AdminDashboard() {
 
       <main className="min-h-screen bg-gray-100">
         {/* Top Header Bar */}
-        <div className="bg-gradient-to-r from-[#0047AB] via-[#0080FF] to-[#0909FF] text-white">
+        <div className="bg-gradient-to-r from-[#0A065D] via-[#0080FF] to-[#0909FF] text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
@@ -541,7 +541,7 @@ export default function AdminDashboard() {
                   onClick={() => setTimePeriod(period)}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                     timePeriod === period
-                      ? 'bg-white text-[#0047AB]'
+                      ? 'bg-white text-[#0A065D]'
                       : 'bg-white/20 hover:bg-white/30'
                   }`}
                 >
@@ -559,7 +559,7 @@ export default function AdminDashboard() {
               onClick={() => setActiveTab("overview")}
               className={`px-6 py-3 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${
                 activeTab === "overview"
-                  ? "bg-[#0047AB] text-white"
+                  ? "bg-[#0A065D] text-white"
                   : "text-gray-600 hover:bg-gray-100"
               }`}
             >
@@ -570,7 +570,7 @@ export default function AdminDashboard() {
               onClick={() => setActiveTab("reviews")}
               className={`px-6 py-3 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${
                 activeTab === "reviews"
-                  ? "bg-[#0047AB] text-white"
+                  ? "bg-[#0A065D] text-white"
                   : "text-gray-600 hover:bg-gray-100"
               }`}
             >
@@ -586,7 +586,7 @@ export default function AdminDashboard() {
               onClick={() => setActiveTab("analytics")}
               className={`px-6 py-3 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${
                 activeTab === "analytics"
-                  ? "bg-[#0047AB] text-white"
+                  ? "bg-[#0A065D] text-white"
                   : "text-gray-600 hover:bg-gray-100"
               }`}
             >
@@ -601,7 +601,7 @@ export default function AdminDashboard() {
               {/* Stats Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {/* Users Card */}
-                <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-[#0047AB]">
+                <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-[#0A065D]">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-gray-500 font-medium">{currentContent.totalUsers}</p>
@@ -612,8 +612,8 @@ export default function AdminDashboard() {
                         <span className="text-xs text-gray-500">{periodStats.label}</span>
                       </div>
                     </div>
-                    <div className="p-4 bg-[#0047AB]/10 rounded-xl">
-                      <Users className="w-8 h-8 text-[#0047AB]" />
+                    <div className="p-4 bg-[#0A065D]/10 rounded-xl">
+                      <Users className="w-8 h-8 text-[#0A065D]" />
                     </div>
                   </div>
                 </div>
@@ -684,7 +684,7 @@ export default function AdminDashboard() {
                 {/* Content Management */}
                 <div className="lg:col-span-2 bg-white rounded-xl shadow-sm p-6">
                   <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-[#0047AB]" />
+                    <FileText className="w-5 h-5 text-[#0A065D]" />
                     {currentContent.contentManagement}
                   </h2>
 
@@ -692,13 +692,13 @@ export default function AdminDashboard() {
                     {/* Actualités */}
                     <Link
                       href="/admin-dashboard/actualites"
-                      className="group p-5 bg-gradient-to-br from-[#0047AB]/5 to-[#0080FF]/10 rounded-xl border-2 border-transparent hover:border-[#0047AB] transition-all"
+                      className="group p-5 bg-gradient-to-br from-[#0A065D]/5 to-[#0080FF]/10 rounded-xl border-2 border-transparent hover:border-[#0A065D] transition-all"
                     >
                       <div className="flex items-start justify-between mb-4">
-                        <div className="p-3 bg-[#0047AB] rounded-lg">
+                        <div className="p-3 bg-[#0A065D] rounded-lg">
                           <Newspaper className="w-6 h-6 text-white" />
                         </div>
-                        <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-[#0047AB] group-hover:translate-x-1 transition-all" />
+                        <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-[#0A065D] group-hover:translate-x-1 transition-all" />
                       </div>
                       <h3 className="font-bold text-gray-900 mb-1">{currentContent.actualites}</h3>
                       <div className="flex gap-4 text-sm">
@@ -730,7 +730,7 @@ export default function AdminDashboard() {
                 {/* Quick Stats Chart */}
                 <div className="bg-white rounded-xl shadow-sm p-6">
                   <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <Activity className="w-5 h-5 text-[#0047AB]" />
+                    <Activity className="w-5 h-5 text-[#0A065D]" />
                     {currentContent.trendsOverTime}
                   </h2>
 
@@ -740,7 +740,7 @@ export default function AdminDashboard() {
                         <span className="text-xs text-gray-500 w-10">{day.date}</span>
                         <div className="flex-1 h-6 bg-gray-100 rounded-full overflow-hidden">
                           <div
-                            className="h-full bg-gradient-to-r from-[#0047AB] to-[#0080FF] rounded-full transition-all"
+                            className="h-full bg-gradient-to-r from-[#0A065D] to-[#0080FF] rounded-full transition-all"
                             style={{ width: `${Math.min((day.reviews / Math.max(...dailyStats.map(d => d.reviews), 1)) * 100, 100)}%` }}
                           ></div>
                         </div>
@@ -755,12 +755,12 @@ export default function AdminDashboard() {
               <div className="bg-white rounded-xl shadow-sm p-6">
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-lg font-bold text-gray-900 flex items-center gap-2">
-                    <MessageSquare className="w-5 h-5 text-[#0047AB]" />
+                    <MessageSquare className="w-5 h-5 text-[#0A065D]" />
                     {currentContent.recentActivity}
                   </h2>
                   <button
                     onClick={() => setActiveTab("reviews")}
-                    className="text-sm text-[#0047AB] hover:underline flex items-center gap-1"
+                    className="text-sm text-[#0A065D] hover:underline flex items-center gap-1"
                   >
                     {language === 'fr' ? 'Voir tout' : 'View all'}
                     <ChevronRight className="w-4 h-4" />
@@ -770,7 +770,7 @@ export default function AdminDashboard() {
                 <div className="space-y-4">
                   {reviews.slice(0, 5).map((review) => (
                     <div key={review.id} className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                      <div className="w-10 h-10 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
+                      <div className="w-10 h-10 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
                         {review.name.charAt(0).toUpperCase()}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -825,13 +825,13 @@ export default function AdminDashboard() {
                     placeholder={currentContent.search}
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#0047AB] focus:border-transparent"
+                    className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#0A065D] focus:border-transparent"
                   />
                 </div>
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value as any)}
-                  className="px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#0047AB] focus:border-transparent"
+                  className="px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#0A065D] focus:border-transparent"
                 >
                   <option value="all">{currentContent.all}</option>
                   <option value="5">5 {currentContent.stars}</option>
@@ -854,7 +854,7 @@ export default function AdminDashboard() {
                     <div key={review.id} className="border-2 border-gray-100 rounded-xl p-6 hover:border-gray-200 transition-colors">
                       <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                         <div className="flex items-start gap-4">
-                          <div className="w-12 h-12 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
+                          <div className="w-12 h-12 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
                             {review.name.charAt(0).toUpperCase()}
                           </div>
                           <div>
@@ -881,7 +881,7 @@ export default function AdminDashboard() {
                             </div>
                             <p className="text-sm text-gray-500 mb-2">{review.email}</p>
                             {review.service_type && (
-                              <span className="text-xs bg-[#0047AB]/10 text-[#0047AB] px-2 py-1 rounded-full mb-2 inline-block">
+                              <span className="text-xs bg-[#0A065D]/10 text-[#0A065D] px-2 py-1 rounded-full mb-2 inline-block">
                                 {review.service_type}
                               </span>
                             )}
@@ -922,7 +922,7 @@ export default function AdminDashboard() {
               <div className="grid lg:grid-cols-2 gap-6">
                 <div className="bg-white rounded-xl shadow-sm p-6">
                   <h2 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
-                    <BarChart3 className="w-5 h-5 text-[#0047AB]" />
+                    <BarChart3 className="w-5 h-5 text-[#0A065D]" />
                     {currentContent.ratingDistribution}
                   </h2>
 
@@ -957,13 +957,13 @@ export default function AdminDashboard() {
                 {/* Summary Stats */}
                 <div className="bg-white rounded-xl shadow-sm p-6">
                   <h2 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
-                    <TrendingUp className="w-5 h-5 text-[#0047AB]" />
+                    <TrendingUp className="w-5 h-5 text-[#0A065D]" />
                     {currentContent.performanceOverview}
                   </h2>
 
                   <div className="grid grid-cols-2 gap-4">
                     <div className="p-4 bg-blue-50 rounded-xl text-center">
-                      <p className="text-3xl font-bold text-[#0047AB]">{stats.totalReviews}</p>
+                      <p className="text-3xl font-bold text-[#0A065D]">{stats.totalReviews}</p>
                       <p className="text-sm text-gray-600">{currentContent.totalReviews}</p>
                     </div>
                     <div className="p-4 bg-green-50 rounded-xl text-center">
@@ -985,7 +985,7 @@ export default function AdminDashboard() {
                     <h3 className="font-semibold text-gray-900 mb-3">{periodStats.label}</h3>
                     <div className="flex justify-between">
                       <div>
-                        <p className="text-2xl font-bold text-[#0047AB]">{periodStats.reviews}</p>
+                        <p className="text-2xl font-bold text-[#0A065D]">{periodStats.reviews}</p>
                         <p className="text-xs text-gray-500">{language === 'fr' ? 'Nouveaux avis' : 'New reviews'}</p>
                       </div>
                       <div>
@@ -1000,7 +1000,7 @@ export default function AdminDashboard() {
               {/* Weekly Trend Chart */}
               <div className="bg-white rounded-xl shadow-sm p-6">
                 <h2 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
-                  <CalendarDays className="w-5 h-5 text-[#0047AB]" />
+                  <CalendarDays className="w-5 h-5 text-[#0A065D]" />
                   {language === 'fr' ? 'Activité des 7 derniers jours' : 'Last 7 days activity'}
                 </h2>
 
@@ -1014,7 +1014,7 @@ export default function AdminDashboard() {
                         <span className="text-sm font-medium text-gray-900">{day.reviews}</span>
                         <div className="w-full bg-gray-100 rounded-t-lg relative" style={{ height: '160px' }}>
                           <div
-                            className="absolute bottom-0 w-full bg-gradient-to-t from-[#0047AB] to-[#0080FF] rounded-t-lg transition-all"
+                            className="absolute bottom-0 w-full bg-gradient-to-t from-[#0A065D] to-[#0080FF] rounded-t-lg transition-all"
                             style={{ height: `${Math.max(height, 5)}%` }}
                           ></div>
                         </div>

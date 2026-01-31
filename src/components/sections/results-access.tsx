@@ -14,7 +14,7 @@ const ResultsAccess = () => {
 
           {/* Left Column */}
           <div>
-            <h2 className="text-[36px] font-bold text-[#0047AB] mb-4">
+            <h2 className="text-[36px] font-bold text-[#0A065D] mb-4">
               {t('resultsTitle')}
             </h2>
             <p className="text-[18px] text-gray-600 leading-[1.6] mb-8">

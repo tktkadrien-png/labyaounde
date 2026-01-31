@@ -30,23 +30,24 @@ const Newsletter = () => {
           className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#87CEEB]/85 via-[#5BA3E0]/80 to-[#00CED1]/85" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#7069F4]/85 via-[#5BA3E0]/80 to-[#00CED1]/85" />
       </div>
 
       <div className="relative z-10 container mx-auto px-4">
         <div className="max-w-xl mx-auto">
           {/* Icon */}
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#00CED1]/30 to-[#0047AB]/20 backdrop-blur-md rounded-2xl mb-8 border border-white/10 shadow-xl">
-            <Bell className="w-10 h-10 text-white" />
-          </div>
+<div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#00CED1]/30 to-[#0A065D]/20 backdrop-blur-md rounded-2xl mb-8 border border-white/10 shadow-xl">
+  <Bell className="w-10 h-10 text-[#FF8C00]" />
+</div>
+
 
           {/* Title */}
-          <h2 className="text-[#0047AB] font-bold text-4xl md:text-5xl leading-tight mb-5">
+          <h2 className="text-[#0A065D] font-bold text-4xl md:text-5xl leading-tight mb-5">
             Newsletter
           </h2>
 
           {/* Subtitle */}
-          <p className="text-[#0047AB]/90 text-base md:text-lg mb-10 max-w-md mx-auto leading-relaxed font-medium">
+          <p className="text-[#0A065D]/90 text-base md:text-lg mb-10 max-w-md mx-auto leading-relaxed font-medium">
             Recevez nos actualités, conseils santé et offres exclusives directement dans votre boîte mail
           </p>
 
@@ -63,7 +64,7 @@ const Newsletter = () => {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="relative group">
-                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40 group-focus-within:text-[#00CED1] transition-colors" />
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40 group-focus-within:text-[#0A065D] transition-colors" />
                   <input
                     type="email"
                     value={email}
@@ -76,7 +77,7 @@ const Newsletter = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-[#00CED1] to-[#0047AB] hover:from-[#0080FF] hover:to-[#00CED1] text-white font-semibold py-4 px-6 rounded-xl text-base transition-all duration-300 shadow-lg shadow-[#0047AB]/25 hover:shadow-xl hover:shadow-[#0047AB]/30 hover:scale-[1.02] flex items-center justify-center gap-3"
+                  className="w-full bg-gradient-to-r from-[#0A065D] to-[#0A065D] hover:from-[#0080FF] hover:to-[#00CED1] text-white font-semibold py-4 px-6 rounded-xl text-base transition-all duration-300 shadow-lg shadow-[#0A065D]/25 hover:shadow-xl hover:shadow-[#0A065D]/30 hover:scale-[1.02] flex items-center justify-center gap-3"
                 >
                   <span>S&apos;abonner</span>
                   <Send size={18} />
@@ -92,18 +93,18 @@ const Newsletter = () => {
           {/* Stats */}
           <div className="mt-16 flex items-center justify-center gap-8 md:gap-12">
             <div className="text-center">
-              <p className="text-3xl md:text-4xl font-bold text-[#0047AB]">5K+</p>
-              <p className="text-[#0047AB]/80 text-xs mt-1 font-bold">Abonnés</p>
+              <p className="text-3xl md:text-4xl font-bold text-[#0A065D]">5K+</p>
+              <p className="text-[#0A065D]/80 text-xs mt-1 font-bold">Abonnés</p>
             </div>
-            <div className="w-px h-10 bg-[#0047AB]/40"></div>
+            <div className="w-px h-10 bg-[#0A065D]/40"></div>
             <div className="text-center">
-              <p className="text-3xl md:text-4xl font-bold text-[#0047AB]">24h</p>
-              <p className="text-[#0047AB]/80 text-xs mt-1 font-bold">Résultats</p>
+              <p className="text-3xl md:text-4xl font-bold text-[#0A065D]">24h</p>
+              <p className="text-[#0A065D]/80 text-xs mt-1 font-bold">Résultats</p>
             </div>
-            <div className="w-px h-10 bg-[#0047AB]/40"></div>
+            <div className="w-px h-10 bg-[#0A065D]/40"></div>
             <div className="text-center">
-              <p className="text-3xl md:text-4xl font-bold text-[#0047AB]">100%</p>
-              <p className="text-[#0047AB]/80 text-xs mt-1 font-bold">Sécurisé</p>
+              <p className="text-3xl md:text-4xl font-bold text-[#0A065D]">100%</p>
+              <p className="text-[#0A065D]/80 text-xs mt-1 font-bold">Sécurisé</p>
             </div>
           </div>
         </div>

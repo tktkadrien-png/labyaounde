@@ -58,7 +58,7 @@ export default function ConseilsEtInformations() {
 
       <main className="bg-gray-50">
         {/* Hero Section */}
-        <section ref={heroRef as React.RefObject<HTMLElement>} className="bg-gradient-to-br from-[#0047AB] via-cyan-800 to-blue-900 text-white py-20 lg:py-32 relative overflow-hidden">
+        <section ref={heroRef as React.RefObject<HTMLElement>} className="bg-gradient-to-br from-[#0A065D] via-cyan-800 to-blue-900 text-white py-20 lg:py-32 relative overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
@@ -104,7 +104,7 @@ export default function ConseilsEtInformations() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0047AB]/80 to-transparent flex items-center">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0A065D]/80 to-transparent flex items-center">
                   <div className="p-8 text-white max-w-xl">
                     <h2 className="text-3xl lg:text-5xl font-bold mb-4">
                       {t('welcomeGuide')}
@@ -188,7 +188,7 @@ export default function ConseilsEtInformations() {
                     <Lightbulb className="w-5 h-5" />
                     <span className="text-sm font-semibold">{t('beforeYourVisit')}</span>
                   </div>
-                  <h2 className="text-3xl lg:text-5xl font-bold text-[#0047AB] mb-4">
+                  <h2 className="text-3xl lg:text-5xl font-bold text-[#0A065D] mb-4">
                     {t('beforeSamplingAdvice')}
                   </h2>
                 </div>
@@ -241,7 +241,7 @@ export default function ConseilsEtInformations() {
               </div>
 
               {/* CTA Preparation */}
-              <div className="mt-12 bg-gradient-to-r from-blue-600 to-[#0047AB] rounded-2xl p-8 text-white text-center">
+              <div className="mt-12 bg-gradient-to-r from-blue-600 to-[#0A065D] rounded-2xl p-8 text-white text-center">
                 <h3 className="text-2xl font-bold mb-4">{t('fullPrepGuide')}</h3>
                 <p className="text-white/90 mb-6 max-w-2xl mx-auto">
                   {t('fullPrepGuideDesc')}
@@ -278,7 +278,7 @@ export default function ConseilsEtInformations() {
                     <Droplet className="w-5 h-5" />
                     <span className="text-sm font-semibold">{t('medicalInfo')}</span>
                   </div>
-                  <h2 className="text-3xl lg:text-5xl font-bold text-[#0047AB] mb-4">
+                  <h2 className="text-3xl lg:text-5xl font-bold text-[#0A065D] mb-4">
                     {t('understandAnalysis')}
                   </h2>
                   <p className="text-xl text-gray-600">
@@ -412,7 +412,7 @@ export default function ConseilsEtInformations() {
         </section>
 
         {/* CTA Final */}
-        <section ref={ctaRef as React.RefObject<HTMLElement>} className="py-20 lg:py-28 bg-gradient-to-br from-[#0047AB] via-blue-700 to-blue-900 text-white">
+        <section ref={ctaRef as React.RefObject<HTMLElement>} className="py-20 lg:py-28 bg-gradient-to-br from-[#0A065D] via-blue-700 to-blue-900 text-white">
           <div className="max-w-[1200px] mx-auto px-6">
             <div className={`text-center transition-all duration-700 ${ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <Users className="w-20 h-20 mx-auto mb-6 text-white/90" />

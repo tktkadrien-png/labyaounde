@@ -10,13 +10,13 @@ export default function NotreReferentiel() {
   const { language } = useLanguage();
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#0047AB]/5 to-white">
+    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#0A065D]/5 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
             {/* Left Side - Content */}
             <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 bg-[#0047AB]/10 px-4 py-2 rounded-full mb-6 w-fit">
+              <div className="inline-flex items-center gap-2 bg-[#0A065D]/10 px-4 py-2 rounded-full mb-6 w-fit">
                 <BookOpen className="w-5 h-5 text-[#FE5000]" />
                 <span className="text-[#FE5000] font-semibold text-sm">
                   {language === 'fr' ? 'Ressources' : 'Resources'}
@@ -38,7 +38,7 @@ export default function NotreReferentiel() {
                 href="https://labtestsonline.org"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-[#0047AB] to-[#0080FF] text-white px-8 py-4 rounded-xl font-semibold text-base hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-fit group"
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-[#0A065D] to-[#0080FF] text-white px-8 py-4 rounded-xl font-semibold text-base hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-fit group"
               >
                 <span>{language === 'fr' ? 'Visiter Labtest Online' : 'Visit Labtest Online'}</span>
                 <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -48,16 +48,16 @@ export default function NotreReferentiel() {
             {/* Right Side - Logo */}
             <div className="relative h-[300px] lg:h-full min-h-[400px] bg-gradient-to-br from-gray-50 to-white flex items-center justify-center p-8">
               <div className="relative w-full h-full max-w-md">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#0047AB]/5 to-transparent rounded-2xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#0A065D]/5 to-transparent rounded-2xl"></div>
                 <div className="relative w-full h-full flex items-center justify-center">
                   {/* Labtest Online Logo Placeholder */}
                   <div className="relative w-48 h-48 sm:w-64 sm:h-64">
-                    <div className="absolute inset-0 bg-white rounded-2xl shadow-xl flex items-center justify-center border-4 border-[#0047AB]/10">
+                    <div className="absolute inset-0 bg-white rounded-2xl shadow-xl flex items-center justify-center border-4 border-[#0A065D]/10">
                       <div className="text-center p-6">
-                        <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-full flex items-center justify-center">
+                        <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-full flex items-center justify-center">
                           <BookOpen className="w-8 h-8 text-white" />
                         </div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-[#0047AB] mb-2">
+                        <h3 className="text-xl sm:text-2xl font-bold text-[#0A065D] mb-2">
                           Lab Tests
                         </h3>
                         <p className="text-sm sm:text-base text-gray-600 font-semibold">

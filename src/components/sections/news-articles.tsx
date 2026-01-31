@@ -65,7 +65,7 @@ const ArticleCard = ({ article }: { article: Article }) => (
       fill
       className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-110"
     />
-    <div className="absolute inset-0 bg-gradient-to-t from-[#0047AB]/80 via-[#0047AB]/20 to-transparent"></div>
+    <div className="absolute inset-0 bg-gradient-to-t from-[#0A065D]/80 via-[#0A065D]/20 to-transparent"></div>
     <div className="absolute top-4 left-4 z-10 bg-#00CED1/100 text-white text-xs font-bold py-1.5 px-3 rounded-md shadow-md">
       LabYaounde
     </div>
@@ -85,7 +85,7 @@ const NewsArticles = () => {
           <span className="inline-block bg-[#00CED1]/20 text-[#0909FF] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
             Dernières nouvelles
           </span>
-          <h2 className="text-3xl lg:text-4xl font-bold text-[#0047AB]">
+          <h2 className="text-3xl lg:text-4xl font-bold text-[#0A065D]">
             Actualités
           </h2>
           <p className="mt-3 text-gray-600 max-w-xl mx-auto">
@@ -106,7 +106,7 @@ const NewsArticles = () => {
         <div className="mt-14 text-center">
           <a
             href="/carrieres/actualites"
-            className="inline-flex items-center justify-center gap-2 bg-#00CED1/100 hover:bg-[#0047AB] text-white font-semibold py-3.5 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
+            className="inline-flex items-center justify-center gap-2 bg-#00CED1/100 hover:bg-[#0A065D] text-white font-semibold py-3.5 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
           >
             Voir toutes nos actualités
             <ArrowRight size={20} className="transition-transform duration-300 group-hover:translate-x-1" />

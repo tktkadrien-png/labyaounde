@@ -25,7 +25,7 @@ export default function ReclamationsEtPlaintesPage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0047AB]/95 via-[#0047AB]/85 to-[#0047AB]/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0A065D]/95 via-[#0A065D]/85 to-[#0A065D]/70"></div>
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
@@ -66,9 +66,9 @@ export default function ReclamationsEtPlaintesPage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-[#0047AB]/10 px-4 py-2 rounded-full mb-6">
-                <AlertCircle className="w-5 h-5 text-[#0047AB]" />
-                <span className="text-[#0047AB] font-semibold text-sm sm:text-base">Notre Objectif</span>
+              <div className="inline-flex items-center gap-2 bg-[#0A065D]/10 px-4 py-2 rounded-full mb-6">
+                <AlertCircle className="w-5 h-5 text-[#0A065D]" />
+                <span className="text-[#0A065D] font-semibold text-sm sm:text-base">Notre Objectif</span>
               </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
                 Objectif de notre Politique de Réclamations
@@ -84,7 +84,7 @@ export default function ReclamationsEtPlaintesPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              <div className="bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-2xl p-8 text-white shadow-xl">
+              <div className="bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-2xl p-8 text-white shadow-xl">
                 <FileText className="w-12 h-12 mb-4" />
                 <h3 className="text-xl sm:text-2xl font-bold mb-4">Expression Libre</h3>
                 <p className="text-white/90 leading-relaxed">
@@ -92,7 +92,7 @@ export default function ReclamationsEtPlaintesPage() {
                 </p>
               </div>
 
-              <div className="bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-2xl p-8 text-white shadow-xl">
+              <div className="bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-2xl p-8 text-white shadow-xl">
                 <Shield className="w-12 h-12 mb-4" />
                 <h3 className="text-xl sm:text-2xl font-bold mb-4">Amélioration Continue</h3>
                 <p className="text-white/90 leading-relaxed">
@@ -148,10 +148,10 @@ export default function ReclamationsEtPlaintesPage() {
               ].map((engagement, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#0047AB]/20 hover:-translate-y-1"
+                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#0A065D]/20 hover:-translate-y-1"
                 >
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-xl flex items-center justify-center flex-shrink-0">
                       <CheckCircle className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -169,9 +169,9 @@ export default function ReclamationsEtPlaintesPage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-[#0047AB]/10 px-4 py-2 rounded-full mb-6">
-                <UserCheck className="w-5 h-5 text-[#0047AB]" />
-                <span className="text-[#0047AB] font-semibold text-sm sm:text-base">Organisation</span>
+              <div className="inline-flex items-center gap-2 bg-[#0A065D]/10 px-4 py-2 rounded-full mb-6">
+                <UserCheck className="w-5 h-5 text-[#0A065D]" />
+                <span className="text-[#0A065D] font-semibold text-sm sm:text-base">Organisation</span>
               </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
                 Les Responsabilités
@@ -184,7 +184,7 @@ export default function ReclamationsEtPlaintesPage() {
             <div className="max-w-4xl mx-auto">
               <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 sm:p-10 lg:p-12 shadow-xl border border-gray-100">
                 <div className="flex flex-col md:flex-row items-start gap-8">
-                  <div className="w-20 h-20 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-20 h-20 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-2xl flex items-center justify-center flex-shrink-0">
                     <UserCheck className="w-10 h-10 text-white" />
                   </div>
                   <div className="flex-1">
@@ -196,19 +196,19 @@ export default function ReclamationsEtPlaintesPage() {
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-[#0047AB] flex-shrink-0 mt-1" />
+                        <CheckCircle className="w-5 h-5 text-[#0A065D] flex-shrink-0 mt-1" />
                         <span className="text-gray-700">Formation spécialisée en gestion de réclamations</span>
                       </div>
                       <div className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-[#0047AB] flex-shrink-0 mt-1" />
+                        <CheckCircle className="w-5 h-5 text-[#0A065D] flex-shrink-0 mt-1" />
                         <span className="text-gray-700">Compétence en communication et médiation</span>
                       </div>
                       <div className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-[#0047AB] flex-shrink-0 mt-1" />
+                        <CheckCircle className="w-5 h-5 text-[#0A065D] flex-shrink-0 mt-1" />
                         <span className="text-gray-700">Disponibilité et réactivité garanties</span>
                       </div>
                       <div className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-[#0047AB] flex-shrink-0 mt-1" />
+                        <CheckCircle className="w-5 h-5 text-[#0A065D] flex-shrink-0 mt-1" />
                         <span className="text-gray-700">Pouvoir décisionnel pour résoudre les problèmes</span>
                       </div>
                     </div>
@@ -233,7 +233,7 @@ export default function ReclamationsEtPlaintesPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <FileText className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">En Personne</h3>
@@ -243,32 +243,32 @@ export default function ReclamationsEtPlaintesPage() {
               </div>
 
               <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <AlertCircle className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Par Téléphone</h3>
                 <p className="text-gray-600 leading-relaxed mb-4">
                   Contactez-nous directement pour exposer votre réclamation à notre équipe.
                 </p>
-                <p className="text-[#0047AB] font-semibold">+237 659 000 666</p>
+                <p className="text-[#0A065D] font-semibold">+237 659 000 666</p>
               </div>
 
               <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#0047AB] to-[#0080FF] rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <Shield className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Par Email</h3>
                 <p className="text-gray-600 leading-relaxed mb-4">
                   Envoyez-nous un email détaillant votre réclamation.
                 </p>
-                <p className="text-[#0047AB] font-semibold break-all">contact@labyaounde.com</p>
+                <p className="text-[#0A065D] font-semibold break-all">contact@labyaounde.com</p>
               </div>
             </div>
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#0047AB] to-[#0080FF] text-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#0A065D] to-[#0080FF] text-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6">
               Votre Avis Compte pour Nous
@@ -279,14 +279,14 @@ export default function ReclamationsEtPlaintesPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/#contact"
-                className="inline-flex items-center justify-center gap-2 bg-white text-[#0047AB] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-white/90 transition-all hover:scale-105"
+                className="inline-flex items-center justify-center gap-2 bg-white text-[#0A065D] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-white/90 transition-all hover:scale-105"
               >
                 Nous Contacter
                 <ChevronRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/charte-de-qualite"
-                className="inline-flex items-center justify-center gap-2 bg-transparent text-white px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-white hover:bg-white hover:text-[#0047AB] transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-transparent text-white px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-white hover:bg-white hover:text-[#0A065D] transition-all"
               >
                 Notre Charte de Qualité
               </Link>
