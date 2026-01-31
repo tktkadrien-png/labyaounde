@@ -149,7 +149,7 @@ const Footer = () => {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1E3A5F]/95 via-[#2C4A6E]/90 to-[#34567A]/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A065D]/95 via-[#0A065D]/90 to-[#0A065D]/95"></div>
         </div>
 
         {/* Content */}
@@ -343,7 +343,7 @@ const Footer = () => {
             <div className="max-w-[1200px] mx-auto px-6 py-6">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                 <p className="text-sm text-white/60 text-center md:text-left">
-                  © 2025 <span className="text-[#FE5000] font-semibold">LABYAOUNDE</span>. Tous droits réservés
+                  © {new Date().getFullYear()} <span className="text-[#FE5000] font-semibold">LABYAOUNDE</span>. Tous droits réservés
                 </p>
                 <div className="flex gap-x-6 gap-y-2 flex-wrap justify-center">
                   <Link
