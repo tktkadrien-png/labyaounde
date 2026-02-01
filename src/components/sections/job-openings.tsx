@@ -95,8 +95,8 @@ export default function JobOpenings() {
 
   return (
     <section ref={ref as React.RefObject<HTMLElement>} className="py-16">
-      {/* ONE UNIFIED BLOCK with #60AAE3 background containing everything */}
-      <div className="relative overflow-hidden bg-[#60AAE3] py-16 rounded-none md:rounded-3xl md:mx-6 lg:mx-auto lg:max-w-[1400px] shadow-2xl">
+      {/* ONE UNIFIED BLOCK with bleu roi background containing everything */}
+      <div className="relative overflow-hidden bg-[#0A065D] py-16 rounded-none md:rounded-3xl md:mx-6 lg:mx-auto lg:max-w-[1400px] shadow-2xl">
         {/* Decorative Background Elements */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 right-0 w-72 h-72 bg-white rounded-full blur-3xl"></div>
