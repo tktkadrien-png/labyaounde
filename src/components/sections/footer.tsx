@@ -149,7 +149,7 @@ const Footer = () => {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A065D]/95 via-[#0A065D]/90 to-[#0A065D]/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#60AAE3]/95 via-[#60AAE3]/90 to-[#60AAE3]/95"></div>
         </div>
 
         {/* Content */}

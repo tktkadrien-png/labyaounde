@@ -87,8 +87,8 @@ We are committed to meeting your expectations with rigor and professionalism, an
               <source src={video} type="video/mp4" />
             </video>
           ))}
-          {/* Blue Palette Overlay - using 5 blue colors */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#ADD8E6]/85 via-[#0A065D]/80 to-[#0080FF]/85"></div>
+          {/* Blue Palette Overlay - using #60AAE3 */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#60AAE3]/90 via-[#60AAE3]/85 to-[#60AAE3]/90"></div>
         </div>
 
         {/* Decorative elements */}
@@ -136,8 +136,8 @@ We are committed to meeting your expectations with rigor and professionalism, an
 
               {/* Description */}
               <p className="text-lg lg:text-xl text-[#0A065D] leading-relaxed max-w-3xl mb-12 drop-shadow-md font-bold">
-  {currentContent.description}
-</p>
+                {currentContent.description}
+              </p>
 
 
               {/* Buttons */}
