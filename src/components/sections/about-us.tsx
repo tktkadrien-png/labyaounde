@@ -38,9 +38,8 @@ Nous nous engageons à répondre avec exigence et professionnalisme à vos atten
         { icon: TrendingUp, value: "98%", label: "Taux de satisfaction" },
       ],
       buttons: [
-        { text: "Nos Standards", href: "#standards" },
-        { text: "Notre Vision", href: "#vision" },
-        { text: "Nos Stratégies", href: "#strategies" },
+        { text: "Nos Standards", href: "/nos-standards" },
+        { text: "Notre Vision", href: "/notre-vision" },
       ],
     },
     en: {
@@ -55,9 +54,8 @@ We are committed to meeting your expectations with rigor and professionalism, an
         { icon: TrendingUp, value: "98%", label: "Satisfaction Rate" },
       ],
       buttons: [
-        { text: "Our Standards", href: "#standards" },
-        { text: "Our Vision", href: "#vision" },
-        { text: "Our Strategies", href: "#strategies" },
+        { text: "Our Standards", href: "/nos-standards" },
+        { text: "Our Vision", href: "/notre-vision" },
       ],
     },
   };
@@ -146,10 +144,10 @@ We are committed to meeting your expectations with rigor and professionalism, an
                   <Link
                     key={index}
                     href={button.href}
-                    className="px-8 py-4 bg-white text-[#0A065D] font-semibold rounded-lg
-                      hover:bg-[#062A63] hover:text-white hover:shadow-xl hover:shadow-[#FE5000]/30
+                    className="px-8 py-4 bg-[#FE5000] text-white font-semibold rounded-lg
+                      hover:bg-[#CC4000] hover:shadow-xl hover:shadow-[#FE5000]/40
                       transition-all duration-300 transform hover:scale-105 hover:-translate-y-1
-                      border-2 border-transparent hover:border-[#062A63]"
+                      border-2 border-[#FE5000] hover:border-[#CC4000]"
                   >
                     {button.text}
                   </Link>

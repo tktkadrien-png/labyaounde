@@ -140,8 +140,8 @@ const MainNavigation = () => {
     <>
       <header
         className={cn(
-          "sticky top-0 z-50 w-full bg-white transition-all duration-300 font-sans",
-          isSticky ? "shadow-md" : ""
+          "sticky top-0 z-50 w-full transition-all duration-300 font-sans",
+          isSticky ? "shadow-md bg-[#0A065D]" : "bg-white"
         )}
       >
         <div className="container mx-auto max-w-[1200px] px-4 sm:px-6 md:px-8 lg:px-[30px] py-3 md:py-[15px]">
@@ -159,12 +159,12 @@ const MainNavigation = () => {
 
             <nav className="hidden items-center gap-x-1 xl:flex">
               <ul className="flex list-none gap-[20px] m-0">
-                <MegaMenuItemPro trigger={t('aboutUs')} professionalsMenu={aboutMenu} />
-                <MegaMenuItem trigger={t('ourServices')} columns={servicesMenu} itemsInRow={1}/>
-                <MegaMenuItemPro trigger={language === 'fr' ? 'Assurance Qualité' : 'Quality Assurance'} professionalsMenu={professionalsMenu} />
-                <MegaMenuItem trigger={t('patients')} columns={patientsMenu} itemsInRow={1} />
+                <MegaMenuItemPro trigger={t('aboutUs')} professionalsMenu={aboutMenu} isSticky={isSticky} />
+                <MegaMenuItem trigger={t('ourServices')} columns={servicesMenu} itemsInRow={1} isSticky={isSticky} />
+                <MegaMenuItemPro trigger={language === 'fr' ? 'Assurance Qualité' : 'Quality Assurance'} professionalsMenu={professionalsMenu} isSticky={isSticky} />
+                <MegaMenuItem trigger={t('patients')} columns={patientsMenu} itemsInRow={1} isSticky={isSticky} />
                 <li className="relative">
-                  <Link href="/carrieres/offres-emploi-stages" className="inline-flex h-10 items-center justify-center px-4 py-2 text-base font-bold text-black transition-colors hover:text-[#0A065D]">
+                  <Link href="/carrieres/offres-emploi-stages" className={`inline-flex h-10 items-center justify-center px-4 py-2 text-base font-bold transition-colors ${isSticky ? 'text-white hover:text-[#FE5000]' : 'text-black hover:text-[#0A065D]'}`}>
                     {t('careers')}
                   </Link>
                 </li>
@@ -174,7 +174,11 @@ const MainNavigation = () => {
                 <Button
                   onClick={toggleLanguage}
                   size="sm"
-                  className="h-9 md:h-10 px-2 md:px-3 rounded-md bg-gradient-to-r from-[#00CED1] via-[#0080FF] to-[#0A065D] text-white hover:from-[#1E90FF] hover:via-[#1589FF] hover:to-[#0909FF] transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:scale-105 border-0"
+                  className={`h-9 md:h-10 px-2 md:px-3 rounded-md transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:scale-105 border-0 ${
+                    isSticky
+                      ? 'bg-[#FE5000] text-white hover:bg-[#CC4000]'
+                      : 'bg-gradient-to-r from-[#00CED1] via-[#0080FF] to-[#0A065D] text-white hover:from-[#1E90FF] hover:via-[#1589FF] hover:to-[#0909FF]'
+                  }`}
                 >
                   <Languages className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1 md:mr-1.5" />
                   <span className="text-xs md:text-sm font-bold">{language.toUpperCase()}</span>
@@ -229,13 +233,13 @@ const MainNavigation = () => {
 
             <button
               onClick={toggleMobileMenu}
-              className="z-50 rounded p-2 xl:hidden hover:bg-gray-100 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className={`z-50 rounded p-2 xl:hidden transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center ${isSticky ? 'hover:bg-white/10' : 'hover:bg-gray-100'}`}
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6 md:h-7 md:w-7 text-[#0A065D]" />
+                <X className={`h-6 w-6 md:h-7 md:w-7 ${isSticky ? 'text-white' : 'text-[#0A065D]'}`} />
               ) : (
-                <Menu className="h-6 w-6 md:h-7 md:w-7 text-[#0A065D]" />
+                <Menu className={`h-6 w-6 md:h-7 md:w-7 ${isSticky ? 'text-white' : 'text-[#0A065D]'}`} />
               )}
             </button>
           </div>
@@ -322,12 +326,12 @@ const MainNavigation = () => {
   );
 };
 
-const MegaMenuItem = ({ trigger, columns, itemsInRow }: { trigger: string, columns: MegaMenuColumn[], itemsInRow: number }) => {
+const MegaMenuItem = ({ trigger, columns, itemsInRow, isSticky = false }: { trigger: string, columns: MegaMenuColumn[], itemsInRow: number, isSticky?: boolean }) => {
   const gridCols = itemsInRow === 3 ? 'grid-cols-3' : 'grid-cols-1';
-  
+
   return (
     <li className="relative group">
-      <button className="inline-flex h-10 items-center justify-center px-4 py-2 text-base font-bold text-black transition-colors hover:text-[#0A065D]">
+      <button className={`inline-flex h-10 items-center justify-center px-4 py-2 text-base font-bold transition-colors ${isSticky ? 'text-white hover:text-[#FE5000]' : 'text-black hover:text-[#0A065D]'}`}>
         {trigger}
       </button>
       
@@ -356,7 +360,7 @@ const MegaMenuItem = ({ trigger, columns, itemsInRow }: { trigger: string, colum
   );
 };
 
-const MegaMenuItemPro = ({ trigger, professionalsMenu }: { trigger: string, professionalsMenu: any }) => {
+const MegaMenuItemPro = ({ trigger, professionalsMenu, isSticky = false }: { trigger: string, professionalsMenu: any, isSticky?: boolean }) => {
   const getColSpanClass = (span: number) => {
     const spanClasses: { [key: number]: string } = {
       1: 'col-span-1',
@@ -374,7 +378,7 @@ const MegaMenuItemPro = ({ trigger, professionalsMenu }: { trigger: string, prof
 
   return (
     <li className="relative group">
-      <button className="inline-flex h-10 items-center justify-center px-4 py-2 text-base font-bold text-black transition-colors hover:text-[#0A065D]">
+      <button className={`inline-flex h-10 items-center justify-center px-4 py-2 text-base font-bold transition-colors ${isSticky ? 'text-white hover:text-[#FE5000]' : 'text-black hover:text-[#0A065D]'}`}>
         {trigger}
       </button>
 
