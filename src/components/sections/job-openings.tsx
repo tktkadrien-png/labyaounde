@@ -98,17 +98,33 @@ export default function JobOpenings() {
   ];
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="bg-white py-16">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="text-4xl font-bold text-[#0A065D]">
-            {t('jobsTitle')}
-          </h2>
-          <p className="mt-4 text-lg text-gray-500 max-w-3xl mx-auto">
-            {t('jobsSubtitle')}
-          </p>
+    <section ref={ref as React.RefObject<HTMLElement>} className="py-16">
+      {/* Header with same styling as Excellence Internationale */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-[#0A065D] via-[#0a5082] to-[#0078BF] py-16 mb-16">
+        {/* Decorative Background Elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-72 h-72 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#00CED1] rounded-full blur-3xl"></div>
         </div>
 
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6">
+          <div className={`text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="inline-block mb-4">
+              <span className="bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-semibold border border-white/30">
+                Carrières
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">
+              {t('jobsTitle')}
+            </h2>
+            <p className="text-white/90 text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
+              {t('jobsSubtitle')}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-[1200px] mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {jobCards.map((card, index) => (
             <div
@@ -175,8 +191,8 @@ export default function JobOpenings() {
 
         <div className="text-center mt-12">
           <a
-            href="#"
-            className="bg-#00CED1/100 hover:bg-[#0A065D] text-white font-semibold py-3.5 px-8 rounded-lg inline-flex items-center justify-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl group"
+            href="/carrieres/offres-emploi-stages"
+            className="bg-[#0A065D] hover:bg-[#0078BF] text-white font-semibold py-4 px-10 rounded-lg inline-flex items-center justify-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 group"
           >
             {t('viewAllOffers')}
             <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />

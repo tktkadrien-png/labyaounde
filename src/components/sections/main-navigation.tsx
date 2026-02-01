@@ -141,7 +141,7 @@ const MainNavigation = () => {
       <header
         className={cn(
           "sticky top-0 z-50 w-full transition-all duration-300 font-sans",
-          isSticky ? "shadow-md bg-[#0A065D]" : "bg-white"
+          isSticky ? "shadow-lg bg-[#1E3A5F]" : "bg-white"
         )}
       >
         <div className="container mx-auto max-w-[1200px] px-4 sm:px-6 md:px-8 lg:px-[30px] py-3 md:py-[15px]">

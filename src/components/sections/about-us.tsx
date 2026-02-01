@@ -139,15 +139,15 @@ We are committed to meeting your expectations with rigor and professionalism, an
 
 
               {/* Buttons */}
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-6">
                 {currentContent.buttons.map((button, index) => (
                   <Link
                     key={index}
                     href={button.href}
-                    className="px-8 py-4 bg-[#FE5000] text-white font-semibold rounded-lg
-                      hover:bg-[#CC4000] hover:shadow-xl hover:shadow-[#FE5000]/40
+                    className="px-10 py-4 bg-[#FE5000] text-white font-bold text-lg rounded-xl
+                      hover:bg-[#CC4000] hover:shadow-2xl hover:shadow-[#FE5000]/40
                       transition-all duration-300 transform hover:scale-105 hover:-translate-y-1
-                      border-2 border-[#FE5000] hover:border-[#CC4000]"
+                      border-2 border-[#FE5000] hover:border-[#CC4000] min-w-[180px] text-center"
                   >
                     {button.text}
                   </Link>
