@@ -166,14 +166,23 @@ export default function SignupPage() {
       });
 
       if (authError) {
-        // Handle errors with friendly messages - be specific to avoid false network errors
+        // Handle errors with friendly messages
         const errorMsg = authError.message?.toLowerCase() || "";
         if (errorMsg.includes("already registered") || errorMsg.includes("user already registered")) {
           setError(currentContent.emailInUse);
         } else if (errorMsg.includes("password") && errorMsg.includes("short")) {
           setError(currentContent.passwordTooShort);
-        } else if (errorMsg.includes("network request failed") || errorMsg.includes("networkerror") || errorMsg.includes("failed to fetch")) {
-          setError(currentContent.networkError);
+        } else if (
+          errorMsg.includes("network") ||
+          errorMsg.includes("fetch") ||
+          errorMsg.includes("timeout") ||
+          errorMsg.includes("abort") ||
+          errorMsg.includes("connexion") ||
+          (authError as any).status === 0
+        ) {
+          setError(language === 'fr'
+            ? "Problème de connexion. Veuillez vérifier votre internet et réessayer."
+            : "Connection issue. Please check your internet and try again.");
         } else if (errorMsg.includes("rate limit") || errorMsg.includes("too many")) {
           setError(language === 'fr'
             ? "Trop de tentatives. Veuillez patienter quelques minutes."
@@ -214,10 +223,19 @@ export default function SignupPage() {
         }, 3000);
       }
     } catch (err: any) {
-      // Only show network error for actual network failures
+      // Handle network/timeout errors
       const errMsg = err?.message?.toLowerCase() || "";
-      if (errMsg.includes("network request failed") || errMsg.includes("networkerror") || errMsg.includes("failed to fetch")) {
-        setError(currentContent.networkError);
+      const errName = err?.name?.toLowerCase() || "";
+      if (
+        errMsg.includes("network") ||
+        errMsg.includes("fetch") ||
+        errMsg.includes("timeout") ||
+        errName.includes("abort") ||
+        errMsg.includes("connexion")
+      ) {
+        setError(language === 'fr'
+          ? "Problème de connexion. Veuillez vérifier votre internet et réessayer."
+          : "Connection issue. Please check your internet and try again.");
       } else {
         setError(language === 'fr'
           ? "Impossible de créer le compte. Vérifiez vos informations."

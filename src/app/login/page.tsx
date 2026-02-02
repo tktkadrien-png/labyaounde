@@ -120,14 +120,23 @@ export default function LoginPage() {
       });
 
       if (authError) {
-        // Handle specific error messages - be more specific to avoid false network errors
+        // Handle specific error messages
         const errorMsg = authError.message?.toLowerCase() || "";
         if (errorMsg.includes("email not confirmed")) {
           setError(language === 'fr'
             ? "Veuillez confirmer votre email avant de vous connecter"
             : "Please confirm your email before logging in");
-        } else if (errorMsg.includes("network request failed") || errorMsg.includes("networkerror") || errorMsg.includes("failed to fetch")) {
-          setError(currentContent.networkError);
+        } else if (
+          errorMsg.includes("network") ||
+          errorMsg.includes("fetch") ||
+          errorMsg.includes("timeout") ||
+          errorMsg.includes("abort") ||
+          errorMsg.includes("connexion") ||
+          authError.status === 0
+        ) {
+          setError(language === 'fr'
+            ? "Problème de connexion. Veuillez vérifier votre internet et réessayer."
+            : "Connection issue. Please check your internet and try again.");
         } else {
           // For all other auth errors (invalid credentials, etc)
           setError(currentContent.invalidCredentials);
@@ -145,10 +154,19 @@ export default function LoginPage() {
         }, 500);
       }
     } catch (err: any) {
-      // Only show network error for actual network failures
+      // Handle network/timeout errors
       const errMsg = err?.message?.toLowerCase() || "";
-      if (errMsg.includes("network request failed") || errMsg.includes("networkerror") || errMsg.includes("failed to fetch")) {
-        setError(currentContent.networkError);
+      const errName = err?.name?.toLowerCase() || "";
+      if (
+        errMsg.includes("network") ||
+        errMsg.includes("fetch") ||
+        errMsg.includes("timeout") ||
+        errName.includes("abort") ||
+        errMsg.includes("connexion")
+      ) {
+        setError(language === 'fr'
+          ? "Problème de connexion. Veuillez vérifier votre internet et réessayer."
+          : "Connection issue. Please check your internet and try again.");
       } else {
         setError(currentContent.invalidCredentials);
       }
