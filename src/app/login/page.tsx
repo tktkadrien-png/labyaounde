@@ -120,19 +120,16 @@ export default function LoginPage() {
       });
 
       if (authError) {
-        // Handle specific error messages
+        // Handle specific error messages - be more specific to avoid false network errors
         const errorMsg = authError.message?.toLowerCase() || "";
-        if (errorMsg.includes("invalid login credentials") ||
-            errorMsg.includes("invalid") ||
-            errorMsg.includes("incorrect")) {
-          setError(currentContent.invalidCredentials);
-        } else if (errorMsg.includes("email not confirmed")) {
+        if (errorMsg.includes("email not confirmed")) {
           setError(language === 'fr'
             ? "Veuillez confirmer votre email avant de vous connecter"
             : "Please confirm your email before logging in");
-        } else if (errorMsg.includes("network") || errorMsg.includes("fetch") || errorMsg.includes("failed")) {
+        } else if (errorMsg.includes("network request failed") || errorMsg.includes("networkerror") || errorMsg.includes("failed to fetch")) {
           setError(currentContent.networkError);
         } else {
+          // For all other auth errors (invalid credentials, etc)
           setError(currentContent.invalidCredentials);
         }
         setLoading(false);
@@ -148,9 +145,9 @@ export default function LoginPage() {
         }, 500);
       }
     } catch (err: any) {
-      // Network or unexpected errors - show friendly message
+      // Only show network error for actual network failures
       const errMsg = err?.message?.toLowerCase() || "";
-      if (errMsg.includes("fetch") || errMsg.includes("network") || errMsg.includes("failed")) {
+      if (errMsg.includes("network request failed") || errMsg.includes("networkerror") || errMsg.includes("failed to fetch")) {
         setError(currentContent.networkError);
       } else {
         setError(currentContent.invalidCredentials);

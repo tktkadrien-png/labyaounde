@@ -166,22 +166,24 @@ export default function SignupPage() {
       });
 
       if (authError) {
-        // Handle errors with friendly messages
+        // Handle errors with friendly messages - be specific to avoid false network errors
         const errorMsg = authError.message?.toLowerCase() || "";
         if (errorMsg.includes("already registered") || errorMsg.includes("user already registered")) {
           setError(currentContent.emailInUse);
-        } else if (errorMsg.includes("password")) {
+        } else if (errorMsg.includes("password") && errorMsg.includes("short")) {
           setError(currentContent.passwordTooShort);
-        } else if (errorMsg.includes("network") || errorMsg.includes("fetch") || errorMsg.includes("failed")) {
+        } else if (errorMsg.includes("network request failed") || errorMsg.includes("networkerror") || errorMsg.includes("failed to fetch")) {
           setError(currentContent.networkError);
         } else if (errorMsg.includes("rate limit") || errorMsg.includes("too many")) {
           setError(language === 'fr'
             ? "Trop de tentatives. Veuillez patienter quelques minutes."
             : "Too many attempts. Please wait a few minutes.");
+        } else if (errorMsg.includes("email") && errorMsg.includes("invalid")) {
+          setError(currentContent.invalidEmail);
         } else {
           // Generic message for unknown errors
           setError(language === 'fr'
-            ? "Impossible de creer le compte. Verifiez vos informations."
+            ? "Impossible de créer le compte. Vérifiez vos informations."
             : "Unable to create account. Please check your information.");
         }
         setLoading(false);
@@ -212,14 +214,14 @@ export default function SignupPage() {
         }, 3000);
       }
     } catch (err: any) {
-      // Network or unexpected errors - show friendly message
+      // Only show network error for actual network failures
       const errMsg = err?.message?.toLowerCase() || "";
-      if (errMsg.includes("fetch") || errMsg.includes("network") || errMsg.includes("failed")) {
+      if (errMsg.includes("network request failed") || errMsg.includes("networkerror") || errMsg.includes("failed to fetch")) {
         setError(currentContent.networkError);
       } else {
         setError(language === 'fr'
-          ? "Impossible de creer le compte. Verifiez votre connexion internet."
-          : "Unable to create account. Check your internet connection.");
+          ? "Impossible de créer le compte. Vérifiez vos informations."
+          : "Unable to create account. Please check your information.");
       }
     } finally {
       setLoading(false);
