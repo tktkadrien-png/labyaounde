@@ -120,17 +120,19 @@ export default function LoginPage() {
       });
 
       if (authError) {
-        // Handle specific error messages without showing technical details
-        if (authError.message.includes("Invalid login credentials") ||
-            authError.message.includes("invalid") ||
-            authError.message.includes("Invalid")) {
+        // Handle specific error messages
+        const errorMsg = authError.message?.toLowerCase() || "";
+        if (errorMsg.includes("invalid login credentials") ||
+            errorMsg.includes("invalid") ||
+            errorMsg.includes("incorrect")) {
           setError(currentContent.invalidCredentials);
-        } else if (authError.message.includes("Email not confirmed")) {
+        } else if (errorMsg.includes("email not confirmed")) {
           setError(language === 'fr'
             ? "Veuillez confirmer votre email avant de vous connecter"
             : "Please confirm your email before logging in");
+        } else if (errorMsg.includes("network") || errorMsg.includes("fetch") || errorMsg.includes("failed")) {
+          setError(currentContent.networkError);
         } else {
-          // For any other error (network, fetch, etc), show generic message
           setError(currentContent.invalidCredentials);
         }
         setLoading(false);
@@ -138,14 +140,21 @@ export default function LoginPage() {
       }
 
       if (data?.user) {
-        // Successful login - redirect to home
+        // Successful login
         setSuccess(language === 'fr' ? "Connexion réussie!" : "Login successful!");
-        router.push("/");
-        router.refresh();
+        setTimeout(() => {
+          router.push("/");
+          router.refresh();
+        }, 500);
       }
     } catch (err: any) {
-      // Don't show technical errors to user
-      setError(currentContent.invalidCredentials);
+      // Network or unexpected errors - show friendly message
+      const errMsg = err?.message?.toLowerCase() || "";
+      if (errMsg.includes("fetch") || errMsg.includes("network") || errMsg.includes("failed")) {
+        setError(currentContent.networkError);
+      } else {
+        setError(currentContent.invalidCredentials);
+      }
     } finally {
       setLoading(false);
     }

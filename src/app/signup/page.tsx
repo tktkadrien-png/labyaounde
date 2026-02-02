@@ -166,14 +166,23 @@ export default function SignupPage() {
       });
 
       if (authError) {
-        // Handle errors without showing technical messages
-        if (authError.message.includes("already registered") || authError.message.includes("User already registered")) {
+        // Handle errors with friendly messages
+        const errorMsg = authError.message?.toLowerCase() || "";
+        if (errorMsg.includes("already registered") || errorMsg.includes("user already registered")) {
           setError(currentContent.emailInUse);
-        } else if (authError.message.includes("Password")) {
+        } else if (errorMsg.includes("password")) {
           setError(currentContent.passwordTooShort);
+        } else if (errorMsg.includes("network") || errorMsg.includes("fetch") || errorMsg.includes("failed")) {
+          setError(currentContent.networkError);
+        } else if (errorMsg.includes("rate limit") || errorMsg.includes("too many")) {
+          setError(language === 'fr'
+            ? "Trop de tentatives. Veuillez patienter quelques minutes."
+            : "Too many attempts. Please wait a few minutes.");
         } else {
-          // For any other error, show a generic message
-          setError(language === 'fr' ? "Une erreur est survenue. Veuillez réessayer." : "An error occurred. Please try again.");
+          // Generic message for unknown errors
+          setError(language === 'fr'
+            ? "Impossible de creer le compte. Verifiez vos informations."
+            : "Unable to create account. Please check your information.");
         }
         setLoading(false);
         return;
@@ -190,9 +199,11 @@ export default function SignupPage() {
 
       // If we have a session, they're logged in immediately
       if (data?.session) {
-        setSuccess(language === 'fr' ? "Compte créé avec succès!" : "Account created successfully!");
-        router.push("/");
-        router.refresh();
+        setSuccess(language === 'fr' ? "Compte cree avec succes!" : "Account created successfully!");
+        setTimeout(() => {
+          router.push("/");
+          router.refresh();
+        }, 500);
       } else if (data?.user) {
         // User created but needs email confirmation
         setSuccess(currentContent.accountCreated);
@@ -201,8 +212,15 @@ export default function SignupPage() {
         }, 3000);
       }
     } catch (err: any) {
-      // Don't show technical errors to user
-      setError(language === 'fr' ? "Une erreur est survenue. Veuillez réessayer." : "An error occurred. Please try again.");
+      // Network or unexpected errors - show friendly message
+      const errMsg = err?.message?.toLowerCase() || "";
+      if (errMsg.includes("fetch") || errMsg.includes("network") || errMsg.includes("failed")) {
+        setError(currentContent.networkError);
+      } else {
+        setError(language === 'fr'
+          ? "Impossible de creer le compte. Verifiez votre connexion internet."
+          : "Unable to create account. Check your internet connection.");
+      }
     } finally {
       setLoading(false);
     }
