@@ -276,16 +276,16 @@ export default function SignupPage() {
             {/* Form */}
             <form onSubmit={handleSignup} className="space-y-5">
               {error && (
-                <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg flex items-center gap-3 animate-slideDown">
-                  <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0" />
-                  <p className="text-sm text-red-700">{error}</p>
+                <div className="bg-[#FE5000]/10 border-l-4 border-[#FE5000] p-4 rounded-lg flex items-center gap-3 animate-slideDown">
+                  <AlertCircle className="w-5 h-5 text-[#FE5000] flex-shrink-0" />
+                  <p className="text-sm text-[#FE5000]">{error}</p>
                 </div>
               )}
 
               {success && (
-                <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-lg flex items-center gap-3 animate-slideDown">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                  <p className="text-sm text-green-700">{success}</p>
+                <div className="bg-[#0A065D]/10 border-l-4 border-[#0A065D] p-4 rounded-lg flex items-center gap-3 animate-slideDown">
+                  <CheckCircle className="w-5 h-5 text-[#FE5000] flex-shrink-0" />
+                  <p className="text-sm text-[#0A065D]">{success}</p>
                 </div>
               )}
 
@@ -396,31 +396,31 @@ export default function SignupPage() {
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
                       {passwordChecks.length ? (
-                        <Check className="w-4 h-4 text-green-500" />
+                        <Check className="w-4 h-4 text-[#FE5000]" />
                       ) : (
-                        <X className="w-4 h-4 text-red-400" />
+                        <X className="w-4 h-4 text-gray-400" />
                       )}
-                      <span className={`text-xs ${passwordChecks.length ? 'text-green-600' : 'text-gray-500'}`}>
+                      <span className={`text-xs ${passwordChecks.length ? 'text-[#FE5000]' : 'text-gray-500'}`}>
                         {currentContent.passwordStrength.length}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
                       {passwordChecks.uppercase ? (
-                        <Check className="w-4 h-4 text-green-500" />
+                        <Check className="w-4 h-4 text-[#FE5000]" />
                       ) : (
                         <X className="w-4 h-4 text-gray-300" />
                       )}
-                      <span className={`text-xs ${passwordChecks.uppercase ? 'text-green-600' : 'text-gray-400'}`}>
+                      <span className={`text-xs ${passwordChecks.uppercase ? 'text-[#FE5000]' : 'text-gray-400'}`}>
                         {currentContent.passwordStrength.uppercase}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
                       {passwordChecks.number ? (
-                        <Check className="w-4 h-4 text-green-500" />
+                        <Check className="w-4 h-4 text-[#FE5000]" />
                       ) : (
                         <X className="w-4 h-4 text-gray-300" />
                       )}
-                      <span className={`text-xs ${passwordChecks.number ? 'text-green-600' : 'text-gray-400'}`}>
+                      <span className={`text-xs ${passwordChecks.number ? 'text-[#FE5000]' : 'text-gray-400'}`}>
                         {currentContent.passwordStrength.number}
                       </span>
                     </div>
@@ -447,9 +447,9 @@ export default function SignupPage() {
                   placeholder=" "
                   className={`peer block w-full pl-12 pr-12 py-4 text-base border-2 rounded-xl focus:ring-0 transition-all duration-300 placeholder-transparent bg-white ${
                     confirmPassword && password !== confirmPassword
-                      ? 'border-red-300 focus:border-red-500'
+                      ? 'border-[#FE5000]/50 focus:border-[#FE5000]'
                       : confirmPassword && password === confirmPassword
-                      ? 'border-green-300 focus:border-green-500'
+                      ? 'border-[#0A065D]/50 focus:border-[#0A065D]'
                       : 'border-gray-200 focus:border-[#0A065D]'
                   }`}
                 />

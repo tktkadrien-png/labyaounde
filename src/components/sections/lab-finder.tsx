@@ -55,8 +55,8 @@ const Newsletter = () => {
           <div className="max-w-sm mx-auto">
             {isSubmitted ? (
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-2xl">
-                <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-8 h-8 text-green-400" />
+                <div className="w-16 h-16 bg-[#FE5000]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="w-8 h-8 text-[#FE5000]" />
                 </div>
                 <p className="text-white font-semibold text-xl mb-2">Merci !</p>
                 <p className="text-white/60 text-sm">Votre inscription a été confirmée.</p>

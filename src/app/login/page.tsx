@@ -239,16 +239,16 @@ export default function LoginPage() {
 
                 <form onSubmit={handlePasswordReset} className="space-y-6">
                   {error && (
-                    <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg flex items-center gap-3">
-                      <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0" />
-                      <p className="text-sm text-red-700">{error}</p>
+                    <div className="bg-[#FE5000]/10 border-l-4 border-[#FE5000] p-4 rounded-lg flex items-center gap-3">
+                      <AlertCircle className="w-5 h-5 text-[#FE5000] flex-shrink-0" />
+                      <p className="text-sm text-[#FE5000]">{error}</p>
                     </div>
                   )}
 
                   {success && (
-                    <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-lg flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                      <p className="text-sm text-green-700">{success}</p>
+                    <div className="bg-[#0A065D]/10 border-l-4 border-[#0A065D] p-4 rounded-lg flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-[#0A065D] flex-shrink-0" />
+                      <p className="text-sm text-[#0A065D]">{success}</p>
                     </div>
                   )}
 
@@ -310,16 +310,16 @@ export default function LoginPage() {
                 {/* Form */}
                 <form onSubmit={handleLogin} className="space-y-6">
                   {error && (
-                    <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg animate-slideDown flex items-center gap-3">
-                      <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0" />
-                      <p className="text-sm text-red-700">{error}</p>
+                    <div className="bg-[#FE5000]/10 border-l-4 border-[#FE5000] p-4 rounded-lg animate-slideDown flex items-center gap-3">
+                      <AlertCircle className="w-5 h-5 text-[#FE5000] flex-shrink-0" />
+                      <p className="text-sm text-[#FE5000]">{error}</p>
                     </div>
                   )}
 
                   {success && (
-                    <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-lg flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                      <p className="text-sm text-green-700">{success}</p>
+                    <div className="bg-[#0A065D]/10 border-l-4 border-[#0A065D] p-4 rounded-lg flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-[#0A065D] flex-shrink-0" />
+                      <p className="text-sm text-[#0A065D]">{success}</p>
                     </div>
                   )}
 

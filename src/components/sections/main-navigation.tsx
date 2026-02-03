@@ -145,14 +145,14 @@ const MainNavigation = () => {
         )}
       >
         <div className="container mx-auto max-w-[1200px] px-4 sm:px-6 md:px-8 lg:px-[30px] py-3 md:py-[15px]">
-          <div className="flex h-24 sm:h-28 md:h-32 lg:h-[160px] items-center justify-between">
+          <div className="flex h-28 sm:h-32 md:h-36 lg:h-[180px] items-center justify-between">
             <Link href="/" aria-label="Lab Yaoundé Home" className="flex items-center relative">
               <Image
                 src="/images/images.png"
                 alt="Lab Yaoundé Logo"
                 width={350}
                 height={150}
-                className="h-24 sm:h-28 md:h-32 lg:h-[180px] w-auto object-contain hover:opacity-90 transition-opacity"
+                className="h-28 sm:h-32 md:h-36 lg:h-[200px] w-auto object-contain hover:opacity-90 transition-opacity"
                 priority
               />
             </Link>
@@ -205,7 +205,7 @@ const MainNavigation = () => {
                           {language === 'fr' ? 'Laisser un avis' : 'Leave a Review'}
                         </Link>
                         <hr className="my-2 border-gray-200" />
-                        <button onClick={handleLogout} className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors flex items-center gap-2">
+                        <button onClick={handleLogout} className="w-full text-left px-4 py-2 text-sm text-[#FE5000] hover:bg-[#FE5000]/10 transition-colors flex items-center gap-2">
                           <LogOut className="h-4 w-4" />
                           {language === 'fr' ? 'Déconnexion' : 'Logout'}
                         </button>
@@ -290,7 +290,7 @@ const MainNavigation = () => {
                   <Button
                     onClick={handleLogout}
                     variant="outline"
-                    className="w-full justify-start text-red-600 hover:bg-red-50 border-red-200 min-h-[44px] text-sm sm:text-base"
+                    className="w-full justify-start text-[#FE5000] hover:bg-[#FE5000]/10 border-[#FE5000]/30 min-h-[44px] text-sm sm:text-base"
                   >
                     <LogOut className="h-4 w-4 mr-2" />
                     {language === 'fr' ? 'Déconnexion' : 'Logout'}

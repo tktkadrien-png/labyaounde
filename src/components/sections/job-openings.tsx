@@ -160,7 +160,7 @@ export default function JobOpenings() {
               </div>
 
               <div className="bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl p-6 text-center group hover:bg-white/25 hover:scale-105 transition-all duration-300">
-                <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl mb-4 group-hover:rotate-6 transition-transform duration-300 shadow-lg">
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-[#FE5000] to-[#CC4000] rounded-xl mb-4 group-hover:rotate-6 transition-transform duration-300 shadow-lg">
                   <Clock className="w-7 h-7 text-white" />
                 </div>
                 <p className="text-3xl md:text-4xl font-bold text-white mb-1 group-hover:scale-110 transition-transform duration-300">24h</p>

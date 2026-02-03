@@ -164,9 +164,9 @@ const Footer = () => {
                     <Image
                       src="/images/images.png"
                       alt="Lab Yaoundé Logo"
-                      width={180}
-                      height={75}
-                      className="h-[75px] w-auto object-contain brightness-110"
+                      width={220}
+                      height={90}
+                      className="h-[90px] w-auto object-contain brightness-110"
                     />
                   </Link>
                   <p className="text-white/70 text-sm max-w-xs">

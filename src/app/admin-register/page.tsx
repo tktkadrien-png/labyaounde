@@ -168,9 +168,9 @@ export default function AdminRegisterPage() {
               <p className="mt-2 text-sm text-gray-600">{currentContent.subtitle}</p>
 
               {/* Admin Badge */}
-              <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-red-100 rounded-full">
-                <Shield className="w-4 h-4 text-red-600" />
-                <span className="text-sm font-semibold text-red-600">
+              <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-[#FE5000]/10 rounded-full">
+                <Shield className="w-4 h-4 text-[#FE5000]" />
+                <span className="text-sm font-semibold text-[#FE5000]">
                   {language === "fr" ? "Inscription Administrateur" : "Administrator Registration"}
                 </span>
               </div>
@@ -179,7 +179,7 @@ export default function AdminRegisterPage() {
             {/* Form */}
             <form onSubmit={handleRegister} className="space-y-5">
               {error && (
-                <div className="bg-red-50 border-l-4 border-red-500 p-4 text-red-700 text-sm rounded">
+                <div className="bg-[#FE5000]/10 border-l-4 border-[#FE5000] p-4 text-[#FE5000] text-sm rounded">
                   {error}
                 </div>
               )}
@@ -187,7 +187,7 @@ export default function AdminRegisterPage() {
               {/* Secret Code - First field for security */}
               <div className="bg-[#FE5000]/10 border border-[#FE5000]/30 rounded-lg p-4">
                 <label htmlFor="secretCode" className="block text-sm font-medium text-gray-700 mb-1">
-                  {currentContent.secretCodeLabel} <span className="text-red-500">*</span>
+                  {currentContent.secretCodeLabel} <span className="text-[#FE5000]">*</span>
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -200,7 +200,7 @@ export default function AdminRegisterPage() {
                     value={secretCode}
                     onChange={(e) => setSecretCode(e.target.value)}
                     placeholder={currentContent.secretCodePlaceholder}
-                    className="block w-full pl-10 pr-3 py-3 border border-[#FE5000]/50 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all placeholder:text-gray-400 bg-white"
+                    className="block w-full pl-10 pr-3 py-3 border border-[#FE5000]/50 rounded-lg focus:ring-2 focus:ring-[#FE5000] focus:border-transparent transition-all placeholder:text-gray-400 bg-white"
                   />
                 </div>
                 <p className="mt-2 text-xs text-[#FE5000]">
@@ -226,7 +226,7 @@ export default function AdminRegisterPage() {
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder={currentContent.namePlaceholder}
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all placeholder:text-gray-400"
+                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FE5000] focus:border-transparent transition-all placeholder:text-gray-400"
                   />
                 </div>
               </div>
@@ -247,7 +247,7 @@ export default function AdminRegisterPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder={currentContent.emailPlaceholder}
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all placeholder:text-gray-400"
+                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FE5000] focus:border-transparent transition-all placeholder:text-gray-400"
                   />
                 </div>
               </div>
@@ -268,7 +268,7 @@ export default function AdminRegisterPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder={currentContent.passwordPlaceholder}
-                    className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all placeholder:text-gray-400"
+                    className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FE5000] focus:border-transparent transition-all placeholder:text-gray-400"
                   />
                   <button
                     type="button"
@@ -296,7 +296,7 @@ export default function AdminRegisterPage() {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder={currentContent.confirmPasswordPlaceholder}
-                    className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all placeholder:text-gray-400"
+                    className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FE5000] focus:border-transparent transition-all placeholder:text-gray-400"
                   />
                   <button
                     type="button"
@@ -312,7 +312,7 @@ export default function AdminRegisterPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex justify-center items-center gap-2 py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-[1.02]"
+                className="w-full flex justify-center items-center gap-2 py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-[#FE5000] to-[#CC4000] hover:from-[#CC4000] hover:to-[#A03300] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FE5000] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-[1.02]"
               >
                 {loading ? (
                   <>
@@ -342,7 +342,7 @@ export default function AdminRegisterPage() {
             <div className="text-center">
               <p className="text-sm text-gray-600">
                 {currentContent.hasAccount}{" "}
-                <a href="/admin-login" className="font-semibold text-red-600 hover:text-red-700 transition-colors">
+                <a href="/admin-login" className="font-semibold text-[#FE5000] hover:text-[#CC4000] transition-colors">
                   {currentContent.loginLink}
                 </a>
               </p>
