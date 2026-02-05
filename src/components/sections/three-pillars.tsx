@@ -61,20 +61,20 @@ const ThreePillars = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="relative py-20 text-[#0A065D]">
+    <section ref={ref as React.RefObject<HTMLElement>} className="relative py-24 text-white">
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#FE5000]/15 to-[#FE5000]/25"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#FE5000] to-[#CC4000]"></div>
       </div>
 
       <div className="relative container mx-auto px-6 max-w-[1200px]">
         <div className={`max-w-4xl transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-block bg-[#FE5000] text-white text-sm font-bold uppercase rounded-full px-5 py-2 mb-4">
+          <span className="inline-block bg-white text-[#FE5000] text-base font-bold uppercase rounded-full px-6 py-2.5 mb-6">
             Notre ADN
           </span>
-          <h2 className="text-[40px] font-bold leading-tight mb-4">
+          <h2 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
             Trois piliers qui font notre différence
           </h2>
-          <p className="text-lg text-[#0A065D]/80 max-w-[600px] mt-4">
+          <p className="text-xl md:text-2xl text-white/90 max-w-[700px] mt-4">
             Découvrez ce qui fait de LabYaounde un acteur unique dans le domaine de la biologie médicale
           </p>
         </div>
