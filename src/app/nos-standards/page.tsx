@@ -117,16 +117,28 @@ export default function NosStandardsPage() {
           </div>
         </section>
 
-        {/* Image Section */}
+        {/* Image Gallery Section */}
         <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="relative h-[400px] md:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
-              <Image
-                src="/images/standards-hero.png"
-                alt={language === 'fr' ? 'Nos Standards - Laboratoire' : 'Our Standards - Laboratory'}
-                fill
-                className="object-cover"
-              />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-xl group">
+                <Image
+                  src="/images/standards-hero.png"
+                  alt={language === 'fr' ? 'Nos Standards - Laboratoire' : 'Our Standards - Laboratory'}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+              <div className="relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-xl group">
+                <Image
+                  src="/standards-new.jpeg"
+                  alt={language === 'fr' ? 'Nos Standards - Qualité' : 'Our Standards - Quality'}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
             </div>
           </div>
         </section>

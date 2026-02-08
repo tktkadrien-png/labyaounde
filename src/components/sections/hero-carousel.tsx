@@ -35,7 +35,7 @@ const slides = [
     buttonLink: "#",
   },
   {
-    imageSrc: "/lab-photo-3.jpeg",
+    imageSrc: "/carousel-1.jpeg",
     title: "Dépistage IST : Gratuits & sans ordonnance",
     subtitle:
       "Mon Test IST, LABYAOUNDE se joint à la lutte contre les infections sexuellement transmissibles (IST).",
@@ -43,7 +43,7 @@ const slides = [
     buttonLink: "#",
   },
   {
-    imageSrc: "/lab-photo-5.jpeg",
+    imageSrc: "/carousel-2.jpeg",
     title: "Une démarche simple & préventive",
     subtitle:
       "Prenez votre santé en main avec nos bilans de santé sans ordonnance et sans rendez-vous.",
@@ -51,12 +51,28 @@ const slides = [
     buttonLink: "/patients/mon-bilan-sante-sans-ordonnance",
   },
   {
-    imageSrc: "/lab-photo-7.jpeg",
+    imageSrc: "/carousel-3.jpeg",
     title: "Professionnels de santé dévoués",
     subtitle:
       "Une équipe qualifiée à votre service pour des résultats fiables et rapides.",
     buttonText: "Nos services",
     buttonLink: "#",
+  },
+  {
+    imageSrc: "/lab-photo-4.jpeg",
+    title: "Technologie de pointe",
+    subtitle:
+      "Des équipements modernes pour des analyses précises et fiables.",
+    buttonText: "Nos équipements",
+    buttonLink: "#",
+  },
+  {
+    imageSrc: "/lab-photo-6.jpeg",
+    title: "Qualité certifiée",
+    subtitle:
+      "Un laboratoire aux normes internationales ISO 15189 pour votre sécurité.",
+    buttonText: "Nos standards",
+    buttonLink: "/nos-standards",
   },
 ];
 
@@ -102,7 +118,7 @@ export default function HeroCarousel() {
               key={index}
               className="transition-opacity ease-in-out duration-[800ms]"
             >
-              <div className="relative w-full min-h-[400px] sm:min-h-[500px] md:min-h-[600px] h-[70vh] sm:h-[80vh] md:h-screen max-h-[880px] overflow-hidden">
+              <div className="relative w-full min-h-[350px] sm:min-h-[400px] md:min-h-[500px] h-[60vh] sm:h-[65vh] md:h-[75vh] max-h-[700px] overflow-hidden">
                 <Image
                   src={slide.imageSrc}
                   alt={slide.title}

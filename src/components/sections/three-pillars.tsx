@@ -19,9 +19,9 @@ const cardData = [
   },
   {
     icon: Scale,
-    title: "Indépendance",
-    description: "Un laboratoire indépendant qui place l'éthique et la qualité au cœur de ses priorités",
-    tags: ["Éthique médicale", "Proximité", "Qualité"],
+    title: "Confidentialité",
+    description: "Un laboratoire qui garantit la confidentialité totale de vos données et résultats médicaux",
+    tags: ["Protection des données", "Secret médical", "Sécurité"],
   }
 ];
 
@@ -49,7 +49,7 @@ const PillarCard = ({ icon: Icon, title, description, tags }: PillarCardData) =>
       {tags.map((tag) => (
         <span
           key={tag}
-          className="bg-[#FF6B00]/10 text-[#FF6B00] rounded-full px-4 py-2 text-sm font-semibold"
+          className="bg-[#0A065D]/10 text-[#0A065D] rounded-full px-4 py-2 text-sm font-semibold"
         >
           {tag}
         </span>
@@ -64,7 +64,7 @@ const ThreePillars = () => {
   return (
     <section ref={ref as React.RefObject<HTMLElement>} className="relative py-28 text-white overflow-hidden">
       {/* Bright Orange Background */}
-      <div className="absolute inset-0 bg-[#FF6B00]"></div>
+      <div className="absolute inset-0 bg-[#FF8C00]"></div>
 
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
@@ -73,8 +73,8 @@ const ThreePillars = () => {
 
       <div className="relative container mx-auto px-6 max-w-[1200px]">
         <div className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-block bg-white text-[#FF6B00] text-lg font-bold uppercase rounded-full px-8 py-3 mb-8 shadow-xl">
-            Notre ADN
+          <span className="inline-block bg-white text-[#FF8C00] text-lg font-bold uppercase rounded-full px-8 py-3 mb-8 shadow-xl">
+            LABY
           </span>
           <h2 className="text-5xl md:text-7xl font-black leading-tight mb-6 drop-shadow-lg">
             Trois piliers qui font notre différence
