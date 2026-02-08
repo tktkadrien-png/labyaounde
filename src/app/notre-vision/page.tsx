@@ -22,7 +22,7 @@ export default function NotreVisionPage() {
         <section className="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
           <div className="absolute inset-0">
             <Image
-              src="/images/vision-hero.png"
+              src="/lab-photo-3.jpeg"
               alt={language === 'fr' ? 'Notre Vision' : 'Our Vision'}
               fill
               className="object-cover"
@@ -109,7 +109,7 @@ export default function NotreVisionPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="relative h-[400px] md:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/vision-hero.png"
+                src="/lab-photo-3.jpeg"
                 alt={language === 'fr' ? 'Notre Vision - Laboratoire' : 'Our Vision - Laboratory'}
                 fill
                 className="object-cover"

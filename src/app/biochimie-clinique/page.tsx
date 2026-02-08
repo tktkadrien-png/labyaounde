@@ -18,7 +18,7 @@ export default function BiochimieClinikPage() {
         <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
           <div className="absolute inset-0">
             <Image
-              src="/pexels-ivan-s-9629721.jpg"
+              src="/lab-photo-1.jpeg"
               alt="Laboratoire de Biochimie Clinique"
               fill
               className="object-cover"
@@ -103,7 +103,7 @@ export default function BiochimieClinikPage() {
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group col-span-2 md:col-span-1">
-                <Image src="/pexels-artempodrez-5726837.jpg" alt="Équipement" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/lab-photo-2.jpeg" alt="Équipement" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-2xl font-bold text-white">Automates</h3>
@@ -112,7 +112,7 @@ export default function BiochimieClinikPage() {
               </div>
 
               <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group">
-                <Image src="/pexels-karola-g-8539753.jpg" alt="Analyses" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/lab-photo-3.jpeg" alt="Analyses" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-xl font-bold text-white">Précision</h3>
@@ -120,7 +120,7 @@ export default function BiochimieClinikPage() {
               </div>
 
               <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group">
-                <Image src="/pexels-artempodrez-5726705.jpg" alt="Résultats" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/lab-photo-4.jpeg" alt="Résultats" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-xl font-bold text-white">Rapidité</h3>
@@ -128,7 +128,7 @@ export default function BiochimieClinikPage() {
               </div>
 
               <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group col-span-2">
-                <Image src="/pexels-artempodrez-5726788.jpg" alt="Laboratoire" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/lab-photo-5.jpeg" alt="Laboratoire" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-2xl font-bold text-white">Environnement Contrôlé</h3>

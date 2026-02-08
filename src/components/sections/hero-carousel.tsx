@@ -19,7 +19,7 @@ import Fade from "embla-carousel-fade";
 
 const slides = [
   {
-    imageSrc: "/images/ChatGPT Image Nov 19, 2025, 01_48_32 AM.png",
+    imageSrc: "/lab-photo-1.jpeg",
     title: "Laboratoires de biologie médicale",
     subtitle:
       "Des laboratoires proches de vous, une expertise médicale reconnue pour prévenir et soigner.",
@@ -27,7 +27,7 @@ const slides = [
     buttonLink: "/laboratoires",
   },
   {
-    imageSrc: "/images/cdc-qs8wUhpN1gs-unsplash.jpg",
+    imageSrc: "/lab-photo-2.jpeg",
     title: "Excellence en analyses médicales",
     subtitle:
       "LABYAOUNDE s'engage pour votre santé avec des équipements à la pointe de la technologie.",
@@ -35,7 +35,7 @@ const slides = [
     buttonLink: "#",
   },
   {
-    imageSrc: "/images/navy-medicine-JqfxntbYPms-unsplash.jpg",
+    imageSrc: "/lab-photo-3.jpeg",
     title: "Dépistage IST : Gratuits & sans ordonnance",
     subtitle:
       "Mon Test IST, LABYAOUNDE se joint à la lutte contre les infections sexuellement transmissibles (IST).",
@@ -43,7 +43,7 @@ const slides = [
     buttonLink: "#",
   },
   {
-    imageSrc: "/images/adam-bezer-z_w9KovAwYk-unsplash.jpg",
+    imageSrc: "/lab-photo-5.jpeg",
     title: "Une démarche simple & préventive",
     subtitle:
       "Prenez votre santé en main avec nos bilans de santé sans ordonnance et sans rendez-vous.",
@@ -51,7 +51,7 @@ const slides = [
     buttonLink: "/patients/mon-bilan-sante-sans-ordonnance",
   },
   {
-    imageSrc: "/images/cdc-WCEOtVmk2VY-unsplash.jpg",
+    imageSrc: "/lab-photo-7.jpeg",
     title: "Professionnels de santé dévoués",
     subtitle:
       "Une équipe qualifiée à votre service pour des résultats fiables et rapides.",

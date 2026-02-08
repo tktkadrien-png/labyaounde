@@ -18,7 +18,7 @@ export default function BiologieMoleculairePage() {
         <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
           <div className="absolute inset-0">
             <Image
-              src="/louis-reed-pwcKF7L4-no-unsplash.jpg"
+              src="/lab-photo-7.jpeg"
               alt="Laboratoire de Biologie Moléculaire"
               fill
               className="object-cover"
@@ -96,7 +96,7 @@ export default function BiologieMoleculairePage() {
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group col-span-2 md:col-span-1">
-                <Image src="/national-cancer-institute-NFvdKIhxYlU-unsplash.jpg" alt="PCR" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/lab-photo-1.jpeg" alt="PCR" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-2xl font-bold text-white">PCR Temps Réel</h3>
@@ -104,7 +104,7 @@ export default function BiologieMoleculairePage() {
               </div>
 
               <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group">
-                <Image src="/national-cancer-institute-L8tWZT4CcVQ-unsplash.jpg" alt="Génétique" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/lab-photo-2.jpeg" alt="Génétique" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-xl font-bold text-white">Analyses Génétiques</h3>
@@ -112,7 +112,7 @@ export default function BiologieMoleculairePage() {
               </div>
 
               <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group">
-                <Image src="/cdc-D5CqnSYdTjM-unsplash.jpg" alt="Séquençage" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/lab-photo-3.jpeg" alt="Séquençage" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-xl font-bold text-white">Séquençage</h3>
@@ -120,7 +120,7 @@ export default function BiologieMoleculairePage() {
               </div>
 
               <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group col-span-2">
-                <Image src="/lucas-vasques-9vnACvX2748-unsplash.jpg" alt="Laboratoire" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/lab-photo-4.jpeg" alt="Laboratoire" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-2xl font-bold text-white">Équipements de Pointe</h3>

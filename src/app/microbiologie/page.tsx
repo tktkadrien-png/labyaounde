@@ -18,7 +18,7 @@ export default function MicrobiologiePage() {
         <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
           <div className="absolute inset-0">
             <Image
-              src="/images/microbiologie-hero.png"
+              src="/lab-photo-2.jpeg"
               alt="Laboratoire de Microbiologie"
               fill
               className="object-cover"
@@ -96,7 +96,7 @@ export default function MicrobiologiePage() {
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group col-span-2 md:col-span-1">
-                <Image src="/cdc-aM5wJrZGKrY-unsplash.jpg" alt="Bactériologie" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/lab-photo-3.jpeg" alt="Bactériologie" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-2xl font-bold text-white">Bactériologie</h3>
@@ -104,7 +104,7 @@ export default function MicrobiologiePage() {
               </div>
 
               <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group">
-                <Image src="/cdc-k0KRNtqcjfw-unsplash.jpg" alt="Parasitologie" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/lab-photo-4.jpeg" alt="Parasitologie" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-xl font-bold text-white">Parasitologie</h3>
@@ -112,7 +112,7 @@ export default function MicrobiologiePage() {
               </div>
 
               <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group">
-                <Image src="/cdc-IFdp1wpq5gs-unsplash.jpg" alt="Mycologie" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/lab-photo-5.jpeg" alt="Mycologie" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-xl font-bold text-white">Mycologie</h3>
@@ -120,7 +120,7 @@ export default function MicrobiologiePage() {
               </div>
 
               <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group col-span-2">
-                <Image src="/cdc-D5CqnSYdTjM-unsplash.jpg" alt="Cultures" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/lab-photo-6.jpeg" alt="Cultures" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-2xl font-bold text-white">Cultures Automatisées</h3>

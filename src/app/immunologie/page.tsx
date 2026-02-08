@@ -5,7 +5,7 @@ import Link from "next/link";
 import TopNavigationBar from "@/components/sections/top-navigation-bar";
 import MainNavigation from "@/components/sections/main-navigation";
 import Footer from "@/components/sections/footer";
-import { Activity, Clock, ChevronRight, Shield, Virus, Scan, AlertCircle } from "lucide-react";
+import { Activity, Clock, ChevronRight, Shield, Bug, Scan, AlertCircle } from "lucide-react";
 
 export default function ImmunologiePage() {
   return (
@@ -18,7 +18,7 @@ export default function ImmunologiePage() {
         <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
           <div className="absolute inset-0">
             <Image
-              src="/trnava-university-_9xRHrMOjeg-unsplash.jpg"
+              src="/lab-photo-4.jpeg"
               alt="Laboratoire d'Immunologie"
               fill
               className="object-cover"
@@ -69,7 +69,7 @@ export default function ImmunologiePage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { icon: Virus, title: "VIH", desc: "Dépistage & Suivi" },
+                { icon: Bug, title: "VIH", desc: "Dépistage & Suivi" },
                 { icon: Shield, title: "Hépatites", desc: "A, B, C, D, E" },
                 { icon: Scan, title: "Auto-Ac", desc: "Anticorps auto-immuns" },
                 { icon: AlertCircle, title: "Allergies", desc: "IgE spécifiques" },
@@ -96,7 +96,7 @@ export default function ImmunologiePage() {
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group col-span-2 md:col-span-1">
-                <Image src="/cdc-w9KEokhajKw-unsplash.jpg" alt="Sérologie" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/lab-photo-5.jpeg" alt="Sérologie" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-2xl font-bold text-white">Sérologie</h3>
@@ -104,7 +104,7 @@ export default function ImmunologiePage() {
               </div>
 
               <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group">
-                <Image src="/national-cancer-institute-L8tWZT4CcVQ-unsplash.jpg" alt="Auto-immunité" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/lab-photo-6.jpeg" alt="Auto-immunité" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-xl font-bold text-white">Auto-immunité</h3>
@@ -112,7 +112,7 @@ export default function ImmunologiePage() {
               </div>
 
               <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group">
-                <Image src="/national-cancer-institute-NFvdKIhxYlU-unsplash.jpg" alt="Allergologie" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/lab-photo-7.jpeg" alt="Allergologie" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-xl font-bold text-white">Allergologie</h3>
@@ -120,7 +120,7 @@ export default function ImmunologiePage() {
               </div>
 
               <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group col-span-2">
-                <Image src="/cdc-D5CqnSYdTjM-unsplash.jpg" alt="Laboratoire" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/lab-photo-1.jpeg" alt="Laboratoire" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-2xl font-bold text-white">Plateforme Automatisée</h3>

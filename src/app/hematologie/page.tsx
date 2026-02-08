@@ -18,7 +18,7 @@ export default function HematologiePage() {
         <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
           <div className="absolute inset-0">
             <Image
-              src="/pexels-rethaferguson-3825578.jpg"
+              src="/lab-photo-6.jpeg"
               alt="Laboratoire d'Hématologie"
               fill
               className="object-cover"
@@ -96,7 +96,7 @@ export default function HematologiePage() {
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group col-span-2 md:col-span-1">
-                <Image src="/pexels-chokniti-khongchum-1197604-2280571.jpg" alt="Analyse" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/lab-photo-7.jpeg" alt="Analyse" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-2xl font-bold text-white">Analyse Sanguine</h3>
@@ -104,7 +104,7 @@ export default function HematologiePage() {
               </div>
 
               <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group">
-                <Image src="/pexels-rethaferguson-3825527.jpg" alt="Équipement" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/lab-photo-1.jpeg" alt="Équipement" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-xl font-bold text-white">Équipement</h3>
@@ -112,7 +112,7 @@ export default function HematologiePage() {
               </div>
 
               <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group">
-                <Image src="/national-cancer-institute-rb8hr3cXD4A-unsplash.jpg" alt="Cytologie" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/lab-photo-2.jpeg" alt="Cytologie" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-xl font-bold text-white">Cytologie</h3>
@@ -120,7 +120,7 @@ export default function HematologiePage() {
               </div>
 
               <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group col-span-2">
-                <Image src="/lucas-vasques-9vnACvX2748-unsplash.jpg" alt="Laboratoire" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/lab-photo-3.jpeg" alt="Laboratoire" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-2xl font-bold text-white">Technologie Avancée</h3>
