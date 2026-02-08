@@ -5,155 +5,186 @@ import Link from "next/link";
 import TopNavigationBar from "@/components/sections/top-navigation-bar";
 import MainNavigation from "@/components/sections/main-navigation";
 import Footer from "@/components/sections/footer";
-import { Activity, ChevronRight, Bug, Microscope, FlaskConical, Pill } from "lucide-react";
+import { ChevronRight, Bug, Microscope, FlaskConical, Pill, Clock, CheckCircle, ArrowRight } from "lucide-react";
 
 export default function MicrobiologiePage() {
+  const services = [
+    { icon: FlaskConical, title: "ECBU", desc: "Examen cytobactériologique urinaire complet" },
+    { icon: Bug, title: "Hémoculture", desc: "Culture sanguine automatisée" },
+    { icon: Microscope, title: "Coproculture", desc: "Analyse des selles complète" },
+    { icon: Pill, title: "Antibiogramme", desc: "Sensibilité aux antibiotiques" },
+  ];
+
+  const galleryImages = [
+    { src: "/lab-photo-3.jpeg", title: "Bactériologie", subtitle: "Culture et identification" },
+    { src: "/lab-photo-4.jpeg", title: "Parasitologie", subtitle: "Recherche de parasites" },
+    { src: "/lab-photo-5.jpeg", title: "Mycologie", subtitle: "Champignons et levures" },
+    { src: "/lab-photo-6.jpeg", title: "Cultures Automatisées", subtitle: "Identification rapide" },
+    { src: "/lab-photo-7.jpeg", title: "Antibiogramme", subtitle: "Sensibilité ATB" },
+    { src: "/lab-photo-1.jpeg", title: "Équipements Modernes", subtitle: "Technologie avancée" },
+  ];
+
   return (
     <>
       <TopNavigationBar />
       <MainNavigation />
 
-      <main className="min-h-screen">
-        {/* Hero Section */}
-        <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
-          <div className="absolute inset-0">
-            <Image
-              src="/lab-photo-2.jpeg"
-              alt="Laboratoire de Microbiologie"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#059669] via-[#059669]/80 to-transparent"></div>
-          </div>
+      <main className="min-h-screen bg-white">
+        {/* Hero Section with Video Background */}
+        <section className="relative h-[80vh] min-h-[600px] overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/lab-video-4.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-black/60"></div>
 
-          <div className="relative h-full max-w-7xl mx-auto px-6 flex items-center">
-            <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full mb-6">
-                <Bug className="w-5 h-5 text-[#059669]" />
-                <span className="text-[#059669] font-semibold">Agents Infectieux</span>
+          <div className="relative h-full max-w-7xl mx-auto px-6 flex flex-col justify-center">
+            <nav className="absolute top-8 left-6 flex items-center gap-2 text-white/80 text-sm">
+              <Link href="/" className="hover:text-white transition-colors">Accueil</Link>
+              <ChevronRight className="w-4 h-4" />
+              <Link href="/#services" className="hover:text-white transition-colors">Nos Services</Link>
+              <ChevronRight className="w-4 h-4" />
+              <span className="text-white">Microbiologie</span>
+            </nav>
+
+            <div className="max-w-3xl">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                  <Bug className="w-6 h-6 text-white" />
+                </div>
+                <span className="text-white/90 text-lg font-medium">Agents Infectieux</span>
               </div>
+
               <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
                 Microbiologie
               </h1>
-              <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed">
-                Bactériologie, Parasitologie et Mycologie
+
+              <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed max-w-2xl">
+                Bactériologie, Parasitologie et Mycologie. Identification précise des agents infectieux.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/20">
-                  <Activity className="w-6 h-6 text-white" />
+
+              <div className="flex flex-wrap gap-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                    <Clock className="w-5 h-5 text-white" />
+                  </div>
                   <div>
-                    <p className="text-white font-bold text-lg">Cultures</p>
-                    <p className="text-white/70 text-sm">Automatisées</p>
+                    <p className="text-white font-bold">48-72h</p>
+                    <p className="text-white/70 text-sm">Cultures</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/20">
-                  <Pill className="w-6 h-6 text-white" />
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                    <CheckCircle className="w-5 h-5 text-white" />
+                  </div>
                   <div>
-                    <p className="text-white font-bold text-lg">ATB</p>
+                    <p className="text-white font-bold">ATB</p>
                     <p className="text-white/70 text-sm">Antibiogramme</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Scroll indicator */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+            <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center pt-2">
+              <div className="w-1 h-2 bg-white rounded-full animate-bounce"></div>
+            </div>
+          </div>
         </section>
 
-        {/* Services Cards */}
-        <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        {/* Services Section */}
+        <section className="py-24 bg-gray-50">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
-              <span className="text-[#059669] font-bold text-lg uppercase tracking-wider">Nos Analyses</span>
-              <h2 className="text-4xl md:text-5xl font-black text-[#0A065D] mt-4">Analyses Microbiologiques</h2>
+              <span className="inline-block bg-[#0A065D]/10 text-[#0A065D] text-sm font-bold uppercase tracking-wider px-4 py-2 rounded-full mb-4">
+                Nos Analyses
+              </span>
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900">
+                Analyses Microbiologiques
+              </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                { icon: FlaskConical, title: "ECBU", desc: "Urine complète" },
-                { icon: Bug, title: "Hémoculture", desc: "Automatisée" },
-                { icon: Microscope, title: "Coproculture", desc: "Selles complètes" },
-                { icon: Pill, title: "Antibiogramme", desc: "Sensibilité ATB" },
-              ].map((item, i) => (
-                <div key={i} className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#059669] to-[#10B981] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <item.icon className="w-8 h-8 text-white" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {services.map((service, i) => (
+                <div
+                  key={i}
+                  className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-[#0A065D]/20"
+                >
+                  <div className="w-14 h-14 bg-gradient-to-br from-[#0A065D] to-[#0A065D]/80 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <service.icon className="w-7 h-7 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-[#0A065D] mb-2">{item.title}</h3>
-                  <p className="text-gray-500 text-lg">{item.desc}</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{service.desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Image Gallery */}
-        <section className="py-20 bg-[#0A065D]">
+        {/* Gallery Section */}
+        <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
-              <span className="text-[#059669] font-bold text-lg uppercase tracking-wider">Notre Laboratoire</span>
-              <h2 className="text-4xl md:text-5xl font-black text-white mt-4">Équipements Spécialisés</h2>
+              <span className="inline-block bg-[#FF6B00]/10 text-[#FF6B00] text-sm font-bold uppercase tracking-wider px-4 py-2 rounded-full mb-4">
+                Notre Laboratoire
+              </span>
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900">
+                Équipements Spécialisés
+              </h2>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group col-span-2 md:col-span-1">
-                <Image src="/lab-photo-3.jpeg" alt="Bactériologie" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                <div className="absolute bottom-6 left-6">
-                  <h3 className="text-2xl font-bold text-white">Bactériologie</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+              {galleryImages.map((image, i) => (
+                <div
+                  key={i}
+                  className={`relative overflow-hidden rounded-2xl group cursor-pointer ${
+                    i === 0 ? 'col-span-2 row-span-2 h-[400px] md:h-[500px]' : 'h-[200px] md:h-[240px]'
+                  }`}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                    <h3 className="text-white font-bold text-lg">{image.title}</h3>
+                    <p className="text-white/80 text-sm">{image.subtitle}</p>
+                  </div>
                 </div>
-              </div>
-
-              <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group">
-                <Image src="/lab-photo-4.jpeg" alt="Parasitologie" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                <div className="absolute bottom-6 left-6">
-                  <h3 className="text-xl font-bold text-white">Parasitologie</h3>
-                </div>
-              </div>
-
-              <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group">
-                <Image src="/lab-photo-5.jpeg" alt="Mycologie" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                <div className="absolute bottom-6 left-6">
-                  <h3 className="text-xl font-bold text-white">Mycologie</h3>
-                </div>
-              </div>
-
-              <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group col-span-2">
-                <Image src="/lab-photo-6.jpeg" alt="Cultures" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                <div className="absolute bottom-6 left-6">
-                  <h3 className="text-2xl font-bold text-white">Cultures Automatisées</h3>
-                  <p className="text-white/70">Identification rapide</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="py-24 bg-gradient-to-br from-[#FF6B00] to-[#FF8C00] relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full -translate-x-1/2 translate-y-1/2"></div>
-
-          <div className="relative max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-8">
+        <section className="py-24 bg-[#0A065D]">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
               Besoin d'une Analyse ?
             </h2>
-            <p className="text-xl text-white/90 mb-12 max-w-2xl mx-auto">
-              Identification précise des agents infectieux
+            <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+              Identification précise des agents infectieux par notre équipe d'experts.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/signup"
-                className="inline-flex items-center justify-center gap-3 bg-white text-[#FF6B00] px-10 py-5 rounded-2xl font-bold text-xl hover:bg-gray-100 transition-all shadow-2xl hover:scale-105"
+                className="inline-flex items-center justify-center gap-3 bg-[#FF6B00] text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#FF8C00] transition-all hover:scale-105"
               >
                 Créer un Compte
-                <ChevronRight className="w-6 h-6" />
+                <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-3 bg-transparent text-white px-10 py-5 rounded-2xl font-bold text-xl border-2 border-white hover:bg-white hover:text-[#FF6B00] transition-all"
+                className="inline-flex items-center justify-center gap-3 bg-white/10 text-white px-8 py-4 rounded-xl font-bold text-lg border border-white/30 hover:bg-white hover:text-[#0A065D] transition-all"
               >
                 Nous Contacter
               </Link>
