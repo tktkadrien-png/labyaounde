@@ -2,11 +2,10 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Shield, Mail, Lock, Eye, EyeOff, UserPlus, User, Key } from "lucide-react";
+import { Shield, Mail, Lock, Eye, EyeOff, UserPlus, User, Key, AlertTriangle } from "lucide-react";
 import TopNavigationBar from "@/components/sections/top-navigation-bar";
 import MainNavigation from "@/components/sections/main-navigation";
 import Footer from "@/components/sections/footer";
-import { supabase } from "@/lib/supabase";
 import { useLanguage } from "@/lib/contents/LanguageContext";
 
 export default function AdminRegisterPage() {
@@ -21,9 +20,7 @@ export default function AdminRegisterPage() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
-  // Secret code that only Lab Yaounde owners should know
-  const ADMIN_SECRET_CODE = "LABYAOUNDE2025ADMIN";
+  const [success, setSuccess] = useState("");
 
   const content = {
     fr: {
@@ -37,15 +34,16 @@ export default function AdminRegisterPage() {
       passwordPlaceholder: "••••••••",
       confirmPasswordLabel: "Confirmer le mot de passe",
       confirmPasswordPlaceholder: "••••••••",
-      secretCodeLabel: "Code Secret Admin",
-      secretCodePlaceholder: "Entrez le code secret",
+      secretCodeLabel: "Clé Secrète Admin",
+      secretCodePlaceholder: "Entrez la clé secrète",
       registerButton: "Créer le compte Admin",
       loading: "Création du compte...",
       passwordMismatch: "Les mots de passe ne correspondent pas",
       passwordTooShort: "Le mot de passe doit contenir au moins 6 caractères",
-      invalidSecretCode: "Code secret incorrect. Seuls les propriétaires autorisés peuvent créer des comptes admin.",
       hasAccount: "Déjà un compte admin?",
       loginLink: "Se connecter",
+      successMessage: "Compte administrateur créé avec succès! Redirection...",
+      securityNote: "Seuls les propriétaires autorisés de Lab Yaounde ont la clé secrète",
     },
     en: {
       title: "Create Admin Account",
@@ -58,15 +56,16 @@ export default function AdminRegisterPage() {
       passwordPlaceholder: "••••••••",
       confirmPasswordLabel: "Confirm password",
       confirmPasswordPlaceholder: "••••••••",
-      secretCodeLabel: "Admin Secret Code",
-      secretCodePlaceholder: "Enter secret code",
+      secretCodeLabel: "Admin Secret Key",
+      secretCodePlaceholder: "Enter secret key",
       registerButton: "Create Admin Account",
       loading: "Creating account...",
       passwordMismatch: "Passwords do not match",
       passwordTooShort: "Password must be at least 6 characters",
-      invalidSecretCode: "Invalid secret code. Only authorized owners can create admin accounts.",
       hasAccount: "Already have an admin account?",
       loginLink: "Sign in",
+      successMessage: "Admin account created successfully! Redirecting...",
+      securityNote: "Only authorized Lab Yaounde owners have the secret key",
     },
   };
 
@@ -75,14 +74,9 @@ export default function AdminRegisterPage() {
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setSuccess("");
 
-    // Validate secret code first
-    if (secretCode !== ADMIN_SECRET_CODE) {
-      setError(currentContent.invalidSecretCode);
-      return;
-    }
-
-    // Validation
+    // Client-side validation
     if (password !== confirmPassword) {
       setError(currentContent.passwordMismatch);
       return;
@@ -93,57 +87,62 @@ export default function AdminRegisterPage() {
       return;
     }
 
+    if (!secretCode.trim()) {
+      setError(language === "fr" ? "La clé secrète est requise" : "Secret key is required");
+      return;
+    }
+
     setLoading(true);
 
     try {
-      console.log("Starting signup process...");
-      console.log("Email:", email);
-      console.log("Supabase URL:", process.env.NEXT_PUBLIC_SUPABASE_URL);
-
-      // Create admin account with is_admin flag and disable email confirmation
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: {
-            full_name: fullName,
-            is_admin: true, // Mark as admin
-          },
-          emailRedirectTo: undefined, // Disable email redirect
+      // Call secure API route instead of direct Supabase call
+      const response = await fetch('/api/admin/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
+        body: JSON.stringify({
+          email: email.trim().toLowerCase(),
+          password,
+          full_name: fullName.trim(),
+          admin_secret_key: secretCode.trim(),
+        }),
       });
 
-      console.log("Signup response:", { data, error });
+      const data = await response.json();
 
-      if (error) {
-        console.error("Signup error:", error);
-        throw error;
-      }
-
-      // Check if email confirmation is required
-      if (data.user && !data.session) {
-        console.log("Email confirmation required");
-        setError(
-          language === "fr"
-            ? "Veuillez vérifier votre email pour confirmer votre compte, puis connectez-vous."
-            : "Please check your email to confirm your account, then login."
-        );
-        setLoading(false);
+      if (!response.ok) {
+        // Handle specific error codes
+        const errorMessage = language === "fr" ? data.error : (data.error_en || data.error);
+        setError(errorMessage);
         return;
       }
 
-      // If we have a session, redirect to admin dashboard
-      if (data.session) {
-        console.log("Session active, redirecting to dashboard");
-        router.push("/admin-dashboard");
-      } else {
-        console.log("No session, redirecting to login");
-        // No session but user created - redirect to login
+      // Success!
+      setSuccess(currentContent.successMessage);
+
+      // Redirect to admin login after 2 seconds
+      setTimeout(() => {
         router.push("/admin-login");
-      }
+      }, 2000);
+
     } catch (error: any) {
-      console.error("Caught error:", error);
-      setError(error.message || "Failed to fetch");
+      console.error("Registration error:", error);
+
+      // Network error handling
+      if (error.message?.includes('fetch') || error.message?.includes('network')) {
+        setError(
+          language === "fr"
+            ? "Erreur de connexion. Vérifiez votre connexion internet."
+            : "Connection error. Check your internet connection."
+        );
+      } else {
+        setError(
+          language === "fr"
+            ? "Une erreur est survenue. Veuillez réessayer."
+            : "An error occurred. Please try again."
+        );
+      }
     } finally {
       setLoading(false);
     }
@@ -178,9 +177,18 @@ export default function AdminRegisterPage() {
 
             {/* Form */}
             <form onSubmit={handleRegister} className="space-y-5">
+              {/* Error Message */}
               {error && (
-                <div className="bg-[#FE5000]/10 border-l-4 border-[#FE5000] p-4 text-[#FE5000] text-sm rounded">
-                  {error}
+                <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded flex items-start gap-3">
+                  <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <p className="text-red-700 text-sm">{error}</p>
+                </div>
+              )}
+
+              {/* Success Message */}
+              {success && (
+                <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded">
+                  <p className="text-green-700 text-sm font-medium">{success}</p>
                 </div>
               )}
 
@@ -204,9 +212,7 @@ export default function AdminRegisterPage() {
                   />
                 </div>
                 <p className="mt-2 text-xs text-[#FE5000]">
-                  {language === "fr"
-                    ? "Seuls les propriétaires autorisés de Lab Yaounde ont ce code"
-                    : "Only authorized Lab Yaounde owners have this code"}
+                  {currentContent.securityNote}
                 </p>
               </div>
 

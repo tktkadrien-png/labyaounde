@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Shield, Mail, Lock, Eye, EyeOff, LogIn } from "lucide-react";
+import { Shield, Mail, Lock, Eye, EyeOff, LogIn, AlertTriangle } from "lucide-react";
 import TopNavigationBar from "@/components/sections/top-navigation-bar";
 import MainNavigation from "@/components/sections/main-navigation";
 import Footer from "@/components/sections/footer";
@@ -31,6 +31,8 @@ export default function AdminLoginPage() {
       unauthorized: "Accès non autorisé. Seuls les administrateurs peuvent se connecter ici.",
       noAccount: "Pas encore de compte admin?",
       registerLink: "Créer un compte",
+      invalidCredentials: "Email ou mot de passe incorrect.",
+      networkError: "Erreur de connexion. Vérifiez votre connexion internet.",
     },
     en: {
       title: "Admin Login",
@@ -44,6 +46,8 @@ export default function AdminLoginPage() {
       unauthorized: "Unauthorized access. Only administrators can login here.",
       noAccount: "Don't have an admin account?",
       registerLink: "Register",
+      invalidCredentials: "Invalid email or password.",
+      networkError: "Connection error. Check your internet connection.",
     },
   };
 
@@ -55,26 +59,81 @@ export default function AdminLoginPage() {
     setLoading(true);
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
+      // 1. Sign in with Supabase Auth
+      const { data, error: authError } = await supabase.auth.signInWithPassword({
+        email: email.trim().toLowerCase(),
         password,
       });
 
-      if (error) throw error;
+      if (authError) {
+        console.error("Auth error:", authError);
 
-      // Check if user has admin privileges
-      const isAdmin =
-        data.user?.email === "Labyaounde@gmail.com" ||
-        data.user?.user_metadata?.is_admin === true;
-
-      if (!isAdmin) {
-        await supabase.auth.signOut();
-        throw new Error(currentContent.unauthorized);
+        if (authError.message.includes("Invalid login credentials")) {
+          setError(currentContent.invalidCredentials);
+        } else if (authError.message.toLowerCase().includes("fetch") || authError.message.toLowerCase().includes("network")) {
+          setError(currentContent.networkError);
+        } else {
+          setError(authError.message);
+        }
+        return;
       }
 
+      if (!data.user) {
+        setError(currentContent.invalidCredentials);
+        return;
+      }
+
+      // 2. Verify admin status via secure API route
+      try {
+        const verifyResponse = await fetch('/api/admin/verify', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            user_id: data.user.id,
+          }),
+        });
+
+        const verifyData = await verifyResponse.json();
+
+        if (!verifyData.is_admin) {
+          // Not an admin - sign out and show error
+          await supabase.auth.signOut();
+          setError(currentContent.unauthorized);
+          return;
+        }
+      } catch (verifyError) {
+        // If API verification fails, fall back to metadata check
+        console.warn("API verification failed, using fallback:", verifyError);
+
+        const isAdmin =
+          data.user.email === "Labyaounde@gmail.com" ||
+          data.user.user_metadata?.is_admin === true ||
+          data.user.user_metadata?.role === "admin";
+
+        if (!isAdmin) {
+          await supabase.auth.signOut();
+          setError(currentContent.unauthorized);
+          return;
+        }
+      }
+
+      // 3. Admin verified - redirect to dashboard
       router.push("/admin-dashboard");
+
     } catch (error: any) {
-      setError(error.message);
+      console.error("Login error:", error);
+
+      if (error.message?.toLowerCase().includes("fetch") || error.message?.toLowerCase().includes("network")) {
+        setError(currentContent.networkError);
+      } else {
+        setError(
+          language === "fr"
+            ? "Une erreur est survenue. Veuillez réessayer."
+            : "An error occurred. Please try again."
+        );
+      }
     } finally {
       setLoading(false);
     }
@@ -109,9 +168,11 @@ export default function AdminLoginPage() {
 
             {/* Form */}
             <form onSubmit={handleLogin} className="space-y-6">
+              {/* Error Message */}
               {error && (
-                <div className="bg-[#FE5000]/10 border-l-4 border-[#FE5000] p-4 text-[#FE5000] text-sm rounded">
-                  {error}
+                <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded flex items-start gap-3">
+                  <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <p className="text-red-700 text-sm">{error}</p>
                 </div>
               )}
 
@@ -206,7 +267,7 @@ export default function AdminLoginPage() {
 
             {/* Warning Notice */}
             <div className="bg-[#FE5000]/10 border border-[#FE5000]/30 rounded-lg p-4">
-              <p className="text-xs text-yellow-800 text-center">
+              <p className="text-xs text-[#FE5000] text-center">
                 <strong>{language === "fr" ? "Avertissement:" : "Warning:"}</strong>{" "}
                 {language === "fr"
                   ? "Cette zone est strictement réservée aux administrateurs autorisés."

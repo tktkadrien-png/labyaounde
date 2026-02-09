@@ -1,12 +1,24 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://aqppeaqlvtjrpztzoswk.supabase.co';
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFxcHBlYXFsdnRqcnB6dHpvc3drIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQwNjgwMDUsImV4cCI6MjA3OTY0NDAwNX0.oXEmY-ECKnr2scwy6MzUc8AUv-Unohc21FZ_DBqfsfc';
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://ggpzvomrwidmzqsmexer.supabase.co';
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdncHp2b21yd2lkbXpxc21leGVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA2MzkwNjMsImV4cCI6MjA4NjIxNTA2M30.iD2WRDuGA41erl8ktHncOc2Qa59xULP8ylchhPD7oqc';
 
-// Custom fetch with retry logic for network failures
+// DEBUG: Log Supabase configuration
+console.log("🔧 Supabase Config:", {
+  url: supabaseUrl,
+  hasKey: !!supabaseAnonKey,
+  keyPreview: supabaseAnonKey?.substring(0, 20) + "...",
+});
+
+// Custom fetch with retry logic for network failures - WITH DEBUG LOGGING
 const fetchWithRetry = async (url: RequestInfo | URL, options?: RequestInit): Promise<Response> => {
   const maxRetries = 3;
   const retryDelay = 1000; // 1 second
+
+  console.log("🌐 Supabase Request:", {
+    url: typeof url === 'string' ? url : url.toString(),
+    method: options?.method || 'GET',
+  });
 
   for (let attempt = 0; attempt < maxRetries; attempt++) {
     try {
@@ -19,8 +31,22 @@ const fetchWithRetry = async (url: RequestInfo | URL, options?: RequestInit): Pr
       });
 
       clearTimeout(timeoutId);
+
+      // Log response status for debugging
+      console.log("✅ Supabase Response:", {
+        status: response.status,
+        statusText: response.statusText,
+        ok: response.ok,
+      });
+
       return response;
     } catch (error: any) {
+      console.error("❌ Supabase Fetch Error (attempt " + (attempt + 1) + "):", {
+        name: error?.name,
+        message: error?.message,
+        cause: error?.cause,
+      });
+
       const isLastAttempt = attempt === maxRetries - 1;
       const isNetworkError =
         error?.name === 'AbortError' ||

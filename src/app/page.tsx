@@ -9,8 +9,10 @@ import ThreePillars from "@/components/sections/three-pillars";
 import NewsArticles from "@/components/sections/news-articles";
 import NotreReferentiel from "@/components/sections/notre-referentiel";
 import PatientJourneyCards from "@/components/sections/patient-journey-cards";
+import PartnersLogos from "@/components/sections/partners-logos";
 import Footer from "@/components/sections/footer";
 import FloatingReviewWidget from "@/components/sections/floating-review-widget";
+import FloatingContactButton from "@/components/sections/floating-contact-button";
 
 export default function HomePage() {
   return (
@@ -23,6 +25,7 @@ export default function HomePage() {
         <PatientJourneyCards />
         <Newsletter />
         <ResultsAccess />
+        <PartnersLogos />
         <NotreReferentiel />
         <JobOpenings />
         <ThreePillars />
@@ -30,6 +33,7 @@ export default function HomePage() {
       </main>
       <Footer />
       <FloatingReviewWidget />
+      <FloatingContactButton />
     </>
   );
 }

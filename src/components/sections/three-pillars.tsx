@@ -1,6 +1,6 @@
 "use client";
 
-import { FlaskConical, Rocket, Scale } from 'lucide-react';
+import { FlaskConical, Rocket, ShieldCheck } from 'lucide-react';
 import React from 'react';
 import { useScrollAnimation } from '@/lib/useScrollAnimation';
 
@@ -18,7 +18,7 @@ const cardData = [
     tags: ["Technologies avancées", "Résultats rapides", "R&D continue"],
   },
   {
-    icon: Scale,
+    icon: ShieldCheck,
     title: "Confidentialité",
     description: "Un laboratoire qui garantit la confidentialité totale de vos données et résultats médicaux",
     tags: ["Protection des données", "Secret médical", "Sécurité"],
@@ -73,9 +73,6 @@ const ThreePillars = () => {
 
       <div className="relative container mx-auto px-6 max-w-[1200px]">
         <div className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-block bg-white text-[#FF8C00] text-lg font-bold uppercase rounded-full px-8 py-3 mb-8 shadow-xl">
-            LABY
-          </span>
           <h2 className="text-5xl md:text-7xl font-black leading-tight mb-6 drop-shadow-lg">
             Trois piliers qui font notre différence
           </h2>

@@ -36,7 +36,7 @@ const slides = [
   },
   {
     imageSrc: "/carousel-1.jpeg",
-    title: "Dépistage IST : Gratuits & sans ordonnance",
+    title: "Dépistage IST : Sans Prescription Medicale",
     subtitle:
       "Mon Test IST, LABYAOUNDE se joint à la lutte contre les infections sexuellement transmissibles (IST).",
     buttonText: "Me faire dépister",

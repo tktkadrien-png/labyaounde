@@ -31,14 +31,14 @@ const articles: Article[] = [
   {
     id: 3,
     title: "Installation d'un nouvel automate pour des résultats plus rapides",
-    image: "/images/national-cancer-institute-rb8hr3cXD4A-unsplash.jpg",
+    image: "/IMAGE/DD526AE4-9329-4388-A1E0-2F11241DC73D.jpeg",
     size: 'small',
     link: '#'
   },
   {
     id: 4,
     title: "Campagne spéciale de dépistage du diabète à tarif réduit",
-    image: "/images/cdc-hOHzIsuOblE-unsplash.jpg",
+    image: "/IMAGE/B53A1987-5D83-486A-8EBA-D1D03CD6DEE3.jpeg",
     size: 'small',
     link: '#'
   },

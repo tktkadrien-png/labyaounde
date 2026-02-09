@@ -160,23 +160,24 @@ We are committed to meeting your expectations with rigor and professionalism, an
       </div>
 
       {/* Stats Section */}
-      <div className="py-20 bg-white">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="py-16 md:py-20 bg-white">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
             {currentContent.stats.map((stat, index) => {
               const Icon = stat.icon;
               return (
                 <div
                   key={index}
-                  className={`text-center transition-all duration-700 delay-${index * 100} ${
+                  className={`text-center p-4 sm:p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group ${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                   }`}
+                  style={{ transitionDelay: `${index * 100}ms` }}
                 >
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#FE5000] to-[#CC4000] rounded-2xl mb-4 shadow-lg">
-                    <Icon className="w-8 h-8 text-white" />
+                  <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#FE5000] to-[#CC4000] rounded-xl sm:rounded-2xl mb-3 sm:mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                   </div>
-                  <div className="text-4xl font-bold text-[#0A065D] mb-2">{stat.value}</div>
-                  <div className="text-sm text-[#0A065D] font-medium">{stat.label}</div>
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0A065D] mb-1 sm:mb-2">{stat.value}</div>
+                  <div className="text-xs sm:text-sm text-[#0A065D] font-medium">{stat.label}</div>
                 </div>
               );
             })}
