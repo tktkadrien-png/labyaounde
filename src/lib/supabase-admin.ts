@@ -1,25 +1,46 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 // ============================================================
 // SUPABASE ADMIN CLIENT - SERVER ONLY
 // This file should NEVER be imported in client-side code
 // ============================================================
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
-
-if (!supabaseUrl || !supabaseServiceRoleKey) {
-  console.error('❌ Missing Supabase admin configuration');
-}
+// Lazy-loaded configuration to avoid issues during build
+const getConfig = () => ({
+  supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://ggpzvomrwidmzqsmexer.supabase.co',
+  supabaseServiceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY || '',
+});
 
 // Admin client with service role - bypasses RLS
 // ONLY use this on the server side (API routes, server components)
-export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceRoleKey, {
-  auth: {
-    autoRefreshToken: false,
-    persistSession: false,
-  },
-});
+// Returns null if service role key is not configured
+let _supabaseAdmin: SupabaseClient | null = null;
+
+export const getSupabaseAdmin = (): SupabaseClient | null => {
+  const { supabaseUrl, supabaseServiceRoleKey } = getConfig();
+
+  if (!supabaseServiceRoleKey || supabaseServiceRoleKey === 'YOUR_SERVICE_ROLE_KEY_HERE') {
+    console.warn('⚠️ SUPABASE_SERVICE_ROLE_KEY not configured - admin features disabled');
+    return null;
+  }
+
+  if (!_supabaseAdmin) {
+    _supabaseAdmin = createClient(supabaseUrl, supabaseServiceRoleKey, {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
+      },
+    });
+  }
+
+  return _supabaseAdmin;
+};
+
+// Check if admin client is available (without creating it)
+export const isAdminConfigured = (): boolean => {
+  const { supabaseServiceRoleKey } = getConfig();
+  return !!supabaseServiceRoleKey && supabaseServiceRoleKey !== 'YOUR_SERVICE_ROLE_KEY_HERE';
+};
 
 // Admin secret key for registration verification
 export const ADMIN_SECRET_KEY = process.env.ADMIN_SECRET_KEY || 'LABYAOUNDE2025ADMIN';
@@ -27,8 +48,8 @@ export const ADMIN_SECRET_KEY = process.env.ADMIN_SECRET_KEY || 'LABYAOUNDE2025A
 // Rate limiting storage (in production, use Redis)
 const registrationAttempts = new Map<string, { count: number; lastAttempt: number }>();
 
-// Clean up old entries every 10 minutes
-setInterval(() => {
+// Clean up function - called manually, not via setInterval during build
+export function cleanupOldAttempts(): void {
   const now = Date.now();
   const oneHour = 60 * 60 * 1000;
   for (const [ip, data] of registrationAttempts.entries()) {
@@ -36,7 +57,7 @@ setInterval(() => {
       registrationAttempts.delete(ip);
     }
   }
-}, 10 * 60 * 1000);
+}
 
 export function checkRateLimit(ip: string): { allowed: boolean; remainingAttempts: number } {
   const now = Date.now();

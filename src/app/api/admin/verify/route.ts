@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabaseAdmin } from '@/lib/supabase-admin';
+import { getSupabaseAdmin } from '@/lib/supabase-admin';
 
 // ============================================================
 // ADMIN VERIFICATION API ROUTE
@@ -18,31 +18,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check if SUPABASE_SERVICE_ROLE_KEY is configured
-    if (!process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY === 'YOUR_SERVICE_ROLE_KEY_HERE') {
-      // Fallback: Check user metadata from auth
-      const { data: userData, error: userError } = await supabaseAdmin.auth.admin.getUserById(user_id);
-
-      if (userError || !userData.user) {
-        return NextResponse.json(
-          { error: 'User not found', is_admin: false },
-          { status: 404 }
-        );
-      }
-
-      const isAdmin =
-        userData.user.user_metadata?.is_admin === true ||
-        userData.user.user_metadata?.role === 'admin' ||
-        userData.user.email === 'Labyaounde@gmail.com';
-
-      return NextResponse.json({
-        is_admin: isAdmin,
-        user: {
-          id: userData.user.id,
-          email: userData.user.email,
-          full_name: userData.user.user_metadata?.full_name,
-        }
-      });
+    // Get Supabase Admin client (null if not configured)
+    const supabaseAdmin = getSupabaseAdmin();
+    if (!supabaseAdmin) {
+      console.error('❌ SUPABASE_SERVICE_ROLE_KEY is not configured');
+      return NextResponse.json(
+        { error: 'Server configuration incomplete', is_admin: false },
+        { status: 500 }
+      );
     }
 
     // Primary check: Query profiles table for admin role
@@ -94,7 +77,7 @@ export async function POST(request: NextRequest) {
       }
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Admin verification error:', error);
     return NextResponse.json(
       { error: 'Verification failed', is_admin: false },

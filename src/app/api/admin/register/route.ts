@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabaseAdmin, ADMIN_SECRET_KEY, checkRateLimit, logAdminRegistration } from '@/lib/supabase-admin';
+import { getSupabaseAdmin, ADMIN_SECRET_KEY, checkRateLimit, logAdminRegistration } from '@/lib/supabase-admin';
 
 // ============================================================
 // ADMIN REGISTRATION API ROUTE
@@ -118,8 +118,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 7. Check if SUPABASE_SERVICE_ROLE_KEY is configured
-    if (!process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY === 'YOUR_SERVICE_ROLE_KEY_HERE') {
+    // 7. Get Supabase Admin client (null if not configured)
+    const supabaseAdmin = getSupabaseAdmin();
+    if (!supabaseAdmin) {
       console.error('❌ SUPABASE_SERVICE_ROLE_KEY is not configured');
       logAdminRegistration({
         timestamp,
@@ -230,15 +231,16 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Admin registration error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
 
     logAdminRegistration({
       timestamp,
       ip,
       email: 'unknown',
       success: false,
-      reason: `Unexpected error: ${error.message}`,
+      reason: `Unexpected error: ${errorMessage}`,
     });
 
     return NextResponse.json(
