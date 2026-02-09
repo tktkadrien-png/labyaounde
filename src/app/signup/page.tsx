@@ -1,156 +1,244 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Mail, Lock, Eye, EyeOff, User, UserPlus, CheckCircle, AlertCircle, Check, X } from "lucide-react";
-import TopNavigationBar from "@/components/sections/top-navigation-bar";
-import MainNavigation from "@/components/sections/main-navigation";
-import Footer from "@/components/sections/footer";
+import Image from "next/image";
+import {
+  Mail,
+  Lock,
+  Eye,
+  EyeOff,
+  User,
+  UserPlus,
+  AlertCircle,
+  CheckCircle,
+  ArrowRight,
+  Shield,
+  Loader2,
+  Phone,
+  Check,
+  X
+} from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { useLanguage } from "@/lib/contents/LanguageContext";
+
+// Translations
+const translations = {
+  fr: {
+    title: "Créer un compte",
+    subtitle: "Rejoignez LabYaounde pour accéder à vos résultats",
+    fullNameLabel: "Nom complet",
+    fullNamePlaceholder: "Jean Dupont",
+    phoneLabel: "Numéro de téléphone",
+    phonePlaceholder: "+237 6XX XXX XXX",
+    emailLabel: "Adresse email",
+    emailPlaceholder: "exemple@email.com",
+    passwordLabel: "Mot de passe",
+    passwordPlaceholder: "Minimum 8 caractères",
+    confirmPasswordLabel: "Confirmer le mot de passe",
+    confirmPasswordPlaceholder: "Répétez le mot de passe",
+    signupButton: "Créer mon compte",
+    signingUp: "Création...",
+    hasAccount: "Déjà un compte ?",
+    loginLink: "Se connecter",
+    acceptTerms: "J'accepte les",
+    termsLink: "conditions d'utilisation",
+    andText: "et la",
+    privacyLink: "politique de confidentialité",
+    secureData: "Vos données sont protégées",
+    backToHome: "Retour à l'accueil",
+    passwordStrength: {
+      title: "Sécurité du mot de passe",
+      weak: "Faible",
+      medium: "Moyen",
+      strong: "Fort",
+      requirements: {
+        length: "Au moins 8 caractères",
+        uppercase: "Une lettre majuscule",
+        lowercase: "Une lettre minuscule",
+        number: "Un chiffre",
+        special: "Un caractère spécial (!@#$%)",
+      },
+    },
+    errors: {
+      fullNameRequired: "Veuillez entrer votre nom complet",
+      fullNameTooShort: "Le nom doit contenir au moins 2 caractères",
+      emailRequired: "Veuillez entrer votre adresse email",
+      emailInvalid: "Adresse email invalide",
+      passwordRequired: "Veuillez entrer un mot de passe",
+      passwordTooShort: "Le mot de passe doit contenir au moins 8 caractères",
+      passwordMismatch: "Les mots de passe ne correspondent pas",
+      termsRequired: "Veuillez accepter les conditions d'utilisation",
+      emailInUse: "Cette adresse email est déjà utilisée",
+      networkError: "Problème de connexion. Vérifiez votre internet et réessayez.",
+      tooManyAttempts: "Trop de tentatives. Veuillez patienter quelques minutes.",
+      unknownError: "Une erreur est survenue. Veuillez réessayer.",
+    },
+    success: {
+      accountCreated: "Compte créé avec succès !",
+      checkEmail: "Vérifiez votre email pour confirmer votre inscription.",
+    },
+  },
+  en: {
+    title: "Create an account",
+    subtitle: "Join LabYaounde to access your results",
+    fullNameLabel: "Full name",
+    fullNamePlaceholder: "John Doe",
+    phoneLabel: "Phone number",
+    phonePlaceholder: "+237 6XX XXX XXX",
+    emailLabel: "Email address",
+    emailPlaceholder: "example@email.com",
+    passwordLabel: "Password",
+    passwordPlaceholder: "Minimum 8 characters",
+    confirmPasswordLabel: "Confirm password",
+    confirmPasswordPlaceholder: "Repeat password",
+    signupButton: "Create my account",
+    signingUp: "Creating...",
+    hasAccount: "Already have an account?",
+    loginLink: "Sign in",
+    acceptTerms: "I accept the",
+    termsLink: "terms of use",
+    andText: "and the",
+    privacyLink: "privacy policy",
+    secureData: "Your data is protected",
+    backToHome: "Back to home",
+    passwordStrength: {
+      title: "Password strength",
+      weak: "Weak",
+      medium: "Medium",
+      strong: "Strong",
+      requirements: {
+        length: "At least 8 characters",
+        uppercase: "One uppercase letter",
+        lowercase: "One lowercase letter",
+        number: "One number",
+        special: "One special character (!@#$%)",
+      },
+    },
+    errors: {
+      fullNameRequired: "Please enter your full name",
+      fullNameTooShort: "Name must be at least 2 characters",
+      emailRequired: "Please enter your email address",
+      emailInvalid: "Invalid email address",
+      passwordRequired: "Please enter a password",
+      passwordTooShort: "Password must be at least 8 characters",
+      passwordMismatch: "Passwords do not match",
+      termsRequired: "Please accept the terms of use",
+      emailInUse: "This email address is already in use",
+      networkError: "Connection issue. Check your internet and try again.",
+      tooManyAttempts: "Too many attempts. Please wait a few minutes.",
+      unknownError: "An error occurred. Please try again.",
+    },
+    success: {
+      accountCreated: "Account created successfully!",
+      checkEmail: "Check your email to confirm your registration.",
+    },
+  },
+};
 
 export default function SignupPage() {
   const router = useRouter();
   const { language } = useLanguage();
+  const t = translations[language];
+
+  // Form state
   const [fullName, setFullName] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [acceptTerms, setAcceptTerms] = useState(false);
+
+  // UI state
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const [acceptTerms, setAcceptTerms] = useState(false);
-
-  // Field focus states
-  const [nameFocused, setNameFocused] = useState(false);
-  const [emailFocused, setEmailFocused] = useState(false);
-  const [passwordFocused, setPasswordFocused] = useState(false);
-  const [confirmFocused, setConfirmFocused] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   // Check if user is already logged in
   useEffect(() => {
+    setMounted(true);
     const checkUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        router.push("/");
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          router.push("/");
+        }
+      } catch {
+        // Ignore errors - user is not logged in
       }
     };
     checkUser();
   }, [router]);
 
-  const content = {
-    fr: {
-      title: "Créer un compte",
-      subtitle: "Rejoignez notre communauté de patients",
-      nameLabel: "Nom complet",
-      namePlaceholder: "Jean Dupont",
-      emailLabel: "Adresse email",
-      emailPlaceholder: "jean.dupont@example.com",
-      passwordLabel: "Mot de passe",
-      passwordPlaceholder: "Minimum 6 caractères",
-      confirmPasswordLabel: "Confirmer le mot de passe",
-      confirmPasswordPlaceholder: "Répétez votre mot de passe",
-      signupButton: "Créer mon compte",
-      hasAccount: "Vous avez déjà un compte?",
-      loginLink: "Se connecter",
-      loading: "Création en cours...",
-      passwordMismatch: "Les mots de passe ne correspondent pas",
-      passwordTooShort: "Le mot de passe doit contenir au moins 6 caractères",
-      invalidEmail: "Veuillez entrer une adresse email valide",
-      nameRequired: "Veuillez entrer votre nom complet",
-      termsRequired: "Veuillez accepter les conditions d'utilisation",
-      acceptTerms: "J'accepte les conditions d'utilisation et la politique de confidentialité",
-      accountCreated: "Compte créé avec succès! Vérifiez votre email pour confirmer.",
-      networkError: "Erreur de connexion. Vérifiez votre connexion internet.",
-      emailInUse: "Cette adresse email est déjà utilisée",
-      passwordStrength: {
-        title: "Sécurité du mot de passe",
-        length: "Au moins 6 caractères",
-        uppercase: "Une lettre majuscule",
-        number: "Un chiffre",
-      },
-    },
-    en: {
-      title: "Create an account",
-      subtitle: "Join our patient community",
-      nameLabel: "Full name",
-      namePlaceholder: "John Doe",
-      emailLabel: "Email address",
-      emailPlaceholder: "john.doe@example.com",
-      passwordLabel: "Password",
-      passwordPlaceholder: "Minimum 6 characters",
-      confirmPasswordLabel: "Confirm password",
-      confirmPasswordPlaceholder: "Repeat your password",
-      signupButton: "Create account",
-      hasAccount: "Already have an account?",
-      loginLink: "Sign in",
-      loading: "Creating account...",
-      passwordMismatch: "Passwords do not match",
-      passwordTooShort: "Password must be at least 6 characters",
-      invalidEmail: "Please enter a valid email address",
-      nameRequired: "Please enter your full name",
-      termsRequired: "Please accept the terms and conditions",
-      acceptTerms: "I accept the terms of use and privacy policy",
-      accountCreated: "Account created successfully! Check your email to confirm.",
-      networkError: "Connection error. Check your internet connection.",
-      emailInUse: "This email address is already in use",
-      passwordStrength: {
-        title: "Password strength",
-        length: "At least 6 characters",
-        uppercase: "One uppercase letter",
-        number: "One number",
-      },
-    },
-  };
-
-  const currentContent = content[language];
-
-  // Validation helpers
-  const isEmailValid = (email: string) => {
+  // Email validation
+  const isValidEmail = useCallback((email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
+  }, []);
 
+  // Password strength calculation
   const passwordChecks = {
-    length: password.length >= 6,
+    length: password.length >= 8,
     uppercase: /[A-Z]/.test(password),
+    lowercase: /[a-z]/.test(password),
     number: /[0-9]/.test(password),
+    special: /[!@#$%^&*(),.?":{}|<>]/.test(password),
   };
 
-  const isPasswordStrong = passwordChecks.length;
+  const passwordStrength = Object.values(passwordChecks).filter(Boolean).length;
+  const getStrengthLabel = () => {
+    if (passwordStrength <= 2) return { label: t.passwordStrength.weak, color: "bg-red-500", width: "w-1/3" };
+    if (passwordStrength <= 3) return { label: t.passwordStrength.medium, color: "bg-yellow-500", width: "w-2/3" };
+    return { label: t.passwordStrength.strong, color: "bg-green-500", width: "w-full" };
+  };
 
+  // Form validation
+  const validateForm = useCallback(() => {
+    if (!fullName.trim()) {
+      setError(t.errors.fullNameRequired);
+      return false;
+    }
+    if (fullName.trim().length < 2) {
+      setError(t.errors.fullNameTooShort);
+      return false;
+    }
+    if (!email.trim()) {
+      setError(t.errors.emailRequired);
+      return false;
+    }
+    if (!isValidEmail(email)) {
+      setError(t.errors.emailInvalid);
+      return false;
+    }
+    if (!password) {
+      setError(t.errors.passwordRequired);
+      return false;
+    }
+    if (password.length < 8) {
+      setError(t.errors.passwordTooShort);
+      return false;
+    }
+    if (password !== confirmPassword) {
+      setError(t.errors.passwordMismatch);
+      return false;
+    }
+    if (!acceptTerms) {
+      setError(t.errors.termsRequired);
+      return false;
+    }
+    return true;
+  }, [fullName, email, password, confirmPassword, acceptTerms, isValidEmail, t.errors]);
+
+  // Handle signup
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setSuccess("");
 
-    // Validation
-    if (!fullName.trim()) {
-      setError(currentContent.nameRequired);
-      return;
-    }
-
-    if (!isEmailValid(email)) {
-      setError(currentContent.invalidEmail);
-      return;
-    }
-
-    if (password.length < 6) {
-      setError(currentContent.passwordTooShort);
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      setError(currentContent.passwordMismatch);
-      return;
-    }
-
-    if (!acceptTerms) {
-      setError(currentContent.termsRequired);
-      return;
-    }
+    if (!validateForm()) return;
 
     setLoading(true);
 
@@ -161,412 +249,424 @@ export default function SignupPage() {
         options: {
           data: {
             full_name: fullName.trim(),
+            phone: phone.trim() || null,
           },
+          emailRedirectTo: `${window.location.origin}/login`,
         },
       });
 
       if (authError) {
-        // Handle errors with friendly messages
         const errorMsg = authError.message?.toLowerCase() || "";
-        if (errorMsg.includes("already registered") || errorMsg.includes("user already registered")) {
-          setError(currentContent.emailInUse);
-        } else if (errorMsg.includes("password") && errorMsg.includes("short")) {
-          setError(currentContent.passwordTooShort);
+
+        if (errorMsg.includes("already registered") || errorMsg.includes("user already")) {
+          setError(t.errors.emailInUse);
+        } else if (errorMsg.includes("rate limit") || errorMsg.includes("too many")) {
+          setError(t.errors.tooManyAttempts);
         } else if (
           errorMsg.includes("network") ||
           errorMsg.includes("fetch") ||
           errorMsg.includes("timeout") ||
-          errorMsg.includes("abort") ||
-          errorMsg.includes("connexion") ||
-          (authError as any).status === 0
+          errorMsg.includes("abort")
         ) {
-          setError(language === 'fr'
-            ? "Problème de connexion. Veuillez vérifier votre internet et réessayer."
-            : "Connection issue. Please check your internet and try again.");
-        } else if (errorMsg.includes("rate limit") || errorMsg.includes("too many")) {
-          setError(language === 'fr'
-            ? "Trop de tentatives. Veuillez patienter quelques minutes."
-            : "Too many attempts. Please wait a few minutes.");
-        } else if (errorMsg.includes("email") && errorMsg.includes("invalid")) {
-          setError(currentContent.invalidEmail);
+          setError(t.errors.networkError);
+        } else if (errorMsg.includes("password")) {
+          setError(t.errors.passwordTooShort);
         } else {
-          // Generic message for unknown errors
-          setError(language === 'fr'
-            ? "Impossible de créer le compte. Vérifiez vos informations."
-            : "Unable to create account. Please check your information.");
+          setError(t.errors.unknownError);
         }
-        setLoading(false);
         return;
       }
 
-      // Check if email confirmation is required
-      if (data?.user && !data?.session) {
-        setSuccess(currentContent.accountCreated);
-        setTimeout(() => {
-          router.push("/login");
-        }, 3000);
-        return;
+      if (data?.user) {
+        // Check if email confirmation is required
+        if (!data.session) {
+          setSuccess(`${t.success.accountCreated} ${t.success.checkEmail}`);
+          setTimeout(() => {
+            router.push("/login");
+          }, 3000);
+        } else {
+          // User is logged in immediately (email confirmation disabled)
+          setSuccess(t.success.accountCreated);
+          setTimeout(() => {
+            router.push("/");
+            router.refresh();
+          }, 800);
+        }
       }
-
-      // If we have a session, they're logged in immediately
-      if (data?.session) {
-        setSuccess(language === 'fr' ? "Compte cree avec succes!" : "Account created successfully!");
-        setTimeout(() => {
-          router.push("/");
-          router.refresh();
-        }, 500);
-      } else if (data?.user) {
-        // User created but needs email confirmation
-        setSuccess(currentContent.accountCreated);
-        setTimeout(() => {
-          router.push("/login");
-        }, 3000);
-      }
-    } catch (err: any) {
-      // Handle network/timeout errors
-      const errMsg = err?.message?.toLowerCase() || "";
-      const errName = err?.name?.toLowerCase() || "";
-      if (
-        errMsg.includes("network") ||
-        errMsg.includes("fetch") ||
-        errMsg.includes("timeout") ||
-        errName.includes("abort") ||
-        errMsg.includes("connexion")
-      ) {
-        setError(language === 'fr'
-          ? "Problème de connexion. Veuillez vérifier votre internet et réessayer."
-          : "Connection issue. Please check your internet and try again.");
+    } catch (err: unknown) {
+      const errMsg = (err as Error)?.message?.toLowerCase() || "";
+      if (errMsg.includes("network") || errMsg.includes("fetch")) {
+        setError(t.errors.networkError);
       } else {
-        setError(language === 'fr'
-          ? "Impossible de créer le compte. Vérifiez vos informations."
-          : "Unable to create account. Please check your information.");
+        setError(t.errors.unknownError);
       }
     } finally {
       setLoading(false);
     }
   };
 
-  return (
-    <>
-      <TopNavigationBar />
-      <MainNavigation />
-      <main className="min-h-screen bg-gradient-to-br from-[#0A065D] via-[#0080FF] to-[#0909FF] flex items-center justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        {/* Animated background circles */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#00CED1]/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#0A065D]/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
-        </div>
+  const strengthInfo = getStrengthLabel();
 
-        <div className="max-w-md w-full relative z-10">
-          {/* Modern Card */}
-          <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl p-8 sm:p-10 space-y-6 animate-fadeIn">
-            {/* Header */}
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#FE5000] to-[#CC4000] rounded-2xl mb-4 shadow-xl transform transition-transform hover:scale-110 hover:rotate-6 duration-300">
-                <UserPlus className="w-10 h-10 text-white" />
+  if (!mounted) return null;
+
+  return (
+    <div className="min-h-screen flex">
+      {/* Left Panel - Form */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12 bg-gray-50 overflow-y-auto">
+        <div className="w-full max-w-md py-8">
+          {/* Mobile Logo */}
+          <div className="lg:hidden text-center mb-8">
+            <Link href="/" className="inline-flex items-center gap-3">
+              <div className="w-12 h-12 bg-[#0A065D] rounded-xl flex items-center justify-center shadow-lg">
+                <Image
+                  src="/laboyaounde.png"
+                  alt="LabYaounde"
+                  width={32}
+                  height={32}
+                  className="object-contain"
+                />
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#0A065D] to-[#0080FF] bg-clip-text text-transparent mb-2">
-                {currentContent.title}
-              </h2>
-              <p className="text-base text-gray-600">
-                {currentContent.subtitle}
+              <span className="text-xl font-bold text-[#0A065D]">LabYaounde</span>
+            </Link>
+          </div>
+
+          {/* Form Card */}
+          <div className="bg-white rounded-2xl shadow-xl p-8 sm:p-10 border border-gray-100">
+            <div className="text-center mb-8">
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+                {t.title}
+              </h1>
+              <p className="text-gray-500">
+                {t.subtitle}
               </p>
             </div>
 
-            {/* Form */}
             <form onSubmit={handleSignup} className="space-y-5">
+              {/* Messages */}
               {error && (
-                <div className="bg-[#FE5000]/10 border-l-4 border-[#FE5000] p-4 rounded-lg flex items-center gap-3 animate-slideDown">
-                  <AlertCircle className="w-5 h-5 text-[#FE5000] flex-shrink-0" />
-                  <p className="text-sm text-[#FE5000]">{error}</p>
+                <div className="flex items-center gap-3 p-4 bg-red-50 border border-red-100 rounded-xl animate-shake">
+                  <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0" />
+                  <p className="text-sm text-red-600">{error}</p>
                 </div>
               )}
 
               {success && (
-                <div className="bg-[#0A065D]/10 border-l-4 border-[#0A065D] p-4 rounded-lg flex items-center gap-3 animate-slideDown">
-                  <CheckCircle className="w-5 h-5 text-[#FE5000] flex-shrink-0" />
-                  <p className="text-sm text-[#0A065D]">{success}</p>
+                <div className="flex items-center gap-3 p-4 bg-green-50 border border-green-100 rounded-xl">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                  <p className="text-sm text-green-600">{success}</p>
                 </div>
               )}
 
-              {/* Full Name */}
-              <div className="relative">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none z-10">
-                  <User className={`h-5 w-5 transition-colors duration-200 ${nameFocused || fullName ? 'text-[#0A065D]' : 'text-gray-400'}`} />
-                </div>
-                <input
-                  id="fullName"
-                  type="text"
-                  required
-                  value={fullName}
-                  onChange={(e) => {
-                    setFullName(e.target.value);
-                    setError("");
-                  }}
-                  onFocus={() => setNameFocused(true)}
-                  onBlur={() => setNameFocused(false)}
-                  placeholder=" "
-                  className="peer block w-full pl-12 pr-4 py-4 text-base border-2 border-gray-200 rounded-xl focus:ring-0 focus:border-[#0A065D] transition-all duration-300 placeholder-transparent bg-white"
-                />
-                <label
-                  htmlFor="fullName"
-                  className={`absolute left-12 transition-all duration-200 pointer-events-none ${
-                    nameFocused || fullName
-                      ? '-top-2.5 left-3 text-xs bg-white px-2 text-[#0A065D] font-semibold'
-                      : 'top-4 text-base text-gray-500'
-                  }`}
-                >
-                  {currentContent.nameLabel}
+              {/* Full Name Input */}
+              <div>
+                <label htmlFor="fullName" className="block text-sm font-semibold text-gray-700 mb-2">
+                  {t.fullNameLabel} <span className="text-red-500">*</span>
                 </label>
+                <div className="relative">
+                  <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <input
+                    id="fullName"
+                    type="text"
+                    value={fullName}
+                    onChange={(e) => {
+                      setFullName(e.target.value);
+                      setError("");
+                    }}
+                    placeholder={t.fullNamePlaceholder}
+                    autoComplete="name"
+                    className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#0A065D] focus:outline-none transition-colors text-gray-900 placeholder-gray-400"
+                  />
+                </div>
               </div>
 
-              {/* Email */}
-              <div className="relative">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none z-10">
-                  <Mail className={`h-5 w-5 transition-colors duration-200 ${emailFocused || email ? 'text-[#0A065D]' : 'text-gray-400'}`} />
-                </div>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                    setError("");
-                  }}
-                  onFocus={() => setEmailFocused(true)}
-                  onBlur={() => setEmailFocused(false)}
-                  placeholder=" "
-                  className="peer block w-full pl-12 pr-4 py-4 text-base border-2 border-gray-200 rounded-xl focus:ring-0 focus:border-[#0A065D] transition-all duration-300 placeholder-transparent bg-white"
-                />
-                <label
-                  htmlFor="email"
-                  className={`absolute left-12 transition-all duration-200 pointer-events-none ${
-                    emailFocused || email
-                      ? '-top-2.5 left-3 text-xs bg-white px-2 text-[#0A065D] font-semibold'
-                      : 'top-4 text-base text-gray-500'
-                  }`}
-                >
-                  {currentContent.emailLabel}
+              {/* Phone Input (Optional) */}
+              <div>
+                <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
+                  {t.phoneLabel}
                 </label>
+                <div className="relative">
+                  <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <input
+                    id="phone"
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder={t.phonePlaceholder}
+                    autoComplete="tel"
+                    className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#0A065D] focus:outline-none transition-colors text-gray-900 placeholder-gray-400"
+                  />
+                </div>
               </div>
 
-              {/* Password */}
-              <div className="relative">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none z-10">
-                  <Lock className={`h-5 w-5 transition-colors duration-200 ${passwordFocused || password ? 'text-[#0A065D]' : 'text-gray-400'}`} />
-                </div>
-                <input
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  required
-                  value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                    setError("");
-                  }}
-                  onFocus={() => setPasswordFocused(true)}
-                  onBlur={() => setPasswordFocused(false)}
-                  placeholder=" "
-                  className="peer block w-full pl-12 pr-12 py-4 text-base border-2 border-gray-200 rounded-xl focus:ring-0 focus:border-[#0A065D] transition-all duration-300 placeholder-transparent bg-white"
-                />
-                <label
-                  htmlFor="password"
-                  className={`absolute left-12 transition-all duration-200 pointer-events-none ${
-                    passwordFocused || password
-                      ? '-top-2.5 left-3 text-xs bg-white px-2 text-[#0A065D] font-semibold'
-                      : 'top-4 text-base text-gray-500'
-                  }`}
-                >
-                  {currentContent.passwordLabel}
+              {/* Email Input */}
+              <div>
+                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                  {t.emailLabel} <span className="text-red-500">*</span>
                 </label>
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#0A065D] transition-colors z-10"
-                >
-                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                </button>
+                <div className="relative">
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <input
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      setError("");
+                    }}
+                    placeholder={t.emailPlaceholder}
+                    autoComplete="email"
+                    className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#0A065D] focus:outline-none transition-colors text-gray-900 placeholder-gray-400"
+                  />
+                </div>
               </div>
 
-              {/* Password Strength Indicator */}
-              {password && (
-                <div className="bg-gray-50 rounded-lg p-3 space-y-2">
-                  <p className="text-xs font-semibold text-gray-600">{currentContent.passwordStrength.title}</p>
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2">
-                      {passwordChecks.length ? (
-                        <Check className="w-4 h-4 text-[#FE5000]" />
-                      ) : (
-                        <X className="w-4 h-4 text-gray-400" />
-                      )}
-                      <span className={`text-xs ${passwordChecks.length ? 'text-[#FE5000]' : 'text-gray-500'}`}>
-                        {currentContent.passwordStrength.length}
+              {/* Password Input */}
+              <div>
+                <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-2">
+                  {t.passwordLabel} <span className="text-red-500">*</span>
+                </label>
+                <div className="relative">
+                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                      setError("");
+                    }}
+                    placeholder={t.passwordPlaceholder}
+                    autoComplete="new-password"
+                    className="w-full pl-12 pr-12 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#0A065D] focus:outline-none transition-colors text-gray-900 placeholder-gray-400"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                  >
+                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  </button>
+                </div>
+
+                {/* Password Strength Indicator */}
+                {password && (
+                  <div className="mt-3 space-y-2">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-gray-500">{t.passwordStrength.title}</span>
+                      <span className={`font-medium ${
+                        passwordStrength <= 2 ? 'text-red-500' : passwordStrength <= 3 ? 'text-yellow-500' : 'text-green-500'
+                      }`}>
+                        {strengthInfo.label}
                       </span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      {passwordChecks.uppercase ? (
-                        <Check className="w-4 h-4 text-[#FE5000]" />
-                      ) : (
-                        <X className="w-4 h-4 text-gray-300" />
-                      )}
-                      <span className={`text-xs ${passwordChecks.uppercase ? 'text-[#FE5000]' : 'text-gray-400'}`}>
-                        {currentContent.passwordStrength.uppercase}
-                      </span>
+                    <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                      <div className={`h-full ${strengthInfo.color} ${strengthInfo.width} transition-all duration-300`} />
                     </div>
-                    <div className="flex items-center gap-2">
-                      {passwordChecks.number ? (
-                        <Check className="w-4 h-4 text-[#FE5000]" />
-                      ) : (
-                        <X className="w-4 h-4 text-gray-300" />
-                      )}
-                      <span className={`text-xs ${passwordChecks.number ? 'text-[#FE5000]' : 'text-gray-400'}`}>
-                        {currentContent.passwordStrength.number}
-                      </span>
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div className="flex items-center gap-1.5">
+                        {passwordChecks.length ? <Check className="w-3.5 h-3.5 text-green-500" /> : <X className="w-3.5 h-3.5 text-gray-300" />}
+                        <span className={passwordChecks.length ? "text-green-600" : "text-gray-400"}>{t.passwordStrength.requirements.length}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        {passwordChecks.uppercase ? <Check className="w-3.5 h-3.5 text-green-500" /> : <X className="w-3.5 h-3.5 text-gray-300" />}
+                        <span className={passwordChecks.uppercase ? "text-green-600" : "text-gray-400"}>{t.passwordStrength.requirements.uppercase}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        {passwordChecks.number ? <Check className="w-3.5 h-3.5 text-green-500" /> : <X className="w-3.5 h-3.5 text-gray-300" />}
+                        <span className={passwordChecks.number ? "text-green-600" : "text-gray-400"}>{t.passwordStrength.requirements.number}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        {passwordChecks.special ? <Check className="w-3.5 h-3.5 text-green-500" /> : <X className="w-3.5 h-3.5 text-gray-300" />}
+                        <span className={passwordChecks.special ? "text-green-600" : "text-gray-400"}>{t.passwordStrength.requirements.special}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
 
-              {/* Confirm Password */}
-              <div className="relative">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none z-10">
-                  <Lock className={`h-5 w-5 transition-colors duration-200 ${confirmFocused || confirmPassword ? 'text-[#0A065D]' : 'text-gray-400'}`} />
-                </div>
-                <input
-                  id="confirmPassword"
-                  type={showConfirmPassword ? "text" : "password"}
-                  required
-                  value={confirmPassword}
-                  onChange={(e) => {
-                    setConfirmPassword(e.target.value);
-                    setError("");
-                  }}
-                  onFocus={() => setConfirmFocused(true)}
-                  onBlur={() => setConfirmFocused(false)}
-                  placeholder=" "
-                  className={`peer block w-full pl-12 pr-12 py-4 text-base border-2 rounded-xl focus:ring-0 transition-all duration-300 placeholder-transparent bg-white ${
-                    confirmPassword && password !== confirmPassword
-                      ? 'border-[#FE5000]/50 focus:border-[#FE5000]'
-                      : confirmPassword && password === confirmPassword
-                      ? 'border-[#0A065D]/50 focus:border-[#0A065D]'
-                      : 'border-gray-200 focus:border-[#0A065D]'
-                  }`}
-                />
-                <label
-                  htmlFor="confirmPassword"
-                  className={`absolute left-12 transition-all duration-200 pointer-events-none ${
-                    confirmFocused || confirmPassword
-                      ? '-top-2.5 left-3 text-xs bg-white px-2 text-[#0A065D] font-semibold'
-                      : 'top-4 text-base text-gray-500'
-                  }`}
-                >
-                  {currentContent.confirmPasswordLabel}
+              {/* Confirm Password Input */}
+              <div>
+                <label htmlFor="confirmPassword" className="block text-sm font-semibold text-gray-700 mb-2">
+                  {t.confirmPasswordLabel} <span className="text-red-500">*</span>
                 </label>
-                <button
-                  type="button"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#0A065D] transition-colors z-10"
-                >
-                  {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                </button>
+                <div className="relative">
+                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <input
+                    id="confirmPassword"
+                    type={showConfirmPassword ? "text" : "password"}
+                    value={confirmPassword}
+                    onChange={(e) => {
+                      setConfirmPassword(e.target.value);
+                      setError("");
+                    }}
+                    placeholder={t.confirmPasswordPlaceholder}
+                    autoComplete="new-password"
+                    className={`w-full pl-12 pr-12 py-3.5 border-2 rounded-xl focus:outline-none transition-colors text-gray-900 placeholder-gray-400 ${
+                      confirmPassword && password !== confirmPassword
+                        ? "border-red-300 focus:border-red-500"
+                        : confirmPassword && password === confirmPassword
+                        ? "border-green-300 focus:border-green-500"
+                        : "border-gray-200 focus:border-[#0A065D]"
+                    }`}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                  >
+                    {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  </button>
+                  {confirmPassword && password === confirmPassword && (
+                    <Check className="absolute right-12 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500" />
+                  )}
+                </div>
               </div>
 
               {/* Terms Checkbox */}
-              <label className="flex items-start gap-3 cursor-pointer group">
-                <div className="relative mt-0.5">
-                  <input
-                    type="checkbox"
-                    checked={acceptTerms}
-                    onChange={(e) => {
-                      setAcceptTerms(e.target.checked);
-                      setError("");
-                    }}
-                    className="sr-only peer"
-                  />
-                  <div className="w-5 h-5 border-2 border-gray-300 rounded peer-checked:bg-[#0A065D] peer-checked:border-[#0A065D] transition-all duration-200 flex items-center justify-center">
-                    <svg className={`w-3 h-3 text-white transition-opacity duration-200 ${acceptTerms ? 'opacity-100' : 'opacity-0'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7"/>
-                    </svg>
-                  </div>
-                </div>
-                <span className="text-sm text-gray-600 group-hover:text-gray-900 transition-colors">
-                  {currentContent.acceptTerms}
-                </span>
-              </label>
+              <div className="flex items-start gap-3">
+                <input
+                  type="checkbox"
+                  id="acceptTerms"
+                  checked={acceptTerms}
+                  onChange={(e) => {
+                    setAcceptTerms(e.target.checked);
+                    setError("");
+                  }}
+                  className="w-4 h-4 mt-0.5 rounded border-gray-300 text-[#0A065D] focus:ring-[#0A065D] cursor-pointer"
+                />
+                <label htmlFor="acceptTerms" className="text-sm text-gray-600 cursor-pointer">
+                  {t.acceptTerms}{" "}
+                  <Link href="/conditions" className="text-[#0A065D] hover:text-[#0080FF] font-medium">
+                    {t.termsLink}
+                  </Link>{" "}
+                  {t.andText}{" "}
+                  <Link href="/confidentialite" className="text-[#0A065D] hover:text-[#0080FF] font-medium">
+                    {t.privacyLink}
+                  </Link>
+                </label>
+              </div>
 
               {/* Submit Button */}
               <button
                 type="submit"
-                disabled={loading || !isPasswordStrong}
-                className="relative w-full overflow-hidden group py-4 px-6 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-[#0A065D] via-[#0080FF] to-[#0909FF] hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-[1.02]"
+                disabled={loading || passwordStrength < 3}
+                className="w-full py-3.5 bg-[#0A065D] text-white rounded-xl font-semibold hover:bg-[#0A065D]/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 group"
               >
-                {/* Animated light effect */}
-                <div className="absolute inset-0 w-full h-full">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
-                </div>
-
-                <div className="relative flex justify-center items-center gap-2">
-                  {loading ? (
-                    <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      <span>{currentContent.loading}</span>
-                    </>
-                  ) : (
-                    <>
-                      <UserPlus className="w-5 h-5" />
-                      <span>{currentContent.signupButton}</span>
-                    </>
-                  )}
-                </div>
+                {loading ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    {t.signingUp}
+                  </>
+                ) : (
+                  <>
+                    <UserPlus className="w-5 h-5" />
+                    {t.signupButton}
+                    <ArrowRight className="w-5 h-5 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                  </>
+                )}
               </button>
             </form>
 
-            {/* Sign in link */}
-            <div className="text-center pt-4 border-t border-gray-200">
-              <p className="text-sm text-gray-600">
-                {currentContent.hasAccount}{" "}
-                <Link href="/login" className="font-semibold text-[#0A065D] hover:text-[#0080FF] transition-colors hover:underline">
-                  {currentContent.loginLink}
+            {/* Login Link */}
+            <div className="mt-8 pt-6 border-t border-gray-100 text-center">
+              <p className="text-gray-600">
+                {t.hasAccount}{" "}
+                <Link
+                  href="/login"
+                  className="font-semibold text-[#FF6B00] hover:text-[#FF8C00] transition-colors"
+                >
+                  {t.loginLink}
                 </Link>
               </p>
             </div>
           </div>
+
+          {/* Bottom Links */}
+          <div className="mt-6 text-center text-sm text-gray-500">
+            <Link href="/" className="hover:text-[#0A065D] transition-colors">
+              {t.backToHome}
+            </Link>
+          </div>
         </div>
-      </main>
-      <Footer />
+      </div>
 
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+      {/* Right Panel - Branding */}
+      <div className="hidden lg:flex lg:w-1/2 relative bg-gradient-to-br from-[#0A065D] via-[#0A065D] to-[#0080FF] overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#FF6B00]/10 rounded-full -translate-x-1/3 translate-y-1/3" />
+          <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-white/5 rounded-full" />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 flex flex-col justify-between p-12 w-full">
+          {/* Logo */}
+          <div>
+            <Link href="/" className="inline-flex items-center gap-3 group">
+              <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+                <Image
+                  src="/laboyaounde.png"
+                  alt="LabYaounde"
+                  width={40}
+                  height={40}
+                  className="object-contain"
+                />
+              </div>
+              <span className="text-2xl font-bold text-white">LabYaounde</span>
+            </Link>
+          </div>
+
+          {/* Main Content */}
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-4xl font-bold text-white leading-tight mb-4">
+                {language === 'fr' ? 'Bienvenue chez LabYaounde' : 'Welcome to LabYaounde'}
+              </h2>
+              <p className="text-lg text-white/80">
+                {language === 'fr'
+                  ? 'Créez votre compte pour accéder à tous nos services en ligne : résultats d\'analyses, prise de rendez-vous, et bien plus encore.'
+                  : 'Create your account to access all our online services: test results, appointments, and much more.'
+                }
+              </p>
+            </div>
+
+            {/* Benefits */}
+            <div className="space-y-4">
+              {[
+                language === 'fr' ? 'Résultats disponibles 24h/24' : '24/7 result access',
+                language === 'fr' ? 'Historique médical complet' : 'Complete medical history',
+                language === 'fr' ? 'Notifications par email' : 'Email notifications',
+                language === 'fr' ? 'Support client dédié' : 'Dedicated customer support',
+              ].map((benefit, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-[#FF6B00] rounded-full flex items-center justify-center">
+                    <Check className="w-4 h-4 text-white" />
+                  </div>
+                  <span className="text-white/90">{benefit}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="flex items-center gap-2 text-white/60 text-sm">
+            <Shield className="w-4 h-4" />
+            <span>{t.secureData}</span>
+          </div>
+        </div>
+      </div>
+
+      <style jsx global>{`
+        @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+          20%, 40%, 60%, 80% { transform: translateX(4px); }
         }
-
-        @keyframes slideDown {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .animate-fadeIn {
-          animation: fadeIn 0.6s ease-out;
-        }
-
-        .animate-slideDown {
-          animation: slideDown 0.3s ease-out;
+        .animate-shake {
+          animation: shake 0.5s ease-in-out;
         }
       `}</style>
-    </>
+    </div>
   );
 }
