@@ -225,8 +225,8 @@ export default function NotreVisionPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
               {language === 'fr'
-                ? 'Rejoignez Notre Mission'
-                : 'Join Our Mission'
+                ? 'Rejoignez Nous'
+                : 'Join Us'
               }
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">

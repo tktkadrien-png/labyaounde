@@ -5,14 +5,15 @@ import { useLanguage } from "@/lib/contents/LanguageContext";
 import { useEffect, useRef, useState } from "react";
 
 const partners = [
-  { src: "/IMAGE/download (1).png", alt: "Partenaire", name: "Partenaire" },
+  { src: "/IMAGE/download (2).png", alt: "Partenaire", name: "Partenaire" },
   { src: "/IMAGE/partner-2.png", alt: "Partenaire 2", name: "Partenaire 2" },
   { src: "/IMAGE/partner-3.jpg", alt: "Partenaire 3", name: "Partenaire 3" },
   { src: "/IMAGE/partner-4.png", alt: "Partenaire 4", name: "Partenaire 4" },
-  { src: "/IMAGE/partner-5.jpg", alt: "Partenaire 5", name: "Partenaire 5" },
+  { src: "/IMAGE/CellmarkLogoFullColour.JPG", alt: "Cellmark", name: "Cellmark" },
   { src: "/IMAGE/partner-6.png", alt: "Partenaire 6", name: "Partenaire 6" },
   { src: "/IMAGE/partner-chracerh.jpg", alt: "CHRACERH", name: "CHRACERH" },
   { src: "/IMAGE/CNPS-scaled-1.jpg", alt: "CNPS", name: "CNPS" },
+  { src: "/IMAGE/download (3).png", alt: "Partenaire", name: "Partenaire" },
 ];
 
 export default function PartnersLogos() {

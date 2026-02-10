@@ -14,14 +14,14 @@ export default function NosStandardsPage() {
 
   const standards = [
     {
-      name: "HCPC",
+      name: "Accrédité HCPC",
       fullName: "The Health and Care Professions Council",
       fullNameFr: "Health and Care Professions Council",
       description: "UK regulatory body responsible for accreditation and evaluation of healthcare professionals",
       descriptionFr: "Organisme régulateur des professions de santé au Royaume-Uni chargé de l'accréditation et de l'évaluation des professionnels de santé"
     },
     {
-      name: "IBMS",
+      name: "Accrédité IBMS",
       fullName: "The Institute of Biomedical Science",
       fullNameFr: "Institute of Biomedical Science",
       description: "Professional body for biomedical scientists",
