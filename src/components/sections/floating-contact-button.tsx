@@ -64,14 +64,14 @@ export default function FloatingContactButton() {
     {
       icon: MessageCircle,
       label: currentContent.whatsapp,
-      href: "/contact",
+      href: "https://wa.me/237242046850",
       color: "bg-[#25D366]",
       hoverColor: "hover:bg-[#128C7E]",
     },
     {
       icon: Phone,
       label: currentContent.call,
-      href: "tel:+237600000000",
+      href: "tel:+237242046850",
       color: "bg-[#FE5000]",
       hoverColor: "hover:bg-[#CC4000]",
     },

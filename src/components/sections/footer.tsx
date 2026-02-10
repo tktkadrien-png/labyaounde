@@ -288,8 +288,7 @@ const Footer = () => {
                       <Clock size={20} className="text-[#FE5000] flex-shrink-0 mt-0.5" />
                       <div>
                         <p className="text-sm font-medium">Horaires d&apos;ouverture</p>
-                        <p className="text-xs text-white/60">Lun-Sam: 7h30-18h00</p>
-                        <p className="text-xs text-white/60">Dim: 8h00-13h00</p>
+                        <p className="text-xs text-[#00CED1] font-bold">Laboratoire ouvert 24h/24 - 7j/7</p>
                       </div>
                     </div>
                   </div>
