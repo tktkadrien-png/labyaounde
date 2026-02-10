@@ -5,7 +5,7 @@ import { useLanguage } from "@/lib/contents/LanguageContext";
 import { useEffect, useRef, useState } from "react";
 
 const partners = [
-  { src: "/IMAGE/partner-1.jpg", alt: "Partenaire 1", name: "Partenaire 1" },
+  { src: "/IMAGE/download (1).png", alt: "Partenaire", name: "Partenaire" },
   { src: "/IMAGE/partner-2.png", alt: "Partenaire 2", name: "Partenaire 2" },
   { src: "/IMAGE/partner-3.jpg", alt: "Partenaire 3", name: "Partenaire 3" },
   { src: "/IMAGE/partner-4.png", alt: "Partenaire 4", name: "Partenaire 4" },
