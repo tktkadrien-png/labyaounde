@@ -141,7 +141,7 @@ const MainNavigation = () => {
       <header
         className={cn(
           "sticky top-0 z-50 w-full transition-all duration-300 font-sans",
-          isSticky ? "shadow-lg bg-[#60AAE3]" : "bg-white"
+          isSticky ? "shadow-2xl bg-gradient-to-r from-[#0A065D] via-[#1E3A8A] to-[#0A065D]" : "bg-white"
         )}
       >
         <div className="container mx-auto max-w-[1200px] px-4 sm:px-6 md:px-8 lg:px-[30px] py-3 md:py-[15px]">
@@ -174,10 +174,10 @@ const MainNavigation = () => {
                 <Button
                   onClick={toggleLanguage}
                   size="sm"
-                  className={`h-9 md:h-10 px-2 md:px-3 rounded-md transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:scale-105 border-0 ${
+                  className={`h-9 md:h-10 px-3 md:px-4 rounded-xl transition-all duration-300 font-bold shadow-lg hover:shadow-xl hover:scale-105 border-0 ${
                     isSticky
-                      ? 'bg-[#FE5000] text-white hover:bg-[#CC4000]'
-                      : 'bg-gradient-to-r from-[#00CED1] via-[#0080FF] to-[#0A065D] text-white hover:from-[#1E90FF] hover:via-[#1589FF] hover:to-[#0909FF]'
+                      ? 'bg-gradient-to-r from-[#FE5000] to-[#CC4000] text-white hover:from-[#FF7A33] hover:to-[#FE5000]'
+                      : 'bg-gradient-to-r from-[#0A065D] via-[#1E3A8A] to-[#3B82F6] text-white hover:from-[#1E3A8A] hover:via-[#3B82F6] hover:to-[#0A065D]'
                   }`}
                 >
                   <Languages className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1 md:mr-1.5" />
@@ -215,13 +215,13 @@ const MainNavigation = () => {
                 ) : (
                   <div className="flex items-center gap-1.5 md:gap-2">
                     <Link href="/login">
-                      <Button size="sm" className="h-9 md:h-10 px-2 md:px-4 rounded-md bg-white text-[#FE5000] border-2 border-[#FE5000] hover:bg-[#FE5000] hover:text-white transition-all font-medium shadow-sm">
+                      <Button size="sm" className="h-9 md:h-10 px-3 md:px-5 rounded-xl bg-white text-[#FE5000] border-2 border-[#FE5000] hover:bg-[#FE5000] hover:text-white transition-all font-bold shadow-lg hover:shadow-xl hover:scale-105">
                         <LogIn className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1 md:mr-1.5" />
                         <span className="text-xs md:text-sm">{language === 'fr' ? 'Connexion' : 'Login'}</span>
                       </Button>
                     </Link>
                     <Link href="/signup">
-                      <Button size="sm" className="h-9 md:h-10 px-2 md:px-4 rounded-md bg-[#FE5000] text-white hover:bg-[#CC4000] transition-all font-medium shadow-sm">
+                      <Button size="sm" className="h-9 md:h-10 px-3 md:px-5 rounded-xl bg-gradient-to-r from-[#FE5000] to-[#CC4000] text-white hover:from-[#FF7A33] hover:to-[#FE5000] transition-all font-bold shadow-lg shadow-[#FE5000]/30 hover:shadow-xl hover:scale-105">
                         <UserPlus className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1 md:mr-1.5" />
                         <span className="text-xs md:text-sm">{language === 'fr' ? 'Inscription' : 'Sign Up'}</span>
                       </Button>
@@ -335,7 +335,7 @@ const MegaMenuItem = ({ trigger, columns, itemsInRow, isSticky = false }: { trig
         {trigger}
       </button>
       
-      <div className="absolute top-full left-0 w-[700px] bg-white p-[20px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-[opacity,visibility] duration-[250ms] ease-[ease] rounded-[8px] shadow-[0_4px_25px_rgba(0,0,0,0.1)] z-50">
+      <div className="absolute top-full left-0 w-[700px] bg-white p-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-[opacity,visibility] duration-[250ms] ease-[ease] rounded-2xl shadow-[0_20px_60px_-15px_rgba(10,6,93,0.2)] z-50 border border-gray-100">
         <div className={`grid ${gridCols} gap-[40px]`}>
           {columns.map((col) => (
             <div key={col.title} className="w-full">

@@ -149,7 +149,7 @@ const Footer = () => {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A065D]/95 via-[#0A065D]/90 to-[#0A065D]/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0A065D]/97 via-[#1E3A8A]/95 to-[#0A065D]/97"></div>
         </div>
 
         {/* Content */}
@@ -180,7 +180,7 @@ const Footer = () => {
                     href={GOOGLE_MAPS_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-[#FE5000] hover:bg-[#1E90FF] text-white rounded-lg px-6 py-3 font-semibold flex items-center gap-3 transition-all duration-300 shadow-lg hover:shadow-[#00CED1]/30 hover:scale-105"
+                    className="bg-gradient-to-r from-[#FE5000] to-[#CC4000] hover:from-[#3B82F6] hover:to-[#1E3A8A] text-white rounded-xl px-8 py-4 font-bold flex items-center gap-3 transition-all duration-300 shadow-lg shadow-[#FE5000]/30 hover:shadow-[#3B82F6]/40 hover:scale-105"
                   >
                     <MapPin size={20} />
                     Trouver mon Laboratoire
@@ -188,7 +188,7 @@ const Footer = () => {
                   </a>
                   <Link
                     href="#"
-                    className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/30 text-white rounded-lg px-6 py-3 font-semibold flex items-center gap-3 transition-all duration-300"
+                    className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/30 text-white rounded-xl px-8 py-4 font-bold flex items-center gap-3 transition-all duration-300 hover:scale-105"
                   >
                     <FileText size={20} />
                     Mes résultats
@@ -204,7 +204,7 @@ const Footer = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Facebook"
-                      className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#FE5000] flex items-center justify-center transition-all duration-300"
+                      className="w-11 h-11 rounded-full bg-white/10 hover:bg-gradient-to-br hover:from-[#FE5000] hover:to-[#CC4000] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#FE5000]/30"
                     >
                       <Facebook size={20} className="text-white" />
                     </a>
@@ -213,7 +213,7 @@ const Footer = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="TikTok"
-                      className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#FE5000] flex items-center justify-center transition-all duration-300"
+                      className="w-11 h-11 rounded-full bg-white/10 hover:bg-gradient-to-br hover:from-[#FE5000] hover:to-[#CC4000] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#FE5000]/30"
                     >
                       <TikTokIcon size={20} className="text-white" />
                     </a>
@@ -222,7 +222,7 @@ const Footer = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Instagram"
-                      className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#FE5000] flex items-center justify-center transition-all duration-300"
+                      className="w-11 h-11 rounded-full bg-white/10 hover:bg-gradient-to-br hover:from-[#FE5000] hover:to-[#CC4000] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#FE5000]/30"
                     >
                       <Instagram size={20} className="text-white" />
                     </a>
@@ -237,10 +237,10 @@ const Footer = () => {
             <div className="grid lg:grid-cols-12 gap-10">
               {/* Contact Info Card */}
               <div className="lg:col-span-4">
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-                  <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                    <span className="w-10 h-10 bg-[#FE5000] rounded-lg flex items-center justify-center">
-                      <Phone size={20} />
+                <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/20 shadow-xl">
+                  <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+                    <span className="w-12 h-12 bg-gradient-to-br from-[#FE5000] to-[#CC4000] rounded-xl flex items-center justify-center shadow-lg shadow-[#FE5000]/30">
+                      <Phone size={22} />
                     </span>
                     Contactez-nous
                   </h3>
@@ -375,7 +375,7 @@ const Footer = () => {
         <button
           onClick={scrollToTop}
           aria-label="Retour en haut"
-          className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-[#00CED1] to-[#0A065D] text-white flex items-center justify-center shadow-lg hover:shadow-[#00CED1]/40 hover:scale-110 transition-all duration-300"
+          className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-[#FE5000] to-[#CC4000] text-white flex items-center justify-center shadow-xl shadow-[#FE5000]/40 hover:shadow-[#FE5000]/60 hover:scale-110 transition-all duration-300"
         >
           <ArrowUp size={24} />
         </button>

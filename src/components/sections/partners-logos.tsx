@@ -68,21 +68,22 @@ export default function PartnersLogos() {
   const duplicatedPartners = [...partners, ...partners];
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-[#0A065D] via-[#0A065D] to-[#1a1080] relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#FE5000]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#00CED1]/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+    <section className="py-20 md:py-28 bg-gradient-to-br from-[#0A065D] via-[#1E3A8A] to-[#0A065D] relative overflow-hidden">
+      {/* Premium Background decorations */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FE5000]/15 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#3B82F6]/15 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 rounded-full blur-[150px]"></div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <span className="inline-block bg-[#FE5000]/20 text-[#FE5000] text-sm font-bold uppercase tracking-wider px-4 py-2 rounded-full mb-4">
+        <div className="text-center mb-14 md:mb-20">
+          <span className="inline-block bg-gradient-to-r from-[#FE5000]/30 to-[#FF7A33]/30 text-[#FE5000] text-sm font-bold uppercase tracking-wider px-6 py-2.5 rounded-full mb-6 border border-[#FE5000]/30 backdrop-blur-sm shadow-lg shadow-[#FE5000]/10">
             {currentContent.subtitle}
           </span>
-          <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
+          <h2 className="text-4xl md:text-6xl font-black text-white mb-4 drop-shadow-lg">
             {currentContent.title}
           </h2>
-          <p className="text-white/60 text-lg">
+          <p className="text-white/70 text-lg md:text-xl font-medium">
             {currentContent.count}
           </p>
         </div>
@@ -93,9 +94,9 @@ export default function PartnersLogos() {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Gradient overlays for fade effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#0A065D] to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#0A065D] to-transparent z-10 pointer-events-none"></div>
+          {/* Premium Gradient overlays for fade effect */}
+          <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-r from-[#0A065D] via-[#0A065D]/80 to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-l from-[#0A065D] via-[#0A065D]/80 to-transparent z-10 pointer-events-none"></div>
 
           {/* Scrolling track */}
           <div
@@ -108,7 +109,7 @@ export default function PartnersLogos() {
                 key={index}
                 className="flex-shrink-0 group"
               >
-                <div className="w-[160px] h-[100px] md:w-[200px] md:h-[120px] lg:w-[240px] lg:h-[140px] bg-white rounded-2xl shadow-lg flex items-center justify-center p-4 md:p-6 transition-all duration-300 hover:shadow-2xl hover:scale-105 hover:-translate-y-2">
+                <div className="w-[160px] h-[100px] md:w-[200px] md:h-[120px] lg:w-[240px] lg:h-[140px] bg-white rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] flex items-center justify-center p-4 md:p-6 transition-all duration-500 hover:shadow-[0_20px_60px_-10px_rgba(254,80,0,0.3)] hover:scale-110 hover:-translate-y-3 border border-white/50">
                   <Image
                     src={partner.src}
                     alt={partner.alt}
@@ -140,23 +141,23 @@ export default function PartnersLogos() {
           ))}
         </div>
 
-        {/* Trust indicators */}
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 mt-12 md:mt-16 pt-8 md:pt-12 border-t border-white/10">
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-black text-[#FE5000]">{partners.length}+</div>
-            <div className="text-white/60 text-sm md:text-base">
+        {/* Premium Trust indicators */}
+        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 mt-16 md:mt-20 pt-10 md:pt-14 border-t border-white/10">
+          <div className="text-center group">
+            <div className="text-4xl md:text-5xl font-black text-[#FE5000] group-hover:scale-110 transition-transform duration-300">{partners.length}+</div>
+            <div className="text-white/70 text-sm md:text-base font-medium mt-2">
               {language === "fr" ? "Partenaires" : "Partners"}
             </div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-black text-[#00CED1]">10+</div>
-            <div className="text-white/60 text-sm md:text-base">
+          <div className="text-center group">
+            <div className="text-4xl md:text-5xl font-black text-[#3B82F6] group-hover:scale-110 transition-transform duration-300">10+</div>
+            <div className="text-white/70 text-sm md:text-base font-medium mt-2">
               {language === "fr" ? "Années d'expérience" : "Years of experience"}
             </div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-black text-white">100%</div>
-            <div className="text-white/60 text-sm md:text-base">
+          <div className="text-center group">
+            <div className="text-4xl md:text-5xl font-black text-white group-hover:scale-110 transition-transform duration-300">100%</div>
+            <div className="text-white/70 text-sm md:text-base font-medium mt-2">
               {language === "fr" ? "Satisfaction" : "Satisfaction"}
             </div>
           </div>

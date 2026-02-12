@@ -85,14 +85,15 @@ We are committed to meeting your expectations with rigor and professionalism, an
               <source src={video} type="video/mp4" />
             </video>
           ))}
-          {/* Blue Palette Overlay - using #60AAE3 */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#60AAE3]/90 via-[#60AAE3]/85 to-[#60AAE3]/90"></div>
+          {/* Premium Blue Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0A065D]/85 via-[#1E3A8A]/80 to-[#0A065D]/90"></div>
         </div>
 
         {/* Decorative elements */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-96 h-96 bg-[#FE5000] rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#FE5000] rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-[500px] h-[500px] bg-[#FE5000]/20 rounded-full blur-[120px] animate-pulse"></div>
+          <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-[#3B82F6]/20 rounded-full blur-[100px] animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-[150px]"></div>
         </div>
 
         {/* Video Indicators */}
