@@ -141,7 +141,7 @@ const MainNavigation = () => {
       <header
         className={cn(
           "sticky top-0 z-50 w-full transition-all duration-300 font-sans",
-          isSticky ? "shadow-2xl bg-gradient-to-r from-[#0A065D] via-[#1E3A8A] to-[#0A065D]" : "bg-white"
+          isSticky ? "shadow-2xl bg-gradient-to-r from-[#0A2540] via-[#0D3B66] to-[#0A2540]" : "bg-white"
         )}
       >
         <div className="container mx-auto max-w-[1200px] px-4 sm:px-6 md:px-8 lg:px-[30px] py-3 md:py-[15px]">
@@ -164,7 +164,7 @@ const MainNavigation = () => {
                 <MegaMenuItemPro trigger={language === 'fr' ? 'Assurance Qualité' : 'Quality Assurance'} professionalsMenu={professionalsMenu} isSticky={isSticky} />
                 <MegaMenuItem trigger={t('patients')} columns={patientsMenu} itemsInRow={1} isSticky={isSticky} />
                 <li className="relative">
-                  <Link href="/carrieres/offres-emploi-stages" className={`inline-flex h-10 items-center justify-center px-4 py-2 text-base font-bold transition-colors ${isSticky ? 'text-white hover:text-[#FE5000]' : 'text-black hover:text-[#0A065D]'}`}>
+                  <Link href="/carrieres/offres-emploi-stages" className={`inline-flex h-10 items-center justify-center px-4 py-2 text-base font-bold transition-colors ${isSticky ? 'text-white hover:text-[#00A8E8]' : 'text-black hover:text-[#0A2540]'}`}>
                     {t('careers')}
                   </Link>
                 </li>
@@ -176,8 +176,8 @@ const MainNavigation = () => {
                   size="sm"
                   className={`h-9 md:h-10 px-3 md:px-4 rounded-xl transition-all duration-300 font-bold shadow-lg hover:shadow-xl hover:scale-105 border-0 ${
                     isSticky
-                      ? 'bg-gradient-to-r from-[#FE5000] to-[#CC4000] text-white hover:from-[#FF7A33] hover:to-[#FE5000]'
-                      : 'bg-gradient-to-r from-[#0A065D] via-[#1E3A8A] to-[#3B82F6] text-white hover:from-[#1E3A8A] hover:via-[#3B82F6] hover:to-[#0A065D]'
+                      ? 'bg-gradient-to-r from-[#00A8E8] to-[#0096C7] text-white hover:from-[#48CAE4] hover:to-[#00A8E8]'
+                      : 'bg-gradient-to-r from-[#0A2540] via-[#0D3B66] to-[#00A8E8] text-white hover:from-[#0D3B66] hover:via-[#00A8E8] hover:to-[#0A2540]'
                   }`}
                 >
                   <Languages className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1 md:mr-1.5" />
@@ -188,7 +188,7 @@ const MainNavigation = () => {
                   <div className="relative">
                     <button
                       onClick={() => setShowUserMenu(!showUserMenu)}
-                      className="flex items-center gap-1.5 md:gap-2 h-9 md:h-10 px-2 md:px-4 rounded-md bg-[#0A065D] text-white hover:bg-[#0080FF] transition-colors font-medium"
+                      className="flex items-center gap-1.5 md:gap-2 h-9 md:h-10 px-2 md:px-4 rounded-md bg-[#0A2540] text-white hover:bg-[#00A8E8] transition-colors font-medium"
                     >
                       <User className="h-3.5 w-3.5 md:h-4 md:w-4" />
                       <span className="text-xs md:text-sm truncate max-w-[100px] md:max-w-none">{user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
@@ -205,7 +205,7 @@ const MainNavigation = () => {
                           {language === 'fr' ? 'Laisser un avis' : 'Leave a Review'}
                         </Link>
                         <hr className="my-2 border-gray-200" />
-                        <button onClick={handleLogout} className="w-full text-left px-4 py-2 text-sm text-[#FE5000] hover:bg-[#FE5000]/10 transition-colors flex items-center gap-2">
+                        <button onClick={handleLogout} className="w-full text-left px-4 py-2 text-sm text-[#00A8E8] hover:bg-[#00A8E8]/10 transition-colors flex items-center gap-2">
                           <LogOut className="h-4 w-4" />
                           {language === 'fr' ? 'Déconnexion' : 'Logout'}
                         </button>
@@ -215,13 +215,13 @@ const MainNavigation = () => {
                 ) : (
                   <div className="flex items-center gap-1.5 md:gap-2">
                     <Link href="/login">
-                      <Button size="sm" className="h-9 md:h-10 px-3 md:px-5 rounded-xl bg-white text-[#FE5000] border-2 border-[#FE5000] hover:bg-[#FE5000] hover:text-white transition-all font-bold shadow-lg hover:shadow-xl hover:scale-105">
+                      <Button size="sm" className="h-9 md:h-10 px-3 md:px-5 rounded-xl bg-white text-[#0A2540] border-2 border-[#0A2540] hover:bg-[#0A2540] hover:text-white transition-all font-bold shadow-lg hover:shadow-xl hover:scale-105">
                         <LogIn className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1 md:mr-1.5" />
                         <span className="text-xs md:text-sm">{language === 'fr' ? 'Connexion' : 'Login'}</span>
                       </Button>
                     </Link>
                     <Link href="/signup">
-                      <Button size="sm" className="h-9 md:h-10 px-3 md:px-5 rounded-xl bg-gradient-to-r from-[#FE5000] to-[#CC4000] text-white hover:from-[#FF7A33] hover:to-[#FE5000] transition-all font-bold shadow-lg shadow-[#FE5000]/30 hover:shadow-xl hover:scale-105">
+                      <Button size="sm" className="h-9 md:h-10 px-3 md:px-5 rounded-xl bg-gradient-to-r from-[#00A8E8] to-[#0096C7] text-white hover:from-[#48CAE4] hover:to-[#00A8E8] transition-all font-bold shadow-lg shadow-[#00A8E8]/30 hover:shadow-xl hover:scale-105">
                         <UserPlus className="h-3.5 w-3.5 md:h-4 md:w-4 mr-1 md:mr-1.5" />
                         <span className="text-xs md:text-sm">{language === 'fr' ? 'Inscription' : 'Sign Up'}</span>
                       </Button>
@@ -237,9 +237,9 @@ const MainNavigation = () => {
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
-                <X className={`h-6 w-6 md:h-7 md:w-7 ${isSticky ? 'text-white' : 'text-[#0A065D]'}`} />
+                <X className={`h-6 w-6 md:h-7 md:w-7 ${isSticky ? 'text-white' : 'text-[#0A2540]'}`} />
               ) : (
-                <Menu className={`h-6 w-6 md:h-7 md:w-7 ${isSticky ? 'text-white' : 'text-[#0A065D]'}`} />
+                <Menu className={`h-6 w-6 md:h-7 md:w-7 ${isSticky ? 'text-white' : 'text-[#0A2540]'}`} />
               )}
             </button>
           </div>
@@ -261,36 +261,36 @@ const MainNavigation = () => {
               <MobileAccordionItem trigger={t('patients')} menu={patientsMenu} />
             </Accordion>
             <div className="mt-4 sm:mt-6 border-t border-gray-200 pt-4 sm:pt-6">
-              <Link href="/carrieres/offres-emploi-stages" className="text-base sm:text-lg font-medium text-[#0A065D] block py-2" onClick={toggleMobileMenu}>
+              <Link href="/carrieres/offres-emploi-stages" className="text-base sm:text-lg font-medium text-[#0A2540] block py-2" onClick={toggleMobileMenu}>
                 {t('careers')}
               </Link>
             </div>
             <div className="mt-4 sm:mt-6 flex flex-col space-y-3 sm:space-y-4 border-t border-gray-200 pt-4 sm:pt-6">
               {user ? (
                 <>
-                  <div className="flex items-center gap-3 px-3 sm:px-4 py-3 bg-[#0A065D]/5 rounded-lg">
-                    <User className="h-5 w-5 text-[#0A065D] flex-shrink-0" />
-                    <span className="font-medium text-[#0A065D] text-sm sm:text-base truncate">{user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
+                  <div className="flex items-center gap-3 px-3 sm:px-4 py-3 bg-[#0A2540]/5 rounded-lg">
+                    <User className="h-5 w-5 text-[#0A2540] flex-shrink-0" />
+                    <span className="font-medium text-[#0A2540] text-sm sm:text-base truncate">{user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
                   </div>
                   <Link href="/profile" onClick={toggleMobileMenu}>
-                    <Button variant="outline" className="w-full justify-start text-[#0A065D] hover:bg-[#0080FF]/5 min-h-[44px] text-sm sm:text-base">
+                    <Button variant="outline" className="w-full justify-start text-[#0A2540] hover:bg-[#00A8E8]/5 min-h-[44px] text-sm sm:text-base">
                       {language === 'fr' ? 'Mon profil' : 'My Profile'}
                     </Button>
                   </Link>
                   <Link href="/mes-resultats" onClick={toggleMobileMenu}>
-                    <Button variant="outline" className="w-full justify-start text-[#0A065D] hover:bg-[#0080FF]/5 min-h-[44px] text-sm sm:text-base">
+                    <Button variant="outline" className="w-full justify-start text-[#0A2540] hover:bg-[#00A8E8]/5 min-h-[44px] text-sm sm:text-base">
                       {language === 'fr' ? 'Mes résultats' : 'My Results'}
                     </Button>
                   </Link>
                   <Link href="/laisser-un-avis" onClick={toggleMobileMenu}>
-                    <Button variant="outline" className="w-full justify-start text-[#0A065D] hover:bg-[#0080FF]/5 min-h-[44px] text-sm sm:text-base">
+                    <Button variant="outline" className="w-full justify-start text-[#0A2540] hover:bg-[#00A8E8]/5 min-h-[44px] text-sm sm:text-base">
                       {language === 'fr' ? 'Laisser un avis' : 'Leave a Review'}
                     </Button>
                   </Link>
                   <Button
                     onClick={handleLogout}
                     variant="outline"
-                    className="w-full justify-start text-[#FE5000] hover:bg-[#FE5000]/10 border-[#FE5000]/30 min-h-[44px] text-sm sm:text-base"
+                    className="w-full justify-start text-[#00A8E8] hover:bg-[#00A8E8]/10 border-[#00A8E8]/30 min-h-[44px] text-sm sm:text-base"
                   >
                     <LogOut className="h-4 w-4 mr-2" />
                     {language === 'fr' ? 'Déconnexion' : 'Logout'}
@@ -299,13 +299,13 @@ const MainNavigation = () => {
               ) : (
                 <div className="flex flex-col gap-3">
                   <Link href="/login" onClick={toggleMobileMenu}>
-                    <Button className="w-full justify-start bg-white text-[#FE5000] border-2 border-[#FE5000] hover:bg-[#FE5000] hover:text-white transition-all min-h-[44px] text-sm sm:text-base shadow-sm">
+                    <Button className="w-full justify-start bg-white text-[#00A8E8] border-2 border-[#00A8E8] hover:bg-[#00A8E8] hover:text-white transition-all min-h-[44px] text-sm sm:text-base shadow-sm">
                       <LogIn className="h-4 w-4 mr-2" />
                       {language === 'fr' ? 'Connexion' : 'Login'}
                     </Button>
                   </Link>
                   <Link href="/signup" onClick={toggleMobileMenu}>
-                    <Button className="w-full justify-start bg-[#FE5000] text-white hover:bg-[#CC4000] transition-all min-h-[44px] text-sm sm:text-base shadow-sm">
+                    <Button className="w-full justify-start bg-[#00A8E8] text-white hover:bg-[#0096C7] transition-all min-h-[44px] text-sm sm:text-base shadow-sm">
                       <UserPlus className="h-4 w-4 mr-2" />
                       {language === 'fr' ? 'Inscription' : 'Sign Up'}
                     </Button>
@@ -314,7 +314,7 @@ const MainNavigation = () => {
               )}
               <Button
                 onClick={toggleLanguage}
-                className="w-full justify-start bg-gradient-to-r from-[#00CED1] via-[#0080FF] to-[#0A065D] text-white hover:from-[#1E90FF] hover:via-[#1589FF] hover:to-[#0909FF] transition-all duration-300 min-h-[44px] text-sm sm:text-base shadow-lg font-medium"
+                className="w-full justify-start bg-gradient-to-r from-[#00A8E8] via-[#00A8E8] to-[#0A2540] text-white hover:from-[#0D3B66] hover:via-[#48CAE4] hover:to-[#0A2540] transition-all duration-300 min-h-[44px] text-sm sm:text-base shadow-lg font-medium"
               >
                 <Languages className="h-4 w-4 mr-2" />
                 <span className="font-bold">{t('language')}: {language.toUpperCase()}</span>
@@ -331,7 +331,7 @@ const MegaMenuItem = ({ trigger, columns, itemsInRow, isSticky = false }: { trig
 
   return (
     <li className="relative group">
-      <button className={`inline-flex h-10 items-center justify-center px-4 py-2 text-base font-bold transition-colors ${isSticky ? 'text-white hover:text-[#FE5000]' : 'text-black hover:text-[#0A065D]'}`}>
+      <button className={`inline-flex h-10 items-center justify-center px-4 py-2 text-base font-bold transition-colors ${isSticky ? 'text-white hover:text-[#00A8E8]' : 'text-black hover:text-[#0A2540]'}`}>
         {trigger}
       </button>
       
@@ -339,13 +339,13 @@ const MegaMenuItem = ({ trigger, columns, itemsInRow, isSticky = false }: { trig
         <div className={`grid ${gridCols} gap-[40px]`}>
           {columns.map((col) => (
             <div key={col.title} className="w-full">
-              <h3 className="mb-[10px] text-[17px] font-semibold text-[#0A065D]">{col.title}</h3>
+              <h3 className="mb-[10px] text-[17px] font-semibold text-[#0A2540]">{col.title}</h3>
               <ul className="space-y-0">
                 {col.links.map((link) => (
                   <li key={link.label}>
                     <Link 
                       href={link.href} 
-                      className="block py-[5px] text-[15px] text-[#333] no-underline hover:text-[#0A065D] transition-colors"
+                      className="block py-[5px] text-[15px] text-[#333] no-underline hover:text-[#0A2540] transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -378,15 +378,15 @@ const MegaMenuItemPro = ({ trigger, professionalsMenu, isSticky = false }: { tri
 
   return (
     <li className="relative group">
-      <button className={`inline-flex h-10 items-center justify-center px-4 py-2 text-base font-bold transition-colors ${isSticky ? 'text-white hover:text-[#FE5000]' : 'text-black hover:text-[#0A065D]'}`}>
+      <button className={`inline-flex h-10 items-center justify-center px-4 py-2 text-base font-bold transition-colors ${isSticky ? 'text-white hover:text-[#00A8E8]' : 'text-black hover:text-[#0A2540]'}`}>
         {trigger}
       </button>
 
-      <div className={`absolute top-full left-1/2 -translate-x-1/2 w-[700px] bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-[opacity,visibility] duration-[250ms] ease-[ease] rounded-[12px] shadow-[0_8px_40px_rgba(0,0,0,0.12)] z-50 overflow-hidden ${isAboutMenu ? 'border-2 border-[#1589FF]/30' : ''}`}>
+      <div className={`absolute top-full left-1/2 -translate-x-1/2 w-[700px] bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-[opacity,visibility] duration-[250ms] ease-[ease] rounded-[12px] shadow-[0_8px_40px_rgba(0,0,0,0.12)] z-50 overflow-hidden ${isAboutMenu ? 'border-2 border-[#48CAE4]/30' : ''}`}>
         {isAboutMenu && (
-          <div className="bg-gradient-to-r from-[#2916F5] to-[#157DEC] px-6 py-4">
+          <div className="bg-gradient-to-r from-[#0A2540] to-[#0D3B66] px-6 py-4">
             <h2 className="text-white font-bold text-lg">Découvrez notre laboratoire</h2>
-            <p className="text-[#1589FF]/70 text-sm mt-1">Excellence & Innovation depuis 2012</p>
+            <p className="text-[#48CAE4]/70 text-sm mt-1">Excellence & Innovation depuis 2012</p>
           </div>
         )}
 
@@ -394,13 +394,13 @@ const MegaMenuItemPro = ({ trigger, professionalsMenu, isSticky = false }: { tri
           {professionalsMenu.columns.map((col: any, index: number) => (
             <div key={index} className={`${getColSpanClass(col.span)} ${isAboutMenu ? 'relative' : ''}`}>
               {isAboutMenu && index === 0 && (
-                <div className="absolute -left-3 top-0 bottom-0 w-1 bg-gradient-to-b from-[#00CED1] to-[#0A065D] rounded-full"></div>
+                <div className="absolute -left-3 top-0 bottom-0 w-1 bg-gradient-to-b from-[#00A8E8] to-[#0A2540] rounded-full"></div>
               )}
 
               {col.title && (
-                <h3 className={`mb-3 font-bold ${isAboutMenu ? 'text-[17px] text-[#0A065D] flex items-center' : 'text-[15px] text-[#0A065D]'}`}>
+                <h3 className={`mb-3 font-bold ${isAboutMenu ? 'text-[17px] text-[#0A2540] flex items-center' : 'text-[15px] text-[#0A2540]'}`}>
                   {isAboutMenu && index === 0 && (
-                    <span className="inline-block w-2 h-2 bg-[#1589FF] rounded-full mr-2"></span>
+                    <span className="inline-block w-2 h-2 bg-[#48CAE4] rounded-full mr-2"></span>
                   )}
                   {col.title}
                 </h3>
@@ -413,17 +413,17 @@ const MegaMenuItemPro = ({ trigger, professionalsMenu, isSticky = false }: { tri
                       href={link.href}
                       className={`group/link flex items-center py-2 no-underline transition-all ${
                         isAboutMenu
-                          ? 'text-[15px] text-gray-700 hover:text-[#0A065D] hover:translate-x-1'
-                          : 'text-[14px] text-[#333] hover:text-[#0A065D]'
+                          ? 'text-[15px] text-gray-700 hover:text-[#0A2540] hover:translate-x-1'
+                          : 'text-[14px] text-[#333] hover:text-[#0A2540]'
                       }`}
                     >
                       {isAboutMenu && (
-                        <span className="inline-block w-1.5 h-1.5 bg-gray-300 group-hover/link:bg-[#1589FF] rounded-full mr-2 transition-colors"></span>
+                        <span className="inline-block w-1.5 h-1.5 bg-gray-300 group-hover/link:bg-[#48CAE4] rounded-full mr-2 transition-colors"></span>
                       )}
                       <span className={isAboutMenu ? 'font-medium' : ''}>{link.label}</span>
                       {isAboutMenu && (
                         <span className="ml-auto opacity-0 group-hover/link:opacity-100 transition-opacity">
-                          <svg className="w-4 h-4 text-[#1589FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-4 h-4 text-[#48CAE4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
                         </span>
@@ -437,9 +437,9 @@ const MegaMenuItemPro = ({ trigger, professionalsMenu, isSticky = false }: { tri
         </div>
 
         {isAboutMenu && (
-          <div className="bg-gradient-to-r from-[#00CED1]/10 to-[#0A065D]/10 px-6 py-3 border-t border-[#1589FF]/30">
+          <div className="bg-gradient-to-r from-[#00A8E8]/10 to-[#0A2540]/10 px-6 py-3 border-t border-[#48CAE4]/30">
             <p className="text-sm text-gray-600 text-center">
-              <span className="font-semibold text-[#0A065D]">Besoin d'aide?</span> Contactez-nous au (+237) 242 04 68 50
+              <span className="font-semibold text-[#0A2540]">Besoin d'aide?</span> Contactez-nous au (+237) 242 04 68 50
             </p>
           </div>
         )}
@@ -450,16 +450,16 @@ const MegaMenuItemPro = ({ trigger, professionalsMenu, isSticky = false }: { tri
 
 const MobileAccordionItem = ({ trigger, menu }: { trigger: string, menu: MegaMenuColumn[] }) => (
     <AccordionItem value={trigger.toLowerCase()} className="border-b">
-        <AccordionTrigger className="text-base sm:text-lg font-medium text-[#0A065D] no-underline hover:no-underline py-3">{trigger}</AccordionTrigger>
+        <AccordionTrigger className="text-base sm:text-lg font-medium text-[#0A2540] no-underline hover:no-underline py-3">{trigger}</AccordionTrigger>
         <AccordionContent>
             <div className="pl-3 sm:pl-4 space-y-3 sm:space-y-4">
                 {menu.map(col => (
                     <div key={col.title}>
-                        <h4 className="mb-2 font-semibold text-[#0A065D] text-sm sm:text-base">{col.title}</h4>
+                        <h4 className="mb-2 font-semibold text-[#0A2540] text-sm sm:text-base">{col.title}</h4>
                         <ul className="space-y-2 pl-2">
                             {col.links.map(link => (
                                 <li key={link.label} className="min-h-[44px] flex items-center">
-                                    <Link href={link.href} className="text-[#0A065D] text-sm sm:text-base py-2 block w-full hover:text-[#0A065D] transition-colors">
+                                    <Link href={link.href} className="text-[#0A2540] text-sm sm:text-base py-2 block w-full hover:text-[#0A2540] transition-colors">
                                         {link.label}
                                     </Link>
                                 </li>
@@ -474,16 +474,16 @@ const MobileAccordionItem = ({ trigger, menu }: { trigger: string, menu: MegaMen
 
 const MobileAccordionItemPro = ({ trigger, professionalsMenu }: { trigger: string, professionalsMenu: any }) => (
   <AccordionItem value={trigger.toLowerCase()} className="border-b">
-      <AccordionTrigger className="text-base sm:text-lg font-medium text-[#0A065D] no-underline hover:no-underline py-3">{trigger}</AccordionTrigger>
+      <AccordionTrigger className="text-base sm:text-lg font-medium text-[#0A2540] no-underline hover:no-underline py-3">{trigger}</AccordionTrigger>
       <AccordionContent>
           <div className="pl-3 sm:pl-4 space-y-3 sm:space-y-4">
               {professionalsMenu.columns.map((col: any, index: number) => (
                   <div key={index}>
-                      {col.title && <h4 className="mb-2 font-semibold text-[#0A065D] text-sm sm:text-base">{col.title}</h4>}
+                      {col.title && <h4 className="mb-2 font-semibold text-[#0A2540] text-sm sm:text-base">{col.title}</h4>}
                       <ul className="space-y-2 pl-2">
                           {col.links.map((link: any) => (
                               <li key={link.label} className="min-h-[44px] flex items-center">
-                                  <Link href={link.href} className="text-[#0A065D] text-sm sm:text-base py-2 block w-full hover:text-[#0A065D] transition-colors">
+                                  <Link href={link.href} className="text-[#0A2540] text-sm sm:text-base py-2 block w-full hover:text-[#0A2540] transition-colors">
                                       {link.label}
                                   </Link>
                               </li>

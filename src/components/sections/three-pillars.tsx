@@ -35,10 +35,10 @@ interface PillarCardData {
 const PillarCard = ({ icon: Icon, title, description, tags }: PillarCardData) => (
   <div className="bg-white rounded-3xl p-8 shadow-[0_20px_60px_-15px_rgba(10,6,93,0.2)] flex flex-col text-left hover:shadow-[0_30px_80px_-15px_rgba(10,6,93,0.3)] transition-all duration-500 hover:-translate-y-3 border border-gray-100 group">
     <div className="flex items-center gap-4 mb-6">
-      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#FE5000] to-[#CC4000] flex items-center justify-center shadow-lg shadow-[#FE5000]/30 group-hover:scale-110 transition-transform duration-300">
+      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#00A8E8] to-[#0096C7] flex items-center justify-center shadow-lg shadow-[#00A8E8]/30 group-hover:scale-110 transition-transform duration-300">
         <Icon className="h-8 w-8 text-white" />
       </div>
-      <h3 className="text-2xl font-bold text-[#0A065D]">
+      <h3 className="text-2xl font-bold text-[#0A2540]">
         {title}
       </h3>
     </div>
@@ -49,7 +49,7 @@ const PillarCard = ({ icon: Icon, title, description, tags }: PillarCardData) =>
       {tags.map((tag) => (
         <span
           key={tag}
-          className="bg-gradient-to-r from-[#0A065D]/10 to-[#1E3A8A]/10 text-[#0A065D] rounded-full px-4 py-2 text-sm font-bold border border-[#0A065D]/10"
+          className="bg-gradient-to-r from-[#0A2540]/10 to-[#0D3B66]/10 text-[#0A2540] rounded-full px-4 py-2 text-sm font-bold border border-[#0A2540]/10"
         >
           {tag}
         </span>
@@ -64,11 +64,11 @@ const ThreePillars = () => {
   return (
     <section ref={ref as React.RefObject<HTMLElement>} className="relative py-28 text-white overflow-hidden">
       {/* Premium Orange Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#FE5000] via-[#FF7A33] to-[#FE5000]"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-[#00A8E8] via-[#48CAE4] to-[#00A8E8]"></div>
 
       {/* Premium decorative elements */}
       <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-[700px] h-[700px] bg-[#CC4000]/30 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-[700px] h-[700px] bg-[#0096C7]/30 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl"></div>
       <div className="absolute top-1/2 left-1/4 w-48 h-48 bg-white/15 rounded-full blur-2xl animate-pulse"></div>
       <div className="absolute top-20 right-20 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
 

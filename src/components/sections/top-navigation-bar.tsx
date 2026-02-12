@@ -27,23 +27,23 @@ const TopNavigationBar = () => {
   const { t } = useLanguage();
 
   return (
-    <header className="bg-gradient-to-r from-[#0A065D] via-[#1E3A8A] to-[#0A065D] border-b border-[#3B82F6]/20">
+    <header className="bg-gradient-to-r from-[#0A2540] via-[#0D3B66] to-[#0A2540] border-b border-[#00A8E8]/20">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-10 py-3 sm:py-2.5 lg:py-2">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-3 sm:gap-4 lg:gap-0 text-white">
           {/* Left side - Contact info */}
           <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 lg:gap-5 w-full lg:w-auto">
-            <span className="flex items-center gap-2 text-xs sm:text-sm bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 hover:bg-white/20 transition-all cursor-pointer">
-              <MapPin className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#FE5000] flex-shrink-0" />
+            <span className="flex items-center gap-2 text-xs sm:text-sm bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 hover:bg-[#00A8E8]/20 transition-all cursor-pointer">
+              <MapPin className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#00A8E8] flex-shrink-0" />
               <span className="hidden md:inline font-medium">Cité verte Batiment B01 Yaoundé 2 Rue 2.711</span>
               <span className="md:hidden font-medium">Cité verte B01</span>
             </span>
-            <span className="flex items-center gap-2 text-xs sm:text-sm bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 hover:bg-white/20 transition-all cursor-pointer">
-              <Phone className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#FE5000] flex-shrink-0" />
+            <span className="flex items-center gap-2 text-xs sm:text-sm bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 hover:bg-[#00A8E8]/20 transition-all cursor-pointer">
+              <Phone className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#00A8E8] flex-shrink-0" />
               <span className="hidden lg:inline font-medium">(+237) 242 04 68 50 / 671 37 05 65</span>
               <span className="lg:hidden font-medium">(+237) 242 04 68 50</span>
             </span>
-            <span className="hidden sm:flex items-center gap-2 text-xs sm:text-sm bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 hover:bg-white/20 transition-all cursor-pointer">
-              <Mail className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#FE5000] flex-shrink-0" />
+            <span className="hidden sm:flex items-center gap-2 text-xs sm:text-sm bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 hover:bg-[#00A8E8]/20 transition-all cursor-pointer">
+              <Mail className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#00A8E8] flex-shrink-0" />
               <span className="font-medium">contact@labyaounde.org</span>
             </span>
           </div>
@@ -77,7 +77,7 @@ const TopNavigationBar = () => {
               </a>
 
               {/* Admin Access Button */}
-              <Link href="/admin-login" aria-label="Admin Login" className="ml-1 sm:ml-2 flex items-center justify-center w-8 h-8 bg-gradient-to-br from-[#FE5000] to-[#CC4000] hover:from-[#FF7A33] hover:to-[#FE5000] rounded-full text-white font-bold text-xs transition-all hover:scale-110 shadow-lg shadow-[#FE5000]/30">
+              <Link href="/admin-login" aria-label="Admin Login" className="ml-1 sm:ml-2 flex items-center justify-center w-8 h-8 bg-gradient-to-br from-[#00A8E8] to-[#0096C7] hover:from-[#48CAE4] hover:to-[#00A8E8] rounded-full text-white font-bold text-xs transition-all hover:scale-110 shadow-lg shadow-[#00A8E8]/30">
                 <Shield className="h-4 w-4" />
               </Link>
             </div>

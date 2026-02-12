@@ -72,14 +72,14 @@ export default function FloatingContactButton() {
       icon: Phone,
       label: currentContent.call,
       href: "tel:+237242046850",
-      color: "bg-[#FE5000]",
-      hoverColor: "hover:bg-[#CC4000]",
+      color: "bg-[#00A8E8]",
+      hoverColor: "hover:bg-[#0096C7]",
     },
     {
       icon: Mail,
       label: currentContent.email,
       href: "mailto:contact@labyaounde.com",
-      color: "bg-[#0A065D]",
+      color: "bg-[#0A2540]",
       hoverColor: "hover:bg-[#060440]",
     },
     {

@@ -68,16 +68,16 @@ export default function PartnersLogos() {
   const duplicatedPartners = [...partners, ...partners];
 
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-br from-[#0A065D] via-[#1E3A8A] to-[#0A065D] relative overflow-hidden">
+    <section className="py-20 md:py-28 bg-gradient-to-br from-[#0A2540] via-[#0D3B66] to-[#0A2540] relative overflow-hidden">
       {/* Premium Background decorations */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FE5000]/15 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#3B82F6]/15 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#00A8E8]/15 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#48CAE4]/15 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 rounded-full blur-[150px]"></div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-14 md:mb-20">
-          <span className="inline-block bg-gradient-to-r from-[#FE5000]/30 to-[#FF7A33]/30 text-[#FE5000] text-sm font-bold uppercase tracking-wider px-6 py-2.5 rounded-full mb-6 border border-[#FE5000]/30 backdrop-blur-sm shadow-lg shadow-[#FE5000]/10">
+          <span className="inline-block bg-gradient-to-r from-[#00A8E8]/30 to-[#48CAE4]/30 text-[#00A8E8] text-sm font-bold uppercase tracking-wider px-6 py-2.5 rounded-full mb-6 border border-[#00A8E8]/30 backdrop-blur-sm shadow-lg shadow-[#00A8E8]/10">
             {currentContent.subtitle}
           </span>
           <h2 className="text-4xl md:text-6xl font-black text-white mb-4 drop-shadow-lg">
@@ -95,8 +95,8 @@ export default function PartnersLogos() {
           onMouseLeave={() => setIsPaused(false)}
         >
           {/* Premium Gradient overlays for fade effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-r from-[#0A065D] via-[#0A065D]/80 to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-l from-[#0A065D] via-[#0A065D]/80 to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-r from-[#0A2540] via-[#0A2540]/80 to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-l from-[#0A2540] via-[#0A2540]/80 to-transparent z-10 pointer-events-none"></div>
 
           {/* Scrolling track */}
           <div
@@ -144,13 +144,13 @@ export default function PartnersLogos() {
         {/* Premium Trust indicators */}
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 mt-16 md:mt-20 pt-10 md:pt-14 border-t border-white/10">
           <div className="text-center group">
-            <div className="text-4xl md:text-5xl font-black text-[#FE5000] group-hover:scale-110 transition-transform duration-300">{partners.length}+</div>
+            <div className="text-4xl md:text-5xl font-black text-[#00A8E8] group-hover:scale-110 transition-transform duration-300">{partners.length}+</div>
             <div className="text-white/70 text-sm md:text-base font-medium mt-2">
               {language === "fr" ? "Partenaires" : "Partners"}
             </div>
           </div>
           <div className="text-center group">
-            <div className="text-4xl md:text-5xl font-black text-[#3B82F6] group-hover:scale-110 transition-transform duration-300">10+</div>
+            <div className="text-4xl md:text-5xl font-black text-[#48CAE4] group-hover:scale-110 transition-transform duration-300">10+</div>
             <div className="text-white/70 text-sm md:text-base font-medium mt-2">
               {language === "fr" ? "Années d'expérience" : "Years of experience"}
             </div>

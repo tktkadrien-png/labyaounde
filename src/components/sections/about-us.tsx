@@ -86,13 +86,13 @@ We are committed to meeting your expectations with rigor and professionalism, an
             </video>
           ))}
           {/* Premium Blue Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0A065D]/85 via-[#1E3A8A]/80 to-[#0A065D]/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0A2540]/85 via-[#0D3B66]/80 to-[#0A2540]/90"></div>
         </div>
 
         {/* Decorative elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-[500px] h-[500px] bg-[#FE5000]/20 rounded-full blur-[120px] animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-[#3B82F6]/20 rounded-full blur-[100px] animate-pulse delay-1000"></div>
+          <div className="absolute top-20 left-10 w-[500px] h-[500px] bg-[#00A8E8]/20 rounded-full blur-[120px] animate-pulse"></div>
+          <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-[#48CAE4]/20 rounded-full blur-[100px] animate-pulse delay-1000"></div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-[150px]"></div>
         </div>
 
@@ -121,7 +121,7 @@ We are committed to meeting your expectations with rigor and professionalism, an
               }`}
             >
               {/* Title */}
-              <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold text-[#0A065D] mb-4 tracking-tight drop-shadow-lg">
+              <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold text-[#0A2540] mb-4 tracking-tight drop-shadow-lg">
                 {currentContent.title}
               </h1>
 
@@ -131,10 +131,10 @@ We are committed to meeting your expectations with rigor and professionalism, an
               </p>
 
               {/* Decorative line */}
-              <div className="w-32 h-1.5 bg-gradient-to-r from-[#FE5000] to-[#CC4000] rounded-full mb-10"></div>
+              <div className="w-32 h-1.5 bg-gradient-to-r from-[#00A8E8] to-[#0096C7] rounded-full mb-10"></div>
 
               {/* Description */}
-              <p className="text-lg lg:text-xl text-[#0A065D] leading-relaxed max-w-3xl mb-12 drop-shadow-md font-bold">
+              <p className="text-lg lg:text-xl text-[#0A2540] leading-relaxed max-w-3xl mb-12 drop-shadow-md font-bold">
                 {currentContent.description}
               </p>
 
@@ -145,10 +145,10 @@ We are committed to meeting your expectations with rigor and professionalism, an
                   <Link
                     key={index}
                     href={button.href}
-                    className="px-10 py-4 bg-[#FE5000] text-white font-bold text-lg rounded-xl
-                      hover:bg-[#CC4000] hover:shadow-2xl hover:shadow-[#FE5000]/40
+                    className="px-10 py-4 bg-[#00A8E8] text-white font-bold text-lg rounded-xl
+                      hover:bg-[#0096C7] hover:shadow-2xl hover:shadow-[#00A8E8]/40
                       transition-all duration-300 transform hover:scale-105 hover:-translate-y-1
-                      border-2 border-[#FE5000] hover:border-[#CC4000] min-w-[180px] text-center"
+                      border-2 border-[#00A8E8] hover:border-[#0096C7] min-w-[180px] text-center"
                   >
                     {button.text}
                   </Link>
@@ -174,11 +174,11 @@ We are committed to meeting your expectations with rigor and professionalism, an
                   }`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
-                  <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#FE5000] to-[#CC4000] rounded-xl sm:rounded-2xl mb-3 sm:mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#00A8E8] to-[#0096C7] rounded-xl sm:rounded-2xl mb-3 sm:mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                   </div>
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0A065D] mb-1 sm:mb-2">{stat.value}</div>
-                  <div className="text-xs sm:text-sm text-[#0A065D] font-medium">{stat.label}</div>
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0A2540] mb-1 sm:mb-2">{stat.value}</div>
+                  <div className="text-xs sm:text-sm text-[#0A2540] font-medium">{stat.label}</div>
                 </div>
               );
             })}

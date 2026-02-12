@@ -99,7 +99,7 @@ const FooterColumn = ({ title, links }: FooterColumnProps) => (
     <h3 className="text-lg font-bold text-white mb-5 relative">
       <span className="relative">
         {title}
-        <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-[#FE5000]"></span>
+        <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-[#00A8E8]"></span>
       </span>
     </h3>
     <ul className="space-y-3 mt-6">
@@ -107,9 +107,9 @@ const FooterColumn = ({ title, links }: FooterColumnProps) => (
         <li key={index}>
           <Link
             href={link.href}
-            className="text-sm text-white/80 hover:text-[#FE5000] transition-colors duration-200 flex items-center gap-2 group"
+            className="text-sm text-white/80 hover:text-[#00A8E8] transition-colors duration-200 flex items-center gap-2 group"
           >
-            <span className="w-1.5 h-1.5 bg-[#FE5000] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+            <span className="w-1.5 h-1.5 bg-[#00A8E8] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
             {link.text}
           </Link>
         </li>
@@ -149,7 +149,7 @@ const Footer = () => {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0A065D]/97 via-[#1E3A8A]/95 to-[#0A065D]/97"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0A2540]/97 via-[#0D3B66]/95 to-[#0A2540]/97"></div>
         </div>
 
         {/* Content */}
@@ -180,7 +180,7 @@ const Footer = () => {
                     href={GOOGLE_MAPS_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gradient-to-r from-[#FE5000] to-[#CC4000] hover:from-[#3B82F6] hover:to-[#1E3A8A] text-white rounded-xl px-8 py-4 font-bold flex items-center gap-3 transition-all duration-300 shadow-lg shadow-[#FE5000]/30 hover:shadow-[#3B82F6]/40 hover:scale-105"
+                    className="bg-gradient-to-r from-[#00A8E8] to-[#0096C7] hover:from-[#48CAE4] hover:to-[#0D3B66] text-white rounded-xl px-8 py-4 font-bold flex items-center gap-3 transition-all duration-300 shadow-lg shadow-[#00A8E8]/30 hover:shadow-[#48CAE4]/40 hover:scale-105"
                   >
                     <MapPin size={20} />
                     Trouver mon Laboratoire
@@ -204,7 +204,7 @@ const Footer = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Facebook"
-                      className="w-11 h-11 rounded-full bg-white/10 hover:bg-gradient-to-br hover:from-[#FE5000] hover:to-[#CC4000] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#FE5000]/30"
+                      className="w-11 h-11 rounded-full bg-white/10 hover:bg-gradient-to-br hover:from-[#00A8E8] hover:to-[#0096C7] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#00A8E8]/30"
                     >
                       <Facebook size={20} className="text-white" />
                     </a>
@@ -213,7 +213,7 @@ const Footer = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="TikTok"
-                      className="w-11 h-11 rounded-full bg-white/10 hover:bg-gradient-to-br hover:from-[#FE5000] hover:to-[#CC4000] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#FE5000]/30"
+                      className="w-11 h-11 rounded-full bg-white/10 hover:bg-gradient-to-br hover:from-[#00A8E8] hover:to-[#0096C7] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#00A8E8]/30"
                     >
                       <TikTokIcon size={20} className="text-white" />
                     </a>
@@ -222,7 +222,7 @@ const Footer = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Instagram"
-                      className="w-11 h-11 rounded-full bg-white/10 hover:bg-gradient-to-br hover:from-[#FE5000] hover:to-[#CC4000] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#FE5000]/30"
+                      className="w-11 h-11 rounded-full bg-white/10 hover:bg-gradient-to-br hover:from-[#00A8E8] hover:to-[#0096C7] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#00A8E8]/30"
                     >
                       <Instagram size={20} className="text-white" />
                     </a>
@@ -239,7 +239,7 @@ const Footer = () => {
               <div className="lg:col-span-4">
                 <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/20 shadow-xl">
                   <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-                    <span className="w-12 h-12 bg-gradient-to-br from-[#FE5000] to-[#CC4000] rounded-xl flex items-center justify-center shadow-lg shadow-[#FE5000]/30">
+                    <span className="w-12 h-12 bg-gradient-to-br from-[#00A8E8] to-[#0096C7] rounded-xl flex items-center justify-center shadow-lg shadow-[#00A8E8]/30">
                       <Phone size={22} />
                     </span>
                     Contactez-nous
@@ -250,13 +250,13 @@ const Footer = () => {
                       href={GOOGLE_MAPS_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-start gap-3 text-white/80 hover:text-[#FE5000] transition-colors group"
+                      className="flex items-start gap-3 text-white/80 hover:text-[#00A8E8] transition-colors group"
                     >
-                      <MapPin size={20} className="text-[#FE5000] flex-shrink-0 mt-0.5" />
+                      <MapPin size={20} className="text-[#00A8E8] flex-shrink-0 mt-0.5" />
                       <div>
                         <p className="text-sm font-medium">Carrefour Ancien Bâtiments</p>
                         <p className="text-xs text-white/60">Cité verte Batiment B01 Yaounde 2 Rue 2.711</p>
-                        <span className="text-xs text-[#FE5000] flex items-center gap-1 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span className="text-xs text-[#00A8E8] flex items-center gap-1 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
                           Voir sur Google Maps <ExternalLink size={12} />
                         </span>
                       </div>
@@ -264,20 +264,20 @@ const Footer = () => {
 
                     <a
                       href="tel:+237242046850"
-                      className="flex items-center gap-3 text-white hover:text-[#00CED1] transition-colors"
+                      className="flex items-center gap-3 text-white hover:text-[#48CAE4] transition-colors"
                     >
-                      <Phone size={20} className="text-[#00CED1] flex-shrink-0" />
+                      <Phone size={20} className="text-[#48CAE4] flex-shrink-0" />
                       <div>
-                        <p className="text-lg font-bold text-[#00CED1]">(+237) 242 04 68 50</p>
+                        <p className="text-lg font-bold text-[#48CAE4]">(+237) 242 04 68 50</p>
                         <p className="text-xs text-white/60">Appelez-nous</p>
                       </div>
                     </a>
 
                     <a
                       href="mailto:contact@labyaounde.cm"
-                      className="flex items-center gap-3 text-white/80 hover:text-[#FE5000] transition-colors"
+                      className="flex items-center gap-3 text-white/80 hover:text-[#00A8E8] transition-colors"
                     >
-                      <Mail size={20} className="text-[#FE5000] flex-shrink-0" />
+                      <Mail size={20} className="text-[#00A8E8] flex-shrink-0" />
                       <div>
                         <p className="text-sm font-medium">contact@labyaounde.cm</p>
                         <p className="text-xs text-white/60">Écrivez-nous</p>
@@ -285,10 +285,10 @@ const Footer = () => {
                     </a>
 
                     <div className="flex items-start gap-3 text-white/80">
-                      <Clock size={20} className="text-[#FE5000] flex-shrink-0 mt-0.5" />
+                      <Clock size={20} className="text-[#00A8E8] flex-shrink-0 mt-0.5" />
                       <div>
                         <p className="text-sm font-medium">Horaires d&apos;ouverture</p>
-                        <p className="text-xs text-[#00CED1] font-bold">Laboratoire ouvert 24h/24 - 7j/7</p>
+                        <p className="text-xs text-[#48CAE4] font-bold">Laboratoire ouvert 24h/24 - 7j/7</p>
                       </div>
                     </div>
                   </div>
@@ -322,7 +322,7 @@ const Footer = () => {
                             <li key={index}>
                               <Link
                                 href={link.href}
-                                className="text-sm text-white/70 hover:text-[#FE5000] transition-colors"
+                                className="text-sm text-white/70 hover:text-[#00A8E8] transition-colors"
                               >
                                 {link.text}
                               </Link>
@@ -342,24 +342,24 @@ const Footer = () => {
             <div className="max-w-[1200px] mx-auto px-6 py-6">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                 <p className="text-sm text-white/60 text-center md:text-left">
-                  © {new Date().getFullYear()} <span className="text-[#FE5000] font-semibold">LABYAOUNDE</span>. Tous droits réservés
+                  © {new Date().getFullYear()} <span className="text-[#00A8E8] font-semibold">LABYAOUNDE</span>. Tous droits réservés
                 </p>
                 <div className="flex gap-x-6 gap-y-2 flex-wrap justify-center">
                   <Link
                     href="#"
-                    className="text-sm text-white/60 hover:text-[#FE5000] transition-colors"
+                    className="text-sm text-white/60 hover:text-[#00A8E8] transition-colors"
                   >
                     Mentions légales
                   </Link>
                   <Link
                     href="#"
-                    className="text-sm text-white/60 hover:text-[#FE5000] transition-colors"
+                    className="text-sm text-white/60 hover:text-[#00A8E8] transition-colors"
                   >
                     Politique de confidentialité
                   </Link>
                   <Link
                     href="#"
-                    className="text-sm text-white/60 hover:text-[#FE5000] transition-colors"
+                    className="text-sm text-white/60 hover:text-[#00A8E8] transition-colors"
                   >
                     Conditions d&apos;utilisation
                   </Link>
@@ -375,7 +375,7 @@ const Footer = () => {
         <button
           onClick={scrollToTop}
           aria-label="Retour en haut"
-          className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-[#FE5000] to-[#CC4000] text-white flex items-center justify-center shadow-xl shadow-[#FE5000]/40 hover:shadow-[#FE5000]/60 hover:scale-110 transition-all duration-300"
+          className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-[#00A8E8] to-[#0096C7] text-white flex items-center justify-center shadow-xl shadow-[#00A8E8]/40 hover:shadow-[#00A8E8]/60 hover:scale-110 transition-all duration-300"
         >
           <ArrowUp size={24} />
         </button>
