@@ -96,12 +96,12 @@ const Newsletter = () => {
               <p className="text-3xl md:text-4xl font-bold text-[#1E40AF]">5K+</p>
               <p className="text-[#1E40AF]/80 text-xs mt-1 font-bold">Abonnés</p>
             </div>
-            <div className="w-px h-10 bg-[#0A065D]/40"></div>
+            <div className="w-px h-10 bg-[#1E40AF]/40"></div>
             <div className="text-center">
               <p className="text-3xl md:text-4xl font-bold text-[#1E40AF]">24h</p>
               <p className="text-[#1E40AF]/80 text-xs mt-1 font-bold">Résultats</p>
             </div>
-            <div className="w-px h-10 bg-[#0A065D]/40"></div>
+            <div className="w-px h-10 bg-[#1E40AF]/40"></div>
             <div className="text-center">
               <p className="text-3xl md:text-4xl font-bold text-[#1E40AF]">100%</p>
               <p className="text-[#1E40AF]/80 text-xs mt-1 font-bold">Sécurisé</p>
