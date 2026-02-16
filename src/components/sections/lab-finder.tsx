@@ -42,12 +42,12 @@ const Newsletter = () => {
 
 
           {/* Title */}
-          <h2 className="text-[#0A065D] font-bold text-4xl md:text-5xl leading-tight mb-5">
+          <h2 className="text-[#1E40AF] font-bold text-4xl md:text-5xl leading-tight mb-5">
             Newsletter
           </h2>
 
           {/* Subtitle */}
-          <p className="text-[#0A065D]/90 text-base md:text-lg mb-10 max-w-md mx-auto leading-relaxed font-medium">
+          <p className="text-[#1E40AF]/90 text-base md:text-lg mb-10 max-w-md mx-auto leading-relaxed font-medium">
             Recevez nos actualités, conseils santé et offres exclusives directement dans votre boîte mail
           </p>
 
@@ -55,8 +55,8 @@ const Newsletter = () => {
           <div className="max-w-sm mx-auto">
             {isSubmitted ? (
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-2xl">
-                <div className="w-16 h-16 bg-[#FE5000]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-8 h-8 text-[#FE5000]" />
+                <div className="w-16 h-16 bg-[#FF8500]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="w-8 h-8 text-[#FF8500]" />
                 </div>
                 <p className="text-white font-semibold text-xl mb-2">Merci !</p>
                 <p className="text-white/60 text-sm">Votre inscription a été confirmée.</p>
@@ -64,7 +64,7 @@ const Newsletter = () => {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="relative group">
-                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40 group-focus-within:text-[#0A065D] transition-colors" />
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40 group-focus-within:text-[#1E40AF] transition-colors" />
                   <input
                     type="email"
                     value={email}
@@ -93,18 +93,18 @@ const Newsletter = () => {
           {/* Stats */}
           <div className="mt-16 flex items-center justify-center gap-8 md:gap-12">
             <div className="text-center">
-              <p className="text-3xl md:text-4xl font-bold text-[#0A065D]">5K+</p>
-              <p className="text-[#0A065D]/80 text-xs mt-1 font-bold">Abonnés</p>
+              <p className="text-3xl md:text-4xl font-bold text-[#1E40AF]">5K+</p>
+              <p className="text-[#1E40AF]/80 text-xs mt-1 font-bold">Abonnés</p>
             </div>
             <div className="w-px h-10 bg-[#0A065D]/40"></div>
             <div className="text-center">
-              <p className="text-3xl md:text-4xl font-bold text-[#0A065D]">24h</p>
-              <p className="text-[#0A065D]/80 text-xs mt-1 font-bold">Résultats</p>
+              <p className="text-3xl md:text-4xl font-bold text-[#1E40AF]">24h</p>
+              <p className="text-[#1E40AF]/80 text-xs mt-1 font-bold">Résultats</p>
             </div>
             <div className="w-px h-10 bg-[#0A065D]/40"></div>
             <div className="text-center">
-              <p className="text-3xl md:text-4xl font-bold text-[#0A065D]">100%</p>
-              <p className="text-[#0A065D]/80 text-xs mt-1 font-bold">Sécurisé</p>
+              <p className="text-3xl md:text-4xl font-bold text-[#1E40AF]">100%</p>
+              <p className="text-[#1E40AF]/80 text-xs mt-1 font-bold">Sécurisé</p>
             </div>
           </div>
         </div>

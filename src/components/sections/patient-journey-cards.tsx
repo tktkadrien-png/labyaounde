@@ -55,7 +55,7 @@ const JourneyCard: React.FC<JourneyCardProps> = ({
     <div className="relative z-10 flex flex-col h-full">
       <div>
         <div className="bg-white/25 backdrop-blur-sm p-2.5 sm:p-3 rounded-lg sm:rounded-xl inline-block mb-3 sm:mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:bg-white/35">
-          <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-[#FE5000]" />
+          <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-[#FF8500]" />
         </div>
         <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white drop-shadow-sm">{title}</h3>
         <p className="text-white/90 mt-1 text-xs sm:text-sm lg:text-base">{subtitle}</p>
@@ -64,7 +64,7 @@ const JourneyCard: React.FC<JourneyCardProps> = ({
       <ul className="space-y-2 sm:space-y-2.5 mt-4 sm:mt-5 mb-5 sm:mb-6">
         {list.map((item, i) => (
           <li key={i} className="flex items-start gap-2 sm:gap-2.5 transition-transform duration-300" style={{ transitionDelay: `${i * 50}ms` }}>
-            <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#FE5000]" />
+            <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#FF8500]" />
             <span className="text-xs sm:text-sm text-white/95">{item}</span>
           </li>
         ))}
@@ -107,8 +107,8 @@ const PatientJourneyCards = () => {
       buttonLink: "/conseils-et-informations",
       imageUrl: "/lab-photo-4.jpeg",
       imageAlt: "Laboratoire moderne - Préparation",
-      buttonTextColor: "text-[#FE5000]",
-      buttonIconBgColor: "bg-[#FE5000]",
+      buttonTextColor: "text-[#FF8500]",
+      buttonIconBgColor: "bg-[#FF8500]",
     },
     {
       title: t('duringTitle'),
@@ -125,8 +125,8 @@ const PatientJourneyCards = () => {
       buttonLink: "/conseils-et-informations",
       imageUrl: "/lab-photo-6.jpeg",
       imageAlt: "Laboratoire - Pendant le prélèvement",
-      buttonTextColor: "text-[#FE5000]",
-      buttonIconBgColor: "bg-[#FE5000]",
+      buttonTextColor: "text-[#FF8500]",
+      buttonIconBgColor: "bg-[#FF8500]",
     },
     {
       title: t('afterTitle'),
@@ -143,19 +143,19 @@ const PatientJourneyCards = () => {
       buttonLink: "/conseils-et-informations",
       imageUrl: "/lab-photo-2.jpeg",
       imageAlt: "Laboratoire - Après les analyses",
-      buttonTextColor: "text-[#FE5000]",
-      buttonIconBgColor: "bg-[#FE5000]",
+      buttonTextColor: "text-[#FF8500]",
+      buttonIconBgColor: "bg-[#FF8500]",
     },
   ];
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="bg-gradient-to-b from-[#f0f9ff] to-[#e0f2fe] py-12 sm:py-16 lg:py-24 overflow-hidden">
+    <section ref={ref as React.RefObject<HTMLElement>} className="bg-gradient-to-b from-[#C5E3FF] to-[#A8D4FF] py-12 sm:py-16 lg:py-24 overflow-hidden">
       <div className="container px-4 sm:px-6">
         <div className={`text-center mb-10 sm:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-block bg-[#FE5000]/10 text-[#FE5000] text-xs sm:text-sm font-bold uppercase tracking-wider px-4 py-2 rounded-full mb-4">
-            {t('journeySubtitle') || 'Votre parcours patient'}
+          <span className="inline-block bg-[#FF8500]/10 text-[#FF8500] text-xs sm:text-sm font-bold uppercase tracking-wider px-4 py-2 rounded-full mb-4">
+            {t('patientJourney')}
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#003B5C] leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] leading-tight">
             {t('journeyTitle')}
           </h2>
         </div>

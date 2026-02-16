@@ -13,6 +13,11 @@ import {
   Mail,
   Clock,
   ExternalLink,
+  ChevronRight,
+  Stethoscope,
+  Shield,
+  Briefcase,
+  FlaskConical,
 } from "lucide-react";
 import {
   Accordion,
@@ -20,66 +25,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
-type FooterLink = {
-  href: string;
-  text: string;
-};
-
-type FooterColumnProps = {
-  title: string;
-  links: FooterLink[];
-};
-
-const footerColumns: FooterColumnProps[] = [
-  {
-    title: "Patients",
-    links: [
-      { href: "/conseils-et-informations", text: "Avant le prélèvement" },
-      { href: "#", text: "Le prélèvement" },
-      { href: "#", text: "Après le prélèvement" },
-      { href: "#", text: "Mon bilan santé (sans ordonnance)" },
-      { href: "/dois-je-prendre-rdv", text: "Questions fréquentes" },
-      { href: "#", text: "Donnez votre avis" },
-    ],
-  },
-  {
-    title: "Assurance qualité",
-    links: [
-      { href: "/charte-de-qualite", text: "Charte de qualité" },
-      { href: "/controle-qualite", text: "Contrôle qualité" },
-      { href: "#", text: "Accréditations" },
-      { href: "#", text: "Certifications" },
-      { href: "#", text: "Normes & standards" },
-    ],
-  },
-  {
-    title: "Carrières",
-    links: [
-      { href: "/carrieres/offres-emploi-stages", text: "Offres d'emploi" },
-      { href: "/carrieres/actualites", text: "Actualités" },
-      { href: "/carrieres", text: "Voir toutes les opportunités" },
-    ],
-  },
-  {
-    title: "Nos services",
-    links: [
-      { href: "/nos-services", text: "Analyses médicales" },
-      { href: "/nos-services#biologie", text: "Biologie clinique" },
-      { href: "/nos-services#immunologie", text: "Immunologie" },
-      { href: "/nos-services#microbiologie", text: "Microbiologie" },
-      { href: "/nos-services#hematologie", text: "Hématologie" },
-    ],
-  },
-];
-
-const GOOGLE_MAPS_URL = "https://www.google.com/maps/search/?api=1&query=VFGR%2BMGH%2C+Cite+Verte%2C+Yaound%C3%A9%2C+Cameroon";
-
-const SOCIAL_LINKS = {
-  facebook: "https://www.facebook.com/profile.php?id=61584110146922",
-  tiktok: "https://www.tiktok.com/@laby.cite.vert?_r=1&_t=ZS-91ob0aa4ZUN",
-  instagram: "https://www.instagram.com/labyciteverte/",
-};
+import { useLanguage } from "@/lib/contents/LanguageContext";
 
 // TikTok Icon Component
 const TikTokIcon = ({ size = 20, className = "" }: { size?: number; className?: string }) => (
@@ -94,40 +40,21 @@ const TikTokIcon = ({ size = 20, className = "" }: { size?: number; className?: 
   </svg>
 );
 
-const FooterColumn = ({ title, links }: FooterColumnProps) => (
-  <div>
-    <h3 className="text-lg font-bold text-white mb-5 relative">
-      <span className="relative">
-        {title}
-        <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-[#00A8E8]"></span>
-      </span>
-    </h3>
-    <ul className="space-y-3 mt-6">
-      {links.map((link, index) => (
-        <li key={index}>
-          <Link
-            href={link.href}
-            className="text-sm text-white/80 hover:text-[#00A8E8] transition-colors duration-200 flex items-center gap-2 group"
-          >
-            <span className="w-1.5 h-1.5 bg-[#00A8E8] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
-            {link.text}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
+const GOOGLE_MAPS_URL = "https://www.google.com/maps/search/?api=1&query=VFGR%2BMGH%2C+Cite+Verte%2C+Yaound%C3%A9%2C+Cameroon";
+
+const SOCIAL_LINKS = {
+  facebook: "https://www.facebook.com/profile.php?id=61584110146922",
+  tiktok: "https://www.tiktok.com/@laby.cite.vert?_r=1&_t=ZS-91ob0aa4ZUN",
+  instagram: "https://www.instagram.com/labyciteverte/",
+};
 
 const Footer = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const { language } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowBackToTop(true);
-      } else {
-        setShowBackToTop(false);
-      }
+      setShowBackToTop(window.scrollY > 300);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -138,18 +65,93 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const footerColumns = {
+    patients: {
+      icon: Stethoscope,
+      title: language === 'fr' ? "Patients" : "Patients",
+      links: [
+        { href: "/conseils-et-informations", text: language === 'fr' ? "Avant le prélèvement" : "Before sampling" },
+        { href: "/coming-soon", text: language === 'fr' ? "Le prélèvement" : "The sampling" },
+        { href: "/coming-soon", text: language === 'fr' ? "Après le prélèvement" : "After sampling" },
+        { href: "/coming-soon", text: language === 'fr' ? "Mon bilan santé (sans ordonnance)" : "My health check (no prescription)" },
+        { href: "/questions-frequentes", text: language === 'fr' ? "Questions fréquentes" : "FAQ" },
+        { href: "/laisser-un-avis", text: language === 'fr' ? "Donnez votre avis" : "Give your feedback" },
+      ],
+    },
+    quality: {
+      icon: Shield,
+      title: language === 'fr' ? "Assurance qualité" : "Quality Assurance",
+      links: [
+        { href: "/charte-de-qualite", text: language === 'fr' ? "Charte de qualité" : "Quality Charter" },
+        { href: "/controle-qualite", text: language === 'fr' ? "Contrôle qualité" : "Quality Control" },
+        { href: "/coming-soon", text: language === 'fr' ? "Accréditations" : "Accreditations" },
+        { href: "/coming-soon", text: language === 'fr' ? "Certifications" : "Certifications" },
+        { href: "/nos-standards", text: language === 'fr' ? "Normes & standards" : "Standards & norms" },
+      ],
+    },
+    careers: {
+      icon: Briefcase,
+      title: language === 'fr' ? "Carrières" : "Careers",
+      links: [
+        { href: "/carrieres/offres-emploi-stages", text: language === 'fr' ? "Offres d'emploi" : "Job Offers" },
+        { href: "/carrieres/actualites", text: language === 'fr' ? "Actualités" : "News" },
+        { href: "/carrieres", text: language === 'fr' ? "Voir toutes les opportunités" : "See all opportunities" },
+      ],
+    },
+    services: {
+      icon: FlaskConical,
+      title: language === 'fr' ? "Nos services" : "Our Services",
+      links: [
+        { href: "/biochimie-clinique", text: language === 'fr' ? "Biochimie Clinique" : "Clinical Biochemistry" },
+        { href: "/hematologie", text: language === 'fr' ? "Hématologie" : "Hematology" },
+        { href: "/immunologie", text: language === 'fr' ? "Immunologie" : "Immunology" },
+        { href: "/microbiologie", text: language === 'fr' ? "Microbiologie" : "Microbiology" },
+        { href: "/biologie-moleculaire", text: language === 'fr' ? "Biologie Moléculaire" : "Molecular Biology" },
+      ],
+    },
+  };
+
+  const FooterColumn = ({ columnKey }: { columnKey: keyof typeof footerColumns }) => {
+    const column = footerColumns[columnKey];
+    const Icon = column.icon;
+
+    return (
+      <div className="group">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-10 h-10 rounded-xl bg-[#FF8500]/20 flex items-center justify-center group-hover:bg-[#FF8500]/30 transition-colors">
+            <Icon className="w-5 h-5 text-[#FF8500]" />
+          </div>
+          <h3 className="text-lg font-bold text-white">
+            {column.title}
+          </h3>
+        </div>
+        <ul className="space-y-3">
+          {column.links.map((link, index) => (
+            <li key={index}>
+              <Link
+                href={link.href}
+                className="text-sm text-white/70 hover:text-[#FF8500] transition-all duration-200 flex items-center gap-2 group/link"
+              >
+                <ChevronRight className="w-3 h-3 opacity-0 -ml-4 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all duration-200 text-[#FF8500]" />
+                {link.text}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
   return (
     <>
       <footer className="relative overflow-hidden" style={{ fontFamily: 'Roboto, sans-serif' }}>
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/pexels-polina-tankilevitch-3735716.jpg"
-            alt="Laboratory background"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0A2540]/97 via-[#0D3B66]/95 to-[#0A2540]/97"></div>
+        {/* Premium Dark Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0A1628] via-[#0D2847] to-[#0A1628]"></div>
+
+        {/* Subtle animated gradient overlay */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#1E40AF]/20 rounded-full blur-[150px] animate-pulse"></div>
+          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#FF8500]/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
         </div>
 
         {/* Content */}
@@ -160,17 +162,20 @@ const Footer = () => {
               <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
                 {/* Logo and tagline */}
                 <div className="text-center lg:text-left">
-                  <Link href="/" className="inline-block hover:opacity-90 transition-opacity mb-3">
+                  <Link href="/" className="inline-block hover:opacity-90 transition-opacity mb-4">
                     <Image
                       src="/images/images.png"
                       alt="Lab Yaoundé Logo"
-                      width={220}
-                      height={90}
-                      className="h-[90px] w-auto object-contain brightness-110"
+                      width={200}
+                      height={80}
+                      className="h-[80px] w-auto object-contain brightness-110"
                     />
                   </Link>
-                  <p className="text-white/70 text-sm max-w-xs">
-                    Votre partenaire santé de confiance au Cameroun
+                  <p className="text-white font-bold text-lg">
+                    Laboratoire d&apos;Analyses Biologiques de Yaoundé
+                  </p>
+                  <p className="text-white/60 text-sm mt-1">
+                    {language === 'fr' ? 'Votre partenaire santé de confiance au Cameroun' : 'Your trusted health partner in Cameroon'}
                   </p>
                 </div>
 
@@ -180,52 +185,41 @@ const Footer = () => {
                     href={GOOGLE_MAPS_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gradient-to-r from-[#00A8E8] to-[#0096C7] hover:from-[#48CAE4] hover:to-[#0D3B66] text-white rounded-xl px-8 py-4 font-bold flex items-center gap-3 transition-all duration-300 shadow-lg shadow-[#00A8E8]/30 hover:shadow-[#48CAE4]/40 hover:scale-105"
+                    className="bg-gradient-to-r from-[#FF8500] to-[#E87000] hover:from-[#E87000] hover:to-[#FF8500] text-white rounded-xl px-8 py-4 font-bold flex items-center gap-3 transition-all duration-300 shadow-lg shadow-[#FF8500]/30 hover:shadow-[#FF8500]/50 hover:scale-105"
                   >
                     <MapPin size={20} />
-                    Trouver mon Laboratoire
+                    {language === 'fr' ? 'Trouver mon Laboratoire' : 'Find my Lab'}
                     <ExternalLink size={16} className="opacity-70" />
                   </a>
                   <Link
-                    href="#"
+                    href="/mes-resultats"
                     className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/30 text-white rounded-xl px-8 py-4 font-bold flex items-center gap-3 transition-all duration-300 hover:scale-105"
                   >
                     <FileText size={20} />
-                    Mes résultats
+                    {language === 'fr' ? 'Mes résultats' : 'My Results'}
                   </Link>
                 </div>
 
                 {/* Social Media */}
                 <div className="flex items-center gap-4">
-                  <span className="text-white/60 text-sm hidden lg:block">Suivez-nous</span>
+                  <span className="text-white/60 text-sm hidden lg:block">{language === 'fr' ? 'Suivez-nous' : 'Follow us'}</span>
                   <div className="flex gap-3">
-                    <a
-                      href={SOCIAL_LINKS.facebook}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Facebook"
-                      className="w-11 h-11 rounded-full bg-white/10 hover:bg-gradient-to-br hover:from-[#00A8E8] hover:to-[#0096C7] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#00A8E8]/30"
-                    >
-                      <Facebook size={20} className="text-white" />
-                    </a>
-                    <a
-                      href={SOCIAL_LINKS.tiktok}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="TikTok"
-                      className="w-11 h-11 rounded-full bg-white/10 hover:bg-gradient-to-br hover:from-[#00A8E8] hover:to-[#0096C7] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#00A8E8]/30"
-                    >
-                      <TikTokIcon size={20} className="text-white" />
-                    </a>
-                    <a
-                      href={SOCIAL_LINKS.instagram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Instagram"
-                      className="w-11 h-11 rounded-full bg-white/10 hover:bg-gradient-to-br hover:from-[#00A8E8] hover:to-[#0096C7] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#00A8E8]/30"
-                    >
-                      <Instagram size={20} className="text-white" />
-                    </a>
+                    {[
+                      { href: SOCIAL_LINKS.facebook, icon: Facebook, label: "Facebook" },
+                      { href: SOCIAL_LINKS.tiktok, icon: TikTokIcon, label: "TikTok" },
+                      { href: SOCIAL_LINKS.instagram, icon: Instagram, label: "Instagram" },
+                    ].map((social) => (
+                      <a
+                        key={social.label}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={social.label}
+                        className="w-11 h-11 rounded-full bg-white/10 hover:bg-gradient-to-br hover:from-[#FF8500] hover:to-[#E87000] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#FF8500]/30"
+                      >
+                        <social.icon size={20} className="text-white" />
+                      </a>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -233,62 +227,77 @@ const Footer = () => {
           </div>
 
           {/* Main Footer Content */}
-          <div className="max-w-[1200px] mx-auto px-6 py-12">
+          <div className="max-w-[1200px] mx-auto px-6 py-14">
             <div className="grid lg:grid-cols-12 gap-10">
               {/* Contact Info Card */}
               <div className="lg:col-span-4">
-                <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/20 shadow-xl">
+                <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/20 shadow-2xl">
                   <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-                    <span className="w-12 h-12 bg-gradient-to-br from-[#00A8E8] to-[#0096C7] rounded-xl flex items-center justify-center shadow-lg shadow-[#00A8E8]/30">
-                      <Phone size={22} />
+                    <span className="w-12 h-12 bg-gradient-to-br from-[#FF8500] to-[#E87000] rounded-xl flex items-center justify-center shadow-lg shadow-[#FF8500]/30">
+                      <Phone size={22} className="text-white" />
                     </span>
-                    Contactez-nous
+                    {language === 'fr' ? 'Contactez-nous' : 'Contact Us'}
                   </h3>
 
-                  <div className="space-y-4">
+                  <div className="space-y-5">
+                    {/* Address */}
                     <a
                       href={GOOGLE_MAPS_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-start gap-3 text-white/80 hover:text-[#00A8E8] transition-colors group"
+                      className="flex items-start gap-4 text-white/80 hover:text-[#FF8500] transition-colors group p-3 rounded-xl hover:bg-white/5"
                     >
-                      <MapPin size={20} className="text-[#00A8E8] flex-shrink-0 mt-0.5" />
+                      <div className="w-10 h-10 rounded-lg bg-[#1E40AF]/30 flex items-center justify-center flex-shrink-0">
+                        <MapPin size={18} className="text-[#FF8500]" />
+                      </div>
                       <div>
-                        <p className="text-sm font-medium">Carrefour Ancien Bâtiments</p>
-                        <p className="text-xs text-white/60">Cité verte Batiment B01 Yaounde 2 Rue 2.711</p>
-                        <span className="text-xs text-[#00A8E8] flex items-center gap-1 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                          Voir sur Google Maps <ExternalLink size={12} />
+                        <p className="font-semibold text-white">Carrefour Ancien Bâtiments</p>
+                        <p className="text-sm text-white/60">Cité Verte Bâtiment B01, Yaoundé 2</p>
+                        <p className="text-sm text-white/60">Rue 2.711</p>
+                        <span className="text-xs text-[#FF8500] flex items-center gap-1 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                          {language === 'fr' ? 'Voir sur Google Maps' : 'View on Google Maps'} <ExternalLink size={12} />
                         </span>
                       </div>
                     </a>
 
+                    {/* Phone */}
                     <a
                       href="tel:+237242046850"
-                      className="flex items-center gap-3 text-white hover:text-[#48CAE4] transition-colors"
+                      className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors group"
                     >
-                      <Phone size={20} className="text-[#48CAE4] flex-shrink-0" />
+                      <div className="w-10 h-10 rounded-lg bg-[#FF8500]/20 flex items-center justify-center flex-shrink-0">
+                        <Phone size={18} className="text-[#FF8500]" />
+                      </div>
                       <div>
-                        <p className="text-lg font-bold text-[#48CAE4]">(+237) 242 04 68 50</p>
-                        <p className="text-xs text-white/60">Appelez-nous</p>
+                        <p className="text-xl font-bold text-[#FF8500]">(+237) 242 04 68 50</p>
+                        <p className="text-xs text-white/60">{language === 'fr' ? 'Appelez-nous' : 'Call us'}</p>
                       </div>
                     </a>
 
+                    {/* Email */}
                     <a
                       href="mailto:contact@labyaounde.cm"
-                      className="flex items-center gap-3 text-white/80 hover:text-[#00A8E8] transition-colors"
+                      className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors group"
                     >
-                      <Mail size={20} className="text-[#00A8E8] flex-shrink-0" />
+                      <div className="w-10 h-10 rounded-lg bg-[#1E40AF]/30 flex items-center justify-center flex-shrink-0">
+                        <Mail size={18} className="text-[#FF8500]" />
+                      </div>
                       <div>
-                        <p className="text-sm font-medium">contact@labyaounde.cm</p>
-                        <p className="text-xs text-white/60">Écrivez-nous</p>
+                        <p className="font-semibold text-white">contact@labyaounde.cm</p>
+                        <p className="text-xs text-white/60">{language === 'fr' ? 'Écrivez-nous' : 'Write to us'}</p>
                       </div>
                     </a>
 
-                    <div className="flex items-start gap-3 text-white/80">
-                      <Clock size={20} className="text-[#00A8E8] flex-shrink-0 mt-0.5" />
+                    {/* Hours */}
+                    <div className="flex items-center gap-4 p-3 rounded-xl bg-[#FF8500]/10 border border-[#FF8500]/20">
+                      <div className="w-10 h-10 rounded-lg bg-[#FF8500]/20 flex items-center justify-center flex-shrink-0">
+                        <Clock size={18} className="text-[#FF8500]" />
+                      </div>
                       <div>
-                        <p className="text-sm font-medium">Horaires d&apos;ouverture</p>
-                        <p className="text-xs text-[#48CAE4] font-bold">Laboratoire ouvert 24h/24 - 7j/7</p>
+                        <p className="font-semibold text-white">{language === 'fr' ? "Horaires d'ouverture" : 'Opening Hours'}</p>
+                        <p className="text-sm font-bold text-[#FF8500]">
+                          {language === 'fr' ? 'Laboratoire ouvert 24h/24 - 7j/7' : 'Laboratory open 24/7'}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -297,72 +306,74 @@ const Footer = () => {
 
               {/* Navigation Columns - Desktop */}
               <div className="lg:col-span-8 hidden lg:block">
-                <div className="grid grid-cols-4 gap-6">
-                  {footerColumns.map((col) => (
-                    <FooterColumn key={col.title} title={col.title} links={col.links} />
-                  ))}
+                <div className="grid grid-cols-4 gap-8">
+                  <FooterColumn columnKey="patients" />
+                  <FooterColumn columnKey="quality" />
+                  <FooterColumn columnKey="careers" />
+                  <FooterColumn columnKey="services" />
                 </div>
               </div>
 
               {/* Navigation - Mobile Accordion */}
               <div className="lg:col-span-8 lg:hidden">
                 <Accordion type="single" collapsible className="w-full">
-                  {footerColumns.map((col) => (
-                    <AccordionItem
-                      value={col.title}
-                      key={col.title}
-                      className="border-b border-white/10 last:border-b-0"
-                    >
-                      <AccordionTrigger className="text-lg font-semibold hover:no-underline py-4 text-white">
-                        {col.title}
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        <ul className="space-y-3 pt-2 pb-4">
-                          {col.links.map((link, index) => (
-                            <li key={index}>
-                              <Link
-                                href={link.href}
-                                className="text-sm text-white/70 hover:text-[#00A8E8] transition-colors"
-                              >
-                                {link.text}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
+                  {Object.entries(footerColumns).map(([key, column]) => {
+                    const Icon = column.icon;
+                    return (
+                      <AccordionItem
+                        value={key}
+                        key={key}
+                        className="border-b border-white/10 last:border-b-0"
+                      >
+                        <AccordionTrigger className="text-lg font-semibold hover:no-underline py-4 text-white">
+                          <div className="flex items-center gap-3">
+                            <Icon className="w-5 h-5 text-[#FF8500]" />
+                            {column.title}
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <ul className="space-y-3 pt-2 pb-4 pl-8">
+                            {column.links.map((link, index) => (
+                              <li key={index}>
+                                <Link
+                                  href={link.href}
+                                  className="text-sm text-white/70 hover:text-[#FF8500] transition-colors"
+                                >
+                                  {link.text}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </AccordionContent>
+                      </AccordionItem>
+                    );
+                  })}
                 </Accordion>
               </div>
             </div>
           </div>
 
           {/* Bottom Bar */}
-          <div className="border-t border-white/10 bg-black/20">
+          <div className="border-t border-white/10 bg-black/30">
             <div className="max-w-[1200px] mx-auto px-6 py-6">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                 <p className="text-sm text-white/60 text-center md:text-left">
-                  © {new Date().getFullYear()} <span className="text-[#00A8E8] font-semibold">LABYAOUNDE</span>. Tous droits réservés
+                  © {new Date().getFullYear()} <span className="text-[#FF8500] font-bold">LABYAOUNDE</span>. {language === 'fr' ? 'Tous droits réservés' : 'All rights reserved'}
                 </p>
                 <div className="flex gap-x-6 gap-y-2 flex-wrap justify-center">
-                  <Link
-                    href="#"
-                    className="text-sm text-white/60 hover:text-[#00A8E8] transition-colors"
-                  >
-                    Mentions légales
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-sm text-white/60 hover:text-[#00A8E8] transition-colors"
-                  >
-                    Politique de confidentialité
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-sm text-white/60 hover:text-[#00A8E8] transition-colors"
-                  >
-                    Conditions d&apos;utilisation
-                  </Link>
+                  {[
+                    { href: "#", text: language === 'fr' ? "Mentions légales" : "Legal Notice" },
+                    { href: "#", text: language === 'fr' ? "Politique de confidentialité" : "Privacy Policy" },
+                    { href: "#", text: language === 'fr' ? "Conditions d'utilisation" : "Terms of Use" },
+                  ].map((link) => (
+                    <Link
+                      key={link.text}
+                      href={link.href}
+                      className="text-sm text-white/60 hover:text-[#FF8500] transition-colors"
+                    >
+                      {link.text}
+                    </Link>
+                  ))}
                 </div>
               </div>
             </div>
@@ -375,7 +386,7 @@ const Footer = () => {
         <button
           onClick={scrollToTop}
           aria-label="Retour en haut"
-          className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-[#00A8E8] to-[#0096C7] text-white flex items-center justify-center shadow-xl shadow-[#00A8E8]/40 hover:shadow-[#00A8E8]/60 hover:scale-110 transition-all duration-300"
+          className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-[#FF8500] to-[#E87000] text-white flex items-center justify-center shadow-xl shadow-[#FF8500]/40 hover:shadow-[#FF8500]/60 hover:scale-110 transition-all duration-300"
         >
           <ArrowUp size={24} />
         </button>

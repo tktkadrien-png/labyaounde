@@ -7,37 +7,34 @@
   --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
 
-  /* Medical Professional Color Palette - Inspired by Medzoon Template */
-  /* Primary Blues - Deep Medical Navy */
-  --primary-blue: #0A2540;
-  --primary-blue-light: #0D3B66;
-  --primary-blue-dark: #051A2D;
-  --primary-blue-medium: #103D5D;
+  /* PREMIUM MEDICAL COLOR PALETTE */
+  /* Primary - Bleu Roi (Royal Blue) */
+  --bleu-roi: #1E40AF;
+  --bleu-roi-dark: #1E3A8A;
+  --bleu-roi-light: #3B82F6;
 
-  /* Accent Blues - Vibrant Cyan/Turquoise */
-  --accent-cyan: #00A8E8;
-  --accent-cyan-light: #00D4FF;
-  --accent-cyan-dark: #0088C2;
-  --accent-blue: #0096C7;
+  /* Secondary - Orange Premium */
+  --orange-primary: #FF8500;
+  --orange-dark: #E87000;
+  --orange-light: #FFA540;
 
-  /* Secondary Colors */
-  --secondary-teal: #48CAE4;
-  --secondary-sky: #90E0EF;
+  /* Bright Blue for Hero sections */
+  --blue-bright: #0088FF;
+  --blue-deep: #0066CC;
 
-  /* Whites & Neutrals */
+  /* Text Colors - All in Bleu Roi */
+  --text-primary: #1E40AF;
+  --text-secondary: #1E3A8A;
+  --text-muted: #3B82F6;
+
+  /* Backgrounds */
+  --bg-light: #F0F7FF;
+  --bg-white: #FFFFFF;
+
+  /* Legacy support */
+  --blue-royal: #1E40AF;
   --neutral-50: #FFFFFF;
-  --neutral-100: #F8FAFC;
-  --neutral-150: #F1F5F9;
-  --neutral-200: #E2E8F0;
-  --neutral-300: #CBD5E1;
-  --neutral-600: #475569;
-  --neutral-800: #1E293B;
-  --neutral-900: #0F172A;
-
-  /* Text Colors */
-  --text-primary: #0A2540;
-  --text-secondary: #475569;
-  --text-light: #64748B;
+  --neutral-100: #F0F9FF;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -435,13 +432,13 @@ body {
   /* Modern gradient button */
   .btn-gradient {
     @apply relative overflow-hidden px-8 py-4 rounded-xl font-bold text-white transition-all duration-300;
-    background: linear-gradient(135deg, #FE5000 0%, #FF8C00 100%);
+    background: linear-gradient(135deg, #FF8500 0%, #FF8C00 100%);
   }
 
   .btn-gradient::before {
     content: '';
     @apply absolute inset-0 opacity-0 transition-opacity duration-300;
-    background: linear-gradient(135deg, #FF8C00 0%, #FE5000 100%);
+    background: linear-gradient(135deg, #FF8C00 0%, #FF8500 100%);
   }
 
   .btn-gradient:hover::before {
@@ -524,7 +521,7 @@ body {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: #FE5000;
+  background: #FF8500;
   transform: translate(-50%, -100%) scale(0);
   animation: push_loader 2s infinite linear;
 }
@@ -560,7 +557,7 @@ body {
 }
 
 .form-input:focus {
-  @apply outline-none border-[#FE5000] ring-2 ring-[#FE5000]/20;
+  @apply outline-none border-[#FF8500] ring-2 ring-[#FF8500]/20;
 }
 
 .form-input-wrapper {
@@ -568,7 +565,7 @@ body {
 }
 
 .form-input-wrapper:focus-within {
-  @apply border-[#FE5000] ring-2 ring-[#FE5000]/20;
+  @apply border-[#FF8500] ring-2 ring-[#FF8500]/20;
 }
 
 /* Floating Label Animation */
@@ -599,7 +596,7 @@ body {
 }
 
 .floating-label input:focus + span {
-  @apply text-[#FE5000];
+  @apply text-[#FF8500];
 }
 
 /* ========================================
@@ -648,21 +645,21 @@ body {
 
 /* Medical Gradient Text */
 .gradient-text {
-  background: linear-gradient(135deg, #00A8E8 0%, #48CAE4 100%);
+  background: linear-gradient(135deg, #0088FF 0%, #FF8500 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-blue {
-  background: linear-gradient(135deg, #0A2540 0%, #00A8E8 100%);
+  background: linear-gradient(135deg, #0A2540 0%, #0088FF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-cyan {
-  background: linear-gradient(135deg, #00A8E8 0%, #00D4FF 100%);
+  background: linear-gradient(135deg, #0088FF 0%, #00D4FF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -702,7 +699,7 @@ body {
 
 .card-medical-bordered {
   @apply bg-white rounded-2xl transition-all duration-500 border-l-4;
-  border-left-color: #00A8E8;
+  border-left-color: #0088FF;
   box-shadow: 0 4px 20px -5px rgba(10, 37, 64, 0.08);
 }
 
@@ -721,7 +718,7 @@ body {
 }
 
 .bg-gradient-cyan {
-  background: linear-gradient(135deg, #00A8E8 0%, #48CAE4 100%);
+  background: linear-gradient(135deg, #0088FF 0%, #FF8500 100%);
 }
 
 .bg-gradient-medical-hero {
@@ -755,12 +752,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #00A8E8, #48CAE4);
+  background: linear-gradient(135deg, #0088FF, #FF8500);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #0088C2, #00A8E8);
+  background: linear-gradient(135deg, #0088C2, #0088FF);
 }
 
 /* ========================================
@@ -768,12 +765,12 @@ body {
    ======================================== */
 
 ::selection {
-  background: #00A8E8;
+  background: #0088FF;
   color: white;
 }
 
 ::-moz-selection {
-  background: #00A8E8;
+  background: #0088FF;
   color: white;
 }
 
@@ -784,7 +781,7 @@ body {
 /* Medical Icon Circle */
 .icon-circle-medical {
   @apply w-16 h-16 rounded-full flex items-center justify-center;
-  background: linear-gradient(135deg, #00A8E8 0%, #48CAE4 100%);
+  background: linear-gradient(135deg, #0088FF 0%, #FF8500 100%);
   box-shadow: 0 8px 20px -5px rgba(0, 168, 232, 0.4);
 }
 
@@ -795,7 +792,7 @@ body {
 
 .section-header-medical .subtitle {
   @apply inline-block text-sm font-bold uppercase tracking-wider mb-4 px-4 py-1.5 rounded-full;
-  color: #00A8E8;
+  color: #0088FF;
   background: rgba(0, 168, 232, 0.1);
 }
 
@@ -812,7 +809,7 @@ body {
 /* Medical Button Styles */
 .btn-medical-primary {
   @apply px-8 py-4 rounded-xl font-bold text-white transition-all duration-300;
-  background: linear-gradient(135deg, #00A8E8 0%, #0096C7 100%);
+  background: linear-gradient(135deg, #0088FF 0%, #0096C7 100%);
   box-shadow: 0 4px 15px -3px rgba(0, 168, 232, 0.4);
 }
 
@@ -829,8 +826,8 @@ body {
 }
 
 .btn-medical-secondary:hover {
-  border-color: #00A8E8;
-  color: #00A8E8;
+  border-color: #0088FF;
+  color: #0088FF;
   transform: translateY(-2px);
 }
 
@@ -841,10 +838,228 @@ body {
 
 .stats-card-medical .number {
   @apply text-4xl md:text-5xl font-black;
-  color: #00A8E8;
+  color: #0088FF;
 }
 
 .stats-card-medical .label {
   @apply text-sm font-medium mt-2;
   color: #475569;
+}
+
+/* ========================================
+   PREMIUM TEXT COLORS - BLEU ROI
+   ======================================== */
+
+/* Default text color for the entire site */
+body {
+  color: #1E40AF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #1E40AF;
+}
+
+p, span, div {
+  color: inherit;
+}
+
+/* Exception: White text in buttons */
+button, .btn, [class*="bg-[#FF8500]"], [class*="bg-[#0088FF]"], [class*="bg-gradient"] {
+  color: white;
+}
+
+/* ========================================
+   PREMIUM HOVER ANIMATIONS
+   ======================================== */
+
+/* Subtle card tilt on hover */
+.card-tilt {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.card-tilt:hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(30, 64, 175, 0.15);
+}
+
+/* Smooth fade-in on scroll */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger animation delays */
+.stagger-delay-1 { transition-delay: 0.1s; }
+.stagger-delay-2 { transition-delay: 0.2s; }
+.stagger-delay-3 { transition-delay: 0.3s; }
+.stagger-delay-4 { transition-delay: 0.4s; }
+.stagger-delay-5 { transition-delay: 0.5s; }
+
+/* Premium button hover */
+.btn-premium {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-premium:hover::before {
+  left: 100%;
+}
+
+.btn-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px -10px rgba(255, 133, 0, 0.4);
+}
+
+/* Subtle background gradient animation */
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animated-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* Icon hover effect */
+.icon-hover {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.icon-hover:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Link hover underline animation */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #FF8500;
+  transition: width 0.3s ease;
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Navbar shadow on scroll */
+.navbar-shadow {
+  box-shadow: 0 4px 20px -5px rgba(30, 64, 175, 0.15);
+}
+
+/* Premium dropdown animation */
+.dropdown-premium {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.25s ease;
+}
+
+.dropdown-premium.active,
+.group:hover .dropdown-premium {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Mega menu premium styles */
+.mega-menu-premium {
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px rgba(30, 64, 175, 0.2);
+  border: 1px solid rgba(30, 64, 175, 0.1);
+}
+
+/* Premium footer styles */
+.footer-premium {
+  background: linear-gradient(135deg, #0A2540 0%, #0D3B66 50%, #0A2540 100%);
+}
+
+/* Smooth icon animations */
+.icon-bounce {
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Text gradient for premium look */
+.text-gradient-premium {
+  background: linear-gradient(135deg, #1E40AF 0%, #FF8500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card shine effect on hover */
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-shine::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.card-shine:hover::before {
+  animation: shine 0.75s ease forwards;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+    opacity: 0;
+  }
 }
