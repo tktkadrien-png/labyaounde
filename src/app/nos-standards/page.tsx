@@ -62,7 +62,7 @@ export default function NosStandardsPage() {
       <TopNavigationBar />
       <MainNavigation />
 
-      <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      <main className="min-h-screen bg-gradient-to-b from-white to-[#F0F7FF]">
         {/* Hero Section */}
         <section className="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
           <div className="absolute inset-0">
@@ -73,7 +73,7 @@ export default function NosStandardsPage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0A2540]/95 via-[#0A2540]/85 to-[#0A2540]/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#1E40AF]/95 via-[#1E40AF]/85 to-[#1E40AF]/70"></div>
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
@@ -144,10 +144,10 @@ export default function NosStandardsPage() {
         </section>
 
         {/* Introduction */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#F0F7FF] to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <div className="bg-gradient-to-br from-[#0A2540] to-[#00A8E8] rounded-2xl p-8 sm:p-10 lg:p-12 shadow-2xl text-white">
+              <div className="bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-2xl p-8 sm:p-10 lg:p-12 shadow-2xl text-white">
                 <div className="flex items-start gap-6 mb-6">
                   <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/20">
                     <BookOpen className="w-8 h-8 text-white" />
@@ -170,13 +170,13 @@ export default function NosStandardsPage() {
         </section>
 
         {/* Standards Grid */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#F0F7FF] to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-6">
                 {language === 'fr' ? 'Standards Internationaux' : 'International Standards'}
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl text-[#1E40AF]/70 max-w-3xl mx-auto">
                 {language === 'fr'
                   ? 'Nous adhérons aux normes les plus rigoureuses de la profession'
                   : 'We adhere to the most rigorous standards of the profession'
@@ -191,7 +191,7 @@ export default function NosStandardsPage() {
                   className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="flex items-start gap-4 mb-6">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#0A2540] to-[#00A8E8] rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-xl flex items-center justify-center flex-shrink-0">
                       {index === 3 ? (
                         <Shield className="w-7 h-7 text-white" />
                       ) : index === 5 ? (
@@ -201,17 +201,17 @@ export default function NosStandardsPage() {
                       )}
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">{standard.name}</h3>
-                      <p className="text-sm font-semibold text-[#0A2540] mb-3">
+                      <h3 className="text-xl font-bold text-[#1E40AF] mb-2">{standard.name}</h3>
+                      <p className="text-sm font-semibold text-[#1E40AF] mb-3">
                         {language === 'fr' ? standard.fullNameFr : standard.fullName}
                       </p>
                     </div>
                   </div>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-[#1E40AF]/80 leading-relaxed">
                     {language === 'fr' ? standard.descriptionFr : standard.description}
                   </p>
                   <div className="mt-4 pt-4 border-t border-gray-100">
-                    <div className="flex items-center gap-2 text-green-600">
+                    <div className="flex items-center gap-2 text-[#FF8500]">
                       <Check className="w-5 h-5" />
                       <span className="text-sm font-semibold">
                         {language === 'fr' ? 'Certifié' : 'Certified'}
@@ -228,14 +228,14 @@ export default function NosStandardsPage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
-              <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 sm:p-10 shadow-xl border border-gray-100">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#0A2540] to-[#00A8E8] rounded-2xl mb-6">
+              <div className="bg-gradient-to-br from-[#F0F7FF] to-white rounded-2xl p-8 sm:p-10 shadow-xl border border-gray-100">
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-2xl mb-6">
                   <Shield className="w-10 h-10 text-white" />
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
+                <h2 className="text-2xl sm:text-3xl font-bold text-[#1E40AF] mb-6">
                   {language === 'fr' ? 'Notre Engagement Qualité' : 'Our Quality Commitment'}
                 </h2>
-                <p className="text-lg text-gray-700 leading-relaxed">
+                <p className="text-lg text-[#1E40AF]/80 leading-relaxed">
                   {language === 'fr'
                     ? "En adoptant ces standards internationaux, nous garantissons à nos patients et partenaires une qualité de service irréprochable, des résultats fiables et une conformité totale aux meilleures pratiques mondiales en matière d'analyses médicales."
                     : 'By adopting these international standards, we guarantee our patients and partners impeccable service quality, reliable results and total compliance with global best practices in medical analysis.'
@@ -247,15 +247,15 @@ export default function NosStandardsPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#F0F7FF] to-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-6">
               {language === 'fr'
                 ? 'Excellence et Conformité'
                 : 'Excellence and Compliance'
               }
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-[#1E40AF]/70 mb-8 max-w-2xl mx-auto">
               {language === 'fr'
                 ? "Découvrez comment nos standards garantissent la qualité de nos services"
                 : 'Discover how our standards guarantee the quality of our services'
@@ -264,14 +264,14 @@ export default function NosStandardsPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/signup"
-                className="inline-flex items-center justify-center gap-2 bg-[#0A2540] text-white px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-[#00A8E8] transition-all hover:scale-105 shadow-lg"
+                className="inline-flex items-center justify-center gap-2 bg-[#1E40AF] text-white px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-[#3B82F6] transition-all hover:scale-105 shadow-lg"
               >
                 {language === 'fr' ? 'Créer un Compte' : 'Create an Account'}
                 <ChevronRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/notre-vision"
-                className="inline-flex items-center justify-center gap-2 bg-transparent text-[#0A2540] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-[#0A2540] hover:bg-[#0A2540] hover:text-white transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-transparent text-[#1E40AF] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-[#1E40AF] hover:bg-[#1E40AF] hover:text-white transition-all"
               >
                 {language === 'fr' ? 'Notre Vision' : 'Our Vision'}
               </Link>

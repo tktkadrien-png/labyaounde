@@ -100,8 +100,8 @@ const ExpertiseGenetique = () => {
 
                 {/* Précision */}
                 <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300 group/card">
-                  <div className="w-10 h-10 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
-                    <Dna className="w-5 h-5 text-green-400" />
+                  <div className="w-10 h-10 bg-[#93C5FD]/20 rounded-xl flex items-center justify-center mb-4">
+                    <Dna className="w-5 h-5 text-[#93C5FD]" />
                   </div>
                   <h4 className="text-lg font-bold text-white mb-2">
                     {language === "fr" ? "Précision" : "Precision"}
@@ -195,7 +195,7 @@ const ExpertiseGenetique = () => {
 
                 {/* Sécurité */}
                 <div className="flex items-center gap-3 bg-white/5 rounded-xl p-4 border border-white/10">
-                  <Lock className="w-5 h-5 text-green-400" />
+                  <Lock className="w-5 h-5 text-[#93C5FD]" />
                   <div>
                     <p className="text-white text-sm font-medium">
                       {language === "fr" ? "Protocoles de haute sécurité" : "High security protocols"}

@@ -797,7 +797,7 @@ export default function DoisJePrendreRDV() {
                   {
                     title: "Jean, 45 ans - Diabète de type 2",
                     icon: "👨",
-                    color: "green",
+                    color: "blue",
                     situation: "Jean doit faire une courbe de glycémie prescrite par son diabétologue.",
                     analyses: ["HGPO (Hyperglycémie Provoquée par voie Orale)"],
                     rdv: true,

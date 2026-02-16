@@ -147,7 +147,7 @@ export default function ResultsPage() {
   const getStatusBadge = (status: string) => {
     const styles = {
       pending: "bg-[#FE5000]/20 text-[#FE5000] border-[#FE5000]/50",
-      ready: "bg-green-100 text-green-800 border-green-300",
+      ready: "bg-[#DBEAFE] text-[#1E40AF] border-[#93C5FD]",
       viewed: "bg-[#00CED1]/20 text-blue-800 border-blue-300",
     };
     const labels = {
@@ -261,7 +261,7 @@ export default function ResultsPage() {
                               <button
                                 onClick={() => handleDownload(result)}
                                 disabled={!result.file_url}
-                                className="inline-flex items-center gap-1 px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="inline-flex items-center gap-1 px-3 py-2 bg-[#1E40AF] text-white rounded-lg hover:bg-[#1E3A8A] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                               >
                                 <Download className="w-4 h-4" />
                                 {currentContent.download}
@@ -310,7 +310,7 @@ export default function ResultsPage() {
                         <button
                           onClick={() => handleDownload(result)}
                           disabled={!result.file_url}
-                          className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50"
+                          className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2 bg-[#1E40AF] text-white rounded-lg hover:bg-[#1E3A8A] transition-colors disabled:opacity-50"
                         >
                           <Download className="w-4 h-4" />
                           {currentContent.download}

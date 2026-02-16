@@ -229,8 +229,8 @@ export default function ReviewPage() {
           <div className="max-w-md w-full text-center">
             <div className="py-12">
               <div className="mb-6">
-                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-100 mb-4">
-                  <CheckCircle className="w-12 h-12 text-green-600" />
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#DBEAFE] mb-4">
+                  <CheckCircle className="w-12 h-12 text-[#1E40AF]" />
                 </div>
               </div>
               <h1 className="text-3xl font-bold text-gray-900 mb-3">
@@ -432,7 +432,7 @@ export default function ReviewPage() {
                         onClick={() => setWouldRecommend(true)}
                         className={`flex-1 py-3 px-4 rounded-xl font-medium transition-all ${
                           wouldRecommend
-                            ? "bg-green-500 text-white shadow-lg"
+                            ? "bg-[#1E40AF] text-white shadow-lg"
                             : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                         }`}
                       >
@@ -551,7 +551,7 @@ export default function ReviewPage() {
                       <p className="text-gray-700 leading-relaxed mb-3">{review.comment}</p>
 
                       {review.would_recommend && (
-                        <div className="flex items-center gap-2 text-green-600 text-sm font-medium">
+                        <div className="flex items-center gap-2 text-[#1E40AF] text-sm font-medium">
                           <ThumbsUp className="w-4 h-4" />
                           {currentContent.recommended}
                         </div>
