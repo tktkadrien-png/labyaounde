@@ -85,27 +85,26 @@ We are committed to meeting your expectations with rigor and professionalism, an
               <source src={video} type="video/mp4" />
             </video>
           ))}
-          {/* Premium Blue Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0A2540]/85 via-[#0D3B66]/80 to-[#0A2540]/90"></div>
+          {/* Bright Blue Gradient Overlay - like the reference image */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0088FF]/90 via-[#0088FF]/85 to-[#0088FF]/90"></div>
         </div>
 
         {/* Decorative elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-[500px] h-[500px] bg-[#00A8E8]/20 rounded-full blur-[120px] animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-[#48CAE4]/20 rounded-full blur-[100px] animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-[150px]"></div>
+          <div className="absolute top-20 left-10 w-[500px] h-[500px] bg-white/10 rounded-full blur-[120px] animate-pulse"></div>
+          <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-white/10 rounded-full blur-[100px] animate-pulse delay-1000"></div>
         </div>
 
-        {/* Video Indicators */}
+        {/* Video Indicators - Orange active indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
           {videos.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentVideoIndex(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`h-3 rounded-full transition-all duration-300 ${
                 index === currentVideoIndex
-                  ? "bg-white w-8"
-                  : "bg-white/50 hover:bg-white/75"
+                  ? "bg-[#FF8500] w-10"
+                  : "bg-white/50 w-3 hover:bg-white/75"
               }`}
               aria-label={`Go to video ${index + 1}`}
             />
@@ -120,35 +119,34 @@ We are committed to meeting your expectations with rigor and professionalism, an
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
               }`}
             >
-              {/* Title */}
-              <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold text-[#0A2540] mb-4 tracking-tight drop-shadow-lg">
+              {/* Title - White text */}
+              <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 tracking-tight">
                 {currentContent.title}
               </h1>
 
-              {/* Subtitle */}
-              <p className="text-xl lg:text-2xl text-[#F5F8FD] font-semibold mb-8 drop-shadow-md">
+              {/* Subtitle - White text */}
+              <p className="text-xl lg:text-2xl text-white/90 font-semibold mb-8">
                 {currentContent.subtitle}
               </p>
 
-              {/* Decorative line */}
-              <div className="w-32 h-1.5 bg-gradient-to-r from-[#00A8E8] to-[#0096C7] rounded-full mb-10"></div>
+              {/* Decorative line - Orange */}
+              <div className="w-32 h-1.5 bg-[#FF8500] rounded-full mb-10"></div>
 
-              {/* Description */}
-              <p className="text-lg lg:text-xl text-[#0A2540] leading-relaxed max-w-3xl mb-12 drop-shadow-md font-bold">
+              {/* Description - White text */}
+              <p className="text-lg lg:text-xl text-white/95 leading-relaxed max-w-3xl mb-12 font-medium">
                 {currentContent.description}
               </p>
 
-
-              {/* Buttons */}
-              <div className="flex flex-wrap gap-6">
+              {/* Buttons - Orange */}
+              <div className="flex flex-wrap gap-4">
                 {currentContent.buttons.map((button, index) => (
                   <Link
                     key={index}
                     href={button.href}
-                    className="px-10 py-4 bg-[#00A8E8] text-white font-bold text-lg rounded-xl
-                      hover:bg-[#0096C7] hover:shadow-2xl hover:shadow-[#00A8E8]/40
-                      transition-all duration-300 transform hover:scale-105 hover:-translate-y-1
-                      border-2 border-[#00A8E8] hover:border-[#0096C7] min-w-[180px] text-center"
+                    className="px-8 py-4 bg-[#FF8500] text-white font-bold text-lg rounded-lg
+                      hover:bg-[#E87000] hover:shadow-xl hover:shadow-[#FF8500]/30
+                      transition-all duration-300 transform hover:scale-105
+                      min-w-[160px] text-center"
                   >
                     {button.text}
                   </Link>
@@ -160,7 +158,7 @@ We are committed to meeting your expectations with rigor and professionalism, an
 
       </div>
 
-      {/* Stats Section */}
+      {/* Stats Section - White background with orange icons */}
       <div className="py-16 md:py-20 bg-white">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
@@ -169,16 +167,17 @@ We are committed to meeting your expectations with rigor and professionalism, an
               return (
                 <div
                   key={index}
-                  className={`text-center p-4 sm:p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group ${
+                  className={`text-center p-4 sm:p-6 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group border border-gray-100 ${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                   }`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
-                  <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#00A8E8] to-[#0096C7] rounded-xl sm:rounded-2xl mb-3 sm:mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                  {/* Orange icon circle */}
+                  <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-[#FF8500] rounded-full mb-3 sm:mb-4 shadow-lg shadow-[#FF8500]/20 group-hover:scale-110 transition-transform duration-300">
+                    <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
                   </div>
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0A2540] mb-1 sm:mb-2">{stat.value}</div>
-                  <div className="text-xs sm:text-sm text-[#0A2540] font-medium">{stat.label}</div>
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1E40AF] mb-1 sm:mb-2">{stat.value}</div>
+                  <div className="text-xs sm:text-sm text-[#1E40AF]/70 font-medium">{stat.label}</div>
                 </div>
               );
             })}
