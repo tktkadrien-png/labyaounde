@@ -1,0 +1,27 @@
+{
+  "name": "Lab Yaoundé - Laboratoire d'Analyses Médicales",
+  "short_name": "Lab Yaoundé",
+  "description": "Votre laboratoire d'analyses médicales de confiance au Cameroun. Tests sanguins, ADN, bilans de santé.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0A065D",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "fr",
+  "categories": ["medical", "health", "business"],
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

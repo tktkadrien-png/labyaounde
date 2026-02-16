@@ -2,6 +2,8 @@ import TopNavigationBar from "@/components/sections/top-navigation-bar";
 import MainNavigation from "@/components/sections/main-navigation";
 import HeroCarousel from "@/components/sections/hero-carousel";
 import AboutUs from "@/components/sections/about-us";
+import NotreEngagement from "@/components/sections/notre-engagement";
+import ExpertiseGenetique from "@/components/sections/expertise-genetique";
 import Newsletter from "@/components/sections/lab-finder";
 import ResultsAccess from "@/components/sections/results-access";
 import JobOpenings from "@/components/sections/job-openings";
@@ -21,6 +23,8 @@ export default function HomePage() {
       <MainNavigation />
       <main>
         <AboutUs />
+        <NotreEngagement />
+        <ExpertiseGenetique />
         <HeroCarousel />
         <PatientJourneyCards />
         <Newsletter />

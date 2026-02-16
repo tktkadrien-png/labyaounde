@@ -1,0 +1,30 @@
+# Robots.txt pour Lab Yaoundé
+# https://laboyaounde.com
+
+User-agent: *
+Allow: /
+
+# Interdire l'accès aux pages d'administration
+Disallow: /admin-access
+Disallow: /admin-dashboard
+Disallow: /admin-login
+Disallow: /admin-register
+Disallow: /api/
+Disallow: /test-supabase
+
+# Autoriser les moteurs de recherche à indexer les pages importantes
+Allow: /
+Allow: /contact
+Allow: /carrieres
+Allow: /empreintes-genetiques
+Allow: /biochimie-clinique
+Allow: /hematologie
+Allow: /immunologie
+Allow: /microbiologie
+Allow: /biologie-moleculaire
+Allow: /questions-frequentes
+Allow: /charte-de-qualite
+Allow: /politique-de-qualite
+
+# Sitemap
+Sitemap: https://laboyaounde.com/sitemap.xml

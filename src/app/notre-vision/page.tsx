@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import TopNavigationBar from "@/components/sections/top-navigation-bar";
@@ -50,8 +49,8 @@ export default function NotreVisionPage() {
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-6 sm:mb-8 leading-relaxed">
                 {language === 'fr'
-                  ? "Excellence et innovation au service de la santé"
-                  : 'Excellence and innovation in the service of health'
+                  ? "Excellence opérationnelle conforme à la norme ISO 15189 et innovation au service d'une santé durable, respectant les 6 domaines de qualité de service de l'OMS."
+                  : 'Operational excellence compliant with ISO 15189 standard and innovation for sustainable health, respecting the 6 WHO quality domains.'
                 }
               </p>
               <div className="flex flex-wrap gap-4">

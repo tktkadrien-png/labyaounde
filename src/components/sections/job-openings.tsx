@@ -36,7 +36,7 @@ const JobCard = ({
             {icon}
           </div>
           <div className="flex items-center gap-2 bg-white/90 px-3 py-1.5 rounded-full text-sm font-semibold text-[#0A065D]">
-            <Briefcase className="w-4 h-4 text-[#FE5000]" />
+            <Briefcase className="w-4 h-4 text-[#FF8500]" />
             {postCount} {t('positions')}
           </div>
         </div>
@@ -47,7 +47,7 @@ const JobCard = ({
         <ul className="mt-6 space-y-2.5">
           {features.map((feature, index) => (
             <li key={index} className="flex items-center text-white/90">
-              <Check className="w-5 h-5 text-[#FE5000] mr-2 flex-shrink-0" />
+              <Check className="w-5 h-5 text-[#FF8500] mr-2 flex-shrink-0" />
               <span>{feature}</span>
             </li>
           ))}
@@ -56,7 +56,7 @@ const JobCard = ({
       <div className="mt-auto pt-8">
         <a
           href={ctaLink}
-          className="w-full text-center bg-[#FE5000] text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-[#CC4000] transition-colors shadow-lg hover:shadow-xl hover:scale-105"
+          className="w-full text-center bg-[#FF8500] text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-[#E87000] transition-colors shadow-lg hover:shadow-xl hover:scale-105"
         >
           {ctaText}
           <ArrowRight className="w-5 h-5" />
@@ -73,7 +73,7 @@ export default function JobOpenings() {
   const jobCards = [
     {
       icon: <Users className="w-8 h-8 text-white" />,
-      iconBgColor: 'bg-gradient-to-br from-[#FE5000] to-[#CC4000]',
+      iconBgColor: 'bg-gradient-to-br from-[#FF8500] to-[#E87000]',
       postCount: 18,
       title: t('nurses'),
       description: 'Prélèvements, accueil patients, gestion administrative',
@@ -96,12 +96,12 @@ export default function JobOpenings() {
   return (
     <section ref={ref as React.RefObject<HTMLElement>} className="py-16">
       {/* ONE UNIFIED BLOCK with bleu roi background containing everything */}
-      <div className="relative overflow-hidden bg-[#0A065D] py-16 rounded-none md:rounded-3xl md:mx-6 lg:mx-auto lg:max-w-[1400px] shadow-2xl">
+      <div className="relative overflow-hidden bg-gradient-to-br from-[#0A065D] via-[#0D1B6D] to-[#0A065D] py-16 rounded-none md:rounded-3xl md:mx-6 lg:mx-auto lg:max-w-[1400px] shadow-2xl">
         {/* Decorative Background Elements */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 right-0 w-72 h-72 bg-white rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#0A065D] rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#FE5000] rounded-full blur-3xl opacity-10"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#1E3A8A] rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#FF8500] rounded-full blur-3xl opacity-10"></div>
         </div>
 
         {/* Content */}
@@ -138,7 +138,7 @@ export default function JobOpenings() {
           <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 md:p-12">
             <div className="text-center mb-10">
               <div className="inline-block mb-4">
-                <span className="bg-[#0A065D]/30 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-semibold border border-white/30">
+                <span className="bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-semibold border border-white/30">
                   Excellence Internationale
                 </span>
               </div>
@@ -152,7 +152,7 @@ export default function JobOpenings() {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
               <div className="bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl p-6 text-center group hover:bg-white/25 hover:scale-105 transition-all duration-300">
-                <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-[#FE5000] to-[#CC4000] rounded-xl mb-4 group-hover:rotate-6 transition-transform duration-300 shadow-lg">
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-[#FF8500] to-[#E87000] rounded-xl mb-4 group-hover:rotate-6 transition-transform duration-300 shadow-lg">
                   <Briefcase className="w-7 h-7 text-white" />
                 </div>
                 <p className="text-3xl md:text-4xl font-bold text-white mb-1 group-hover:scale-110 transition-transform duration-300">27+</p>
@@ -160,7 +160,7 @@ export default function JobOpenings() {
               </div>
 
               <div className="bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl p-6 text-center group hover:bg-white/25 hover:scale-105 transition-all duration-300">
-                <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-[#FE5000] to-[#CC4000] rounded-xl mb-4 group-hover:rotate-6 transition-transform duration-300 shadow-lg">
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-[#FF8500] to-[#E87000] rounded-xl mb-4 group-hover:rotate-6 transition-transform duration-300 shadow-lg">
                   <Clock className="w-7 h-7 text-white" />
                 </div>
                 <p className="text-3xl md:text-4xl font-bold text-white mb-1 group-hover:scale-110 transition-transform duration-300">24h</p>
@@ -181,7 +181,7 @@ export default function JobOpenings() {
           <div className="text-center mt-10">
             <a
               href="/carrieres/offres-emploi-stages"
-              className="bg-[#0A065D] hover:bg-[#003380] text-white font-bold py-4 px-10 rounded-xl inline-flex items-center justify-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 group"
+              className="bg-[#FF8500] hover:bg-[#E87000] text-white font-bold py-4 px-10 rounded-xl inline-flex items-center justify-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 group"
             >
               {t('viewAllOffers')}
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
