@@ -119,12 +119,6 @@ const MainNavigation = () => {
 
   const servicesMenu: MegaMenuColumn[] = [
     {
-      title: language === 'fr' ? "Notre Engagement" : 'Our Commitment',
-      links: [
-        { href: "/notre-engagement", label: language === 'fr' ? 'Notre Engagement' : 'Our Commitment' },
-      ],
-    },
-    {
       title: language === 'fr' ? "Domaines d'expertise" : 'Areas of Expertise',
       links: [
         { href: "/biochimie-clinique", label: language === 'fr' ? 'Biochimie Clinique' : 'Clinical Biochemistry' },
@@ -142,9 +136,10 @@ const MainNavigation = () => {
   const aboutMenu = {
     columns: [
       {
-        span: 6,
+        span: 4,
         title: t('whoWeAre'),
         links: [
+          { href: "/notre-engagement", label: language === 'fr' ? 'Notre Engagement' : 'Our Commitment' },
           { href: "/notre-vision", label: t('ourVision') },
           { href: "/nos-standards", label: t('ourStandards') },
           { href: "/nos-strategies", label: language === 'fr' ? 'Nos Stratégies' : 'Our Strategies' },
@@ -152,12 +147,23 @@ const MainNavigation = () => {
         ]
       },
       {
-        span: 6,
+        span: 4,
         title: language === 'fr' ? 'Organisation' : 'Organization',
         links: [
           { href: "/organigramme", label: t('organizationalChart') },
           { href: "/notre-equipe", label: language === 'fr' ? 'Notre Équipe' : 'Our Team' },
           { href: "/nos-valeurs", label: language === 'fr' ? 'Nos Valeurs' : 'Our Values' },
+        ]
+      },
+      {
+        span: 4,
+        title: language === 'fr' ? 'Nos Services' : 'Our Services',
+        links: [
+          { href: "/biochimie-clinique", label: language === 'fr' ? 'Biochimie Clinique' : 'Clinical Biochemistry' },
+          { href: "/hematologie", label: language === 'fr' ? 'Hématologie' : 'Hematology' },
+          { href: "/immunologie", label: language === 'fr' ? 'Immunologie' : 'Immunology' },
+          { href: "/microbiologie", label: language === 'fr' ? 'Microbiologie' : 'Microbiology' },
+          { href: "/biologie-moleculaire", label: language === 'fr' ? 'Biologie Moléculaire' : 'Molecular Biology' },
         ]
       },
     ]
@@ -195,7 +201,7 @@ const MainNavigation = () => {
             <nav className="hidden items-center gap-x-1 xl:flex">
               <ul className="flex list-none gap-[24px] m-0">
                 <MegaMenuItemPro trigger={t('aboutUs')} professionalsMenu={aboutMenu} isSticky={isSticky} />
-                <MegaMenuItem trigger={t('ourServices')} columns={servicesMenu} itemsInRow={2} isSticky={isSticky} />
+                <MegaMenuItem trigger={t('ourServices')} columns={servicesMenu} itemsInRow={1} isSticky={isSticky} />
                 <MegaMenuItemPro trigger={language === 'fr' ? 'Assurance Qualité' : 'Quality Assurance'} professionalsMenu={professionalsMenu} isSticky={isSticky} />
                 <MegaMenuItem trigger={t('patients')} columns={patientsMenu} itemsInRow={1} isSticky={isSticky} />
                 <li className="relative">
