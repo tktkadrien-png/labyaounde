@@ -1,5 +1,7 @@
 "use client";
 
+import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import TopNavigationBar from "@/components/sections/top-navigation-bar";
 import MainNavigation from "@/components/sections/main-navigation";
@@ -7,8 +9,26 @@ import Footer from "@/components/sections/footer";
 import { Dna, Shield, FlaskConical, Lock, Award, Microscope, Activity, Fingerprint, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/lib/contents/LanguageContext";
 
+const heroImages = [
+  "/IMAGE/indra-projects-69mcrR37vZU-unsplash.jpg",
+  "/IMAGE/louis-reed-pwcKF7L4-no-unsplash (2).jpg",
+  "/IMAGE/marco-j-haenssgen-7mlPdAFXyls-unsplash.jpg",
+  "/IMAGE/Medical & Health Education Website Template_ Professional Website Design.jpg",
+  "/IMAGE/mezidi-zineb-P6ayjlwUe7c-unsplash.jpg",
+];
+
 export default function ExpertiseGenetiquePage() {
   const { language } = useLanguage();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = useCallback(() => {
+    setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(nextImage, 5000);
+    return () => clearInterval(interval);
+  }, [nextImage]);
 
   return (
     <>
@@ -16,12 +36,42 @@ export default function ExpertiseGenetiquePage() {
       <MainNavigation />
 
       <main className="min-h-screen bg-white">
-        {/* Hero Section */}
-        <section className="relative h-[400px] md:h-[500px] overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0088FF] via-[#0077E6] to-[#0066CC]"></div>
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-20 left-10 w-[400px] h-[400px] bg-white/10 rounded-full blur-[100px]"></div>
-            <div className="absolute bottom-10 right-10 w-[300px] h-[300px] bg-white/10 rounded-full blur-[80px]"></div>
+        {/* Hero Section - Image Slider */}
+        <section className="relative h-[400px] md:h-[500px] lg:h-[550px] overflow-hidden">
+          <div className="absolute inset-0">
+            {heroImages.map((img, index) => (
+              <div
+                key={index}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  index === currentImageIndex ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <Image
+                  src={img}
+                  alt={`Expertise Génétique - ${index + 1}`}
+                  fill
+                  className="object-cover"
+                  priority={index === 0}
+                />
+              </div>
+            ))}
+            <div className="absolute inset-0 bg-black/40"></div>
+          </div>
+
+          {/* Slide Indicators */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2.5">
+            {heroImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  index === currentImageIndex
+                    ? "bg-[#FF8500] w-8"
+                    : "bg-white/50 w-2.5 hover:bg-white/75"
+                }`}
+                aria-label={`Image ${index + 1}`}
+              />
+            ))}
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
@@ -38,12 +88,12 @@ export default function ExpertiseGenetiquePage() {
                 <span className="text-white text-sm">{language === "fr" ? "Expertise Génétique" : "Genetic Expertise"}</span>
               </div>
               <div className="flex items-center gap-3 mb-6">
-                <Dna className="w-12 h-12 text-[#FF8500]" />
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+                <Dna className="w-12 h-12 text-[#FF8500] drop-shadow-lg" />
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg">
                   {language === "fr" ? "Expertise Génétique & Moléculaire" : "Genetic & Molecular Expertise"}
                 </h1>
               </div>
-              <p className="text-xl text-white/90 mb-6">
+              <p className="text-xl text-white/90 mb-6 drop-shadow-md">
                 {language === "fr"
                   ? "L'excellence technologique pour une médecine personnalisée."
                   : "Technological excellence for personalized medicine."
