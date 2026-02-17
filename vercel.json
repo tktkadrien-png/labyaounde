@@ -1,6 +1,5 @@
 {
   "framework": "nextjs",
   "buildCommand": "next build",
-  "outputDirectory": ".next",
-  "alias": ["labyaounde.vercel.app"]
+  "outputDirectory": ".next"
 }
