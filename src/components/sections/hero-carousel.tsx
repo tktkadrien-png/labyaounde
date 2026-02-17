@@ -132,7 +132,7 @@ export default function HeroCarousel() {
                 <div className="absolute inset-0 flex items-center">
                   <div className="container px-4 sm:px-6 md:px-8">
                     <div className="w-full sm:w-4/5 md:w-3/5 lg:w-1/2 xl:w-2/5">
-                      <div className="w-12 h-1 sm:w-16 bg-[#FE5000] mb-4 sm:mb-6 rounded-full" />
+                      <div className="w-12 h-1 sm:w-16 bg-[#FF8500] mb-4 sm:mb-6 rounded-full" />
 
                       <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-white drop-shadow-lg">
                         {slide.title}
@@ -147,7 +147,7 @@ export default function HeroCarousel() {
                       <Link href={slide.buttonLink} passHref>
                         <Button
                           asChild
-                          className="mt-5 sm:mt-8 bg-[#00CED1] hover:bg-[#0080FF] text-white border-none rounded-lg px-5 py-5 sm:px-8 sm:py-6 text-sm sm:text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group min-h-[44px]"
+                          className="mt-5 sm:mt-8 bg-[#FF8500] hover:bg-[#0088FF] text-white border-none rounded-lg px-5 py-5 sm:px-8 sm:py-6 text-sm sm:text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group min-h-[44px]"
                         >
                           <a>
                             {slide.buttonText}

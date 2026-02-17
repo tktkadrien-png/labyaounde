@@ -16,7 +16,7 @@ export default function NotreVisionPage() {
       <TopNavigationBar />
       <MainNavigation />
 
-      <main className="min-h-screen bg-gradient-to-b from-white to-[#F0F7FF]">
+      <main className="min-h-screen bg-gradient-to-b from-white to-[#77B5FE]/20">
         {/* Hero Section */}
         <section className="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
           <div className="absolute inset-0">
@@ -27,7 +27,7 @@ export default function NotreVisionPage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#1E40AF]/90 via-[#2563EB]/85 to-[#3B82F6]/80"></div>
+            <div className="absolute inset-0 bg-black/30"></div>
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">

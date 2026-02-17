@@ -18,10 +18,27 @@ CREATE TABLE IF NOT EXISTS public.reviews (
     email TEXT NOT NULL,
     rating INTEGER NOT NULL CHECK (rating >= 1 AND rating <= 5),
     comment TEXT NOT NULL,
+    service_type TEXT DEFAULT 'autre',
+    visit_date DATE,
+    would_recommend BOOLEAN DEFAULT true,
     status TEXT DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected')),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW()),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW())
 );
+
+-- Migration: Add new columns if they don't exist (for existing tables)
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'reviews' AND column_name = 'service_type') THEN
+        ALTER TABLE public.reviews ADD COLUMN service_type TEXT DEFAULT 'autre';
+    END IF;
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'reviews' AND column_name = 'visit_date') THEN
+        ALTER TABLE public.reviews ADD COLUMN visit_date DATE;
+    END IF;
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'reviews' AND column_name = 'would_recommend') THEN
+        ALTER TABLE public.reviews ADD COLUMN would_recommend BOOLEAN DEFAULT true;
+    END IF;
+END $$;
 
 -- Create index for faster queries
 CREATE INDEX IF NOT EXISTS reviews_user_id_idx ON public.reviews(user_id);

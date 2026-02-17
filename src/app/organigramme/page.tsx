@@ -18,11 +18,18 @@ export default function OrganigrammePage() {
 
       <main className="min-h-screen bg-gradient-to-b from-[#F0F7FF] to-white">
         {/* Hero Section */}
-        <section className="relative h-[300px] md:h-[400px] overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0088FF] via-[#0077E6] to-[#0066CC]"></div>
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-20 left-10 w-[400px] h-[400px] bg-white/10 rounded-full blur-[100px]"></div>
-            <div className="absolute bottom-10 right-10 w-[300px] h-[300px] bg-white/10 rounded-full blur-[80px]"></div>
+        <section className="relative h-[400px] md:h-[500px] lg:h-[550px] overflow-hidden">
+          <div className="absolute inset-0">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            >
+              <source src="/lab-video-3.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-black/40"></div>
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
@@ -39,12 +46,12 @@ export default function OrganigrammePage() {
                 <span className="text-white text-sm">{language === "fr" ? "Organigramme" : "Organization Chart"}</span>
               </div>
               <div className="flex items-center gap-4 mb-6">
-                <Building2 className="w-12 h-12 text-[#FF8500]" />
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+                <Building2 className="w-12 h-12 text-[#FF8500] drop-shadow-lg" />
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg">
                   {language === "fr" ? "Notre Organigramme" : "Our Organization Chart"}
                 </h1>
               </div>
-              <p className="text-xl text-white/90 mb-6">
+              <p className="text-xl text-white/90 mb-6 drop-shadow-md">
                 {language === "fr"
                   ? "Structure organisationnelle du Laboratoire d'Analyses Biologiques de Yaoundé"
                   : "Organizational structure of the Yaoundé Biological Analysis Laboratory"

@@ -155,17 +155,6 @@ const MainNavigation = () => {
           { href: "/nos-valeurs", label: language === 'fr' ? 'Nos Valeurs' : 'Our Values' },
         ]
       },
-      {
-        span: 4,
-        title: language === 'fr' ? 'Nos Services' : 'Our Services',
-        links: [
-          { href: "/biochimie-clinique", label: language === 'fr' ? 'Biochimie Clinique' : 'Clinical Biochemistry' },
-          { href: "/hematologie", label: language === 'fr' ? 'Hématologie' : 'Hematology' },
-          { href: "/immunologie", label: language === 'fr' ? 'Immunologie' : 'Immunology' },
-          { href: "/microbiologie", label: language === 'fr' ? 'Microbiologie' : 'Microbiology' },
-          { href: "/biologie-moleculaire", label: language === 'fr' ? 'Biologie Moléculaire' : 'Molecular Biology' },
-        ]
-      },
     ]
   };
 

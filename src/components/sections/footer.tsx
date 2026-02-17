@@ -146,7 +146,7 @@ const Footer = () => {
     <>
       <footer className="relative overflow-hidden" style={{ fontFamily: 'Roboto, sans-serif' }}>
         {/* Premium Dark Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0A1628] via-[#0D2847] to-[#0A1628]"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#79F8F8] via-[#2C75FF] to-[#77B5FE]"></div>
 
         {/* Subtle animated gradient overlay */}
         <div className="absolute inset-0 opacity-30">

@@ -120,7 +120,7 @@ We are committed to meeting your expectations with rigor and professionalism, an
               }`}
             >
               {/* Title - White text */}
-              <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 tracking-tight">
+              <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold text-[#1034A6] mb-4 tracking-tight">
                 {currentContent.title}
               </h1>
 
@@ -167,7 +167,7 @@ We are committed to meeting your expectations with rigor and professionalism, an
               return (
                 <div
                   key={index}
-                  className={`text-center p-4 sm:p-6 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group border border-gray-100 ${
+                  className={`text-center p-4 sm:p-6 rounded-2xl bg-[#73C2FB] shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group border border-gray-100 ${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                   }`}
                   style={{ transitionDelay: `${index * 100}ms` }}

@@ -1,31 +1,86 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { useScrollAnimation } from "@/lib/useScrollAnimation";
 import { useLanguage } from "@/lib/contents/LanguageContext";
 import { Dna, Shield, FlaskConical, Lock, Award, Microscope, Activity, Fingerprint } from "lucide-react";
 
+const heroImages = [
+  "/IMAGE/indra-projects-69mcrR37vZU-unsplash.jpg",
+  "/IMAGE/louis-reed-pwcKF7L4-no-unsplash (2).jpg",
+  "/IMAGE/marco-j-haenssgen-7mlPdAFXyls-unsplash.jpg",
+  "/IMAGE/Medical & Health Education Website Template_ Professional Website Design.jpg",
+  "/IMAGE/mezidi-zineb-P6ayjlwUe7c-unsplash.jpg",
+];
+
 const ExpertiseGenetique = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
   const { language } = useLanguage();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = useCallback(() => {
+    setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(nextImage, 5000);
+    return () => clearInterval(interval);
+  }, [nextImage]);
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} className="py-16 md:py-24 bg-white">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={ref as React.RefObject<HTMLElement>} className="relative py-16 md:py-24 overflow-hidden">
+      {/* Image Slider Background */}
+      <div className="absolute inset-0">
+        {heroImages.map((img, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === currentImageIndex ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <Image
+              src={img}
+              alt={`Expertise Génétique - ${index + 1}`}
+              fill
+              className="object-cover"
+              priority={index === 0}
+            />
+          </div>
+        ))}
+        <div className="absolute inset-0 bg-black/40"></div>
+      </div>
+
+      {/* Slide Indicators */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2.5">
+        {heroImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentImageIndex(index)}
+            className={`h-2.5 rounded-full transition-all duration-300 ${
+              index === currentImageIndex
+                ? "bg-[#FF8500] w-8"
+                : "bg-white/50 w-2.5 hover:bg-white/75"
+            }`}
+            aria-label={`Image ${index + 1}`}
+          />
+        ))}
+      </div>
+
+      <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
         <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <div className="inline-flex items-center gap-2 bg-[#0A065D]/10 px-5 py-2.5 rounded-full mb-6 border border-[#0A065D]/20">
-            <Dna className="w-5 h-5 text-[#0A065D]" />
-            <span className="text-[#0A065D] font-bold text-sm tracking-wide">
+          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-5 py-2.5 rounded-full mb-6 border border-white/30">
+            <Dna className="w-5 h-5 text-white" />
+            <span className="text-white font-bold text-sm tracking-wide">
               {language === "fr" ? "NOS SERVICES" : "OUR SERVICES"}
             </span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-black text-[#0A065D] mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-4 tracking-tight drop-shadow-lg">
             {language === "fr" ? "Expertise Génétique & Moléculaire" : "Genetic & Molecular Expertise"}
           </h2>
-          <p className="text-lg md:text-xl text-[#0A065D]/70 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto drop-shadow-md">
             {language === "fr"
               ? "L'excellence technologique pour une médecine personnalisée."
               : "Technological excellence for personalized medicine."

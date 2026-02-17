@@ -62,7 +62,7 @@ export default function NosStandardsPage() {
       <TopNavigationBar />
       <MainNavigation />
 
-      <main className="min-h-screen bg-gradient-to-b from-white to-[#F0F7FF]">
+      <main className="min-h-screen bg-gradient-to-b from-white to-[#77B5FE]/20">
         {/* Hero Section */}
         <section className="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
           <div className="absolute inset-0">
@@ -247,7 +247,7 @@ export default function NosStandardsPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#F0F7FF] to-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-6">
               {language === 'fr'

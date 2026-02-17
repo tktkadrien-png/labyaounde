@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import TopNavigationBar from "@/components/sections/top-navigation-bar";
@@ -8,8 +9,27 @@ import Footer from "@/components/sections/footer";
 import { Shield, Target, Users, Zap, Leaf, Scale, Heart, Clock, ChevronRight, Activity } from "lucide-react";
 import { useLanguage } from "@/lib/contents/LanguageContext";
 
+const heroImages = [
+  "/IMAGE/adam-bezer-k6HAXK61FWw-unsplash.jpg",
+  "/IMAGE/adam-bezer-oJnENqfM_H0-unsplash.jpg",
+  "/IMAGE/akram-huseyn-fKC9eWRnlGY-unsplash (2).jpg",
+  "/IMAGE/cdc-CfS6A4U5g8M-unsplash.jpg",
+  "/IMAGE/cdc-wDxFn_dBEC0-unsplash (2).jpg",
+  "/IMAGE/4fb4a527-1136-4d24-85fc-46930507195f.jpg",
+];
+
 export default function NotreEngagementPage() {
   const { language } = useLanguage();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = useCallback(() => {
+    setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(nextImage, 5000);
+    return () => clearInterval(interval);
+  }, [nextImage]);
 
   const engagementCards = [
     {
@@ -103,15 +123,46 @@ export default function NotreEngagementPage() {
       <MainNavigation />
 
       <main className="min-h-screen bg-gradient-to-b from-[#F0F7FF] to-white">
-        {/* Hero Section */}
-        <section className="relative h-[400px] md:h-[500px] overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0088FF] via-[#0077E6] to-[#0066CC]"></div>
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-20 left-10 w-[400px] h-[400px] bg-white/10 rounded-full blur-[100px]"></div>
-            <div className="absolute bottom-10 right-10 w-[300px] h-[300px] bg-white/10 rounded-full blur-[80px]"></div>
+        {/* Hero Section with Image Slider */}
+        <section className="relative h-[450px] md:h-[550px] lg:h-[600px] overflow-hidden">
+          {/* Image Slider Background */}
+          <div className="absolute inset-0">
+            {heroImages.map((img, index) => (
+              <div
+                key={index}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  index === currentImageIndex ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <Image
+                  src={img}
+                  alt={`Notre Engagement - ${index + 1}`}
+                  fill
+                  className="object-cover"
+                  priority={index === 0}
+                />
+              </div>
+            ))}
+            <div className="absolute inset-0 bg-black/30"></div>
           </div>
 
-          <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+          {/* Slide Indicators */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2.5">
+            {heroImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  index === currentImageIndex
+                    ? "bg-[#FF8500] w-8"
+                    : "bg-white/50 w-2.5 hover:bg-white/75"
+                }`}
+                aria-label={`Image ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
             <div className="max-w-3xl">
               <div className="flex items-center gap-2 mb-4">
                 <Link href="/" className="text-white/80 hover:text-white text-sm transition-colors">
@@ -120,10 +171,10 @@ export default function NotreEngagementPage() {
                 <ChevronRight className="w-4 h-4 text-white/60" />
                 <span className="text-white text-sm">{language === "fr" ? "Notre Engagement" : "Our Commitment"}</span>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg">
                 {language === "fr" ? "Notre Engagement" : "Our Commitment"}
               </h1>
-              <p className="text-xl text-white/90 mb-6">
+              <p className="text-xl text-white/90 mb-6 drop-shadow-md">
                 {language === "fr"
                   ? "Une expertise certifiée ISO 15189, alliée aux normes de l'OMS."
                   : "ISO 15189 certified expertise, combined with WHO standards."

@@ -47,7 +47,7 @@ const FloatingReviewWidget = () => {
 
   return (
     <div className="fixed bottom-8 right-8 z-50 animate-slide-up">
-      <div className="bg-white rounded-2xl shadow-2xl border-2 border-[#FE5000]/20 p-5 max-w-sm relative overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-2xl border-2 border-[#FF8500]/20 p-5 max-w-sm relative overflow-hidden">
         {/* Close button */}
         <button
           onClick={handleClose}
@@ -58,7 +58,7 @@ const FloatingReviewWidget = () => {
         </button>
 
         {/* Decorative gradient */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FE5000] to-[#FE5000]/100"></div>
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FF8500] to-[#FF8500]/100"></div>
 
         {/* Content */}
         <div className="text-center pt-2">
@@ -67,7 +67,7 @@ const FloatingReviewWidget = () => {
             {[1, 2, 3, 4, 5].map((star) => (
               <Star
                 key={star}
-                className="w-6 h-6 text-[#FE5000] fill-[#FE5000] animate-pulse"
+                className="w-6 h-6 text-[#FF8500] fill-[#FF8500] animate-pulse"
                 style={{ animationDelay: `${star * 100}ms` }}
               />
             ))}
@@ -86,8 +86,8 @@ const FloatingReviewWidget = () => {
           {/* CTA Button */}
           <Link
             href="/laisser-un-avis"
-            className="inline-block w-full px-6 py-3 bg-gradient-to-r from-[#FE5000] to-[#CC4000] text-white font-semibold rounded-lg
-              hover:from-[#CC4000] hover:to-[#FE5000] transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+            className="inline-block w-full px-6 py-3 bg-gradient-to-r from-[#FF8500] to-[#E87000] text-white font-semibold rounded-lg
+              hover:from-[#E87000] hover:to-[#FF8500] transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
           >
             {currentContent.button}
           </Link>
