@@ -180,13 +180,9 @@ export default function AdminDashboard() {
   const currentContent = content[language];
 
   useEffect(() => {
-    const authStatus = sessionStorage.getItem('adminAuthenticated');
-    if (authStatus === 'true') {
-      setIsAuthenticated(true);
-      fetchAllData();
-    } else {
-      setLoading(false);
-    }
+    setIsAuthenticated(true);
+    sessionStorage.setItem('adminAuthenticated', 'true');
+    fetchAllData();
   }, []);
 
   useEffect(() => {

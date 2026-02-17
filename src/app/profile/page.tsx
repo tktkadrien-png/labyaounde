@@ -68,21 +68,18 @@ export default function ProfilePage() {
     try {
       const { data: { user } } = await supabase.auth.getUser();
 
-      if (!user) {
-        router.push("/login");
-        return;
+      if (user) {
+        setUser(user);
+        setEmail(user.email || "");
+        setFullName(user.user_metadata?.full_name || "");
+        setPhone(user.user_metadata?.phone || "");
+        setAvatarUrl(user.user_metadata?.avatar_url || "");
       }
-
-      setUser(user);
-      setEmail(user.email || "");
-      setFullName(user.user_metadata?.full_name || "");
-      setPhone(user.user_metadata?.phone || "");
-      setAvatarUrl(user.user_metadata?.avatar_url || "");
 
       setLoading(false);
     } catch (error) {
       console.error("Auth error:", error);
-      router.push("/login");
+      setLoading(false);
     }
   };
 

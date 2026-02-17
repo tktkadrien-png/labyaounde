@@ -75,16 +75,15 @@ export default function ResultsPage() {
     try {
       const { data: { user } } = await supabase.auth.getUser();
 
-      if (!user) {
-        router.push("/login");
-        return;
+      if (user) {
+        setUser(user);
+        await fetchResults(user.id);
+      } else {
+        setLoading(false);
       }
-
-      setUser(user);
-      await fetchResults(user.id);
     } catch (error) {
       console.error("Auth error:", error);
-      router.push("/login");
+      setLoading(false);
     }
   };
 

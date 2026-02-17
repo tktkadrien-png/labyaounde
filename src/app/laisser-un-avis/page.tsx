@@ -44,9 +44,7 @@ export default function ReviewPage() {
     // Check if user is authenticated
     const checkAuth = async () => {
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) {
-        router.push("/login");
-      } else {
+      if (user) {
         setUser(user);
         setEmail(user.email || "");
         setName(user.user_metadata?.full_name || "");
@@ -256,22 +254,6 @@ export default function ReviewPage() {
     );
   }
 
-  // Show loading while checking auth
-  if (!user) {
-    return (
-      <>
-        <TopNavigationBar />
-        <MainNavigation />
-        <main className="min-h-screen bg-gradient-to-br from-gray-50 to-white flex items-center justify-center">
-          <div className="text-center">
-            <div className="w-12 h-12 border-4 border-[#0A065D] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-            <p className="text-gray-600">{language === 'fr' ? 'Chargement...' : 'Loading...'}</p>
-          </div>
-        </main>
-        <Footer />
-      </>
-    );
-  }
 
   return (
     <>
