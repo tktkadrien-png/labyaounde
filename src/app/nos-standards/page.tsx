@@ -73,7 +73,7 @@ export default function NosStandardsPage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#1E40AF]/95 via-[#1E40AF]/85 to-[#1E40AF]/70"></div>
+            <div className="absolute inset-0 bg-black/30"></div>
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
@@ -90,10 +90,10 @@ export default function NosStandardsPage() {
                 <span className="text-white text-sm sm:text-base">{language === 'fr' ? 'Nos Standards' : 'Our Standards'}</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight drop-shadow-lg">
                 {language === 'fr' ? 'Nos Standards' : 'Our Standards'}
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-6 sm:mb-8 leading-relaxed">
+              <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-6 sm:mb-8 leading-relaxed drop-shadow-md">
                 {language === 'fr'
                   ? "Conformité aux normes internationales les plus exigeantes"
                   : 'Compliance with the most demanding international standards'
