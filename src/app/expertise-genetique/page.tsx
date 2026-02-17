@@ -13,7 +13,6 @@ const heroImages = [
   "/IMAGE/indra-projects-69mcrR37vZU-unsplash.jpg",
   "/IMAGE/louis-reed-pwcKF7L4-no-unsplash (2).jpg",
   "/IMAGE/marco-j-haenssgen-7mlPdAFXyls-unsplash.jpg",
-  "/IMAGE/Medical & Health Education Website Template_ Professional Website Design.jpg",
   "/IMAGE/mezidi-zineb-P6ayjlwUe7c-unsplash.jpg",
 ];
 
