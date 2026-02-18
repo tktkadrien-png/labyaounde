@@ -276,21 +276,21 @@ const MainNavigation = () => {
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
           <div className={cn(
             "flex items-center justify-between transition-all duration-300",
-            isScrolled ? "h-[80px]" : "h-[100px]"
+            isScrolled ? "h-[90px]" : "h-[120px]"
           )}>
 
             {/* ─── Logo ─── */}
             <Link href="/" aria-label="Lab Yaoundé Home" className="flex items-center flex-shrink-0">
               <motion.div
-                animate={{ height: isScrolled ? 64 : 90 }}
+                animate={{ height: isScrolled ? 75 : 110 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 className="relative"
               >
                 <Image
                   src="/images/images.png"
                   alt="Lab Yaoundé Logo"
-                  width={280}
-                  height={110}
+                  width={340}
+                  height={130}
                   className="h-full w-auto object-contain"
                   priority
                 />
