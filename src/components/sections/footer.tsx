@@ -146,7 +146,7 @@ const Footer = () => {
     <>
       <footer className="relative overflow-hidden" style={{ fontFamily: 'Roboto, sans-serif' }}>
         {/* Premium Dark Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#79F8F8] via-[#2C75FF] to-[#77B5FE]"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F9DE8] via-[#1E7FCB] to-[#1E7FCB]"></div>
 
         {/* Subtle animated gradient overlay */}
         <div className="absolute inset-0 opacity-30">
@@ -376,8 +376,15 @@ const Footer = () => {
                   ))}
                 </div>
               </div>
+              {/* Designer signature */}
+              <div className="mt-4 pt-3 border-t border-white/[0.04] text-center">
+                <small className="text-[11px] text-white/25 tracking-wide">
+                  Designed by Zang Mekinda Adrien
+                </small>
+              </div>
             </div>
           </div>
+          {/* Website designed by Zang Mekinda Adrien | 2026 */}
         </div>
       </footer>
 

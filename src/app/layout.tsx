@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     "Lab Yaoundé",
     "analyses biologiques Cameroun",
   ],
-  authors: [{ name: "Lab Yaoundé" }],
+  authors: [{ name: "Lab Yaoundé" }, { name: "Zang Mekinda Adrien" }],
   creator: "Lab Yaoundé",
   publisher: "Lab Yaoundé",
   formatDetection: {
@@ -92,6 +92,9 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
+        <meta name="author" content="Zang Mekinda Adrien" />
+        <meta name="designer" content="Zang Mekinda Adrien" />
+        {/* Website designed by Zang Mekinda Adrien | 2026 */}
       </head>
       <body className="antialiased">
         <LocalBusinessSchema />
