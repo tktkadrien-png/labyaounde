@@ -1,73 +1,147 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Languages, LogIn, UserPlus, User, LogOut, ChevronDown, ChevronRight } from "lucide-react";
-
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+  Menu, X, Languages, LogIn, UserPlus, User, LogOut,
+  ChevronDown, ChevronRight, Search, ArrowRight, Globe,
+  FlaskConical, Shield, Heart, Briefcase, Dna, Fingerprint,
+  Microscope, FileText, Bug, Stethoscope, BookOpen, ClipboardCheck,
+  HelpCircle, Calendar, Award, Users, Eye, Target, Building2
+} from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetFooter } from "@/components/ui/sheet";
 import { useLanguage } from "@/lib/contents/LanguageContext";
 import { supabase } from "@/lib/supabase";
 
+// ─── Types ───────────────────────────────────────────────────────────
 interface NavLink {
   href: string;
   label: string;
+  icon?: any;
+  description?: string;
 }
 
-interface MegaMenuColumn {
+interface MenuColumn {
   title: string;
   links: NavLink[];
 }
 
+interface MenuConfig {
+  id: string;
+  label: string;
+  columns: MenuColumn[];
+  width?: string;
+  footer?: { label: string; href: string };
+}
+
+// ─── Animation Configs ───────────────────────────────────────────────
+const megaMenuVariants = {
+  hidden: { opacity: 0, y: 8, scale: 0.98 },
+  visible: { opacity: 1, y: 0, scale: 1 },
+  exit: { opacity: 0, y: 4, scale: 0.99 },
+};
+
+const megaMenuTransition = {
+  duration: 0.2,
+  ease: [0.25, 0.46, 0.45, 0.94],
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.03 } },
+};
+
+const staggerChild = {
+  hidden: { opacity: 0, x: -8 },
+  visible: { opacity: 1, x: 0 },
+};
+
+const mobileStagger = {
+  closed: {},
+  open: { transition: { staggerChildren: 0.06, delayChildren: 0.1 } },
+};
+
+const mobileChild = {
+  closed: { opacity: 0, x: 20 },
+  open: { opacity: 1, x: 0 },
+};
+
+// ─── Main Component ──────────────────────────────────────────────────
 const MainNavigation = () => {
-  const [isSticky, setIsSticky] = useState(false);
+  const pathname = usePathname();
+  const navRef = useRef<HTMLElement>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const { language, setLanguage, t } = useLanguage();
+
+  // State
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [user, setUser] = useState<any>(null);
   const [showUserMenu, setShowUserMenu] = useState(false);
-  const { language, setLanguage, t } = useLanguage();
+  const userMenuRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 50);
-    };
+  // Scroll detection
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 20);
+  });
 
-    window.addEventListener("scroll", handleScroll);
-    document.body.style.overflowX = 'hidden';
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      document.body.style.overflowX = '';
-    };
-  }, []);
-
+  // Auth
   useEffect(() => {
     const checkUser = async () => {
       const { data: { user } } = await supabase.auth.getUser();
       setUser(user);
     };
-
     checkUser();
-
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
     });
-
     return () => subscription.unsubscribe();
   }, []);
 
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setActiveMenu(null);
+        setShowUserMenu(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
-  const toggleLanguage = () => {
-    const newLang = language === "fr" ? "en" : "fr";
-    setLanguage(newLang);
-  };
+  // Click outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setActiveMenu(null);
+      }
+      if (userMenuRef.current && !userMenuRef.current.contains(e.target as Node)) {
+        setShowUserMenu(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Hover intent
+  const handleMenuEnter = useCallback((menuId: string) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => setActiveMenu(menuId), 80);
+  }, []);
+
+  const handleMenuLeave = useCallback(() => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => setActiveMenu(null), 250);
+  }, []);
+
+  const toggleLanguage = () => setLanguage(language === "fr" ? "en" : "fr");
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -75,512 +149,602 @@ const MainNavigation = () => {
     setShowUserMenu(false);
   };
 
-  const patientsMenu: MegaMenuColumn[] = [
-    {
-      title: language === 'fr' ? 'Prélèvement' : 'Sampling',
-      links: [
-        { href: "/dois-je-prendre-rdv", label: t('needAppointment') },
-        { href: "/conseils-et-informations", label: t('adviceInfo') },
-        { href: "/coming-soon", label: t('necessaryDocs') },
-        { href: "/questions-frequentes", label: t('faq') },
-      ],
-    },
-  ];
+  // Active page detection
+  const isActive = (href: string) => pathname === href || pathname?.startsWith(href + "/");
+  const isMenuActive = (config: MenuConfig) =>
+    config.columns.some(col => col.links.some(link => isActive(link.href)));
 
-  const professionalsMenu = {
+  // ─── Menu Data ───────────────────────────────────────────────────
+  const aboutMenu: MenuConfig = {
+    id: "about",
+    label: t("aboutUs"),
+    width: "w-[520px]",
     columns: [
       {
-        span: 4,
-        title: language === 'fr' ? 'Politiques et Chartes' : 'Policies & Charters',
+        title: t("whoWeAre"),
         links: [
-          { href: "/politique-de-qualite", label: language === 'fr' ? "Politique de Qualité" : 'Quality Policy' },
-          { href: "/charte-de-qualite", label: language === 'fr' ? 'Charte de Qualité' : 'Quality Charter' },
-          { href: "/coming-soon", label: language === 'fr' ? "Politique d'Hygiène et Sécurité" : 'Hygiene & Safety Policy' }
-        ]
+          { href: "/notre-engagement", label: language === "fr" ? "Notre Engagement" : "Our Commitment", icon: Award },
+          { href: "/notre-vision", label: t("ourVision"), icon: Eye },
+          { href: "/nos-standards", label: t("ourStandards"), icon: Target },
+          { href: "/nos-strategies", label: language === "fr" ? "Nos Stratégies" : "Our Strategies", icon: Target },
+          { href: "/nos-objectifs", label: language === "fr" ? "Nos Objectifs" : "Our Objectives", icon: Target },
+        ],
       },
       {
-        span: 4,
-        title: language === 'fr' ? 'Gestion et Indicateurs' : 'Management & Indicators',
+        title: language === "fr" ? "Organisation" : "Organization",
         links: [
-          { href: "/coming-soon", label: language === 'fr' ? 'Gestion des Risques' : 'Risk Management' },
-          { href: "/reclamations-et-plaintes", label: language === 'fr' ? 'Réclamations et Plaintes' : 'Complaints & Claims' },
-          { href: "/coming-soon", label: language === 'fr' ? 'Indicateurs de Qualité' : 'Quality Indicators' }
-        ]
+          { href: "/organigramme", label: t("organizationalChart"), icon: Building2 },
+          { href: "/notre-equipe", label: language === "fr" ? "Notre Équipe" : "Our Team", icon: Users },
+          { href: "/nos-valeurs", label: language === "fr" ? "Nos Valeurs" : "Our Values", icon: Heart },
+        ],
       },
-      {
-        span: 4,
-        title: language === 'fr' ? 'Contrôle Qualité' : 'Quality Control',
-        links: [
-          { href: "/controle-qualite", label: language === 'fr' ? 'Contrôle Qualité Interne et Externe' : 'Internal & External Quality Control' }
-        ]
-      },
-    ]
+    ],
   };
 
-  const servicesMenu: MegaMenuColumn[] = [
-    {
-      title: language === 'fr' ? "Domaines d'expertise" : 'Areas of Expertise',
-      links: [
-        { href: "/biochimie-clinique", label: language === 'fr' ? 'Biochimie Clinique' : 'Clinical Biochemistry' },
-        { href: "/hematologie", label: language === 'fr' ? 'Hématologie' : 'Hematology' },
-        { href: "/immunologie", label: language === 'fr' ? 'Immunologie' : 'Immunology' },
-        { href: "/microbiologie", label: language === 'fr' ? 'Microbiologie' : 'Microbiology' },
-        { href: "/biologie-moleculaire", label: language === 'fr' ? 'Biologie Moléculaire' : 'Molecular Biology' },
-        { href: "/empreintes-genetiques", label: language === 'fr' ? 'Empreintes Génétiques' : 'Genetic Fingerprinting' },
-        { href: "/expertise-genetique", label: language === 'fr' ? 'Expertise Génétique & Moléculaire' : 'Genetic & Molecular Expertise' },
-        { href: "/interpretation-resultats", label: language === 'fr' ? 'Interprétation des Résultats' : 'Results Interpretation' },
-      ],
-    },
-  ];
-
-  const aboutMenu = {
+  const servicesMenu: MenuConfig = {
+    id: "services",
+    label: t("ourServices"),
+    width: "w-[580px]",
     columns: [
       {
-        span: 4,
-        title: t('whoWeAre'),
+        title: language === "fr" ? "Analyses" : "Tests",
         links: [
-          { href: "/notre-engagement", label: language === 'fr' ? 'Notre Engagement' : 'Our Commitment' },
-          { href: "/notre-vision", label: t('ourVision') },
-          { href: "/nos-standards", label: t('ourStandards') },
-          { href: "/nos-strategies", label: language === 'fr' ? 'Nos Stratégies' : 'Our Strategies' },
-          { href: "/nos-objectifs", label: language === 'fr' ? 'Nos Objectifs' : 'Our Objectives' },
-        ]
+          { href: "/biochimie-clinique", label: language === "fr" ? "Biochimie Clinique" : "Clinical Biochemistry", icon: FlaskConical },
+          { href: "/hematologie", label: language === "fr" ? "Hématologie" : "Hematology", icon: Heart },
+          { href: "/immunologie", label: language === "fr" ? "Immunologie" : "Immunology", icon: Shield },
+          { href: "/microbiologie", label: language === "fr" ? "Microbiologie" : "Microbiology", icon: Bug },
+        ],
       },
       {
-        span: 4,
-        title: language === 'fr' ? 'Organisation' : 'Organization',
+        title: language === "fr" ? "Expertise" : "Expertise",
         links: [
-          { href: "/organigramme", label: t('organizationalChart') },
-          { href: "/notre-equipe", label: language === 'fr' ? 'Notre Équipe' : 'Our Team' },
-          { href: "/nos-valeurs", label: language === 'fr' ? 'Nos Valeurs' : 'Our Values' },
-        ]
+          { href: "/biologie-moleculaire", label: language === "fr" ? "Biologie Moléculaire" : "Molecular Biology", icon: Dna },
+          { href: "/empreintes-genetiques", label: language === "fr" ? "Empreintes Génétiques" : "Genetic Fingerprinting", icon: Fingerprint },
+          { href: "/expertise-genetique", label: language === "fr" ? "Expertise Génétique & Moléculaire" : "Genetic & Molecular Expertise", icon: Microscope },
+          { href: "/interpretation-resultats", label: language === "fr" ? "Interprétation des Résultats" : "Results Interpretation", icon: FileText },
+        ],
       },
-    ]
+    ],
   };
 
+  const qualityMenu: MenuConfig = {
+    id: "quality",
+    label: language === "fr" ? "Assurance Qualité" : "Quality Assurance",
+    width: "w-[600px]",
+    columns: [
+      {
+        title: language === "fr" ? "Politiques et Chartes" : "Policies & Charters",
+        links: [
+          { href: "/politique-de-qualite", label: language === "fr" ? "Politique de Qualité" : "Quality Policy", icon: ClipboardCheck },
+          { href: "/charte-de-qualite", label: language === "fr" ? "Charte de Qualité" : "Quality Charter", icon: BookOpen },
+          { href: "/coming-soon", label: language === "fr" ? "Politique d'Hygiène et Sécurité" : "Hygiene & Safety Policy", icon: Shield },
+        ],
+      },
+      {
+        title: language === "fr" ? "Gestion et Contrôle" : "Management & Control",
+        links: [
+          { href: "/coming-soon", label: language === "fr" ? "Gestion des Risques" : "Risk Management", icon: Target },
+          { href: "/reclamations-et-plaintes", label: language === "fr" ? "Réclamations et Plaintes" : "Complaints & Claims", icon: FileText },
+          { href: "/controle-qualite", label: language === "fr" ? "Contrôle Qualité Interne et Externe" : "Internal & External Quality Control", icon: Award },
+        ],
+      },
+    ],
+  };
+
+  const patientsMenu: MenuConfig = {
+    id: "patients",
+    label: t("patients"),
+    width: "w-[400px]",
+    columns: [
+      {
+        title: language === "fr" ? "Prélèvement" : "Sampling",
+        links: [
+          { href: "/dois-je-prendre-rdv", label: t("needAppointment"), icon: Calendar },
+          { href: "/conseils-et-informations", label: t("adviceInfo"), icon: Stethoscope },
+          { href: "/coming-soon", label: t("necessaryDocs"), icon: FileText },
+          { href: "/questions-frequentes", label: t("faq"), icon: HelpCircle },
+        ],
+      },
+    ],
+  };
+
+  const allMenus: MenuConfig[] = [aboutMenu, servicesMenu, qualityMenu, patientsMenu];
+
+  // ─── Render ────────────────────────────────────────────────────────
   return (
     <>
-      <header
+      {/* Skip to content */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#1E40AF] focus:text-white focus:rounded-lg focus:text-sm focus:font-medium"
+      >
+        {language === "fr" ? "Aller au contenu" : "Skip to content"}
+      </a>
+
+      <motion.header
+        ref={navRef}
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className={cn(
-          "sticky top-0 z-50 w-full transition-all duration-500 font-sans",
-          isSticky
-            ? "shadow-[0_4px_30px_-5px_rgba(30,64,175,0.25)] bg-gradient-to-r from-[#1E40AF] via-[#2563EB] to-[#1E40AF] py-2"
-            : "bg-white py-3"
+          "sticky top-0 z-50 w-full transition-[background-color,backdrop-filter,border-color,box-shadow] duration-500 ease-out",
+          isScrolled
+            ? "bg-white/80 backdrop-blur-xl border-b border-slate-200/60 shadow-[0_1px_3px_0_rgba(0,0,0,0.04)]"
+            : "bg-white border-b border-transparent"
         )}
       >
-        <div className="container mx-auto max-w-[1200px] px-4 sm:px-6 md:px-8 lg:px-[30px]">
-          <div className={cn(
-            "flex items-center justify-between transition-all duration-500",
-            isSticky ? "h-20 sm:h-24" : "h-28 sm:h-32 md:h-36 lg:h-[160px]"
-          )}>
-            <Link href="/" aria-label="Lab Yaoundé Home" className="flex items-center relative">
-              <Image
-                src="/images/images.png"
-                alt="Lab Yaoundé Logo"
-                width={350}
-                height={150}
-                className={cn(
-                  "w-auto object-contain hover:opacity-90 transition-all duration-500",
-                  isSticky ? "h-16 sm:h-20" : "h-28 sm:h-32 md:h-36 lg:h-[160px]"
-                )}
-                priority
-              />
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-[72px]">
+
+            {/* ─── Logo ─── */}
+            <Link href="/" aria-label="Lab Yaoundé Home" className="flex items-center flex-shrink-0">
+              <motion.div
+                animate={{ height: isScrolled ? 48 : 64 }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="relative"
+              >
+                <Image
+                  src="/images/images.png"
+                  alt="Lab Yaoundé Logo"
+                  width={200}
+                  height={80}
+                  className="h-full w-auto object-contain"
+                  priority
+                />
+              </motion.div>
             </Link>
 
-            <nav className="hidden items-center gap-x-1 xl:flex">
-              <ul className="flex list-none gap-[24px] m-0">
-                <MegaMenuItemPro trigger={t('aboutUs')} professionalsMenu={aboutMenu} isSticky={isSticky} />
-                <MegaMenuItem trigger={t('ourServices')} columns={servicesMenu} itemsInRow={1} isSticky={isSticky} />
-                <MegaMenuItemPro trigger={language === 'fr' ? 'Assurance Qualité' : 'Quality Assurance'} professionalsMenu={professionalsMenu} isSticky={isSticky} />
-                <MegaMenuItem trigger={t('patients')} columns={patientsMenu} itemsInRow={1} isSticky={isSticky} />
-                <li className="relative">
-                  <Link
-                    href="/carrieres/offres-emploi-stages"
-                    className={cn(
-                      "inline-flex h-10 items-center justify-center px-4 py-2 text-base font-bold transition-all duration-300 relative group",
-                      isSticky ? 'text-white hover:text-[#FF8500]' : 'text-[#1E40AF] hover:text-[#FF8500]'
-                    )}
-                  >
-                    {t('careers')}
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-[#FF8500] transition-all duration-300 group-hover:w-full"></span>
-                  </Link>
-                </li>
-              </ul>
-
-              <div className="flex items-center gap-2 ml-4">
-                <Button
-                  onClick={toggleLanguage}
-                  size="sm"
-                  className={cn(
-                    "h-10 px-4 rounded-xl transition-all duration-300 font-bold shadow-lg hover:shadow-xl hover:scale-105 border-0",
-                    isSticky
-                      ? 'bg-[#FF8500] text-white hover:bg-[#E87000]'
-                      : 'bg-[#1E40AF] text-white hover:bg-[#1E3A8A]'
-                  )}
+            {/* ─── Desktop Nav ─── */}
+            <nav className="hidden xl:flex items-center gap-1">
+              {allMenus.map((menu) => (
+                <div
+                  key={menu.id}
+                  className="relative"
+                  onMouseEnter={() => handleMenuEnter(menu.id)}
+                  onMouseLeave={handleMenuLeave}
                 >
-                  <Languages className="h-4 w-4 mr-1.5" />
-                  <span className="text-sm font-bold">{language.toUpperCase()}</span>
-                </Button>
-
-                {user ? (
-                  <div className="relative">
-                    <button
-                      onClick={() => setShowUserMenu(!showUserMenu)}
-                      className={cn(
-                        "flex items-center gap-2 h-10 px-4 rounded-xl font-medium transition-all duration-300",
-                        isSticky
-                          ? "bg-white/20 text-white hover:bg-white/30"
-                          : "bg-[#1E40AF] text-white hover:bg-[#1E3A8A]"
-                      )}
-                    >
-                      <User className="h-4 w-4" />
-                      <span className="text-sm truncate max-w-[100px]">{user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
-                    </button>
-                    {showUserMenu && (
-                      <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-xl shadow-xl border border-[#1E40AF]/10 py-2 z-50 overflow-hidden">
-                        <Link href="/profile" className="block px-4 py-3 text-sm text-[#1E40AF] hover:bg-[#1E40AF]/5 transition-colors font-medium">
-                          {language === 'fr' ? 'Mon profil' : 'My Profile'}
-                        </Link>
-                        <Link href="/mes-resultats" className="block px-4 py-3 text-sm text-[#1E40AF] hover:bg-[#1E40AF]/5 transition-colors font-medium">
-                          {language === 'fr' ? 'Mes résultats' : 'My Results'}
-                        </Link>
-                        <Link href="/laisser-un-avis" className="block px-4 py-3 text-sm text-[#1E40AF] hover:bg-[#1E40AF]/5 transition-colors font-medium">
-                          {language === 'fr' ? 'Laisser un avis' : 'Leave a Review'}
-                        </Link>
-                        <hr className="my-2 border-[#1E40AF]/10" />
-                        <button onClick={handleLogout} className="w-full text-left px-4 py-3 text-sm text-[#FF8500] hover:bg-[#FF8500]/10 transition-colors flex items-center gap-2 font-medium">
-                          <LogOut className="h-4 w-4" />
-                          {language === 'fr' ? 'Déconnexion' : 'Logout'}
-                        </button>
-                      </div>
+                  <button
+                    className={cn(
+                      "inline-flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1E40AF]/30 focus-visible:ring-offset-2",
+                      activeMenu === menu.id
+                        ? "text-slate-900 bg-slate-50"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-50/50"
                     )}
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-2">
-                    <Link href="/login">
-                      <Button
-                        size="sm"
-                        className={cn(
-                          "h-10 px-5 rounded-xl transition-all font-bold shadow-lg hover:shadow-xl hover:scale-105",
-                          isSticky
-                            ? "bg-white text-[#1E40AF] hover:bg-gray-100"
-                            : "bg-white text-[#1E40AF] border-2 border-[#1E40AF] hover:bg-[#1E40AF] hover:text-white"
-                        )}
-                      >
-                        <LogIn className="h-4 w-4 mr-1.5" />
-                        <span className="text-sm">{language === 'fr' ? 'Connexion' : 'Login'}</span>
-                      </Button>
-                    </Link>
-                    <Link href="/signup">
-                      <Button size="sm" className="h-10 px-5 rounded-xl bg-[#FF8500] text-white hover:bg-[#E87000] transition-all font-bold shadow-lg shadow-[#FF8500]/30 hover:shadow-xl hover:scale-105">
-                        <UserPlus className="h-4 w-4 mr-1.5" />
-                        <span className="text-sm">{language === 'fr' ? 'Inscription' : 'Sign Up'}</span>
-                      </Button>
-                    </Link>
-                  </div>
+                    aria-expanded={activeMenu === menu.id}
+                    aria-haspopup="true"
+                  >
+                    {menu.label}
+                    <motion.span
+                      animate={{ rotate: activeMenu === menu.id ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ChevronDown className="h-3.5 w-3.5 opacity-40" />
+                    </motion.span>
+                  </button>
+
+                  {/* Active page indicator */}
+                  {isMenuActive(menu) && (
+                    <motion.div
+                      layoutId="activeNavIndicator"
+                      className="absolute -bottom-[1px] left-3 right-3 h-[2px] bg-[#1E40AF] rounded-full"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+
+                  {/* Mega Menu */}
+                  <AnimatePresence>
+                    {activeMenu === menu.id && (
+                      <MegaMenuPanel
+                        menu={menu}
+                        isActive={isActive}
+                        onMouseEnter={() => handleMenuEnter(menu.id)}
+                        onMouseLeave={handleMenuLeave}
+                      />
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+
+              {/* Careers - Direct Link */}
+              <Link
+                href="/carrieres/offres-emploi-stages"
+                className={cn(
+                  "inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 relative",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1E40AF]/30 focus-visible:ring-offset-2",
+                  isActive("/carrieres")
+                    ? "text-[#1E40AF]"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-50/50"
                 )}
-              </div>
+              >
+                {t("careers")}
+                {isActive("/carrieres") && (
+                  <motion.div
+                    layoutId="activeNavIndicator"
+                    className="absolute -bottom-[1px] left-3 right-3 h-[2px] bg-[#1E40AF] rounded-full"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </Link>
             </nav>
 
-            <button
-              onClick={toggleMobileMenu}
-              className={cn(
-                "z-50 rounded-xl p-3 xl:hidden transition-all duration-300 min-w-[48px] min-h-[48px] flex items-center justify-center",
-                isSticky ? 'hover:bg-white/10 text-white' : 'hover:bg-[#1E40AF]/10 text-[#1E40AF]'
-              )}
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? (
-                <X className="h-7 w-7" />
+            {/* ─── Right Side Actions ─── */}
+            <div className="hidden xl:flex items-center gap-1.5">
+              {/* Language Toggle */}
+              <button
+                onClick={toggleLanguage}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 rounded-lg hover:bg-slate-100 transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1E40AF]/30"
+              >
+                <Globe className="h-3.5 w-3.5" />
+                <span>{language === "fr" ? "FR" : "EN"}</span>
+              </button>
+
+              <div className="w-px h-5 bg-slate-200 mx-1" />
+
+              {/* Auth */}
+              {user ? (
+                <div className="relative" ref={userMenuRef}>
+                  <button
+                    onClick={() => setShowUserMenu(!showUserMenu)}
+                    className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1E40AF]/30"
+                  >
+                    <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] flex items-center justify-center flex-shrink-0">
+                      <span className="text-[11px] font-bold text-white">
+                        {(user.user_metadata?.full_name || user.email)?.[0]?.toUpperCase() || "U"}
+                      </span>
+                    </div>
+                    <ChevronDown className="h-3 w-3 text-slate-400" />
+                  </button>
+
+                  <AnimatePresence>
+                    {showUserMenu && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 4, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 2, scale: 0.99 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl border border-slate-200 shadow-lg py-1.5 z-50"
+                      >
+                        <div className="px-3 py-2.5 border-b border-slate-100">
+                          <p className="text-sm font-medium text-slate-900 truncate">
+                            {user.user_metadata?.full_name || user.email?.split("@")[0]}
+                          </p>
+                          <p className="text-xs text-slate-400 truncate">{user.email}</p>
+                        </div>
+                        <div className="py-1">
+                          <Link href="/profile" onClick={() => setShowUserMenu(false)} className="flex items-center gap-2 px-3 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
+                            <User className="h-3.5 w-3.5" />
+                            {language === "fr" ? "Mon profil" : "My Profile"}
+                          </Link>
+                          <Link href="/mes-resultats" onClick={() => setShowUserMenu(false)} className="flex items-center gap-2 px-3 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
+                            <FileText className="h-3.5 w-3.5" />
+                            {language === "fr" ? "Mes résultats" : "My Results"}
+                          </Link>
+                          <Link href="/laisser-un-avis" onClick={() => setShowUserMenu(false)} className="flex items-center gap-2 px-3 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
+                            <Award className="h-3.5 w-3.5" />
+                            {language === "fr" ? "Laisser un avis" : "Leave a Review"}
+                          </Link>
+                        </div>
+                        <div className="border-t border-slate-100 pt-1">
+                          <button
+                            onClick={handleLogout}
+                            className="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-500 hover:bg-red-50 transition-colors"
+                          >
+                            <LogOut className="h-3.5 w-3.5" />
+                            {language === "fr" ? "Déconnexion" : "Logout"}
+                          </button>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               ) : (
-                <Menu className="h-7 w-7" />
+                <div className="flex items-center gap-1.5">
+                  <Link href="/login">
+                    <button className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors">
+                      {language === "fr" ? "Connexion" : "Login"}
+                    </button>
+                  </Link>
+                  <Link href="/signup">
+                    <button className="px-4 py-2 text-sm font-medium text-white bg-[#1E40AF] hover:bg-[#1E3A8A] rounded-lg transition-all duration-200 shadow-sm hover:shadow-md">
+                      {language === "fr" ? "Inscription" : "Sign Up"}
+                    </button>
+                  </Link>
+                </div>
               )}
+            </div>
+
+            {/* ─── Mobile Hamburger ─── */}
+            <button
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="xl:hidden p-2.5 rounded-lg hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1E40AF]/30"
+              aria-label="Open menu"
+            >
+              <div className="w-5 h-4 flex flex-col justify-between">
+                <span className="block h-0.5 w-5 bg-slate-700 rounded-full" />
+                <span className="block h-0.5 w-3.5 bg-slate-700 rounded-full" />
+                <span className="block h-0.5 w-5 bg-slate-700 rounded-full" />
+              </div>
             </button>
           </div>
         </div>
-      </header>
+      </motion.header>
 
-      {/* Mobile Menu */}
-      <div
-        className={cn(
-          "fixed inset-0 z-40 transform bg-white transition-transform duration-300 xl:hidden overflow-hidden",
-          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        )}
-      >
-        <div className="container mx-auto h-full overflow-y-auto px-4 sm:px-6 pt-20 sm:pt-24 pb-8">
-          <Accordion type="single" collapsible className="w-full space-y-2">
-            <MobileAccordionItemPro trigger={t('aboutUs')} professionalsMenu={aboutMenu} onClose={() => setIsMobileMenuOpen(false)} />
-            <MobileAccordionItem trigger={t('ourServices')} menu={servicesMenu} onClose={() => setIsMobileMenuOpen(false)} />
-            <MobileAccordionItemPro trigger={language === 'fr' ? 'Assurance Qualité' : 'Quality Assurance'} professionalsMenu={professionalsMenu} onClose={() => setIsMobileMenuOpen(false)} />
-            <MobileAccordionItem trigger={t('patients')} menu={patientsMenu} onClose={() => setIsMobileMenuOpen(false)} />
-          </Accordion>
+      {/* ─── Mobile Menu ─── */}
+      <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+        <SheetContent side="right" className="w-full sm:w-[400px] p-0 border-l-0 flex flex-col">
+          <SheetHeader className="px-6 pt-6 pb-4 border-b border-slate-100">
+            <SheetTitle className="text-left text-lg font-semibold text-slate-900">
+              Menu
+            </SheetTitle>
+          </SheetHeader>
 
-          <div className="mt-4 border-t border-[#1E40AF]/10 pt-4">
-            <Link
-              href="/carrieres/offres-emploi-stages"
-              className="text-lg font-bold text-[#1E40AF] block py-3 hover:text-[#FF8500] transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
+          <div className="px-6 py-4 overflow-y-auto flex-1">
+            <motion.nav
+              initial="closed"
+              animate="open"
+              variants={mobileStagger}
             >
-              {t('careers')}
-            </Link>
+              {allMenus.map((menu) => (
+                <motion.div
+                  key={menu.id}
+                  variants={mobileChild}
+                  transition={{ type: "spring", stiffness: 300, damping: 24 }}
+                >
+                  <MobileMenuSection
+                    menu={menu}
+                    isActive={isActive}
+                    onClose={() => setIsMobileMenuOpen(false)}
+                  />
+                </motion.div>
+              ))}
+
+              {/* Careers mobile */}
+              <motion.div
+                variants={mobileChild}
+                transition={{ type: "spring", stiffness: 300, damping: 24 }}
+              >
+                <Link
+                  href="/carrieres/offres-emploi-stages"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={cn(
+                    "flex items-center gap-3 py-4 text-base font-medium border-b border-slate-100 transition-colors",
+                    isActive("/carrieres") ? "text-[#1E40AF]" : "text-slate-900 hover:text-[#1E40AF]"
+                  )}
+                >
+                  <Briefcase className="h-4 w-4 text-slate-400" />
+                  {t("careers")}
+                </Link>
+              </motion.div>
+            </motion.nav>
           </div>
 
-          <div className="mt-6 flex flex-col space-y-3 border-t border-[#1E40AF]/10 pt-6">
+          <SheetFooter className="border-t border-slate-100 p-6 gap-3">
             {user ? (
               <>
-                <div className="flex items-center gap-3 px-4 py-3 bg-[#1E40AF]/5 rounded-xl">
-                  <User className="h-5 w-5 text-[#1E40AF]" />
-                  <span className="font-bold text-[#1E40AF]">{user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
+                <div className="flex items-center gap-3 px-3 py-3 bg-slate-50 rounded-xl">
+                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] flex items-center justify-center flex-shrink-0">
+                    <span className="text-sm font-bold text-white">
+                      {(user.user_metadata?.full_name || user.email)?.[0]?.toUpperCase() || "U"}
+                    </span>
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-sm font-medium text-slate-900 truncate">
+                      {user.user_metadata?.full_name || user.email?.split("@")[0]}
+                    </p>
+                    <p className="text-xs text-slate-400 truncate">{user.email}</p>
+                  </div>
                 </div>
-                <Link href="/profile" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button variant="outline" className="w-full justify-start text-[#1E40AF] border-[#1E40AF]/20 hover:bg-[#1E40AF]/5 min-h-[48px] font-medium">
-                    {language === 'fr' ? 'Mon profil' : 'My Profile'}
-                  </Button>
-                </Link>
-                <Link href="/mes-resultats" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button variant="outline" className="w-full justify-start text-[#1E40AF] border-[#1E40AF]/20 hover:bg-[#1E40AF]/5 min-h-[48px] font-medium">
-                    {language === 'fr' ? 'Mes résultats' : 'My Results'}
-                  </Button>
-                </Link>
-                <Button
-                  onClick={handleLogout}
-                  variant="outline"
-                  className="w-full justify-start text-[#FF8500] hover:bg-[#FF8500]/10 border-[#FF8500]/30 min-h-[48px] font-medium"
-                >
-                  <LogOut className="h-4 w-4 mr-2" />
-                  {language === 'fr' ? 'Déconnexion' : 'Logout'}
-                </Button>
+                <div className="flex gap-2">
+                  <Link href="/profile" onClick={() => setIsMobileMenuOpen(false)} className="flex-1">
+                    <button className="w-full py-2.5 text-sm font-medium text-slate-600 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
+                      {language === "fr" ? "Profil" : "Profile"}
+                    </button>
+                  </Link>
+                  <button
+                    onClick={() => { handleLogout(); setIsMobileMenuOpen(false); }}
+                    className="flex-1 py-2.5 text-sm font-medium text-red-500 border border-red-200 rounded-lg hover:bg-red-50 transition-colors"
+                  >
+                    {language === "fr" ? "Déconnexion" : "Logout"}
+                  </button>
+                </div>
               </>
             ) : (
-              <div className="flex flex-col gap-3">
-                <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className="w-full justify-center bg-white text-[#1E40AF] border-2 border-[#1E40AF] hover:bg-[#1E40AF] hover:text-white transition-all min-h-[48px] font-bold">
-                    <LogIn className="h-4 w-4 mr-2" />
-                    {language === 'fr' ? 'Connexion' : 'Login'}
-                  </Button>
+              <div className="flex gap-2">
+                <Link href="/login" onClick={() => setIsMobileMenuOpen(false)} className="flex-1">
+                  <button className="w-full py-2.5 text-sm font-medium text-slate-700 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
+                    {language === "fr" ? "Connexion" : "Login"}
+                  </button>
                 </Link>
-                <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className="w-full justify-center bg-[#FF8500] text-white hover:bg-[#E87000] transition-all min-h-[48px] font-bold shadow-lg shadow-[#FF8500]/20">
-                    <UserPlus className="h-4 w-4 mr-2" />
-                    {language === 'fr' ? 'Inscription' : 'Sign Up'}
-                  </Button>
+                <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)} className="flex-1">
+                  <button className="w-full py-2.5 text-sm font-medium text-white bg-[#1E40AF] rounded-lg hover:bg-[#1E3A8A] transition-colors">
+                    {language === "fr" ? "Inscription" : "Sign Up"}
+                  </button>
                 </Link>
               </div>
             )}
-            <Button
+            <button
               onClick={toggleLanguage}
-              className="w-full justify-center bg-[#1E40AF] text-white hover:bg-[#1E3A8A] transition-all duration-300 min-h-[48px] font-bold shadow-lg"
+              className="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-medium text-slate-500 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors"
             >
-              <Languages className="h-4 w-4 mr-2" />
-              <span className="font-bold">{t('language')}: {language.toUpperCase()}</span>
-            </Button>
-          </div>
-        </div>
-      </div>
+              <Globe className="h-4 w-4" />
+              {language === "fr" ? "English" : "Français"}
+            </button>
+          </SheetFooter>
+        </SheetContent>
+      </Sheet>
     </>
   );
 };
 
-// Premium Mega Menu Item
-const MegaMenuItem = ({ trigger, columns, itemsInRow, isSticky = false }: { trigger: string, columns: MegaMenuColumn[], itemsInRow: number, isSticky?: boolean }) => {
-  const gridCols = itemsInRow === 3 ? 'grid-cols-3' : itemsInRow === 2 ? 'grid-cols-2' : 'grid-cols-1';
+// ─── Mega Menu Panel ─────────────────────────────────────────────────
+const MegaMenuPanel = ({
+  menu,
+  isActive,
+  onMouseEnter,
+  onMouseLeave,
+}: {
+  menu: MenuConfig;
+  isActive: (href: string) => boolean;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+}) => {
+  const menuRef = useRef<HTMLDivElement>(null);
+  const cols = menu.columns.length;
 
   return (
-    <li className="relative group">
-      <button className={cn(
-        "inline-flex h-10 items-center justify-center px-4 py-2 text-base font-bold transition-all duration-300 relative group",
-        isSticky ? 'text-white hover:text-[#FF8500]' : 'text-[#1E40AF] hover:text-[#FF8500]'
-      )}>
-        {trigger}
-        <ChevronDown className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:rotate-180" />
-        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-[#FF8500] transition-all duration-300 group-hover:w-full"></span>
-      </button>
-
-      <div className="absolute top-full left-0 w-[600px] bg-white p-6 opacity-0 invisible translate-y-4 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out rounded-2xl shadow-[0_25px_50px_-12px_rgba(30,64,175,0.25)] z-50 border border-[#1E40AF]/10">
-        {/* Decorative top bar */}
-        <div className="absolute top-0 left-6 right-6 h-1 bg-gradient-to-r from-[#1E40AF] via-[#FF8500] to-[#1E40AF] rounded-full"></div>
-
-        <div className={`grid ${gridCols} gap-8 mt-2`}>
-          {columns.map((col) => (
-            <div key={col.title} className="w-full">
-              <h3 className="mb-4 text-base font-bold text-[#1E40AF] flex items-center gap-2">
-                <span className="w-2 h-2 bg-[#FF8500] rounded-full"></span>
-                {col.title}
-              </h3>
-              <ul className="space-y-1">
-                {col.links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="group/link flex items-center py-2.5 px-3 text-sm text-[#1E40AF]/80 rounded-lg hover:bg-[#1E40AF]/5 hover:text-[#1E40AF] transition-all duration-200"
-                    >
-                      <ChevronRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all duration-200 text-[#FF8500]" />
-                      <span className="font-medium">{link.label}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
-    </li>
-  );
-};
-
-// Premium Mega Menu Item for Professional/About sections
-const MegaMenuItemPro = ({ trigger, professionalsMenu, isSticky = false }: { trigger: string, professionalsMenu: any, isSticky?: boolean }) => {
-  const getColSpanClass = (span: number) => {
-    const spanClasses: { [key: number]: string } = {
-      1: 'col-span-1',
-      2: 'col-span-2',
-      3: 'col-span-3',
-      4: 'col-span-4',
-      5: 'col-span-5',
-      6: 'col-span-6',
-    };
-    return spanClasses[span] || 'col-span-2';
-  };
-
-  const isAboutMenu = trigger.toLowerCase().includes('propos') || trigger.toLowerCase().includes('about');
-
-  return (
-    <li className="relative group">
-      <button className={cn(
-        "inline-flex h-10 items-center justify-center px-4 py-2 text-base font-bold transition-all duration-300 relative",
-        isSticky ? 'text-white hover:text-[#FF8500]' : 'text-[#1E40AF] hover:text-[#FF8500]'
-      )}>
-        {trigger}
-        <ChevronDown className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:rotate-180" />
-        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-[#FF8500] transition-all duration-300 group-hover:w-full"></span>
-      </button>
-
-      <div className={cn(
-        "absolute top-full left-1/2 -translate-x-1/2 w-[700px] bg-white opacity-0 invisible translate-y-4 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out rounded-2xl shadow-[0_25px_50px_-12px_rgba(30,64,175,0.25)] z-50 overflow-hidden border border-[#1E40AF]/10",
-        isAboutMenu ? 'border-t-4 border-t-[#FF8500]' : ''
-      )}>
-        {/* Header for About menu */}
-        {isAboutMenu && (
-          <div className="bg-gradient-to-r from-[#1E40AF] to-[#2563EB] px-6 py-5">
-            <h2 className="text-white font-bold text-xl">Découvrez notre laboratoire</h2>
-            <p className="text-white/70 text-sm mt-1">Excellence & Innovation depuis 2012</p>
-          </div>
+    <motion.div
+      ref={menuRef}
+      variants={megaMenuVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      transition={megaMenuTransition}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className={cn(
+        "absolute top-full left-1/2 -translate-x-1/2 mt-1",
+        menu.width || "w-[520px]",
+        "bg-white/95 backdrop-blur-xl",
+        "rounded-xl border border-slate-200/80",
+        "shadow-[0_16px_70px_-12px_rgba(0,0,0,0.12)]",
+        "p-1.5"
+      )}
+    >
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+        className={cn(
+          "grid gap-x-0",
+          cols === 2 ? "grid-cols-2" : "grid-cols-1"
         )}
-
-        <div className={`grid grid-cols-12 gap-6 ${isAboutMenu ? 'p-6' : 'p-6'}`}>
-          {professionalsMenu.columns.map((col: any, index: number) => (
-            <div key={index} className={`${getColSpanClass(col.span)} relative`}>
-              {isAboutMenu && index === 0 && (
-                <div className="absolute -left-3 top-0 bottom-0 w-1 bg-gradient-to-b from-[#FF8500] to-[#1E40AF] rounded-full"></div>
-              )}
-
-              {col.title && (
-                <h3 className="mb-4 text-base font-bold text-[#1E40AF] flex items-center gap-2">
-                  {isAboutMenu && (
-                    <span className="w-2 h-2 bg-[#FF8500] rounded-full"></span>
-                  )}
-                  {col.title}
-                </h3>
-              )}
-
-              <ul className="space-y-1">
-                {col.links.map((link: any) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="group/link flex items-center py-2.5 px-3 rounded-lg hover:bg-[#1E40AF]/5 transition-all duration-200"
-                    >
-                      <ChevronRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all duration-200 text-[#FF8500]" />
-                      <span className="text-sm text-[#1E40AF]/80 group-hover/link:text-[#1E40AF] font-medium">{link.label}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        {/* Footer for About menu */}
-        {isAboutMenu && (
-          <div className="bg-gradient-to-r from-[#1E40AF]/5 to-[#FF8500]/5 px-6 py-4 border-t border-[#1E40AF]/10">
-            <p className="text-sm text-[#1E40AF]/70 text-center">
-              <span className="font-bold text-[#1E40AF]">Besoin d'aide?</span> Contactez-nous au{' '}
-              <span className="font-bold text-[#FF8500]">(+237) 242 04 68 50</span>
-            </p>
-          </div>
-        )}
-      </div>
-    </li>
-  );
-};
-
-// Mobile Accordion Items
-const MobileAccordionItem = ({ trigger, menu, onClose }: { trigger: string, menu: MegaMenuColumn[], onClose: () => void }) => (
-  <AccordionItem value={trigger.toLowerCase()} className="border border-[#1E40AF]/10 rounded-xl overflow-hidden mb-2">
-    <AccordionTrigger className="text-lg font-bold text-[#1E40AF] no-underline hover:no-underline py-4 px-4 hover:bg-[#1E40AF]/5">
-      {trigger}
-    </AccordionTrigger>
-    <AccordionContent className="bg-[#1E40AF]/5">
-      <div className="px-4 py-2 space-y-4">
-        {menu.map(col => (
-          <div key={col.title}>
-            <h4 className="mb-3 font-bold text-[#1E40AF] text-sm flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-[#FF8500] rounded-full"></span>
+      >
+        {menu.columns.map((col, colIndex) => (
+          <div key={colIndex} className={cn("p-3", colIndex > 0 && "border-l border-slate-100")}>
+            <p className="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
               {col.title}
-            </h4>
-            <ul className="space-y-1 pl-4">
-              {col.links.map(link => (
-                <li key={link.label}>
+            </p>
+            <div className="space-y-0.5">
+              {col.links.map((link) => (
+                <motion.div key={link.href} variants={staggerChild}>
                   <Link
                     href={link.href}
-                    className="text-[#1E40AF]/80 text-sm py-2.5 block hover:text-[#FF8500] transition-colors font-medium"
-                    onClick={onClose}
+                    className={cn(
+                      "group/link flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-150",
+                      isActive(link.href)
+                        ? "bg-[#1E40AF]/5 text-[#1E40AF]"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                    )}
                   >
-                    {link.label}
+                    {link.icon && (
+                      <div className={cn(
+                        "w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-150",
+                        isActive(link.href)
+                          ? "bg-[#1E40AF]/10 text-[#1E40AF]"
+                          : "bg-slate-100 text-slate-400 group-hover/link:bg-[#1E40AF]/10 group-hover/link:text-[#1E40AF]"
+                      )}>
+                        <link.icon className="h-4 w-4" />
+                      </div>
+                    )}
+                    <span className="text-sm font-medium flex-1">{link.label}</span>
+                    <ArrowRight className="h-3.5 w-3.5 opacity-0 -translate-x-1 group-hover/link:opacity-30 group-hover/link:translate-x-0 transition-all duration-200" />
                   </Link>
-                </li>
+                </motion.div>
               ))}
-            </ul>
+            </div>
           </div>
         ))}
-      </div>
-    </AccordionContent>
-  </AccordionItem>
-);
+      </motion.div>
 
-const MobileAccordionItemPro = ({ trigger, professionalsMenu, onClose }: { trigger: string, professionalsMenu: any, onClose: () => void }) => (
-  <AccordionItem value={trigger.toLowerCase()} className="border border-[#1E40AF]/10 rounded-xl overflow-hidden mb-2">
-    <AccordionTrigger className="text-lg font-bold text-[#1E40AF] no-underline hover:no-underline py-4 px-4 hover:bg-[#1E40AF]/5">
-      {trigger}
-    </AccordionTrigger>
-    <AccordionContent className="bg-[#1E40AF]/5">
-      <div className="px-4 py-2 space-y-4">
-        {professionalsMenu.columns.map((col: any, index: number) => (
-          <div key={index}>
-            {col.title && (
-              <h4 className="mb-3 font-bold text-[#1E40AF] text-sm flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-[#FF8500] rounded-full"></span>
-                {col.title}
-              </h4>
-            )}
-            <ul className="space-y-1 pl-4">
-              {col.links.map((link: any) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-[#1E40AF]/80 text-sm py-2.5 block hover:text-[#FF8500] transition-colors font-medium"
-                    onClick={onClose}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
+      {menu.footer && (
+        <div className="border-t border-slate-100 mt-1 pt-1 px-3 pb-2">
+          <Link
+            href={menu.footer.href}
+            className="flex items-center gap-2 px-3 py-2 text-sm text-[#1E40AF] hover:text-[#1E3A8A] font-medium rounded-lg hover:bg-[#1E40AF]/5 transition-colors"
+          >
+            {menu.footer.label}
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+      )}
+    </motion.div>
+  );
+};
+
+// ─── Mobile Menu Section ─────────────────────────────────────────────
+const MobileMenuSection = ({
+  menu,
+  isActive,
+  onClose,
+}: {
+  menu: MenuConfig;
+  isActive: (href: string) => boolean;
+  onClose: () => void;
+}) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <div className="border-b border-slate-100 last:border-b-0">
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="flex items-center justify-between w-full py-4 text-base font-medium text-slate-900 hover:text-[#1E40AF] transition-colors"
+      >
+        <span>{menu.label}</span>
+        <motion.span
+          animate={{ rotate: isExpanded ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <ChevronDown className="h-4 w-4 text-slate-400" />
+        </motion.span>
+      </button>
+
+      <AnimatePresence>
+        {isExpanded && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="overflow-hidden"
+          >
+            <div className="pb-4 space-y-4">
+              {menu.columns.map((col, i) => (
+                <div key={i}>
+                  <p className="px-3 mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                    {col.title}
+                  </p>
+                  <div className="space-y-0.5">
+                    {col.links.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={onClose}
+                        className={cn(
+                          "flex items-center gap-3 py-2.5 px-3 text-sm rounded-lg transition-colors",
+                          isActive(link.href)
+                            ? "text-[#1E40AF] bg-[#1E40AF]/5 font-medium"
+                            : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
+                        )}
+                      >
+                        {link.icon && (
+                          <link.icon className={cn(
+                            "h-4 w-4 flex-shrink-0",
+                            isActive(link.href) ? "text-[#1E40AF]" : "text-slate-400"
+                          )} />
+                        )}
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </AccordionContent>
-  </AccordionItem>
-);
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 export default MainNavigation;

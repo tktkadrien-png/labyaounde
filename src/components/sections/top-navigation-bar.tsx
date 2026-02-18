@@ -1,8 +1,9 @@
 "use client";
 
-import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Shield } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Instagram, Shield } from 'lucide-react';
 import { useLanguage } from '@/lib/contents/LanguageContext';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 const SOCIAL_LINKS = {
   facebook: "https://www.facebook.com/profile.php?id=61584110146922",
@@ -27,64 +28,71 @@ const TopNavigationBar = () => {
   const { t } = useLanguage();
 
   return (
-    <header className="bg-gradient-to-r from-[#0A2540] via-[#0D3B66] to-[#0A2540] border-b border-[#0066FF]/20">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-10 py-3 sm:py-2.5 lg:py-2">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-3 sm:gap-4 lg:gap-0 text-white">
+    <motion.header
+      initial={{ y: -10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      className="bg-[#0A1628] border-b border-white/[0.06]"
+    >
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-2">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-2.5 lg:gap-0 text-white">
           {/* Left side - Contact info */}
-          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 lg:gap-5 w-full lg:w-auto">
-            <span className="flex items-center gap-2 text-xs sm:text-sm bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 hover:bg-[#0066FF]/20 transition-all cursor-pointer">
-              <MapPin className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#FF8500] flex-shrink-0" />
-              <span className="hidden md:inline font-medium">Cité verte Batiment B01 Yaoundé 2 Rue 2.711</span>
-              <span className="md:hidden font-medium">Cité verte B01</span>
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-5 w-full lg:w-auto">
+            <span className="flex items-center gap-2 text-xs text-white/70 hover:text-white/90 transition-colors cursor-pointer">
+              <MapPin className="h-3.5 w-3.5 text-white/40 flex-shrink-0" />
+              <span className="hidden md:inline">Cité verte Batiment B01 Yaoundé 2 Rue 2.711</span>
+              <span className="md:hidden">Cité verte B01</span>
             </span>
-            <span className="flex items-center gap-2 text-xs sm:text-sm bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 hover:bg-[#0066FF]/20 transition-all cursor-pointer">
-              <Phone className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#FF8500] flex-shrink-0" />
-              <span className="hidden lg:inline font-medium">(+237) 242 04 68 50 / 671 37 05 65</span>
-              <span className="lg:hidden font-medium">(+237) 242 04 68 50</span>
+            <span className="hidden sm:inline text-white/20">|</span>
+            <span className="flex items-center gap-2 text-xs text-white/70 hover:text-white/90 transition-colors cursor-pointer">
+              <Phone className="h-3.5 w-3.5 text-white/40 flex-shrink-0" />
+              <span className="hidden lg:inline">(+237) 242 04 68 50 / 671 37 05 65</span>
+              <span className="lg:hidden">(+237) 242 04 68 50</span>
             </span>
-            <span className="hidden sm:flex items-center gap-2 text-xs sm:text-sm bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 hover:bg-[#0066FF]/20 transition-all cursor-pointer">
-              <Mail className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#FF8500] flex-shrink-0" />
-              <span className="font-medium">contact@labyaounde.org</span>
+            <span className="hidden sm:inline text-white/20">|</span>
+            <span className="hidden sm:flex items-center gap-2 text-xs text-white/70 hover:text-white/90 transition-colors cursor-pointer">
+              <Mail className="h-3.5 w-3.5 text-white/40 flex-shrink-0" />
+              <span>contact@labyaounde.org</span>
             </span>
           </div>
 
           {/* Right side - Links and Social Icons */}
           <div className="flex items-center gap-3 sm:gap-4 flex-wrap justify-center lg:justify-end">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <Link href="/aide" className="text-white/90 no-underline hover:text-white hover:underline font-medium transition-all text-xs sm:text-sm">
+            <div className="flex items-center gap-3">
+              <Link href="/aide" className="text-white/60 no-underline hover:text-white/90 transition-colors text-xs">
                 {t('help')}
               </Link>
-              <span className="text-white/50">•</span>
-              <Link href="/assistance" className="text-white/90 no-underline hover:text-white hover:underline font-medium transition-all text-xs sm:text-sm">
+              <span className="text-white/20">|</span>
+              <Link href="/assistance" className="text-white/60 no-underline hover:text-white/90 transition-colors text-xs">
                 {t('assistance')}
               </Link>
-              <span className="text-white/50">•</span>
-              <Link href="/contact" className="text-white/90 no-underline hover:text-white hover:underline font-medium transition-all text-xs sm:text-sm">
+              <span className="text-white/20">|</span>
+              <Link href="/contact" className="text-white/60 no-underline hover:text-white/90 transition-colors text-xs">
                 {t('contact')}
               </Link>
             </div>
 
             {/* Social Icons */}
-            <div className="flex items-center gap-2 sm:gap-2.5 ml-2 sm:ml-3 pl-2 sm:pl-3 border-l border-white/20">
-              <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-white/80 hover:text-white transition-all hover:scale-110 w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10">
-                <Facebook className="h-4 w-4" />
+            <div className="flex items-center gap-1.5 ml-2 pl-3 border-l border-white/[0.08]">
+              <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-white/40 hover:text-white/80 transition-colors w-7 h-7 flex items-center justify-center">
+                <Facebook className="h-3.5 w-3.5" />
               </a>
-              <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-white/80 hover:text-white transition-all hover:scale-110 w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10">
-                <Instagram className="h-4 w-4" />
+              <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-white/40 hover:text-white/80 transition-colors w-7 h-7 flex items-center justify-center">
+                <Instagram className="h-3.5 w-3.5" />
               </a>
-              <a href={SOCIAL_LINKS.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="text-white/80 hover:text-white transition-all hover:scale-110 w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10">
-                <TikTokIcon className="h-4 w-4" />
+              <a href={SOCIAL_LINKS.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="text-white/40 hover:text-white/80 transition-colors w-7 h-7 flex items-center justify-center">
+                <TikTokIcon className="h-3.5 w-3.5" />
               </a>
 
-              {/* Admin Access Button - Orange */}
-              <Link href="/admin-login" aria-label="Admin Login" className="ml-1 sm:ml-2 flex items-center justify-center w-8 h-8 bg-[#FF8500] hover:bg-[#E87000] rounded-full text-white font-bold text-xs transition-all hover:scale-110 shadow-lg shadow-[#FF8500]/30">
-                <Shield className="h-4 w-4" />
+              {/* Admin Access Button */}
+              <Link href="/admin-login" aria-label="Admin Login" className="ml-1 flex items-center justify-center w-7 h-7 text-white/40 hover:text-white/80 transition-colors">
+                <Shield className="h-3.5 w-3.5" />
               </Link>
             </div>
           </div>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 };
 
