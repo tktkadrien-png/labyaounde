@@ -276,21 +276,21 @@ const MainNavigation = () => {
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
           <div className={cn(
             "flex items-center justify-between transition-all duration-300",
-            isScrolled ? "h-[90px]" : "h-[120px]"
+            isScrolled ? "h-[100px]" : "h-[140px]"
           )}>
 
             {/* ─── Logo ─── */}
             <Link href="/" aria-label="Lab Yaoundé Home" className="flex items-center flex-shrink-0">
               <motion.div
-                animate={{ height: isScrolled ? 75 : 110 }}
+                animate={{ height: isScrolled ? 80 : 130 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 className="relative"
               >
                 <Image
                   src="/images/images.png"
                   alt="Lab Yaoundé Logo"
-                  width={340}
-                  height={130}
+                  width={500}
+                  height={200}
                   className="h-full w-auto object-contain"
                   priority
                 />
@@ -330,7 +330,7 @@ const MainNavigation = () => {
                   {isMenuActive(menu) && (
                     <motion.div
                       layoutId="activeNavIndicator"
-                      className="absolute -bottom-[1px] left-3 right-3 h-[2px] bg-[#1E40AF] rounded-full"
+                      className="absolute -bottom-[1px] left-3 right-3 h-[2px] bg-[#FF8500] rounded-full"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -356,7 +356,7 @@ const MainNavigation = () => {
                   "inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 relative",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1E40AF]/30 focus-visible:ring-offset-2",
                   isActive("/carrieres")
-                    ? "text-[#1E40AF]"
+                    ? "text-[#FF8500]"
                     : "text-slate-600 hover:text-slate-900 hover:bg-slate-50/50"
                 )}
               >
@@ -364,7 +364,7 @@ const MainNavigation = () => {
                 {isActive("/carrieres") && (
                   <motion.div
                     layoutId="activeNavIndicator"
-                    className="absolute -bottom-[1px] left-3 right-3 h-[2px] bg-[#1E40AF] rounded-full"
+                    className="absolute -bottom-[1px] left-3 right-3 h-[2px] bg-[#FF8500] rounded-full"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -449,7 +449,7 @@ const MainNavigation = () => {
                     </button>
                   </Link>
                   <Link href="/signup">
-                    <button className="px-4 py-2 text-sm font-medium text-white bg-[#1E40AF] hover:bg-[#1E3A8A] rounded-lg transition-all duration-200 shadow-sm hover:shadow-md">
+                    <button className="px-4 py-2 text-sm font-medium text-white bg-[#FF8500] hover:bg-[#E87000] rounded-lg transition-all duration-200 shadow-sm hover:shadow-md">
                       {language === "fr" ? "Inscription" : "Sign Up"}
                     </button>
                   </Link>
@@ -512,7 +512,7 @@ const MainNavigation = () => {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
                     "flex items-center gap-3 py-4 text-base font-medium border-b border-slate-100 transition-colors",
-                    isActive("/carrieres") ? "text-[#1E40AF]" : "text-slate-900 hover:text-[#1E40AF]"
+                    isActive("/carrieres") ? "text-[#FF8500]" : "text-slate-900 hover:text-[#FF8500]"
                   )}
                 >
                   <Briefcase className="h-4 w-4 text-slate-400" />
@@ -560,7 +560,7 @@ const MainNavigation = () => {
                   </button>
                 </Link>
                 <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)} className="flex-1">
-                  <button className="w-full py-2.5 text-sm font-medium text-white bg-[#1E40AF] rounded-lg hover:bg-[#1E3A8A] transition-colors">
+                  <button className="w-full py-2.5 text-sm font-medium text-white bg-[#FF8500] rounded-lg hover:bg-[#E87000] transition-colors">
                     {language === "fr" ? "Inscription" : "Sign Up"}
                   </button>
                 </Link>
@@ -609,7 +609,7 @@ const MegaMenuPanel = ({
         "absolute top-full left-1/2 -translate-x-1/2 mt-1",
         menu.width || "w-[520px]",
         "bg-white/95 backdrop-blur-xl",
-        "rounded-xl border border-slate-200/80",
+        "rounded-xl border border-slate-200/80 border-t-2 border-t-[#FF8500]",
         "shadow-[0_16px_70px_-12px_rgba(0,0,0,0.12)]",
         "p-1.5"
       )}
@@ -636,22 +636,22 @@ const MegaMenuPanel = ({
                     className={cn(
                       "group/link flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-150",
                       isActive(link.href)
-                        ? "bg-[#1E40AF]/5 text-[#1E40AF]"
-                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                        ? "bg-[#FF8500]/5 text-[#FF8500]"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-orange-50/60"
                     )}
                   >
                     {link.icon && (
                       <div className={cn(
                         "w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-150",
                         isActive(link.href)
-                          ? "bg-[#1E40AF]/10 text-[#1E40AF]"
-                          : "bg-slate-100 text-slate-400 group-hover/link:bg-[#1E40AF]/10 group-hover/link:text-[#1E40AF]"
+                          ? "bg-[#FF8500]/10 text-[#FF8500]"
+                          : "bg-slate-100 text-slate-400 group-hover/link:bg-[#FF8500]/10 group-hover/link:text-[#FF8500]"
                       )}>
                         <link.icon className="h-4 w-4" />
                       </div>
                     )}
                     <span className="text-sm font-medium flex-1">{link.label}</span>
-                    <ArrowRight className="h-3.5 w-3.5 opacity-0 -translate-x-1 group-hover/link:opacity-30 group-hover/link:translate-x-0 transition-all duration-200" />
+                    <ArrowRight className="h-3.5 w-3.5 text-[#FF8500] opacity-0 -translate-x-1 group-hover/link:opacity-50 group-hover/link:translate-x-0 transition-all duration-200" />
                   </Link>
                 </motion.div>
               ))}
@@ -664,7 +664,7 @@ const MegaMenuPanel = ({
         <div className="border-t border-slate-100 mt-1 pt-1 px-3 pb-2">
           <Link
             href={menu.footer.href}
-            className="flex items-center gap-2 px-3 py-2 text-sm text-[#1E40AF] hover:text-[#1E3A8A] font-medium rounded-lg hover:bg-[#1E40AF]/5 transition-colors"
+            className="flex items-center gap-2 px-3 py-2 text-sm text-[#FF8500] hover:text-[#E87000] font-medium rounded-lg hover:bg-[#FF8500]/5 transition-colors"
           >
             {menu.footer.label}
             <ArrowRight className="h-3.5 w-3.5" />
@@ -691,7 +691,7 @@ const MobileMenuSection = ({
     <div className="border-b border-slate-100 last:border-b-0">
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="flex items-center justify-between w-full py-4 text-base font-medium text-slate-900 hover:text-[#1E40AF] transition-colors"
+        className="flex items-center justify-between w-full py-4 text-base font-medium text-slate-900 hover:text-[#FF8500] transition-colors"
       >
         <span>{menu.label}</span>
         <motion.span
@@ -726,14 +726,14 @@ const MobileMenuSection = ({
                         className={cn(
                           "flex items-center gap-3 py-2.5 px-3 text-sm rounded-lg transition-colors",
                           isActive(link.href)
-                            ? "text-[#1E40AF] bg-[#1E40AF]/5 font-medium"
+                            ? "text-[#FF8500] bg-[#FF8500]/5 font-medium"
                             : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
                         )}
                       >
                         {link.icon && (
                           <link.icon className={cn(
                             "h-4 w-4 flex-shrink-0",
-                            isActive(link.href) ? "text-[#1E40AF]" : "text-slate-400"
+                            isActive(link.href) ? "text-[#FF8500]" : "text-slate-400"
                           )} />
                         )}
                         {link.label}

@@ -118,19 +118,19 @@ const Footer = () => {
     return (
       <div className="group">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-xl bg-[#FF8500]/20 flex items-center justify-center group-hover:bg-[#FF8500]/30 transition-colors">
-            <Icon className="w-5 h-5 text-[#FF8500]" />
+          <div className="w-9 h-9 rounded-lg bg-[#FF8500]/15 flex items-center justify-center group-hover:bg-[#FF8500]/25 transition-colors">
+            <Icon className="w-4.5 h-4.5 text-[#FF8500]" />
           </div>
-          <h3 className="text-lg font-bold text-white">
+          <h3 className="text-base font-semibold text-white">
             {column.title}
           </h3>
         </div>
-        <ul className="space-y-3">
+        <ul className="space-y-2.5">
           {column.links.map((link, index) => (
             <li key={index}>
               <Link
                 href={link.href}
-                className="text-sm text-white/70 hover:text-[#FF8500] transition-all duration-200 flex items-center gap-2 group/link"
+                className="text-sm text-slate-400 hover:text-[#FF8500] transition-all duration-200 flex items-center gap-2 group/link"
               >
                 <ChevronRight className="w-3 h-3 opacity-0 -ml-4 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all duration-200 text-[#FF8500]" />
                 {link.text}
@@ -144,20 +144,22 @@ const Footer = () => {
 
   return (
     <>
+      {/* Website designed by Zang Mekinda Adrien | 2026 */}
       <footer className="relative overflow-hidden" style={{ fontFamily: 'Roboto, sans-serif' }}>
-        {/* Premium Dark Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0F9DE8] via-[#1E7FCB] to-[#1E7FCB]"></div>
+        {/* Professional Dark Background */}
+        <div className="absolute inset-0 bg-[#0B1121]"></div>
 
-        {/* Subtle animated gradient overlay */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#1E40AF]/20 rounded-full blur-[150px] animate-pulse"></div>
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#FF8500]/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+        {/* Subtle gradient accent */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#FF8500]/30 to-transparent"></div>
+          <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-[#1E40AF]/[0.03] rounded-full blur-[150px]"></div>
+          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#FF8500]/[0.02] rounded-full blur-[120px]"></div>
         </div>
 
         {/* Content */}
         <div className="relative z-10">
           {/* Top CTA Section */}
-          <div className="border-b border-white/10">
+          <div className="border-b border-white/[0.06]">
             <div className="max-w-[1200px] mx-auto px-6 py-10">
               <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
                 {/* Logo and tagline */}
@@ -166,15 +168,15 @@ const Footer = () => {
                     <Image
                       src="/images/images.png"
                       alt="Lab Yaoundé Logo"
-                      width={200}
-                      height={80}
+                      width={220}
+                      height={90}
                       className="h-[80px] w-auto object-contain brightness-110"
                     />
                   </Link>
-                  <p className="text-white font-bold text-lg">
+                  <p className="text-white font-semibold text-lg">
                     Laboratoire d&apos;Analyses Biologiques de Yaoundé
                   </p>
-                  <p className="text-white/60 text-sm mt-1">
+                  <p className="text-slate-500 text-sm mt-1">
                     {language === 'fr' ? 'Votre partenaire santé de confiance au Cameroun' : 'Your trusted health partner in Cameroon'}
                   </p>
                 </div>
@@ -185,25 +187,25 @@ const Footer = () => {
                     href={GOOGLE_MAPS_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gradient-to-r from-[#FF8500] to-[#E87000] hover:from-[#E87000] hover:to-[#FF8500] text-white rounded-xl px-8 py-4 font-bold flex items-center gap-3 transition-all duration-300 shadow-lg shadow-[#FF8500]/30 hover:shadow-[#FF8500]/50 hover:scale-105"
+                    className="bg-[#FF8500] hover:bg-[#E87000] text-white rounded-xl px-7 py-3.5 font-semibold flex items-center gap-3 transition-all duration-300 shadow-lg shadow-[#FF8500]/20 hover:shadow-[#FF8500]/40 hover:scale-[1.02]"
                   >
-                    <MapPin size={20} />
+                    <MapPin size={18} />
                     {language === 'fr' ? 'Trouver mon Laboratoire' : 'Find my Lab'}
-                    <ExternalLink size={16} className="opacity-70" />
+                    <ExternalLink size={14} className="opacity-60" />
                   </a>
                   <Link
                     href="/mes-resultats"
-                    className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/30 text-white rounded-xl px-8 py-4 font-bold flex items-center gap-3 transition-all duration-300 hover:scale-105"
+                    className="bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.1] text-white rounded-xl px-7 py-3.5 font-semibold flex items-center gap-3 transition-all duration-300 hover:scale-[1.02]"
                   >
-                    <FileText size={20} />
+                    <FileText size={18} />
                     {language === 'fr' ? 'Mes résultats' : 'My Results'}
                   </Link>
                 </div>
 
                 {/* Social Media */}
                 <div className="flex items-center gap-4">
-                  <span className="text-white/60 text-sm hidden lg:block">{language === 'fr' ? 'Suivez-nous' : 'Follow us'}</span>
-                  <div className="flex gap-3">
+                  <span className="text-slate-500 text-sm hidden lg:block">{language === 'fr' ? 'Suivez-nous' : 'Follow us'}</span>
+                  <div className="flex gap-2.5">
                     {[
                       { href: SOCIAL_LINKS.facebook, icon: Facebook, label: "Facebook" },
                       { href: SOCIAL_LINKS.tiktok, icon: TikTokIcon, label: "TikTok" },
@@ -215,9 +217,9 @@ const Footer = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={social.label}
-                        className="w-11 h-11 rounded-full bg-white/10 hover:bg-gradient-to-br hover:from-[#FF8500] hover:to-[#E87000] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#FF8500]/30"
+                        className="w-10 h-10 rounded-lg bg-white/[0.06] hover:bg-[#FF8500] flex items-center justify-center transition-all duration-300 hover:scale-105 border border-white/[0.06] hover:border-[#FF8500]"
                       >
-                        <social.icon size={20} className="text-white" />
+                        <social.icon size={18} className="text-slate-400 group-hover:text-white" />
                       </a>
                     ))}
                   </div>
@@ -231,31 +233,31 @@ const Footer = () => {
             <div className="grid lg:grid-cols-12 gap-10">
               {/* Contact Info Card */}
               <div className="lg:col-span-4">
-                <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/20 shadow-2xl">
-                  <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-                    <span className="w-12 h-12 bg-gradient-to-br from-[#FF8500] to-[#E87000] rounded-xl flex items-center justify-center shadow-lg shadow-[#FF8500]/30">
-                      <Phone size={22} className="text-white" />
+                <div className="bg-white/[0.03] rounded-2xl p-7 border border-white/[0.06]">
+                  <h3 className="text-xl font-semibold text-white mb-7 flex items-center gap-3">
+                    <span className="w-10 h-10 bg-[#FF8500] rounded-lg flex items-center justify-center">
+                      <Phone size={18} className="text-white" />
                     </span>
                     {language === 'fr' ? 'Contactez-nous' : 'Contact Us'}
                   </h3>
 
-                  <div className="space-y-5">
+                  <div className="space-y-4">
                     {/* Address */}
                     <a
                       href={GOOGLE_MAPS_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-start gap-4 text-white/80 hover:text-[#FF8500] transition-colors group p-3 rounded-xl hover:bg-white/5"
+                      className="flex items-start gap-3.5 text-slate-400 hover:text-white transition-colors group p-3 rounded-xl hover:bg-white/[0.03]"
                     >
-                      <div className="w-10 h-10 rounded-lg bg-[#1E40AF]/30 flex items-center justify-center flex-shrink-0">
-                        <MapPin size={18} className="text-[#FF8500]" />
+                      <div className="w-9 h-9 rounded-lg bg-white/[0.06] flex items-center justify-center flex-shrink-0">
+                        <MapPin size={16} className="text-[#FF8500]" />
                       </div>
                       <div>
-                        <p className="font-semibold text-white">Carrefour Ancien Bâtiments</p>
-                        <p className="text-sm text-white/60">Cité Verte Bâtiment B01, Yaoundé 2</p>
-                        <p className="text-sm text-white/60">Rue 2.711</p>
-                        <span className="text-xs text-[#FF8500] flex items-center gap-1 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                          {language === 'fr' ? 'Voir sur Google Maps' : 'View on Google Maps'} <ExternalLink size={12} />
+                        <p className="font-medium text-slate-300 text-sm">Carrefour Ancien Bâtiments</p>
+                        <p className="text-xs text-slate-500 mt-0.5">Cité Verte Bâtiment B01, Yaoundé 2</p>
+                        <p className="text-xs text-slate-500">Rue 2.711</p>
+                        <span className="text-xs text-[#FF8500] flex items-center gap-1 mt-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                          {language === 'fr' ? 'Voir sur Google Maps' : 'View on Google Maps'} <ExternalLink size={10} />
                         </span>
                       </div>
                     </a>
@@ -263,38 +265,38 @@ const Footer = () => {
                     {/* Phone */}
                     <a
                       href="tel:+237242046850"
-                      className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors group"
+                      className="flex items-center gap-3.5 p-3 rounded-xl hover:bg-white/[0.03] transition-colors"
                     >
-                      <div className="w-10 h-10 rounded-lg bg-[#FF8500]/20 flex items-center justify-center flex-shrink-0">
-                        <Phone size={18} className="text-[#FF8500]" />
+                      <div className="w-9 h-9 rounded-lg bg-white/[0.06] flex items-center justify-center flex-shrink-0">
+                        <Phone size={16} className="text-[#FF8500]" />
                       </div>
                       <div>
-                        <p className="text-xl font-bold text-[#FF8500]">(+237) 242 04 68 50</p>
-                        <p className="text-xs text-white/60">{language === 'fr' ? 'Appelez-nous' : 'Call us'}</p>
+                        <p className="text-lg font-bold text-[#FF8500]">(+237) 242 04 68 50</p>
+                        <p className="text-xs text-slate-500">{language === 'fr' ? 'Appelez-nous' : 'Call us'}</p>
                       </div>
                     </a>
 
                     {/* Email */}
                     <a
                       href="mailto:contact@labyaounde.cm"
-                      className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors group"
+                      className="flex items-center gap-3.5 p-3 rounded-xl hover:bg-white/[0.03] transition-colors"
                     >
-                      <div className="w-10 h-10 rounded-lg bg-[#1E40AF]/30 flex items-center justify-center flex-shrink-0">
-                        <Mail size={18} className="text-[#FF8500]" />
+                      <div className="w-9 h-9 rounded-lg bg-white/[0.06] flex items-center justify-center flex-shrink-0">
+                        <Mail size={16} className="text-[#FF8500]" />
                       </div>
                       <div>
-                        <p className="font-semibold text-white">contact@labyaounde.cm</p>
-                        <p className="text-xs text-white/60">{language === 'fr' ? 'Écrivez-nous' : 'Write to us'}</p>
+                        <p className="font-medium text-slate-300 text-sm">contact@labyaounde.cm</p>
+                        <p className="text-xs text-slate-500">{language === 'fr' ? 'Écrivez-nous' : 'Write to us'}</p>
                       </div>
                     </a>
 
                     {/* Hours */}
-                    <div className="flex items-center gap-4 p-3 rounded-xl bg-[#FF8500]/10 border border-[#FF8500]/20">
-                      <div className="w-10 h-10 rounded-lg bg-[#FF8500]/20 flex items-center justify-center flex-shrink-0">
-                        <Clock size={18} className="text-[#FF8500]" />
+                    <div className="flex items-center gap-3.5 p-3 rounded-xl bg-[#FF8500]/[0.06] border border-[#FF8500]/10">
+                      <div className="w-9 h-9 rounded-lg bg-[#FF8500]/15 flex items-center justify-center flex-shrink-0">
+                        <Clock size={16} className="text-[#FF8500]" />
                       </div>
                       <div>
-                        <p className="font-semibold text-white">{language === 'fr' ? "Horaires d'ouverture" : 'Opening Hours'}</p>
+                        <p className="font-medium text-slate-300 text-sm">{language === 'fr' ? "Horaires d'ouverture" : 'Opening Hours'}</p>
                         <p className="text-sm font-bold text-[#FF8500]">
                           {language === 'fr' ? 'Laboratoire ouvert 24h/24 - 7j/7' : 'Laboratory open 24/7'}
                         </p>
@@ -323,21 +325,21 @@ const Footer = () => {
                       <AccordionItem
                         value={key}
                         key={key}
-                        className="border-b border-white/10 last:border-b-0"
+                        className="border-b border-white/[0.06] last:border-b-0"
                       >
-                        <AccordionTrigger className="text-lg font-semibold hover:no-underline py-4 text-white">
+                        <AccordionTrigger className="text-base font-semibold hover:no-underline py-4 text-white">
                           <div className="flex items-center gap-3">
-                            <Icon className="w-5 h-5 text-[#FF8500]" />
+                            <Icon className="w-4 h-4 text-[#FF8500]" />
                             {column.title}
                           </div>
                         </AccordionTrigger>
                         <AccordionContent>
-                          <ul className="space-y-3 pt-2 pb-4 pl-8">
+                          <ul className="space-y-2.5 pt-2 pb-4 pl-7">
                             {column.links.map((link, index) => (
                               <li key={index}>
                                 <Link
                                   href={link.href}
-                                  className="text-sm text-white/70 hover:text-[#FF8500] transition-colors"
+                                  className="text-sm text-slate-400 hover:text-[#FF8500] transition-colors"
                                 >
                                   {link.text}
                                 </Link>
@@ -354,11 +356,11 @@ const Footer = () => {
           </div>
 
           {/* Bottom Bar */}
-          <div className="border-t border-white/10 bg-black/30">
-            <div className="max-w-[1200px] mx-auto px-6 py-6">
+          <div className="border-t border-white/[0.06] bg-black/20">
+            <div className="max-w-[1200px] mx-auto px-6 py-5">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                <p className="text-sm text-white/60 text-center md:text-left">
-                  © {new Date().getFullYear()} <span className="text-[#FF8500] font-bold">LABYAOUNDE</span>. {language === 'fr' ? 'Tous droits réservés' : 'All rights reserved'}
+                <p className="text-sm text-slate-500 text-center md:text-left">
+                  © {new Date().getFullYear()} <span className="text-[#FF8500] font-semibold">LABYAOUNDE</span>. {language === 'fr' ? 'Tous droits réservés' : 'All rights reserved'}
                 </p>
                 <div className="flex gap-x-6 gap-y-2 flex-wrap justify-center">
                   {[
@@ -369,7 +371,7 @@ const Footer = () => {
                     <Link
                       key={link.text}
                       href={link.href}
-                      className="text-sm text-white/60 hover:text-[#FF8500] transition-colors"
+                      className="text-sm text-slate-500 hover:text-[#FF8500] transition-colors"
                     >
                       {link.text}
                     </Link>
@@ -377,8 +379,8 @@ const Footer = () => {
                 </div>
               </div>
               {/* Designer signature */}
-              <div className="mt-4 pt-3 border-t border-white/[0.04] text-center">
-                <small className="text-[11px] text-white/25 tracking-wide">
+              <div className="mt-3 pt-3 border-t border-white/[0.03] text-center">
+                <small className="text-[11px] text-slate-600 tracking-wide">
                   Designed by Zang Mekinda Adrien
                 </small>
               </div>
@@ -393,9 +395,9 @@ const Footer = () => {
         <button
           onClick={scrollToTop}
           aria-label="Retour en haut"
-          className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-[#FF8500] to-[#E87000] text-white flex items-center justify-center shadow-xl shadow-[#FF8500]/40 hover:shadow-[#FF8500]/60 hover:scale-110 transition-all duration-300"
+          className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-[#FF8500] hover:bg-[#E87000] text-white flex items-center justify-center shadow-lg shadow-[#FF8500]/30 hover:shadow-[#FF8500]/50 hover:scale-105 transition-all duration-300"
         >
-          <ArrowUp size={24} />
+          <ArrowUp size={20} />
         </button>
       )}
     </>
