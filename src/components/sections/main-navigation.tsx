@@ -276,21 +276,21 @@ const MainNavigation = () => {
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
           <div className={cn(
             "flex items-center justify-between transition-all duration-300",
-            isScrolled ? "h-[100px]" : "h-[140px]"
+            isScrolled ? "h-[110px]" : "h-[160px]"
           )}>
 
             {/* ─── Logo ─── */}
             <Link href="/" aria-label="Lab Yaoundé Home" className="flex items-center flex-shrink-0">
               <motion.div
-                animate={{ height: isScrolled ? 80 : 130 }}
+                animate={{ height: isScrolled ? 90 : 150 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 className="relative"
               >
                 <Image
                   src="/images/images.png"
                   alt="Lab Yaoundé Logo"
-                  width={500}
-                  height={200}
+                  width={600}
+                  height={240}
                   className="h-full w-auto object-contain"
                   priority
                 />
@@ -308,11 +308,11 @@ const MainNavigation = () => {
                 >
                   <button
                     className={cn(
-                      "inline-flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200",
-                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1E40AF]/30 focus-visible:ring-offset-2",
+                      "inline-flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF8500]/30 focus-visible:ring-offset-2",
                       activeMenu === menu.id
-                        ? "text-slate-900 bg-slate-50"
-                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-50/50"
+                        ? "text-[#FF8500] bg-[#FF8500]/5"
+                        : "text-slate-600 hover:text-[#FF8500] hover:bg-[#FF8500]/5"
                     )}
                     aria-expanded={activeMenu === menu.id}
                     aria-haspopup="true"
@@ -322,7 +322,7 @@ const MainNavigation = () => {
                       animate={{ rotate: activeMenu === menu.id ? 180 : 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <ChevronDown className="h-3.5 w-3.5 opacity-40" />
+                      <ChevronDown className={cn("h-3.5 w-3.5 transition-colors", activeMenu === menu.id ? "text-[#FF8500] opacity-80" : "opacity-40")} />
                     </motion.span>
                   </button>
 
@@ -330,7 +330,7 @@ const MainNavigation = () => {
                   {isMenuActive(menu) && (
                     <motion.div
                       layoutId="activeNavIndicator"
-                      className="absolute -bottom-[1px] left-3 right-3 h-[2px] bg-[#FF8500] rounded-full"
+                      className="absolute -bottom-[1px] left-2 right-2 h-[3px] bg-gradient-to-r from-[#FF8500] to-[#E87000] rounded-full shadow-[0_0_8px_rgba(255,133,0,0.4)]"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -364,7 +364,7 @@ const MainNavigation = () => {
                 {isActive("/carrieres") && (
                   <motion.div
                     layoutId="activeNavIndicator"
-                    className="absolute -bottom-[1px] left-3 right-3 h-[2px] bg-[#FF8500] rounded-full"
+                    className="absolute -bottom-[1px] left-2 right-2 h-[3px] bg-gradient-to-r from-[#FF8500] to-[#E87000] rounded-full shadow-[0_0_8px_rgba(255,133,0,0.4)]"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -609,8 +609,8 @@ const MegaMenuPanel = ({
         "absolute top-full left-1/2 -translate-x-1/2 mt-1",
         menu.width || "w-[520px]",
         "bg-white/95 backdrop-blur-xl",
-        "rounded-xl border border-slate-200/80 border-t-2 border-t-[#FF8500]",
-        "shadow-[0_16px_70px_-12px_rgba(0,0,0,0.12)]",
+        "rounded-xl border border-slate-200/80 border-t-[3px] border-t-[#FF8500]",
+        "shadow-[0_16px_70px_-12px_rgba(0,0,0,0.12),0_-2px_20px_-4px_rgba(255,133,0,0.15)]",
         "p-1.5"
       )}
     >
@@ -636,8 +636,8 @@ const MegaMenuPanel = ({
                     className={cn(
                       "group/link flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-150",
                       isActive(link.href)
-                        ? "bg-[#FF8500]/5 text-[#FF8500]"
-                        : "text-slate-600 hover:text-slate-900 hover:bg-orange-50/60"
+                        ? "bg-[#FF8500]/10 text-[#FF8500] font-semibold"
+                        : "text-slate-600 hover:text-[#FF8500] hover:bg-[#FF8500]/[0.06]"
                     )}
                   >
                     {link.icon && (
@@ -651,7 +651,7 @@ const MegaMenuPanel = ({
                       </div>
                     )}
                     <span className="text-sm font-medium flex-1">{link.label}</span>
-                    <ArrowRight className="h-3.5 w-3.5 text-[#FF8500] opacity-0 -translate-x-1 group-hover/link:opacity-50 group-hover/link:translate-x-0 transition-all duration-200" />
+                    <ArrowRight className="h-3.5 w-3.5 text-[#FF8500] opacity-0 -translate-x-2 group-hover/link:opacity-80 group-hover/link:translate-x-0 transition-all duration-200" />
                   </Link>
                 </motion.div>
               ))}

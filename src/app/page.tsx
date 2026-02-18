@@ -13,6 +13,7 @@ import PartnersLogos from "@/components/sections/partners-logos";
 import Footer from "@/components/sections/footer";
 import FloatingReviewWidget from "@/components/sections/floating-review-widget";
 import FloatingContactButton from "@/components/sections/floating-contact-button";
+import ScrollReveal from "@/components/ui/scroll-reveal";
 
 export default function HomePage() {
   return (
@@ -20,18 +21,38 @@ export default function HomePage() {
       <TopNavigationBar />
       <MainNavigation />
       <main>
-        <AboutUs />
+        <ScrollReveal direction="up" duration={0.7}>
+          <AboutUs />
+        </ScrollReveal>
         <HeroCarousel />
-        <PatientJourneyCards />
-        <Newsletter />
-        <ResultsAccess />
-        <PartnersLogos />
-        <NotreReferentiel />
-        <JobOpenings />
-        <ThreePillars />
-        <NewsArticles />
+        <ScrollReveal direction="up" delay={0.1}>
+          <PatientJourneyCards />
+        </ScrollReveal>
+        <ScrollReveal direction="left" delay={0.1}>
+          <Newsletter />
+        </ScrollReveal>
+        <ScrollReveal direction="up" delay={0.1}>
+          <ResultsAccess />
+        </ScrollReveal>
+        <ScrollReveal direction="right" delay={0.1}>
+          <PartnersLogos />
+        </ScrollReveal>
+        <ScrollReveal direction="up" delay={0.1}>
+          <NotreReferentiel />
+        </ScrollReveal>
+        <ScrollReveal direction="up" delay={0.15}>
+          <JobOpenings />
+        </ScrollReveal>
+        <ScrollReveal direction="up" delay={0.1}>
+          <ThreePillars />
+        </ScrollReveal>
+        <ScrollReveal direction="up" delay={0.1}>
+          <NewsArticles />
+        </ScrollReveal>
       </main>
-      <Footer />
+      <ScrollReveal direction="up" delay={0.1}>
+        <Footer />
+      </ScrollReveal>
       <FloatingReviewWidget />
       <FloatingContactButton />
     </>

@@ -118,10 +118,10 @@ const Footer = () => {
     return (
       <div className="group">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-9 h-9 rounded-lg bg-[#FF8500]/15 flex items-center justify-center group-hover:bg-[#FF8500]/25 transition-colors">
-            <Icon className="w-4.5 h-4.5 text-[#FF8500]" />
+          <div className="w-9 h-9 rounded-lg bg-[#1E40AF]/10 flex items-center justify-center group-hover:bg-[#1E40AF]/15 transition-colors">
+            <Icon className="w-4.5 h-4.5 text-[#1E40AF]" />
           </div>
-          <h3 className="text-base font-semibold text-white">
+          <h3 className="text-base font-semibold text-[#0F2B4C]">
             {column.title}
           </h3>
         </div>
@@ -130,7 +130,7 @@ const Footer = () => {
             <li key={index}>
               <Link
                 href={link.href}
-                className="text-sm text-slate-400 hover:text-[#FF8500] transition-all duration-200 flex items-center gap-2 group/link"
+                className="text-sm text-[#4A6D8C] hover:text-[#FF8500] transition-all duration-200 flex items-center gap-2 group/link"
               >
                 <ChevronRight className="w-3 h-3 opacity-0 -ml-4 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all duration-200 text-[#FF8500]" />
                 {link.text}
@@ -146,20 +146,20 @@ const Footer = () => {
     <>
       {/* Website designed by Zang Mekinda Adrien | 2026 */}
       <footer className="relative overflow-hidden" style={{ fontFamily: 'Roboto, sans-serif' }}>
-        {/* Professional Dark Background */}
-        <div className="absolute inset-0 bg-[#0B1121]"></div>
+        {/* Light Pale Blue Background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#E8F4FD] to-[#DCEEF9]"></div>
 
-        {/* Subtle gradient accent */}
+        {/* Subtle decorative elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#FF8500]/30 to-transparent"></div>
-          <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-[#1E40AF]/[0.03] rounded-full blur-[150px]"></div>
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#FF8500]/[0.02] rounded-full blur-[120px]"></div>
+          <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#1E40AF] via-[#FF8500] to-[#1E40AF]"></div>
+          <div className="absolute top-20 left-1/4 w-[400px] h-[400px] bg-[#1E40AF]/[0.03] rounded-full blur-[120px]"></div>
+          <div className="absolute bottom-10 right-1/3 w-[300px] h-[300px] bg-[#FF8500]/[0.03] rounded-full blur-[100px]"></div>
         </div>
 
         {/* Content */}
         <div className="relative z-10">
           {/* Top CTA Section */}
-          <div className="border-b border-white/[0.06]">
+          <div className="border-b border-[#1E40AF]/[0.08]">
             <div className="max-w-[1200px] mx-auto px-6 py-10">
               <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
                 {/* Logo and tagline */}
@@ -170,13 +170,13 @@ const Footer = () => {
                       alt="Lab Yaoundé Logo"
                       width={220}
                       height={90}
-                      className="h-[80px] w-auto object-contain brightness-110"
+                      className="h-[80px] w-auto object-contain"
                     />
                   </Link>
-                  <p className="text-white font-semibold text-lg">
+                  <p className="text-[#0F2B4C] font-semibold text-lg">
                     Laboratoire d&apos;Analyses Biologiques de Yaoundé
                   </p>
-                  <p className="text-slate-500 text-sm mt-1">
+                  <p className="text-[#6B8FAD] text-sm mt-1">
                     {language === 'fr' ? 'Votre partenaire santé de confiance au Cameroun' : 'Your trusted health partner in Cameroon'}
                   </p>
                 </div>
@@ -195,7 +195,7 @@ const Footer = () => {
                   </a>
                   <Link
                     href="/mes-resultats"
-                    className="bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.1] text-white rounded-xl px-7 py-3.5 font-semibold flex items-center gap-3 transition-all duration-300 hover:scale-[1.02]"
+                    className="bg-[#1E40AF] hover:bg-[#1E3A8A] text-white rounded-xl px-7 py-3.5 font-semibold flex items-center gap-3 transition-all duration-300 shadow-lg shadow-[#1E40AF]/20 hover:shadow-[#1E40AF]/40 hover:scale-[1.02]"
                   >
                     <FileText size={18} />
                     {language === 'fr' ? 'Mes résultats' : 'My Results'}
@@ -204,7 +204,7 @@ const Footer = () => {
 
                 {/* Social Media */}
                 <div className="flex items-center gap-4">
-                  <span className="text-slate-500 text-sm hidden lg:block">{language === 'fr' ? 'Suivez-nous' : 'Follow us'}</span>
+                  <span className="text-[#6B8FAD] text-sm hidden lg:block">{language === 'fr' ? 'Suivez-nous' : 'Follow us'}</span>
                   <div className="flex gap-2.5">
                     {[
                       { href: SOCIAL_LINKS.facebook, icon: Facebook, label: "Facebook" },
@@ -217,9 +217,9 @@ const Footer = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={social.label}
-                        className="w-10 h-10 rounded-lg bg-white/[0.06] hover:bg-[#FF8500] flex items-center justify-center transition-all duration-300 hover:scale-105 border border-white/[0.06] hover:border-[#FF8500]"
+                        className="w-10 h-10 rounded-lg bg-white/70 hover:bg-[#FF8500] flex items-center justify-center transition-all duration-300 hover:scale-105 border border-[#1E40AF]/10 hover:border-[#FF8500] shadow-sm"
                       >
-                        <social.icon size={18} className="text-slate-400 group-hover:text-white" />
+                        <social.icon size={18} className="text-[#1E40AF]" />
                       </a>
                     ))}
                   </div>
@@ -233,9 +233,9 @@ const Footer = () => {
             <div className="grid lg:grid-cols-12 gap-10">
               {/* Contact Info Card */}
               <div className="lg:col-span-4">
-                <div className="bg-white/[0.03] rounded-2xl p-7 border border-white/[0.06]">
-                  <h3 className="text-xl font-semibold text-white mb-7 flex items-center gap-3">
-                    <span className="w-10 h-10 bg-[#FF8500] rounded-lg flex items-center justify-center">
+                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-7 border border-[#1E40AF]/[0.08] shadow-sm">
+                  <h3 className="text-xl font-semibold text-[#0F2B4C] mb-7 flex items-center gap-3">
+                    <span className="w-10 h-10 bg-[#FF8500] rounded-lg flex items-center justify-center shadow-md shadow-[#FF8500]/20">
                       <Phone size={18} className="text-white" />
                     </span>
                     {language === 'fr' ? 'Contactez-nous' : 'Contact Us'}
@@ -247,15 +247,15 @@ const Footer = () => {
                       href={GOOGLE_MAPS_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-start gap-3.5 text-slate-400 hover:text-white transition-colors group p-3 rounded-xl hover:bg-white/[0.03]"
+                      className="flex items-start gap-3.5 text-[#4A6D8C] hover:text-[#0F2B4C] transition-colors group p-3 rounded-xl hover:bg-[#1E40AF]/[0.04]"
                     >
-                      <div className="w-9 h-9 rounded-lg bg-white/[0.06] flex items-center justify-center flex-shrink-0">
-                        <MapPin size={16} className="text-[#FF8500]" />
+                      <div className="w-9 h-9 rounded-lg bg-[#1E40AF]/[0.08] flex items-center justify-center flex-shrink-0">
+                        <MapPin size={16} className="text-[#1E40AF]" />
                       </div>
                       <div>
-                        <p className="font-medium text-slate-300 text-sm">Carrefour Ancien Bâtiments</p>
-                        <p className="text-xs text-slate-500 mt-0.5">Cité Verte Bâtiment B01, Yaoundé 2</p>
-                        <p className="text-xs text-slate-500">Rue 2.711</p>
+                        <p className="font-medium text-[#0F2B4C] text-sm">Carrefour Ancien Bâtiments</p>
+                        <p className="text-xs text-[#6B8FAD] mt-0.5">Cité Verte Bâtiment B01, Yaoundé 2</p>
+                        <p className="text-xs text-[#6B8FAD]">Rue 2.711</p>
                         <span className="text-xs text-[#FF8500] flex items-center gap-1 mt-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                           {language === 'fr' ? 'Voir sur Google Maps' : 'View on Google Maps'} <ExternalLink size={10} />
                         </span>
@@ -265,38 +265,38 @@ const Footer = () => {
                     {/* Phone */}
                     <a
                       href="tel:+237242046850"
-                      className="flex items-center gap-3.5 p-3 rounded-xl hover:bg-white/[0.03] transition-colors"
+                      className="flex items-center gap-3.5 p-3 rounded-xl hover:bg-[#1E40AF]/[0.04] transition-colors"
                     >
-                      <div className="w-9 h-9 rounded-lg bg-white/[0.06] flex items-center justify-center flex-shrink-0">
+                      <div className="w-9 h-9 rounded-lg bg-[#FF8500]/10 flex items-center justify-center flex-shrink-0">
                         <Phone size={16} className="text-[#FF8500]" />
                       </div>
                       <div>
                         <p className="text-lg font-bold text-[#FF8500]">(+237) 242 04 68 50</p>
-                        <p className="text-xs text-slate-500">{language === 'fr' ? 'Appelez-nous' : 'Call us'}</p>
+                        <p className="text-xs text-[#6B8FAD]">{language === 'fr' ? 'Appelez-nous' : 'Call us'}</p>
                       </div>
                     </a>
 
                     {/* Email */}
                     <a
                       href="mailto:contact@labyaounde.cm"
-                      className="flex items-center gap-3.5 p-3 rounded-xl hover:bg-white/[0.03] transition-colors"
+                      className="flex items-center gap-3.5 p-3 rounded-xl hover:bg-[#1E40AF]/[0.04] transition-colors"
                     >
-                      <div className="w-9 h-9 rounded-lg bg-white/[0.06] flex items-center justify-center flex-shrink-0">
-                        <Mail size={16} className="text-[#FF8500]" />
+                      <div className="w-9 h-9 rounded-lg bg-[#1E40AF]/[0.08] flex items-center justify-center flex-shrink-0">
+                        <Mail size={16} className="text-[#1E40AF]" />
                       </div>
                       <div>
-                        <p className="font-medium text-slate-300 text-sm">contact@labyaounde.cm</p>
-                        <p className="text-xs text-slate-500">{language === 'fr' ? 'Écrivez-nous' : 'Write to us'}</p>
+                        <p className="font-medium text-[#0F2B4C] text-sm">contact@labyaounde.cm</p>
+                        <p className="text-xs text-[#6B8FAD]">{language === 'fr' ? 'Écrivez-nous' : 'Write to us'}</p>
                       </div>
                     </a>
 
                     {/* Hours */}
-                    <div className="flex items-center gap-3.5 p-3 rounded-xl bg-[#FF8500]/[0.06] border border-[#FF8500]/10">
+                    <div className="flex items-center gap-3.5 p-3 rounded-xl bg-[#FF8500]/[0.06] border border-[#FF8500]/15">
                       <div className="w-9 h-9 rounded-lg bg-[#FF8500]/15 flex items-center justify-center flex-shrink-0">
                         <Clock size={16} className="text-[#FF8500]" />
                       </div>
                       <div>
-                        <p className="font-medium text-slate-300 text-sm">{language === 'fr' ? "Horaires d'ouverture" : 'Opening Hours'}</p>
+                        <p className="font-medium text-[#0F2B4C] text-sm">{language === 'fr' ? "Horaires d'ouverture" : 'Opening Hours'}</p>
                         <p className="text-sm font-bold text-[#FF8500]">
                           {language === 'fr' ? 'Laboratoire ouvert 24h/24 - 7j/7' : 'Laboratory open 24/7'}
                         </p>
@@ -325,11 +325,11 @@ const Footer = () => {
                       <AccordionItem
                         value={key}
                         key={key}
-                        className="border-b border-white/[0.06] last:border-b-0"
+                        className="border-b border-[#1E40AF]/[0.08] last:border-b-0"
                       >
-                        <AccordionTrigger className="text-base font-semibold hover:no-underline py-4 text-white">
+                        <AccordionTrigger className="text-base font-semibold hover:no-underline py-4 text-[#0F2B4C]">
                           <div className="flex items-center gap-3">
-                            <Icon className="w-4 h-4 text-[#FF8500]" />
+                            <Icon className="w-4 h-4 text-[#1E40AF]" />
                             {column.title}
                           </div>
                         </AccordionTrigger>
@@ -339,7 +339,7 @@ const Footer = () => {
                               <li key={index}>
                                 <Link
                                   href={link.href}
-                                  className="text-sm text-slate-400 hover:text-[#FF8500] transition-colors"
+                                  className="text-sm text-[#4A6D8C] hover:text-[#FF8500] transition-colors"
                                 >
                                   {link.text}
                                 </Link>
@@ -356,10 +356,10 @@ const Footer = () => {
           </div>
 
           {/* Bottom Bar */}
-          <div className="border-t border-white/[0.06] bg-black/20">
+          <div className="border-t border-[#1E40AF]/[0.08] bg-[#D4EAF5]/60">
             <div className="max-w-[1200px] mx-auto px-6 py-5">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                <p className="text-sm text-slate-500 text-center md:text-left">
+                <p className="text-sm text-[#6B8FAD] text-center md:text-left">
                   © {new Date().getFullYear()} <span className="text-[#FF8500] font-semibold">LABYAOUNDE</span>. {language === 'fr' ? 'Tous droits réservés' : 'All rights reserved'}
                 </p>
                 <div className="flex gap-x-6 gap-y-2 flex-wrap justify-center">
@@ -371,7 +371,7 @@ const Footer = () => {
                     <Link
                       key={link.text}
                       href={link.href}
-                      className="text-sm text-slate-500 hover:text-[#FF8500] transition-colors"
+                      className="text-sm text-[#6B8FAD] hover:text-[#FF8500] transition-colors"
                     >
                       {link.text}
                     </Link>
@@ -379,8 +379,8 @@ const Footer = () => {
                 </div>
               </div>
               {/* Designer signature */}
-              <div className="mt-3 pt-3 border-t border-white/[0.03] text-center">
-                <small className="text-[11px] text-slate-600 tracking-wide">
+              <div className="mt-3 pt-3 border-t border-[#1E40AF]/[0.04] text-center">
+                <small className="text-[11px] text-[#8BAFC8] tracking-wide">
                   Designed by Zang Mekinda Adrien
                 </small>
               </div>
