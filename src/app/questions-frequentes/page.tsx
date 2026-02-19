@@ -129,12 +129,12 @@ export default function QuestionsFrequentesPage() {
 
       <main className="min-h-screen bg-[#84BDE3]/10">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-[#AAD8FB] via-[#AAD8FB]/90 to-[#AAD8FB]/80 text-white py-20">
+        <section className="bg-gradient-to-br from-[#AAD8FB] via-[#AAD8FB]/90 to-[#AAD8FB]/80 text-[#1034A6] py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <HelpCircle className="w-20 h-20 mx-auto mb-6" />
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">{currentContent.title}</h1>
-            <p className="text-xl lg:text-2xl text-white/90 mb-4">{currentContent.subtitle}</p>
-            <p className="text-lg text-white/80 max-w-3xl mx-auto">{currentContent.description}</p>
+            <p className="text-xl lg:text-2xl text-[#1034A6]/90 mb-4">{currentContent.subtitle}</p>
+            <p className="text-lg text-[#1034A6]/80 max-w-3xl mx-auto">{currentContent.description}</p>
           </div>
         </section>
 

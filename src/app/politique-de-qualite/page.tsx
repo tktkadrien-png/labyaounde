@@ -34,34 +34,34 @@ export default function PolitiqueDeQualitePage() {
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
             <div className="max-w-3xl">
               <div className="flex items-center gap-2 mb-4">
-                <Link href="/" className="text-white/80 hover:text-white text-sm sm:text-base transition-colors">
+                <Link href="/" className="text-[#1034A6]/80 hover:text-[#1034A6] text-sm sm:text-base transition-colors">
                   {language === 'fr' ? 'Accueil' : 'Home'}
                 </Link>
-                <ChevronRight className="w-4 h-4 text-white/60" />
-                <Link href="/#services" className="text-white/80 hover:text-white text-sm sm:text-base transition-colors">
+                <ChevronRight className="w-4 h-4 text-[#1034A6]/60" />
+                <Link href="/#services" className="text-[#1034A6]/80 hover:text-[#1034A6] text-sm sm:text-base transition-colors">
                   {language === 'fr' ? 'Assurance Qualité' : 'Quality Assurance'}
                 </Link>
-                <ChevronRight className="w-4 h-4 text-white/60" />
-                <span className="text-white text-sm sm:text-base">{language === 'fr' ? 'Politique de Qualité' : 'Quality Policy'}</span>
+                <ChevronRight className="w-4 h-4 text-[#1034A6]/60" />
+                <span className="text-[#1034A6] text-sm sm:text-base">{language === 'fr' ? 'Politique de Qualité' : 'Quality Policy'}</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#1034A6] mb-4 sm:mb-6 leading-tight">
                 {language === 'fr' ? 'Politique de Qualité' : 'Quality Policy'}
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-6 sm:mb-8 leading-relaxed">
+              <p className="text-lg sm:text-xl md:text-2xl text-[#1034A6]/90 mb-6 sm:mb-8 leading-relaxed">
                 {language === 'fr'
                   ? "Notre engagement stratégique pour l'excellence et la qualité de service"
                   : 'Our strategic commitment to excellence and quality of service'
                 }
               </p>
               <div className="flex flex-wrap gap-4">
-                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                  <Shield className="w-5 h-5 text-white" />
-                  <span className="text-white text-sm sm:text-base font-medium">ISO 15189</span>
+                <div className="flex items-center gap-2 bg-[#1034A6]/10 backdrop-blur-sm px-4 py-2 rounded-full border border-[#1034A6]/20">
+                  <Shield className="w-5 h-5 text-[#1034A6]" />
+                  <span className="text-[#1034A6] text-sm sm:text-base font-medium">ISO 15189</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                  <Award className="w-5 h-5 text-white" />
-                  <span className="text-white text-sm sm:text-base font-medium">{language === 'fr' ? 'Excellence certifiée' : 'Certified Excellence'}</span>
+                <div className="flex items-center gap-2 bg-[#1034A6]/10 backdrop-blur-sm px-4 py-2 rounded-full border border-[#1034A6]/20">
+                  <Award className="w-5 h-5 text-[#1034A6]" />
+                  <span className="text-[#1034A6] text-sm sm:text-base font-medium">{language === 'fr' ? 'Excellence certifiée' : 'Certified Excellence'}</span>
                 </div>
               </div>
             </div>

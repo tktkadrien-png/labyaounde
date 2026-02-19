@@ -44,47 +44,47 @@ export default function MicrobiologiePage() {
           <div className="absolute inset-0 bg-black/60"></div>
 
           <div className="relative h-full max-w-7xl mx-auto px-6 flex flex-col justify-center">
-            <nav className="absolute top-8 left-6 flex items-center gap-2 text-white/80 text-sm">
-              <Link href="/" className="hover:text-white transition-colors">Accueil</Link>
-              <ChevronRight className="w-4 h-4" />
-              <Link href="/#services" className="hover:text-white transition-colors">Nos Services</Link>
-              <ChevronRight className="w-4 h-4" />
-              <span className="text-white">Microbiologie</span>
+            <nav className="absolute top-8 left-6 flex items-center gap-2 text-[#1034A6]/80 text-sm">
+              <Link href="/" className="hover:text-[#1034A6] transition-colors">Accueil</Link>
+              <ChevronRight className="w-4 h-4 text-[#1034A6]/60" />
+              <Link href="/#services" className="hover:text-[#1034A6] transition-colors">Nos Services</Link>
+              <ChevronRight className="w-4 h-4 text-[#1034A6]/60" />
+              <span className="text-[#1034A6] text-sm">Microbiologie</span>
             </nav>
 
             <div className="max-w-3xl">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                  <Bug className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-[#1034A6]/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                  <Bug className="w-6 h-6 text-[#1034A6]" />
                 </div>
-                <span className="text-white/90 text-lg font-medium">Agents Infectieux</span>
+                <span className="text-[#1034A6]/90 text-lg font-medium">Agents Infectieux</span>
               </div>
 
-              <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
+              <h1 className="text-5xl md:text-7xl font-black text-[#1034A6] mb-6 leading-tight">
                 Microbiologie
               </h1>
 
-              <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed max-w-2xl">
+              <p className="text-xl md:text-2xl text-[#1034A6]/90 mb-8 leading-relaxed max-w-2xl">
                 Bactériologie, Parasitologie et Mycologie. Identification précise des agents infectieux.
               </p>
 
               <div className="flex flex-wrap gap-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                    <Clock className="w-5 h-5 text-white" />
+                  <div className="w-10 h-10 bg-[#1034A6]/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                    <Clock className="w-5 h-5 text-[#1034A6]" />
                   </div>
                   <div>
-                    <p className="text-white font-bold">48-72h</p>
-                    <p className="text-white/70 text-sm">Cultures</p>
+                    <p className="text-[#1034A6] font-bold">48-72h</p>
+                    <p className="text-[#1034A6]/70 text-sm">Cultures</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-white" />
+                  <div className="w-10 h-10 bg-[#1034A6]/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                    <CheckCircle className="w-5 h-5 text-[#1034A6]" />
                   </div>
                   <div>
-                    <p className="text-white font-bold">ATB</p>
-                    <p className="text-white/70 text-sm">Antibiogramme</p>
+                    <p className="text-[#1034A6] font-bold">ATB</p>
+                    <p className="text-[#1034A6]/70 text-sm">Antibiogramme</p>
                   </div>
                 </div>
               </div>
@@ -93,8 +93,8 @@ export default function MicrobiologiePage() {
 
           {/* Scroll indicator */}
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-            <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center pt-2">
-              <div className="w-1 h-2 bg-white rounded-full animate-bounce"></div>
+            <div className="w-6 h-10 border-2 border-[#1034A6]/50 rounded-full flex justify-center pt-2">
+              <div className="w-1 h-2 bg-[#1034A6] rounded-full animate-bounce"></div>
             </div>
           </div>
         </section>

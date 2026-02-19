@@ -33,7 +33,7 @@ export default function DoisJePrendreRDV() {
 
       <main className="bg-[#84BDE3]/10">
         {/* Hero Section */}
-        <section ref={heroRef as React.RefObject<HTMLElement>} className="bg-gradient-to-br from-[#AAD8FB] via-[#AAD8FB]/90 to-[#AAD8FB]/80 text-white py-20 lg:py-32 relative overflow-hidden">
+        <section ref={heroRef as React.RefObject<HTMLElement>} className="bg-gradient-to-br from-[#AAD8FB] via-[#AAD8FB]/90 to-[#AAD8FB]/80 text-[#1034A6] py-20 lg:py-32 relative overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
@@ -51,7 +51,7 @@ export default function DoisJePrendreRDV() {
 
           <div className={`max-w-[1200px] mx-auto px-6 relative z-10 transition-all duration-700 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="text-center max-w-5xl mx-auto">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full mb-8 border border-white/20">
+              <div className="inline-flex items-center gap-2 bg-[#1034A6]/10 backdrop-blur-sm px-6 py-3 rounded-full mb-8 border border-[#1034A6]/20">
                 <Calendar className="w-5 h-5" />
                 <span className="text-sm font-semibold">Guide Pratique des Rendez-vous</span>
               </div>
@@ -60,11 +60,11 @@ export default function DoisJePrendreRDV() {
                 Dois-je prendre un rendez-vous ?
               </h1>
 
-              <p className="text-xl lg:text-3xl text-white/90 leading-relaxed mb-6">
+              <p className="text-xl lg:text-3xl text-[#1034A6]/90 leading-relaxed mb-6">
                 La majorité des examens sont réalisables <span className="font-bold text-[#00CED1]">sans rendez-vous</span>.
               </p>
 
-              <p className="text-lg lg:text-xl text-white/80 leading-relaxed max-w-3xl mx-auto">
+              <p className="text-lg lg:text-xl text-[#1034A6]/80 leading-relaxed max-w-3xl mx-auto">
                 Certains examens nécessitent une préparation spécifique ou la présence d'un biologiste qualifié.
                 Découvrez ci-dessous toutes les informations dont vous avez besoin.
               </p>

@@ -155,7 +155,7 @@ export default function NotreEngagementPage() {
                 className={`h-2.5 rounded-full transition-all duration-300 ${
                   index === currentImageIndex
                     ? "bg-[#FF8500] w-8"
-                    : "bg-white/50 w-2.5 hover:bg-white/75"
+                    : "bg-[#1034A6]/50 w-2.5 hover:bg-[#1034A6]/75"
                 }`}
                 aria-label={`Image ${index + 1}`}
               />
@@ -165,16 +165,16 @@ export default function NotreEngagementPage() {
           <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
             <div className="max-w-3xl">
               <div className="flex items-center gap-2 mb-4">
-                <Link href="/" className="text-white/80 hover:text-white text-sm transition-colors">
+                <Link href="/" className="text-[#1034A6]/80 hover:text-[#1034A6] text-sm transition-colors">
                   {language === "fr" ? "Accueil" : "Home"}
                 </Link>
-                <ChevronRight className="w-4 h-4 text-white/60" />
-                <span className="text-white text-sm">{language === "fr" ? "Notre Engagement" : "Our Commitment"}</span>
+                <ChevronRight className="w-4 h-4 text-[#1034A6]/60" />
+                <span className="text-[#1034A6] text-sm">{language === "fr" ? "Notre Engagement" : "Our Commitment"}</span>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1034A6] mb-6 drop-shadow-lg">
                 {language === "fr" ? "Notre Engagement" : "Our Commitment"}
               </h1>
-              <p className="text-xl text-white/90 mb-6 drop-shadow-md">
+              <p className="text-xl text-[#1034A6]/90 mb-6 drop-shadow-md">
                 {language === "fr"
                   ? "Une expertise certifiée ISO 15189, alliée aux normes de l'OMS."
                   : "ISO 15189 certified expertise, combined with WHO standards."

@@ -35,23 +35,23 @@ export default function OrganigrammePage() {
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
             <div className="max-w-3xl">
               <div className="flex items-center gap-2 mb-4">
-                <Link href="/" className="text-white/80 hover:text-white text-sm transition-colors">
+                <Link href="/" className="text-[#1034A6]/80 hover:text-[#1034A6] text-sm transition-colors">
                   {language === "fr" ? "Accueil" : "Home"}
                 </Link>
-                <ChevronRight className="w-4 h-4 text-white/60" />
-                <Link href="/#about" className="text-white/80 hover:text-white text-sm transition-colors">
+                <ChevronRight className="w-4 h-4 text-[#1034A6]/60" />
+                <Link href="/#about" className="text-[#1034A6]/80 hover:text-[#1034A6] text-sm transition-colors">
                   {language === "fr" ? "À Propos" : "About"}
                 </Link>
-                <ChevronRight className="w-4 h-4 text-white/60" />
-                <span className="text-white text-sm">{language === "fr" ? "Organigramme" : "Organization Chart"}</span>
+                <ChevronRight className="w-4 h-4 text-[#1034A6]/60" />
+                <span className="text-[#1034A6] text-sm">{language === "fr" ? "Organigramme" : "Organization Chart"}</span>
               </div>
               <div className="flex items-center gap-4 mb-6">
                 <Building2 className="w-12 h-12 text-[#FF8500] drop-shadow-lg" />
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1034A6] drop-shadow-lg">
                   {language === "fr" ? "Notre Organigramme" : "Our Organization Chart"}
                 </h1>
               </div>
-              <p className="text-xl text-white/90 mb-6 drop-shadow-md">
+              <p className="text-xl text-[#1034A6]/90 mb-6 drop-shadow-md">
                 {language === "fr"
                   ? "Structure organisationnelle du Laboratoire d'Analyses Biologiques de Yaoundé"
                   : "Organizational structure of the Yaoundé Biological Analysis Laboratory"
