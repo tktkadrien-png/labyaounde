@@ -28,7 +28,7 @@ const AboutUs = () => {
   const content = {
     fr: {
       title: "A PROPOS DE NOUS",
-      subtitle: "Laboratoire d'Analyses Biologiques de Yaoundé",
+      subtitle: "",
       description: `Nous sommes une  équipe entièrement dévouée à votre service, et justifiant d'une expertise qui s'appuie sur le respect strict des normes ISO 15189.
 Nous nous engageons à répondre avec exigence et professionnalisme à vos attentes et à bâtir ensemble, une relation de confiance solide et durable. Votre bien-être est notre priorité `,
       stats: [
@@ -44,7 +44,7 @@ Nous nous engageons à répondre avec exigence et professionnalisme à vos atten
     },
     en: {
       title: "ABOUT US",
-      subtitle: "Yaoundé Biological Analysis Laboratory",
+      subtitle: "",
       description: `We are a team fully dedicated to serving you, with proven expertise grounded in strict compliance with ISO 15189 standards.
 We are committed to meeting your expectations with rigor and professionalism, and to building together a strong and lasting relationship of trust. Your well-being is our priority`,
       stats: [
@@ -86,7 +86,7 @@ We are committed to meeting your expectations with rigor and professionalism, an
             </video>
           ))}
           {/* Bright Blue Gradient Overlay - like the reference image */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0088FF]/90 via-[#0088FF]/85 to-[#0088FF]/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#84BDE3]/90 via-[#84BDE3]/85 to-[#84BDE3]/90"></div>
         </div>
 
         {/* Decorative elements */}

@@ -127,9 +127,9 @@ export default function QuestionsFrequentesPage() {
       <TopNavigationBar />
       <MainNavigation />
 
-      <main className="min-h-screen bg-gray-50">
+      <main className="min-h-screen bg-[#84BDE3]/10">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-[#0A065D] via-[#0080FF] to-[#0909FF] text-white py-20">
+        <section className="bg-gradient-to-br from-[#84BDE3] via-[#84BDE3]/90 to-[#84BDE3]/80 text-white py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <HelpCircle className="w-20 h-20 mx-auto mb-6" />
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">{currentContent.title}</h1>
@@ -145,30 +145,30 @@ export default function QuestionsFrequentesPage() {
               {currentContent.faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl border-2 border-gray-100 overflow-hidden hover:border-[#0A065D] hover:shadow-lg transition-all"
+                  className="bg-white rounded-2xl border-2 border-[#84BDE3]/30 overflow-hidden hover:border-[#1E40AF] hover:shadow-lg transition-all"
                 >
                   <button
                     onClick={() => toggleFaq(index)}
                     className="w-full p-6 flex items-center justify-between text-left hover:bg-gray-50 transition-all"
                   >
                     <div className="flex items-start gap-4 flex-1">
-                      <div className="w-10 h-10 bg-[#0A065D]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                        <HelpCircle className="w-5 h-5 text-[#0A065D]" />
+                      <div className="w-10 h-10 bg-[#1E40AF]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <HelpCircle className="w-5 h-5 text-[#1E40AF]" />
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 pr-4">{faq.question}</h3>
+                      <h3 className="text-xl font-bold text-[#1E40AF] pr-4">{faq.question}</h3>
                     </div>
                     <div className="flex-shrink-0">
                       {openFaq === index ? (
-                        <ChevronUp className="w-6 h-6 text-[#0A065D]" />
+                        <ChevronUp className="w-6 h-6 text-[#1E40AF]" />
                       ) : (
-                        <ChevronDown className="w-6 h-6 text-[#0A065D]" />
+                        <ChevronDown className="w-6 h-6 text-[#1E40AF]" />
                       )}
                     </div>
                   </button>
 
                   {openFaq === index && (
                     <div className="px-6 pb-6 pl-20">
-                      <div className="text-gray-700 leading-relaxed whitespace-pre-line">
+                      <div className="text-[#1E40AF]/80 leading-relaxed whitespace-pre-line">
                         {faq.answer}
                       </div>
                     </div>
@@ -188,11 +188,11 @@ export default function QuestionsFrequentesPage() {
                   <Star key={star} className="w-10 h-10 text-[#FE5000] fill-[#FE5000]" />
                 ))}
               </div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">{currentContent.review.title}</h2>
-              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">{currentContent.review.description}</p>
+              <h2 className="text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-4">{currentContent.review.title}</h2>
+              <p className="text-lg text-[#1E40AF]/70 mb-8 max-w-2xl mx-auto">{currentContent.review.description}</p>
 
               {isAuthenticated && userEmail && (
-                <div className="flex items-center justify-center gap-2 text-sm text-gray-600 mb-6">
+                <div className="flex items-center justify-center gap-2 text-sm text-[#1E40AF]/70 mb-6">
                   <User className="w-4 h-4" />
                   <span>{currentContent.review.loggedInAs}: <strong>{userEmail}</strong></span>
                 </div>
@@ -200,7 +200,7 @@ export default function QuestionsFrequentesPage() {
 
               <button
                 onClick={handleReviewClick}
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-[#0A065D] to-[#0080FF] text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all transform hover:scale-105"
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-[#1E40AF] to-[#3B82F6] text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all transform hover:scale-105"
               >
                 <MessageSquare className="w-6 h-6" />
                 {isAuthenticated ? currentContent.review.authenticatedButton : currentContent.review.unauthenticatedButton}
@@ -212,13 +212,13 @@ export default function QuestionsFrequentesPage() {
         {/* Contact CTA */}
         <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-2xl p-8 lg:p-12 text-white shadow-2xl">
+            <div className="bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-2xl p-8 lg:p-12 text-white shadow-2xl">
               <HelpCircle className="w-16 h-16 mx-auto mb-6" />
               <h2 className="text-3xl lg:text-4xl font-bold mb-4">{currentContent.contact.title}</h2>
               <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">{currentContent.contact.description}</p>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 bg-white text-[#0A065D] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="inline-flex items-center gap-3 bg-white text-[#1E40AF] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 {currentContent.contact.button}
               </Link>

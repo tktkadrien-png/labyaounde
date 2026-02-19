@@ -14,7 +14,7 @@ export default function EmpreintesGenetiquesPage() {
       <TopNavigationBar />
       <MainNavigation />
 
-      <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      <main className="min-h-screen bg-[#84BDE3]/10">
         {/* Hero Section */}
         <section className="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
           <div className="absolute inset-0">
@@ -25,7 +25,7 @@ export default function EmpreintesGenetiquesPage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#9333EA]/95 via-[#9333EA]/85 to-[#9333EA]/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#84BDE3]/95 via-[#84BDE3]/85 to-[#84BDE3]/70"></div>
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
@@ -67,26 +67,26 @@ export default function EmpreintesGenetiquesPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div>
-                <div className="inline-flex items-center gap-2 bg-[#9333EA]/10 px-4 py-2 rounded-full mb-6">
-                  <Dna className="w-5 h-5 text-[#9333EA]" />
-                  <span className="text-[#9333EA] font-semibold text-sm sm:text-base">Analyse ADN</span>
+                <div className="inline-flex items-center gap-2 bg-[#84BDE3]/10 px-4 py-2 rounded-full mb-6">
+                  <Dna className="w-5 h-5 text-[#84BDE3]" />
+                  <span className="text-[#84BDE3] font-semibold text-sm sm:text-base">Analyse ADN</span>
                 </div>
 
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-6 leading-tight">
                   Test d'Exclusion de Paternité
                 </h2>
 
-                <div className="prose prose-lg max-w-none text-gray-700 space-y-6">
+                <div className="prose prose-lg max-w-none text-[#1E40AF]/80 space-y-6">
                   <p className="text-base sm:text-lg leading-relaxed">
                     La recherche des <strong>empreintes génétiques</strong>, notamment dans le cadre du <strong>test d'exclusion de paternité</strong>, est effectuée au LABY avec la collaboration de nos confrères du Royaume-Uni dans les <strong>conditions fixées par la loi</strong>.
                   </p>
 
-                  <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#9333EA]">
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">Qu'est-ce qu'un Test de Paternité ?</h3>
-                    <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-4">
+                  <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#84BDE3]">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#1E40AF] mb-4">Qu'est-ce qu'un Test de Paternité ?</h3>
+                    <p className="text-[#1E40AF]/70 text-sm sm:text-base leading-relaxed mb-4">
                       Le test de paternité est une analyse génétique qui compare l'ADN d'un enfant avec celui du père présumé pour établir ou exclure le lien de filiation biologique.
                     </p>
-                    <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                    <p className="text-[#1E40AF]/70 text-sm sm:text-base leading-relaxed">
                       Ce test repose sur l'analyse de marqueurs génétiques (profil génétique) qui sont transmis de parents à enfants selon les lois de l'hérédité.
                     </p>
                   </div>
@@ -116,13 +116,13 @@ export default function EmpreintesGenetiquesPage() {
         </section>
 
         {/* Processus */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-[#84BDE3]/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-4">
                 Comment Se Déroule le Test ?
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl text-[#1E40AF]/70 max-w-3xl mx-auto">
                 Un processus rigoureux conforme aux exigences légales
               </p>
             </div>
@@ -156,14 +156,14 @@ export default function EmpreintesGenetiquesPage() {
               ].map((item, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#9333EA]/20 hover:-translate-y-1"
+                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#84BDE3]/30 hover:border-[#84BDE3]/20 hover:-translate-y-1"
                 >
-                  <div className="w-14 h-14 bg-gradient-to-br from-[#9333EA] to-[#7E22CE] rounded-xl flex items-center justify-center mb-4">
+                  <div className="w-14 h-14 bg-gradient-to-br from-[#84BDE3] to-[#1E40AF] rounded-xl flex items-center justify-center mb-4">
                     <item.icon className="w-7 h-7 text-white" />
                   </div>
-                  <div className="text-[#9333EA] font-bold text-3xl mb-2">Étape {item.step}</div>
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                  <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{item.description}</p>
+                  <div className="text-[#84BDE3] font-bold text-3xl mb-2">Étape {item.step}</div>
+                  <h3 className="text-lg sm:text-xl font-bold text-[#1E40AF] mb-3">{item.title}</h3>
+                  <p className="text-[#1E40AF]/70 text-sm sm:text-base leading-relaxed">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -186,45 +186,45 @@ export default function EmpreintesGenetiquesPage() {
               </div>
 
               <div className="order-1 lg:order-2">
-                <div className="inline-flex items-center gap-2 bg-[#9333EA]/10 px-4 py-2 rounded-full mb-6">
-                  <Scale className="w-5 h-5 text-[#9333EA]" />
-                  <span className="text-[#9333EA] font-semibold text-sm sm:text-base">Conformité Légale</span>
+                <div className="inline-flex items-center gap-2 bg-[#84BDE3]/10 px-4 py-2 rounded-full mb-6">
+                  <Scale className="w-5 h-5 text-[#84BDE3]" />
+                  <span className="text-[#84BDE3] font-semibold text-sm sm:text-base">Conformité Légale</span>
                 </div>
 
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-6 leading-tight">
                   Conditions Fixées par la Loi
                 </h2>
 
-                <div className="prose prose-lg max-w-none text-gray-700 space-y-6">
+                <div className="prose prose-lg max-w-none text-[#1E40AF]/80 space-y-6">
                   <p className="text-base sm:text-lg leading-relaxed">
                     Les tests de paternité sont encadrés par la législation pour protéger les droits de toutes les parties impliquées.
                   </p>
 
-                  <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#9333EA]">
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">Respect du Cadre Légal</h3>
+                  <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#84BDE3]">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#1E40AF] mb-4">Respect du Cadre Légal</h3>
                     <ul className="space-y-3 text-base sm:text-lg">
                       <li className="flex items-start gap-3">
-                        <div className="w-2 h-2 rounded-full bg-[#9333EA] mt-2 flex-shrink-0"></div>
+                        <div className="w-2 h-2 rounded-full bg-[#84BDE3] mt-2 flex-shrink-0"></div>
                         <span>Consentement écrit de toutes les parties</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <div className="w-2 h-2 rounded-full bg-[#9333EA] mt-2 flex-shrink-0"></div>
+                        <div className="w-2 h-2 rounded-full bg-[#84BDE3] mt-2 flex-shrink-0"></div>
                         <span>Vérification de l'identité des personnes testées</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <div className="w-2 h-2 rounded-full bg-[#9333EA] mt-2 flex-shrink-0"></div>
+                        <div className="w-2 h-2 rounded-full bg-[#84BDE3] mt-2 flex-shrink-0"></div>
                         <span>Chaîne de traçabilité sécurisée</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <div className="w-2 h-2 rounded-full bg-[#9333EA] mt-2 flex-shrink-0"></div>
+                        <div className="w-2 h-2 rounded-full bg-[#84BDE3] mt-2 flex-shrink-0"></div>
                         <span>Confidentialité absolue des résultats</span>
                       </li>
                     </ul>
                   </div>
 
-                  <div className="bg-gradient-to-r from-[#9333EA]/5 to-white p-6 rounded-xl">
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Partenariat International</h3>
-                    <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                  <div className="bg-gradient-to-r from-[#84BDE3]/5 to-white p-6 rounded-xl">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#1E40AF] mb-3">Partenariat International</h3>
+                    <p className="text-[#1E40AF]/70 text-sm sm:text-base leading-relaxed">
                       Notre collaboration avec des laboratoires accrédités au Royaume-Uni garantit la fiabilité et la reconnaissance internationale de nos résultats, conformément aux standards les plus élevés.
                     </p>
                   </div>
@@ -235,7 +235,7 @@ export default function EmpreintesGenetiquesPage() {
         </section>
 
         {/* Fiabilité */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#9333EA] to-[#7E22CE] text-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#84BDE3] to-[#1E40AF] text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div>
@@ -301,23 +301,23 @@ export default function EmpreintesGenetiquesPage() {
         {/* CTA Section */}
         <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-6">
               Besoin d'un Test d'Empreintes Génétiques ?
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-[#1E40AF]/70 mb-8 max-w-2xl mx-auto">
               Prenez rendez-vous pour un test de paternité conforme aux exigences légales.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/signup"
-                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#9333EA] to-[#7E22CE] text-white px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:shadow-xl transition-all hover:scale-105"
+                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#84BDE3] to-[#1E40AF] text-white px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:shadow-xl transition-all hover:scale-105"
               >
                 Prendre Rendez-vous
                 <ChevronRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/#contact"
-                className="inline-flex items-center justify-center gap-2 bg-white text-[#9333EA] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-[#9333EA] hover:bg-[#9333EA] hover:text-white transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-white text-[#84BDE3] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-[#84BDE3] hover:bg-[#84BDE3] hover:text-white transition-all"
               >
                 Nous Contacter
               </Link>

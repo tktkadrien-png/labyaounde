@@ -24,13 +24,13 @@ export default function PartnersLogos() {
   const content = {
     fr: {
       title: "Nos Partenaires",
-      subtitle: "Ils nous font confiance",
-      count: `${partners.length}+ Partenaires de confiance`,
+      subtitle: "",
+      count: "",
     },
     en: {
       title: "Our Partners",
-      subtitle: "They trust us",
-      count: `${partners.length}+ Trusted Partners`,
+      subtitle: "",
+      count: "",
     },
   };
 
@@ -77,15 +77,9 @@ export default function PartnersLogos() {
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-14 md:mb-20">
-          <span className="inline-block bg-white/20 text-white text-sm font-bold uppercase tracking-wider px-6 py-2.5 rounded-full mb-6 border border-white/30 backdrop-blur-sm shadow-lg">
-            {currentContent.subtitle}
-          </span>
           <h2 className="text-4xl md:text-6xl font-black text-white mb-4 drop-shadow-lg">
             {currentContent.title}
           </h2>
-          <p className="text-white text-lg md:text-xl font-medium">
-            {currentContent.count}
-          </p>
         </div>
 
         {/* Scrolling logos container */}
@@ -143,12 +137,6 @@ export default function PartnersLogos() {
 
         {/* Premium Trust indicators */}
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 mt-16 md:mt-20 pt-10 md:pt-14 border-t border-white/20">
-          <div className="text-center group">
-            <div className="text-4xl md:text-5xl font-black text-white group-hover:scale-110 transition-transform duration-300">{partners.length}+</div>
-            <div className="text-white text-sm md:text-base font-medium mt-2">
-              {language === "fr" ? "Partenaires" : "Partners"}
-            </div>
-          </div>
           <div className="text-center group">
             <div className="text-4xl md:text-5xl font-black text-[#FF8500] group-hover:scale-110 transition-transform duration-300">10+</div>
             <div className="text-white text-sm md:text-base font-medium mt-2">

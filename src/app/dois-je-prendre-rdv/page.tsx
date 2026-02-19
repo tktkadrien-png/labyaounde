@@ -31,9 +31,9 @@ export default function DoisJePrendreRDV() {
       <TopNavigationBar />
       <MainNavigation />
 
-      <main className="bg-gray-50">
+      <main className="bg-[#84BDE3]/10">
         {/* Hero Section */}
-        <section ref={heroRef as React.RefObject<HTMLElement>} className="bg-gradient-to-br from-[#0A065D] via-cyan-800 to-blue-900 text-white py-20 lg:py-32 relative overflow-hidden">
+        <section ref={heroRef as React.RefObject<HTMLElement>} className="bg-gradient-to-br from-[#84BDE3] via-[#84BDE3]/90 to-[#1E40AF] text-white py-20 lg:py-32 relative overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
@@ -92,19 +92,19 @@ export default function DoisJePrendreRDV() {
             </div>
             <div className={`grid md:grid-cols-3 gap-6 transition-all duration-700 ${infoVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <div className="bg-gradient-to-br from-[#00CED1]/10 to-[#00CED1]/10 rounded-xl p-6 border-2 border-[#00CED1]/30 hover:shadow-lg transition-all">
-                <div className="w-12 h-12 bg-[#0A065D] rounded-full flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-[#1E40AF] rounded-full flex items-center justify-center mb-4">
                   <Check className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-[#0A065D] mb-2">80% Sans RDV</h3>
-                <p className="text-gray-700">La plupart des analyses courantes ne nécessitent aucun rendez-vous</p>
+                <h3 className="text-xl font-bold text-[#1E40AF] mb-2">80% Sans RDV</h3>
+                <p className="text-[#1E40AF]/80">La plupart des analyses courantes ne nécessitent aucun rendez-vous</p>
               </div>
 
               <div className="bg-gradient-to-br from-[#FE5000]/10 to-[#FE5000]/20 rounded-xl p-6 border-2 border-[#FE5000]/30 hover:shadow-lg transition-all">
                 <div className="w-12 h-12 bg-[#FE5000] rounded-full flex items-center justify-center mb-4">
                   <Clock className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-[#FE5000] mb-2">Ouvert 7j/7</h3>
-                <p className="text-gray-700">Nos laboratoires sont accessibles tous les jours pour votre commodité</p>
+                <h3 className="text-xl font-bold text-[#FE5000] mb-2">24h/24 7j/7</h3>
+                <p className="text-[#1E40AF]/80">Nos laboratoires sont accessibles 24 heures sur 24, 7 jours sur 7 pour votre commodité</p>
               </div>
 
               <div className="bg-gradient-to-br from-[#00CED1]/10 to-[#00CED1]/10 rounded-xl p-6 border-2 border-[#00CED1]/30 hover:shadow-lg transition-all">
@@ -112,7 +112,7 @@ export default function DoisJePrendreRDV() {
                   <Users className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-blue-900 mb-2">Service Rapide</h3>
-                <p className="text-gray-700">Temps d'attente moyen de 15-20 minutes selon l'affluence</p>
+                <p className="text-[#1E40AF]/80">Temps d'attente moyen de 15-20 minutes selon l'affluence</p>
               </div>
             </div>
           </div>
@@ -137,10 +137,10 @@ export default function DoisJePrendreRDV() {
                     <Check className="w-5 h-5" />
                     <span className="text-sm font-semibold">Accès Libre - Sans Rendez-vous</span>
                   </div>
-                  <h2 className="text-3xl lg:text-5xl font-bold text-[#0A065D] mb-4">
+                  <h2 className="text-3xl lg:text-5xl font-bold text-[#1E40AF] mb-4">
                     Analyses Accessibles Sans Rendez-vous
                   </h2>
-                  <p className="text-xl text-gray-600">
+                  <p className="text-xl text-[#1E40AF]/70">
                     Présentez-vous directement au laboratoire avec votre ordonnance. Vous serez pris en charge rapidement selon votre ordre d'arrivée.
                   </p>
                 </div>
@@ -151,10 +151,10 @@ export default function DoisJePrendreRDV() {
                   {/* Analyses de sang courantes */}
                   <div className="bg-white rounded-xl p-6 shadow-lg border border-[#00CED1]/30">
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 bg-[#0A065D] rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-[#1E40AF] rounded-full flex items-center justify-center">
                         <Droplet className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-[#0A065D]">Analyses de Sang Courantes</h3>
+                      <h3 className="text-2xl font-bold text-[#1E40AF]">Analyses de Sang Courantes</h3>
                     </div>
                     <ul className="space-y-4">
                       {[
@@ -168,8 +168,8 @@ export default function DoisJePrendreRDV() {
                         <li key={index} className="flex items-start gap-3 group hover:bg-[#00CED1]/10 p-2 rounded-lg transition-all">
                           <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
                           <div>
-                            <span className="font-semibold text-gray-900">{item.name}</span>
-                            <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
+                            <span className="font-semibold text-[#1E40AF]">{item.name}</span>
+                            <p className="text-sm text-[#1E40AF]/70 mt-1">{item.desc}</p>
                           </div>
                         </li>
                       ))}
@@ -179,10 +179,10 @@ export default function DoisJePrendreRDV() {
                   {/* Tests de dépistage */}
                   <div className="bg-white rounded-xl p-6 shadow-lg border border-[#00CED1]/30">
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 bg-[#0A065D] rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-[#1E40AF] rounded-full flex items-center justify-center">
                         <Activity className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-[#0A065D]">Tests de Dépistage Rapide</h3>
+                      <h3 className="text-2xl font-bold text-[#1E40AF]">Tests de Dépistage Rapide</h3>
                     </div>
                     <ul className="space-y-4">
                       {[
@@ -197,10 +197,10 @@ export default function DoisJePrendreRDV() {
                           <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
                           <div className="flex-1">
                             <div className="flex items-start justify-between">
-                              <span className="font-semibold text-gray-900">{item.name}</span>
+                              <span className="font-semibold text-[#1E40AF]">{item.name}</span>
                               <span className="text-xs bg-[#00CED1]/20 text-blue-700 px-2 py-1 rounded-full">{item.time}</span>
                             </div>
-                            <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
+                            <p className="text-sm text-[#1E40AF]/70 mt-1">{item.desc}</p>
                           </div>
                         </li>
                       ))}
@@ -210,10 +210,10 @@ export default function DoisJePrendreRDV() {
                   {/* Bilans complets */}
                   <div className="bg-white rounded-xl p-6 shadow-lg border border-[#00CED1]/30">
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 bg-[#0A065D] rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-[#1E40AF] rounded-full flex items-center justify-center">
                         <FileText className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-[#0A065D]">Bilans Complets</h3>
+                      <h3 className="text-2xl font-bold text-[#1E40AF]">Bilans Complets</h3>
                     </div>
                     <ul className="space-y-4">
                       {[
@@ -226,8 +226,8 @@ export default function DoisJePrendreRDV() {
                         <li key={index} className="flex items-start gap-3 group hover:bg-[#00CED1]/10 p-2 rounded-lg transition-all">
                           <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
                           <div>
-                            <span className="font-semibold text-gray-900">{item.name}</span>
-                            <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
+                            <span className="font-semibold text-[#1E40AF]">{item.name}</span>
+                            <p className="text-sm text-[#1E40AF]/70 mt-1">{item.desc}</p>
                           </div>
                         </li>
                       ))}
@@ -237,10 +237,10 @@ export default function DoisJePrendreRDV() {
                   {/* Autres analyses */}
                   <div className="bg-white rounded-xl p-6 shadow-lg border border-[#00CED1]/30">
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 bg-[#0A065D] rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-[#1E40AF] rounded-full flex items-center justify-center">
                         <Search className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-[#0A065D]">Analyses Spécialisées</h3>
+                      <h3 className="text-2xl font-bold text-[#1E40AF]">Analyses Spécialisées</h3>
                     </div>
                     <ul className="space-y-4">
                       {[
@@ -253,8 +253,8 @@ export default function DoisJePrendreRDV() {
                         <li key={index} className="flex items-start gap-3 group hover:bg-[#00CED1]/10 p-2 rounded-lg transition-all">
                           <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
                           <div>
-                            <span className="font-semibold text-gray-900">{item.name}</span>
-                            <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
+                            <span className="font-semibold text-[#1E40AF]">{item.name}</span>
+                            <p className="text-sm text-[#1E40AF]/70 mt-1">{item.desc}</p>
                           </div>
                         </li>
                       ))}
@@ -266,8 +266,8 @@ export default function DoisJePrendreRDV() {
                   <div className="flex items-start gap-3">
                     <Info className="w-6 h-6 text-[#FE5000] flex-shrink-0 mt-1" />
                     <div>
-                      <h4 className="font-bold text-[#0A065D] mb-2 text-lg">💡 Conseil Pratique</h4>
-                      <p className="text-gray-700 leading-relaxed">
+                      <h4 className="font-bold text-[#1E40AF] mb-2 text-lg">💡 Conseil Pratique</h4>
+                      <p className="text-[#1E40AF]/80 leading-relaxed">
                         <strong>Venez de préférence le matin à jeun</strong> (entre 7h30 et 10h00) pour éviter l'affluence.
                         Apportez votre carte Vitale, votre mutuelle et votre ordonnance. Les résultats sont généralement disponibles
                         dans les 24-48 heures et accessibles en ligne sur votre espace patient sécurisé.
@@ -299,10 +299,10 @@ export default function DoisJePrendreRDV() {
                     <AlertCircle className="w-5 h-5" />
                     <span className="text-sm font-semibold">Rendez-vous Obligatoire</span>
                   </div>
-                  <h2 className="text-3xl lg:text-5xl font-bold text-[#0A065D] mb-4">
+                  <h2 className="text-3xl lg:text-5xl font-bold text-[#1E40AF] mb-4">
                     Examens Nécessitant un Rendez-vous
                   </h2>
-                  <p className="text-xl text-gray-600">
+                  <p className="text-xl text-[#1E40AF]/70">
                     Ces examens requièrent une préparation spécifique, un équipement particulier ou la présence d'un biologiste spécialisé.
                     Prenez rendez-vous pour garantir votre prise en charge.
                   </p>
@@ -317,7 +317,7 @@ export default function DoisJePrendreRDV() {
                       <div className="w-12 h-12 bg-[#FE5000] rounded-full flex items-center justify-center">
                         <Thermometer className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-[#0A065D]">Tests COVID et Respiratoires</h3>
+                      <h3 className="text-2xl font-bold text-[#1E40AF]">Tests COVID et Respiratoires</h3>
                     </div>
                     <ul className="space-y-4">
                       {[
@@ -339,13 +339,13 @@ export default function DoisJePrendreRDV() {
                             <AlertCircle className="w-5 h-5 text-[#FE5000] flex-shrink-0 mt-1" />
                             <div className="flex-1">
                               <div className="flex items-start justify-between mb-1">
-                                <span className="font-bold text-gray-900">{item.name}</span>
+                                <span className="font-bold text-[#1E40AF]">{item.name}</span>
                                 <span className="text-xs bg-[#FE5000]/10 text-[#FE5000] px-2 py-1 rounded-full">{item.delay}</span>
                               </div>
-                              <p className="text-sm text-gray-700 mb-2">{item.desc}</p>
+                              <p className="text-sm text-[#1E40AF]/80 mb-2">{item.desc}</p>
                               <div className="flex items-start gap-2 mt-3 pt-3 border-t border-[#FE5000]/30">
                                 <Info className="w-4 h-4 text-[#FE5000] flex-shrink-0 mt-0.5" />
-                                <p className="text-xs text-gray-600 italic">{item.why}</p>
+                                <p className="text-xs text-[#1E40AF]/70 italic">{item.why}</p>
                               </div>
                             </div>
                           </div>
@@ -360,7 +360,7 @@ export default function DoisJePrendreRDV() {
                       <div className="w-12 h-12 bg-[#FE5000] rounded-full flex items-center justify-center">
                         <Activity className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-[#0A065D]">Tests Hormonaux Spécialisés</h3>
+                      <h3 className="text-2xl font-bold text-[#1E40AF]">Tests Hormonaux Spécialisés</h3>
                     </div>
                     <ul className="space-y-4">
                       {[
@@ -387,16 +387,16 @@ export default function DoisJePrendreRDV() {
                           <div className="flex items-start gap-3">
                             <AlertCircle className="w-5 h-5 text-[#FE5000] flex-shrink-0 mt-1" />
                             <div className="flex-1">
-                              <span className="font-bold text-gray-900 block mb-1">{item.name}</span>
-                              <p className="text-sm text-gray-700 mb-2">{item.desc}</p>
+                              <span className="font-bold text-[#1E40AF] block mb-1">{item.name}</span>
+                              <p className="text-sm text-[#1E40AF]/80 mb-2">{item.desc}</p>
                               <div className="space-y-2 mt-3 pt-3 border-t border-[#FE5000]/30">
                                 <div className="flex items-start gap-2">
                                   <Info className="w-4 h-4 text-[#FE5000] flex-shrink-0 mt-0.5" />
-                                  <p className="text-xs text-gray-600"><strong>Pourquoi RDV:</strong> {item.why}</p>
+                                  <p className="text-xs text-[#1E40AF]/70"><strong>Pourquoi RDV:</strong> {item.why}</p>
                                 </div>
                                 <div className="flex items-start gap-2">
                                   <Clock className="w-4 h-4 text-[#FE5000] flex-shrink-0 mt-0.5" />
-                                  <p className="text-xs text-gray-600"><strong>Préparation:</strong> {item.prep}</p>
+                                  <p className="text-xs text-[#1E40AF]/70"><strong>Préparation:</strong> {item.prep}</p>
                                 </div>
                               </div>
                             </div>
@@ -412,25 +412,25 @@ export default function DoisJePrendreRDV() {
                       <div className="w-12 h-12 bg-[#FE5000] rounded-full flex items-center justify-center">
                         <Home className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-[#0A065D]">Prélèvements à Domicile</h3>
+                      <h3 className="text-2xl font-bold text-[#1E40AF]">Prélèvements à Domicile</h3>
                     </div>
                     <div className="space-y-4">
                       <div className="bg-[#FE5000]/5 p-5 rounded-lg border border-[#FE5000]/30">
-                        <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                        <h4 className="font-bold text-[#1E40AF] mb-3 flex items-center gap-2">
                           <Check className="w-5 h-5 text-[#FE5000]" />
                           Service disponible pour :
                         </h4>
                         <ul className="space-y-2 ml-7">
-                          <li className="text-sm text-gray-700">• Personnes à mobilité réduite</li>
-                          <li className="text-sm text-gray-700">• Patients âgés ou alités</li>
-                          <li className="text-sm text-gray-700">• Hospitalisation à domicile (HAD)</li>
-                          <li className="text-sm text-gray-700">• Post-opératoire</li>
+                          <li className="text-sm text-[#1E40AF]/80">• Personnes à mobilité réduite</li>
+                          <li className="text-sm text-[#1E40AF]/80">• Patients âgés ou alités</li>
+                          <li className="text-sm text-[#1E40AF]/80">• Hospitalisation à domicile (HAD)</li>
+                          <li className="text-sm text-[#1E40AF]/80">• Post-opératoire</li>
                         </ul>
                       </div>
 
                       <div className="bg-[#FE5000]/10 p-5 rounded-lg border border-[#FE5000]/30">
                         <h4 className="font-bold text-[#FE5000] mb-3">📋 Informations pratiques</h4>
-                        <ul className="space-y-2 text-sm text-gray-700">
+                        <ul className="space-y-2 text-sm text-[#1E40AF]/80">
                           <li className="flex items-start gap-2">
                             <span className="text-[#FE5000] font-bold">•</span>
                             <span><strong>Horaires:</strong> Du lundi au samedi, 7h-11h</span>
@@ -458,7 +458,7 @@ export default function DoisJePrendreRDV() {
                       <div className="w-12 h-12 bg-[#FE5000] rounded-full flex items-center justify-center">
                         <FileText className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-[#0A065D]">Autres Examens sur RDV</h3>
+                      <h3 className="text-2xl font-bold text-[#1E40AF]">Autres Examens sur RDV</h3>
                     </div>
                     <ul className="space-y-4">
                       {[
@@ -482,11 +482,11 @@ export default function DoisJePrendreRDV() {
                           <div className="flex items-start gap-3">
                             <AlertCircle className="w-5 h-5 text-[#FE5000] flex-shrink-0 mt-1" />
                             <div>
-                              <span className="font-bold text-gray-900 block mb-1">{item.name}</span>
-                              <p className="text-sm text-gray-700 mb-2">{item.desc}</p>
+                              <span className="font-bold text-[#1E40AF] block mb-1">{item.name}</span>
+                              <p className="text-sm text-[#1E40AF]/80 mb-2">{item.desc}</p>
                               <div className="flex items-start gap-2 mt-2 pt-2 border-t border-[#FE5000]/30">
                                 <Info className="w-4 h-4 text-[#FE5000] flex-shrink-0 mt-0.5" />
-                                <p className="text-xs text-gray-600 italic">{item.why}</p>
+                                <p className="text-xs text-[#1E40AF]/70 italic">{item.why}</p>
                               </div>
                             </div>
                           </div>
@@ -499,8 +499,8 @@ export default function DoisJePrendreRDV() {
                 {/* Bouton de prise de rendez-vous */}
                 <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-[#FE5000]/40">
                   <div className="text-center">
-                    <h3 className="text-2xl font-bold text-[#0A065D] mb-4">Comment prendre rendez-vous ?</h3>
-                    <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
+                    <h3 className="text-2xl font-bold text-[#1E40AF] mb-4">Comment prendre rendez-vous ?</h3>
+                    <p className="text-[#1E40AF]/80 mb-6 max-w-2xl mx-auto">
                       Contactez-nous par téléphone ou WhatsApp pour planifier votre examen.
                       Notre équipe vous guidera et répondra à toutes vos questions.
                     </p>
@@ -528,7 +528,7 @@ export default function DoisJePrendreRDV() {
         </section>
 
         {/* Préparation avant les examens - Version développée */}
-        <section ref={yellowRef as React.RefObject<HTMLElement>} className="py-20 lg:py-24 bg-gray-50">
+        <section ref={yellowRef as React.RefObject<HTMLElement>} className="py-20 lg:py-24 bg-[#84BDE3]/10">
           <div className="max-w-[1200px] mx-auto px-6">
             <div className={`transition-all duration-700 ${yellowVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               {/* Section Image Banner */}
@@ -573,47 +573,47 @@ export default function DoisJePrendreRDV() {
                           <li className="flex items-start gap-3">
                             <span className="text-2xl">🕐</span>
                             <div>
-                              <strong className="text-gray-900">8 à 12 heures</strong>
-                              <p className="text-sm text-gray-700 mt-1">Pour la plupart des analyses (glycémie, bilan lipidique)</p>
+                              <strong className="text-[#1E40AF]">8 à 12 heures</strong>
+                              <p className="text-sm text-[#1E40AF]/80 mt-1">Pour la plupart des analyses (glycémie, bilan lipidique)</p>
                             </div>
                           </li>
                           <li className="flex items-start gap-3">
                             <span className="text-2xl">🕐</span>
                             <div>
-                              <strong className="text-gray-900">12 à 14 heures</strong>
-                              <p className="text-sm text-gray-700 mt-1">Pour les triglycérides et bilans complets</p>
+                              <strong className="text-[#1E40AF]">12 à 14 heures</strong>
+                              <p className="text-sm text-[#1E40AF]/80 mt-1">Pour les triglycérides et bilans complets</p>
                             </div>
                           </li>
                         </ul>
                       </div>
 
                       <div className="bg-[#00CED1]/10 p-5 rounded-lg border border-[#00CED1]/30">
-                        <h4 className="font-bold text-[#0A065D] mb-3 flex items-center gap-2">
+                        <h4 className="font-bold text-[#1E40AF] mb-3 flex items-center gap-2">
                           <Check className="w-5 h-5" />
                           ✅ Autorisé pendant le jeûne
                         </h4>
-                        <ul className="space-y-2 text-sm text-gray-700">
+                        <ul className="space-y-2 text-sm text-[#1E40AF]/80">
                           <li className="flex items-center gap-2">
-                            <span className="w-2 h-2 bg-[#0A065D] rounded-full"></span>
+                            <span className="w-2 h-2 bg-[#1E40AF] rounded-full"></span>
                             <span><strong>Eau plate</strong> - à volonté</span>
                           </li>
                           <li className="flex items-center gap-2">
-                            <span className="w-2 h-2 bg-[#0A065D] rounded-full"></span>
+                            <span className="w-2 h-2 bg-[#1E40AF] rounded-full"></span>
                             <span><strong>Médicaments habituels</strong> - sauf avis contraire</span>
                           </li>
                           <li className="flex items-center gap-2">
-                            <span className="w-2 h-2 bg-[#0A065D] rounded-full"></span>
+                            <span className="w-2 h-2 bg-[#1E40AF] rounded-full"></span>
                             <span><strong>Se brosser les dents</strong> - sans avaler</span>
                           </li>
                         </ul>
                       </div>
 
                       <div className="bg-[#FE5000]/5 p-5 rounded-lg border border-[#FE5000]/30">
-                        <h4 className="font-bold text-[#0A065D] mb-3 flex items-center gap-2">
+                        <h4 className="font-bold text-[#1E40AF] mb-3 flex items-center gap-2">
                           <AlertCircle className="w-5 h-5" />
                           ❌ Interdit pendant le jeûne
                         </h4>
-                        <ul className="space-y-2 text-sm text-gray-700">
+                        <ul className="space-y-2 text-sm text-[#1E40AF]/80">
                           <li className="flex items-center gap-2">
                             <span className="w-2 h-2 bg-[#FE5000] rounded-full"></span>
                             <span>Café, thé (même sans sucre)</span>
@@ -650,10 +650,10 @@ export default function DoisJePrendreRDV() {
                       </div>
                       <div className="space-y-4">
                         <div className="bg-[#FE5000]/10 p-4 rounded-lg border border-[#FE5000]/30">
-                          <p className="text-sm text-gray-700 mb-3">
+                          <p className="text-sm text-[#1E40AF]/80 mb-3">
                             <strong className="text-[#FE5000]">48h avant votre prélèvement :</strong>
                           </p>
-                          <ul className="space-y-2 text-sm text-gray-700">
+                          <ul className="space-y-2 text-sm text-[#1E40AF]/80">
                             <li className="flex items-start gap-2">
                               <AlertCircle className="w-4 h-4 text-[#FE5000] flex-shrink-0 mt-0.5" />
                               <span>Évitez les efforts physiques intenses (sport, musculation)</span>
@@ -669,7 +669,7 @@ export default function DoisJePrendreRDV() {
                           </ul>
                         </div>
                         <div className="bg-[#00CED1]/10 p-4 rounded-lg border border-[#00CED1]/30">
-                          <p className="text-xs text-gray-600 italic flex items-start gap-2">
+                          <p className="text-xs text-[#1E40AF]/70 italic flex items-start gap-2">
                             <Info className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
                             <span><strong>Pourquoi ?</strong> L'exercice intense peut modifier certains paramètres sanguins (enzymes musculaires, glucose, protéines) et fausser les résultats.</span>
                           </p>
@@ -679,10 +679,10 @@ export default function DoisJePrendreRDV() {
 
                     <div className="bg-white rounded-xl p-6 shadow-lg border border-[#FE5000]/30">
                       <div className="flex items-center gap-3 mb-6">
-                        <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center">
+                        <div className="w-12 h-12 bg-[#84BDE3] rounded-full flex items-center justify-center">
                           <FileText className="w-6 h-6 text-white" />
                         </div>
-                        <h3 className="text-2xl font-bold text-purple-900">Documents à Apporter</h3>
+                        <h3 className="text-2xl font-bold text-[#1E40AF]">Documents à Apporter</h3>
                       </div>
                       <ul className="space-y-3">
                         {[
@@ -690,11 +690,11 @@ export default function DoisJePrendreRDV() {
                           { icon: "🪪", name: "Pièce d'identité", desc: "Carte nationale ou passeport" },
                           { icon: "📄", name: "Anciens résultats", desc: "Si analyses de suivi" }
                         ].map((item, index) => (
-                          <li key={index} className="flex items-start gap-3 p-3 bg-purple-50 rounded-lg border border-purple-100 hover:bg-purple-100 transition-all">
+                          <li key={index} className="flex items-start gap-3 p-3 bg-[#84BDE3]/10 rounded-lg border border-[#84BDE3]/30 hover:bg-[#84BDE3]/20 transition-all">
                             <span className="text-2xl">{item.icon}</span>
                             <div>
-                              <strong className="text-gray-900">{item.name}</strong>
-                              <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
+                              <strong className="text-[#1E40AF]">{item.name}</strong>
+                              <p className="text-sm text-[#1E40AF]/70 mt-1">{item.desc}</p>
                             </div>
                           </li>
                         ))}
@@ -706,23 +706,23 @@ export default function DoisJePrendreRDV() {
                         <div className="w-12 h-12 bg-#00CED1/100 rounded-full flex items-center justify-center">
                           <Info className="w-6 h-6 text-white" />
                         </div>
-                        <h3 className="text-2xl font-bold text-cyan-900">Conseils Généraux</h3>
+                        <h3 className="text-2xl font-bold text-[#1E40AF]">Conseils Généraux</h3>
                       </div>
-                      <ul className="space-y-2 text-sm text-gray-700">
+                      <ul className="space-y-2 text-sm text-[#1E40AF]/80">
                         <li className="flex items-start gap-2">
-                          <Check className="w-4 h-4 text-[#0A065D] flex-shrink-0 mt-1" />
+                          <Check className="w-4 h-4 text-[#1E40AF] flex-shrink-0 mt-1" />
                           <span>Venez de préférence <strong>le matin entre 7h30 et 10h</strong></span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <Check className="w-4 h-4 text-[#0A065D] flex-shrink-0 mt-1" />
+                          <Check className="w-4 h-4 text-[#1E40AF] flex-shrink-0 mt-1" />
                           <span>Portez des <strong>vêtements amples</strong> facilitant le prélèvement</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <Check className="w-4 h-4 text-[#0A065D] flex-shrink-0 mt-1" />
+                          <Check className="w-4 h-4 text-[#1E40AF] flex-shrink-0 mt-1" />
                           <span>Hydratez-vous bien <strong>la veille</strong> (facilite le prélèvement)</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <Check className="w-4 h-4 text-[#0A065D] flex-shrink-0 mt-1" />
+                          <Check className="w-4 h-4 text-[#1E40AF] flex-shrink-0 mt-1" />
                           <span>Signalez toute <strong>allergie ou traitement en cours</strong></span>
                         </li>
                       </ul>
@@ -737,7 +737,7 @@ export default function DoisJePrendreRDV() {
                     </div>
                     <div>
                       <h4 className="font-bold text-[#FE5000] mb-2 text-lg">💡 Vous avez un doute ?</h4>
-                      <p className="text-gray-700 leading-relaxed mb-3">
+                      <p className="text-[#1E40AF]/80 leading-relaxed mb-3">
                         Chaque analyse peut avoir des exigences spécifiques. <strong>En cas de doute sur la préparation nécessaire</strong>,
                         n'hésitez pas à nous contacter avant votre venue. Notre équipe vous donnera toutes les instructions personnalisées
                         selon vos examens prescrits.
@@ -766,10 +766,10 @@ export default function DoisJePrendreRDV() {
                   <Users className="w-5 h-5" />
                   <span className="text-sm font-semibold">Cas Pratiques</span>
                 </div>
-                <h2 className="text-3xl lg:text-5xl font-bold text-[#0A065D] mb-4">
+                <h2 className="text-3xl lg:text-5xl font-bold text-[#1E40AF] mb-4">
                   📖 Exemples de Situations Courantes
                 </h2>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                <p className="text-xl text-[#1E40AF]/70 max-w-3xl mx-auto">
                   Découvrez des scénarios réels pour mieux comprendre comment procéder selon votre situation.
                 </p>
               </div>
@@ -864,20 +864,20 @@ export default function DoisJePrendreRDV() {
                     <div className="flex items-start gap-4 mb-6">
                       <div className="text-5xl">{example.icon}</div>
                       <div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-2">{example.title}</h3>
-                        <p className="text-gray-700 italic">{example.situation}</p>
+                        <h3 className="text-2xl font-bold text-[#1E40AF] mb-2">{example.title}</h3>
+                        <p className="text-[#1E40AF]/80 italic">{example.situation}</p>
                       </div>
                     </div>
 
                     <div className="space-y-4">
                       <div className="bg-white rounded-lg p-4 border border-gray-200">
-                        <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                        <h4 className="font-bold text-[#1E40AF] mb-2 flex items-center gap-2">
                           <FileText className="w-5 h-5 text-blue-600" />
                           Analyses prescrites
                         </h4>
                         <ul className="space-y-1">
                           {example.analyses.map((analyse, i) => (
-                            <li key={i} className="text-sm text-gray-700 flex items-center gap-2">
+                            <li key={i} className="text-sm text-[#1E40AF]/80 flex items-center gap-2">
                               <span className="w-1.5 h-1.5 bg-[#00CED1]/100 rounded-full"></span>
                               {analyse}
                             </li>
@@ -886,20 +886,20 @@ export default function DoisJePrendreRDV() {
                       </div>
 
                       <div className={`bg-white rounded-lg p-4 border-2 ${example.rdv ? 'border-[#FE5000]/40 bg-[#FE5000]/5/50' : 'border-blue-300 bg-[#00CED1]/10/50'}`}>
-                        <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                        <h4 className="font-bold text-[#1E40AF] mb-2 flex items-center gap-2">
                           {example.rdv ? <AlertCircle className="w-5 h-5 text-[#FE5000]" /> : <Check className="w-5 h-5 text-blue-600" />}
                           {example.rdv ? 'Rendez-vous OBLIGATOIRE' : 'Sans rendez-vous'}
                         </h4>
                       </div>
 
                       <div className="bg-white rounded-lg p-4 border border-gray-200">
-                        <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                        <h4 className="font-bold text-[#1E40AF] mb-3 flex items-center gap-2">
                           <Info className="w-5 h-5 text-[#FE5000]" />
                           Préparation
                         </h4>
                         <ul className="space-y-2">
                           {example.preparation.map((prep, i) => (
-                            <li key={i} className="text-sm text-gray-700 flex items-start gap-2">
+                            <li key={i} className="text-sm text-[#1E40AF]/80 flex items-start gap-2">
                               <Check className="w-4 h-4 text-[#FE5000] flex-shrink-0 mt-0.5" />
                               <span>{prep}</span>
                             </li>
@@ -908,14 +908,14 @@ export default function DoisJePrendreRDV() {
                       </div>
 
                       <div className="bg-white rounded-lg p-4 border border-gray-200">
-                        <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                          <Clock className="w-5 h-5 text-purple-600" />
+                        <h4 className="font-bold text-[#1E40AF] mb-3 flex items-center gap-2">
+                          <Clock className="w-5 h-5 text-[#1E40AF]" />
                           Déroulement
                         </h4>
                         <ol className="space-y-2">
                           {example.process.map((step, i) => (
-                            <li key={i} className="text-sm text-gray-700 flex items-start gap-3">
-                              <span className="flex-shrink-0 w-6 h-6 bg-purple-100 text-purple-700 rounded-full flex items-center justify-center text-xs font-bold">
+                            <li key={i} className="text-sm text-[#1E40AF]/80 flex items-start gap-3">
+                              <span className="flex-shrink-0 w-6 h-6 bg-[#84BDE3]/20 text-[#1E40AF] rounded-full flex items-center justify-center text-xs font-bold">
                                 {i + 1}
                               </span>
                               <span className="pt-0.5">{step}</span>
@@ -936,10 +936,10 @@ export default function DoisJePrendreRDV() {
           <div className="max-w-[1200px] mx-auto px-6">
             <div className={`transition-all duration-700 ${processVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <div className="text-center mb-12">
-                <h2 className="text-3xl lg:text-5xl font-bold text-[#0A065D] mb-4">
+                <h2 className="text-3xl lg:text-5xl font-bold text-[#1E40AF] mb-4">
                   🎯 Votre Visite au Laboratoire : Étape par Étape
                 </h2>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                <p className="text-xl text-[#1E40AF]/70 max-w-3xl mx-auto">
                   Déroulement type d'une visite pour un prélèvement sans rendez-vous
                 </p>
               </div>
@@ -1011,18 +1011,18 @@ export default function DoisJePrendreRDV() {
                         <div className={`flex-1 ${index % 2 === 0 ? 'lg:text-right' : 'lg:text-left'}`}>
                           <div className="bg-white rounded-2xl p-6 lg:p-8 shadow-xl border-2 border-[#00CED1]/30 hover:shadow-2xl transition-all">
                             <div className={`flex items-center gap-3 mb-4 ${index % 2 === 0 ? 'lg:justify-end' : 'lg:justify-start'} justify-start`}>
-                              <span className="text-sm font-bold text-[#0A065D] bg-[#00CED1]/20 px-3 py-1 rounded-full">
+                              <span className="text-sm font-bold text-[#1E40AF] bg-[#00CED1]/20 px-3 py-1 rounded-full">
                                 {item.time}
                               </span>
                             </div>
-                            <h3 className="text-2xl font-bold text-[#0A065D] mb-2">
+                            <h3 className="text-2xl font-bold text-[#1E40AF] mb-2">
                               {item.title}
                             </h3>
-                            <p className="text-gray-600 mb-4">{item.description}</p>
+                            <p className="text-[#1E40AF]/70 mb-4">{item.description}</p>
                             <ul className={`space-y-2 ${index % 2 === 0 ? 'lg:text-right' : 'lg:text-left'} text-left`}>
                               {item.details.map((detail, i) => (
-                                <li key={i} className={`flex items-start gap-2 text-sm text-gray-700 ${index % 2 === 0 ? 'lg:flex-row-reverse lg:justify-start' : ''}`}>
-                                  <Check className="w-4 h-4 text-[#0A065D] flex-shrink-0 mt-0.5" />
+                                <li key={i} className={`flex items-start gap-2 text-sm text-[#1E40AF]/80 ${index % 2 === 0 ? 'lg:flex-row-reverse lg:justify-start' : ''}`}>
+                                  <Check className="w-4 h-4 text-[#1E40AF] flex-shrink-0 mt-0.5" />
                                   <span>{detail}</span>
                                 </li>
                               ))}
@@ -1032,10 +1032,10 @@ export default function DoisJePrendreRDV() {
 
                         {/* Step circle */}
                         <div className="relative z-10 flex-shrink-0">
-                          <div className="w-20 h-20 bg-[#0A065D] rounded-full flex items-center justify-center shadow-xl border-4 border-white">
+                          <div className="w-20 h-20 bg-[#1E40AF] rounded-full flex items-center justify-center shadow-xl border-4 border-white">
                             <item.icon className="w-10 h-10 text-white" />
                           </div>
-                          <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-[#0A065D] text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg">
+                          <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-[#1E40AF] text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg">
                             {item.step}
                           </div>
                         </div>
@@ -1050,9 +1050,9 @@ export default function DoisJePrendreRDV() {
 
               <div className="mt-16 bg-white rounded-2xl p-8 shadow-xl border-2 border-[#00CED1]/30">
                 <div className="text-center">
-                  <h3 className="text-2xl font-bold text-[#0A065D] mb-4">⏱️ Temps Total Estimé</h3>
-                  <div className="text-5xl font-bold text-[#0A065D] mb-2">20-30 min</div>
-                  <p className="text-gray-600">Durée moyenne d'une visite complète (hors période de forte affluence)</p>
+                  <h3 className="text-2xl font-bold text-[#1E40AF] mb-4">⏱️ Temps Total Estimé</h3>
+                  <div className="text-5xl font-bold text-[#1E40AF] mb-2">20-30 min</div>
+                  <p className="text-[#1E40AF]/70">Durée moyenne d'une visite complète (hors période de forte affluence)</p>
                 </div>
               </div>
             </div>
@@ -1064,14 +1064,14 @@ export default function DoisJePrendreRDV() {
           <div className="max-w-[1200px] mx-auto px-6">
             <div className={`transition-all duration-700 ${faqVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <div className="text-center mb-12">
-                <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-6 py-3 rounded-full mb-4">
+                <div className="inline-flex items-center gap-2 bg-[#84BDE3]/20 text-[#1E40AF] px-6 py-3 rounded-full mb-4">
                   <HelpCircle className="w-5 h-5" />
                   <span className="text-sm font-semibold">Questions Fréquentes</span>
                 </div>
-                <h2 className="text-3xl lg:text-5xl font-bold text-[#0A065D] mb-4">
+                <h2 className="text-3xl lg:text-5xl font-bold text-[#1E40AF] mb-4">
                   ❓ Vos Questions, Nos Réponses
                 </h2>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                <p className="text-xl text-[#1E40AF]/70 max-w-3xl mx-auto">
                   Retrouvez les réponses aux questions les plus posées par nos patients
                 </p>
               </div>
@@ -1113,30 +1113,30 @@ export default function DoisJePrendreRDV() {
                 ].map((faq, index) => (
                   <div
                     key={index}
-                    className="bg-gradient-to-br from-gray-50 to-purple-50 rounded-xl border-2 border-purple-100 overflow-hidden hover:border-purple-300 transition-all"
+                    className="bg-gradient-to-br from-[#84BDE3]/10 to-[#84BDE3]/15 rounded-xl border-2 border-[#84BDE3]/30 overflow-hidden hover:border-[#84BDE3]/40 transition-all"
                   >
                     <button
                       onClick={() => toggleFaq(index)}
-                      className="w-full p-6 flex items-center justify-between text-left hover:bg-purple-50/50 transition-all"
+                      className="w-full p-6 flex items-center justify-between text-left hover:bg-[#84BDE3]/10/50 transition-all"
                     >
                       <div className="flex items-start gap-4 flex-1">
-                        <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                          <HelpCircle className="w-5 h-5 text-purple-600" />
+                        <div className="w-10 h-10 bg-[#84BDE3]/20 rounded-full flex items-center justify-center flex-shrink-0">
+                          <HelpCircle className="w-5 h-5 text-[#1E40AF]" />
                         </div>
-                        <h3 className="text-xl font-bold text-[#0A065D] pr-4">{faq.question}</h3>
+                        <h3 className="text-xl font-bold text-[#1E40AF] pr-4">{faq.question}</h3>
                       </div>
                       <div className="flex-shrink-0">
                         {openFaq === index ? (
-                          <ChevronUp className="w-6 h-6 text-purple-600" />
+                          <ChevronUp className="w-6 h-6 text-[#1E40AF]" />
                         ) : (
-                          <ChevronDown className="w-6 h-6 text-purple-600" />
+                          <ChevronDown className="w-6 h-6 text-[#1E40AF]" />
                         )}
                       </div>
                     </button>
 
                     {openFaq === index && (
                       <div className="px-6 pb-6 pl-20">
-                        <div className="text-gray-700 leading-relaxed whitespace-pre-line">
+                        <div className="text-[#1E40AF]/80 leading-relaxed whitespace-pre-line">
                           {faq.answer}
                         </div>
                       </div>
@@ -1145,17 +1145,17 @@ export default function DoisJePrendreRDV() {
                 ))}
               </div>
 
-              <div className="mt-12 text-center bg-purple-50 rounded-2xl p-8 border-2 border-purple-200">
-                <HelpCircle className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-[#0A065D] mb-3">
+              <div className="mt-12 text-center bg-[#84BDE3]/10 rounded-2xl p-8 border-2 border-purple-200">
+                <HelpCircle className="w-12 h-12 text-[#1E40AF] mx-auto mb-4" />
+                <h3 className="text-2xl font-bold text-[#1E40AF] mb-3">
                   Vous ne trouvez pas la réponse à votre question ?
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-[#1E40AF]/70 mb-6">
                   Notre équipe est à votre disposition pour répondre à toutes vos interrogations
                 </p>
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 bg-[#1E40AF] hover:bg-[#1E40AF]/90 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl"
                 >
                   <Phone className="w-5 h-5" />
                   Contactez-nous
@@ -1166,7 +1166,7 @@ export default function DoisJePrendreRDV() {
         </section>
 
         {/* Contact & Rendez-vous - Version améliorée */}
-        <section id="contact" ref={contactRef as React.RefObject<HTMLElement>} className="py-20 lg:py-28 bg-gradient-to-br from-[#0A065D] via-blue-700 to-blue-900 text-white relative overflow-hidden">
+        <section id="contact" ref={contactRef as React.RefObject<HTMLElement>} className="py-20 lg:py-28 bg-gradient-to-br from-[#1E40AF] via-[#1E40AF]/90 to-[#1E40AF]/80 text-white relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#00CED1] rounded-full blur-3xl"></div>
@@ -1191,7 +1191,7 @@ export default function DoisJePrendreRDV() {
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border-2 border-white/20 hover:bg-white/15 transition-all">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-16 h-16 bg-[#0A065D] rounded-full flex items-center justify-center">
+                    <div className="w-16 h-16 bg-[#1E40AF] rounded-full flex items-center justify-center">
                       <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                       </svg>
@@ -1212,7 +1212,7 @@ export default function DoisJePrendreRDV() {
                     href="https://wa.me/237XXXXXXXXX"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 bg-[#0A065D] hover:bg-[#FE5000] text-white px-6 py-3 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl"
+                    className="inline-flex items-center gap-3 bg-[#1E40AF] hover:bg-[#FE5000] text-white px-6 py-3 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
@@ -1253,19 +1253,19 @@ export default function DoisJePrendreRDV() {
                 <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
                   <div>
                     <p className="text-white/90 mb-2"><strong>Lundi - Vendredi</strong></p>
-                    <p className="text-white/80">7h30 - 18h00</p>
+                    <p className="text-white/80">24h/24</p>
                   </div>
                   <div>
                     <p className="text-white/90 mb-2"><strong>Samedi</strong></p>
-                    <p className="text-white/80">7h30 - 18h00</p>
+                    <p className="text-white/80">24h/24</p>
                   </div>
                   <div>
                     <p className="text-white/90 mb-2"><strong>Dimanche</strong></p>
-                    <p className="text-white/80">8h00 - 13h00</p>
+                    <p className="text-white/80">24h/24</p>
                   </div>
                   <div>
                     <p className="text-white/90 mb-2"><strong>Jours fériés</strong></p>
-                    <p className="text-white/80">8h00 - 12h00</p>
+                    <p className="text-white/80">24h/24</p>
                   </div>
                 </div>
                 <p className="text-white/70 text-sm mt-6 italic">

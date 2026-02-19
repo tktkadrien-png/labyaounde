@@ -56,9 +56,9 @@ export default function ConseilsEtInformations() {
       <TopNavigationBar />
       <MainNavigation />
 
-      <main className="bg-gray-50">
+      <main className="bg-[#84BDE3]/10">
         {/* Hero Section */}
-        <section ref={heroRef as React.RefObject<HTMLElement>} className="bg-gradient-to-br from-[#0A065D] via-cyan-800 to-blue-900 text-white py-20 lg:py-32 relative overflow-hidden">
+        <section ref={heroRef as React.RefObject<HTMLElement>} className="bg-gradient-to-br from-[#84BDE3] via-[#84BDE3]/90 to-[#1E40AF] text-white py-20 lg:py-32 relative overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
@@ -104,7 +104,7 @@ export default function ConseilsEtInformations() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0A065D]/80 to-transparent flex items-center">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#1E40AF]/80 to-transparent flex items-center">
                   <div className="p-8 text-white max-w-xl">
                     <h2 className="text-3xl lg:text-5xl font-bold mb-4">
                       {t('welcomeGuide')}
@@ -122,8 +122,8 @@ export default function ConseilsEtInformations() {
                     <div className="w-16 h-16 bg-[#00CED1]/100 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                       <Info className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-blue-900 mb-3">{t('needAppointmentQuestion')}</h3>
-                    <p className="text-gray-700 mb-4">
+                    <h3 className="text-2xl font-bold text-[#1E40AF] mb-3">{t('needAppointmentQuestion')}</h3>
+                    <p className="text-[#1E40AF]/80 mb-4">
                       {t('needAppointmentDesc')}
                     </p>
                     <div className="flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all">
@@ -139,7 +139,7 @@ export default function ConseilsEtInformations() {
                       <Clock className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-2xl font-bold text-[#FE5000] mb-3">{t('essentialPreparation')}</h3>
-                    <p className="text-gray-700 mb-4">
+                    <p className="text-[#1E40AF]/80 mb-4">
                       {t('essentialPreparationDesc')}
                     </p>
                     <div className="flex items-center gap-2 text-[#FE5000] font-semibold group-hover:gap-3 transition-all">
@@ -154,8 +154,8 @@ export default function ConseilsEtInformations() {
                     <div className="w-16 h-16 bg-[#FE5000] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                       <Phone className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-[#0A065D] mb-3">{t('contactUsTitle')}</h3>
-                    <p className="text-gray-700 mb-4">
+                    <h3 className="text-2xl font-bold text-[#1E40AF] mb-3">{t('contactUsTitle')}</h3>
+                    <p className="text-[#1E40AF]/80 mb-4">
                       {t('contactUsDesc')}
                     </p>
                     <div className="flex items-center gap-2 text-[#FE5000] font-semibold group-hover:gap-3 transition-all">
@@ -188,7 +188,7 @@ export default function ConseilsEtInformations() {
                     <Lightbulb className="w-5 h-5" />
                     <span className="text-sm font-semibold">{t('beforeYourVisit')}</span>
                   </div>
-                  <h2 className="text-3xl lg:text-5xl font-bold text-[#0A065D] mb-4">
+                  <h2 className="text-3xl lg:text-5xl font-bold text-[#1E40AF] mb-4">
                     {t('beforeSamplingAdvice')}
                   </h2>
                 </div>
@@ -201,7 +201,7 @@ export default function ConseilsEtInformations() {
                     <div className="w-14 h-14 bg-[#00CED1]/100 rounded-full flex items-center justify-center">
                       <Clock className="w-7 h-7 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-blue-900">{t('dayBeforeSampling')}</h3>
+                    <h3 className="text-2xl font-bold text-[#1E40AF]">{t('dayBeforeSampling')}</h3>
                   </div>
 
                   <ul className="space-y-4">
@@ -209,8 +209,8 @@ export default function ConseilsEtInformations() {
                       <li key={index} className="flex items-start gap-4 p-4 bg-[#00CED1]/10 rounded-lg hover:bg-[#00CED1]/20 transition-all">
                         <span className="text-3xl flex-shrink-0">{item.icon}</span>
                         <div>
-                          <h4 className="font-bold text-gray-900 mb-1">{item.title}</h4>
-                          <p className="text-sm text-gray-700">{item.desc}</p>
+                          <h4 className="font-bold text-[#1E40AF] mb-1">{item.title}</h4>
+                          <p className="text-sm text-[#1E40AF]/80">{item.desc}</p>
                         </div>
                       </li>
                     ))}
@@ -223,7 +223,7 @@ export default function ConseilsEtInformations() {
                     <div className="w-14 h-14 bg-#00CED1/100 rounded-full flex items-center justify-center">
                       <Activity className="w-7 h-7 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-cyan-900">{t('samplingDay')}</h3>
+                    <h3 className="text-2xl font-bold text-[#1E40AF]">{t('samplingDay')}</h3>
                   </div>
 
                   <ul className="space-y-4">
@@ -231,8 +231,8 @@ export default function ConseilsEtInformations() {
                       <li key={index} className="flex items-start gap-4 p-4 bg-#00CED1/10 rounded-lg hover:bg-[#00CED1]/20 transition-all">
                         <span className="text-3xl flex-shrink-0">{item.icon}</span>
                         <div>
-                          <h4 className="font-bold text-gray-900 mb-1">{item.title}</h4>
-                          <p className="text-sm text-gray-700">{item.desc}</p>
+                          <h4 className="font-bold text-[#1E40AF] mb-1">{item.title}</h4>
+                          <p className="text-sm text-[#1E40AF]/80">{item.desc}</p>
                         </div>
                       </li>
                     ))}
@@ -241,7 +241,7 @@ export default function ConseilsEtInformations() {
               </div>
 
               {/* CTA Preparation */}
-              <div className="mt-12 bg-gradient-to-r from-blue-600 to-[#0A065D] rounded-2xl p-8 text-white text-center">
+              <div className="mt-12 bg-gradient-to-r from-[#1E40AF] to-[#1E40AF] rounded-2xl p-8 text-white text-center">
                 <h3 className="text-2xl font-bold mb-4">{t('fullPrepGuide')}</h3>
                 <p className="text-white/90 mb-6 max-w-2xl mx-auto">
                   {t('fullPrepGuideDesc')}
@@ -274,14 +274,14 @@ export default function ConseilsEtInformations() {
                   />
                 </div>
                 <div className="lg:w-2/3 text-center lg:text-left">
-                  <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-6 py-3 rounded-full mb-4">
+                  <div className="inline-flex items-center gap-2 bg-[#84BDE3]/20 text-[#1E40AF] px-6 py-3 rounded-full mb-4">
                     <Droplet className="w-5 h-5" />
                     <span className="text-sm font-semibold">{t('medicalInfo')}</span>
                   </div>
-                  <h2 className="text-3xl lg:text-5xl font-bold text-[#0A065D] mb-4">
+                  <h2 className="text-3xl lg:text-5xl font-bold text-[#1E40AF] mb-4">
                     {t('understandAnalysis')}
                   </h2>
-                  <p className="text-xl text-gray-600">
+                  <p className="text-xl text-[#1E40AF]/70">
                     {t('understandAnalysisDesc')}
                   </p>
                 </div>
@@ -301,35 +301,35 @@ export default function ConseilsEtInformations() {
                 ].map((analyse, index) => (
                   <div
                     key={index}
-                    className="bg-gradient-to-br from-gray-50 to-purple-50 rounded-xl p-6 border-2 border-purple-100 hover:border-purple-300 hover:shadow-lg transition-all"
+                    className="bg-gradient-to-br from-[#84BDE3]/10 to-[#84BDE3]/15 rounded-xl p-6 border-2 border-[#84BDE3]/30 hover:border-[#84BDE3]/40 hover:shadow-lg transition-all"
                   >
                     <div className="text-4xl mb-4">{analyse.icon}</div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-3">{analyse.name}</h3>
+                    <h3 className="text-lg font-bold text-[#1E40AF] mb-3">{analyse.name}</h3>
 
                     <div className="space-y-3">
                       <div className="bg-[#00CED1]/10 p-3 rounded-lg">
-                        <p className="text-xs font-semibold text-blue-900 mb-1">{t('whatIsIt')}</p>
-                        <p className="text-sm text-gray-700">{analyse.what}</p>
+                        <p className="text-xs font-semibold text-[#1E40AF] mb-1">{t('whatIsIt')}</p>
+                        <p className="text-sm text-[#1E40AF]/80">{analyse.what}</p>
                       </div>
 
                       <div className="bg-[#FE5000]/5 p-3 rounded-lg">
-                        <p className="text-xs font-semibold text-[#0A065D] mb-1">{t('whyAnalysis')}</p>
-                        <p className="text-sm text-gray-700">{analyse.why}</p>
+                        <p className="text-xs font-semibold text-[#1E40AF] mb-1">{t('whyAnalysis')}</p>
+                        <p className="text-sm text-[#1E40AF]/80">{analyse.why}</p>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-12 bg-purple-50 rounded-2xl p-8 border-2 border-purple-200">
+              <div className="mt-12 bg-[#84BDE3]/10 rounded-2xl p-8 border-2 border-[#84BDE3]/30">
                 <div className="flex items-start gap-4">
-                  <AlertTriangle className="w-8 h-8 text-purple-600 flex-shrink-0 mt-1" />
+                  <AlertTriangle className="w-8 h-8 text-[#1E40AF] flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-xl font-bold text-purple-900 mb-2">{t('importantNotice')}</h3>
-                    <p className="text-gray-700 leading-relaxed mb-4">
+                    <h3 className="text-xl font-bold text-[#1E40AF] mb-2">{t('importantNotice')}</h3>
+                    <p className="text-[#1E40AF]/80 leading-relaxed mb-4">
                       {t('importantNoticeText')}
                     </p>
-                    <p className="text-sm text-gray-600 italic">
+                    <p className="text-sm text-[#1E40AF]/70 italic">
                       {t('valuesVary')}
                     </p>
                   </div>
@@ -351,7 +351,7 @@ export default function ConseilsEtInformations() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0A065D]/80 to-[#FE5000]/60 flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#1E40AF]/80 to-[#FE5000]/60 flex items-center justify-center">
                   <div className="text-center text-white px-6">
                     <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-full mb-4">
                       <ShieldCheck className="w-5 h-5" />
@@ -370,7 +370,7 @@ export default function ConseilsEtInformations() {
                     <div className="w-14 h-14 bg-[#FE5000] rounded-full flex items-center justify-center">
                       <ShieldCheck className="w-7 h-7 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-[#0A065D]">{t('qualitySecurity')}</h3>
+                    <h3 className="text-2xl font-bold text-[#1E40AF]">{t('qualitySecurity')}</h3>
                   </div>
 
                   <ul className="space-y-4">
@@ -378,8 +378,8 @@ export default function ConseilsEtInformations() {
                       <li key={index} className="flex items-start gap-3 p-3 bg-[#FE5000]/5 rounded-lg">
                         <Check className="w-5 h-5 text-[#FE5000] flex-shrink-0 mt-1" />
                         <div>
-                          <h4 className="font-bold text-gray-900 mb-1">{item.title}</h4>
-                          <p className="text-sm text-gray-700">{item.desc}</p>
+                          <h4 className="font-bold text-[#1E40AF] mb-1">{item.title}</h4>
+                          <p className="text-sm text-[#1E40AF]/80">{item.desc}</p>
                         </div>
                       </li>
                     ))}
@@ -391,7 +391,7 @@ export default function ConseilsEtInformations() {
                     <div className="w-14 h-14 bg-[#00CED1]/100 rounded-full flex items-center justify-center">
                       <Heart className="w-7 h-7 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-blue-900">{t('confidentialityTitle')}</h3>
+                    <h3 className="text-2xl font-bold text-[#1E40AF]">{t('confidentialityTitle')}</h3>
                   </div>
 
                   <ul className="space-y-4">
@@ -399,8 +399,8 @@ export default function ConseilsEtInformations() {
                       <li key={index} className="flex items-start gap-3 p-3 bg-[#00CED1]/10 rounded-lg">
                         <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
                         <div>
-                          <h4 className="font-bold text-gray-900 mb-1">{item.title}</h4>
-                          <p className="text-sm text-gray-700">{item.desc}</p>
+                          <h4 className="font-bold text-[#1E40AF] mb-1">{item.title}</h4>
+                          <p className="text-sm text-[#1E40AF]/80">{item.desc}</p>
                         </div>
                       </li>
                     ))}
@@ -412,7 +412,7 @@ export default function ConseilsEtInformations() {
         </section>
 
         {/* CTA Final */}
-        <section ref={ctaRef as React.RefObject<HTMLElement>} className="py-20 lg:py-28 bg-gradient-to-br from-[#0A065D] via-blue-700 to-blue-900 text-white">
+        <section ref={ctaRef as React.RefObject<HTMLElement>} className="py-20 lg:py-28 bg-gradient-to-br from-[#1E40AF] via-[#1E40AF]/90 to-[#1E40AF]/80 text-white">
           <div className="max-w-[1200px] mx-auto px-6">
             <div className={`text-center transition-all duration-700 ${ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <Users className="w-20 h-20 mx-auto mb-6 text-white/90" />
@@ -426,7 +426,7 @@ export default function ConseilsEtInformations() {
               <div className="flex flex-wrap gap-6 justify-center">
                 <Link
                   href="/dois-je-prendre-rdv"
-                  className="inline-flex items-center gap-3 bg-white text-[#0909FF] px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl text-lg"
+                  className="inline-flex items-center gap-3 bg-white text-[#1E40AF] px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl text-lg"
                 >
                   <Info className="w-6 h-6" />
                   {t('appointmentGuide')}

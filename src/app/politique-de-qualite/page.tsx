@@ -17,7 +17,7 @@ export default function PolitiqueDeQualitePage() {
       <TopNavigationBar />
       <MainNavigation />
 
-      <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      <main className="min-h-screen bg-[#84BDE3]/10">
         {/* Hero Section */}
         <section className="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
           <div className="absolute inset-0">
@@ -28,7 +28,7 @@ export default function PolitiqueDeQualitePage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0A065D]/95 via-[#0A065D]/85 to-[#0A065D]/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#84BDE3]/95 via-[#84BDE3]/85 to-[#84BDE3]/70"></div>
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
@@ -72,15 +72,15 @@ export default function PolitiqueDeQualitePage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-[#0A065D]/10 px-4 py-2 rounded-full mb-6">
-                <Target className="w-5 h-5 text-[#0A065D]" />
-                <span className="text-[#0A065D] font-semibold text-sm sm:text-base">{language === 'fr' ? 'Portée' : 'Scope'}</span>
+              <div className="inline-flex items-center gap-2 bg-[#1E40AF]/10 px-4 py-2 rounded-full mb-6">
+                <Target className="w-5 h-5 text-[#1E40AF]" />
+                <span className="text-[#1E40AF] font-semibold text-sm sm:text-base">{language === 'fr' ? 'Portée' : 'Scope'}</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-6">
                 {language === 'fr' ? "Champ d'Application" : 'Scope of Application'}
               </h2>
               <div className="max-w-4xl mx-auto">
-                <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
+                <p className="text-lg sm:text-xl text-[#1E40AF]/80 leading-relaxed">
                   {language === 'fr'
                     ? "Cette politique de qualité s'applique à toutes les activités réalisées par le laboratoire, y compris les phases pré-analytiques, analytiques et post-analytiques des analyses."
                     : 'This quality policy applies to all activities carried out by the laboratory, including pre-analytical, analytical, and post-analytical phases of testing.'
@@ -90,7 +90,7 @@ export default function PolitiqueDeQualitePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              <div className="bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-2xl p-8 text-white shadow-xl text-center">
+              <div className="bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-2xl p-8 text-white shadow-xl text-center">
                 <BookOpen className="w-12 h-12 mb-4 mx-auto" />
                 <h3 className="text-xl sm:text-2xl font-bold mb-3">{language === 'fr' ? 'Pré-analytique' : 'Pre-analytical'}</h3>
                 <p className="text-white/90 leading-relaxed">
@@ -101,7 +101,7 @@ export default function PolitiqueDeQualitePage() {
                 </p>
               </div>
 
-              <div className="bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-2xl p-8 text-white shadow-xl text-center">
+              <div className="bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-2xl p-8 text-white shadow-xl text-center">
                 <Shield className="w-12 h-12 mb-4 mx-auto" />
                 <h3 className="text-xl sm:text-2xl font-bold mb-3">{language === 'fr' ? 'Analytique' : 'Analytical'}</h3>
                 <p className="text-white/90 leading-relaxed">
@@ -112,7 +112,7 @@ export default function PolitiqueDeQualitePage() {
                 </p>
               </div>
 
-              <div className="bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-2xl p-8 text-white shadow-xl text-center">
+              <div className="bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-2xl p-8 text-white shadow-xl text-center">
                 <FileText className="w-12 h-12 mb-4 mx-auto" />
                 <h3 className="text-xl sm:text-2xl font-bold mb-3">{language === 'fr' ? 'Post-analytique' : 'Post-analytical'}</h3>
                 <p className="text-white/90 leading-relaxed">
@@ -127,17 +127,17 @@ export default function PolitiqueDeQualitePage() {
         </section>
 
         {/* Responsibilities Section */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-[#84BDE3]/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-[#0A065D]/10 px-4 py-2 rounded-full mb-6">
-                <Users className="w-5 h-5 text-[#0A065D]" />
-                <span className="text-[#0A065D] font-semibold text-sm sm:text-base">{language === 'fr' ? 'Responsabilités' : 'Responsibilities'}</span>
+              <div className="inline-flex items-center gap-2 bg-[#1E40AF]/10 px-4 py-2 rounded-full mb-6">
+                <Users className="w-5 h-5 text-[#1E40AF]" />
+                <span className="text-[#1E40AF] font-semibold text-sm sm:text-base">{language === 'fr' ? 'Responsabilités' : 'Responsibilities'}</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-6">
                 {language === 'fr' ? 'Responsabilités' : 'Responsibilities'}
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl text-[#1E40AF]/70 max-w-3xl mx-auto">
                 {language === 'fr'
                   ? "Une organisation claire pour garantir l'excellence à tous les niveaux"
                   : 'Clear organization to ensure excellence at all levels'
@@ -146,16 +146,16 @@ export default function PolitiqueDeQualitePage() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
+              <div className="bg-white rounded-2xl p-8 shadow-xl border border-[#84BDE3]/30">
                 <div className="flex items-start gap-6 mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-2xl flex items-center justify-center flex-shrink-0">
                     <Shield className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#1E40AF] mb-3">
                       {language === 'fr' ? 'Directeur du Laboratoire' : 'Laboratory Director'}
                     </h3>
-                    <p className="text-gray-700 leading-relaxed">
+                    <p className="text-[#1E40AF]/80 leading-relaxed">
                       {language === 'fr'
                         ? "Le Directeur du Laboratoire est responsable de s'assurer que cette politique de qualité est mise en œuvre et maintenue."
                         : 'The Laboratory Director is responsible for ensuring that this quality policy is implemented and maintained.'
@@ -165,16 +165,16 @@ export default function PolitiqueDeQualitePage() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
+              <div className="bg-white rounded-2xl p-8 shadow-xl border border-[#84BDE3]/30">
                 <div className="flex items-start gap-6 mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-2xl flex items-center justify-center flex-shrink-0">
                     <Users className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#1E40AF] mb-3">
                       {language === 'fr' ? 'Tout le Personnel' : 'All Personnel'}
                     </h3>
-                    <p className="text-gray-700 leading-relaxed">
+                    <p className="text-[#1E40AF]/80 leading-relaxed">
                       {language === 'fr'
                         ? 'Tout le personnel du laboratoire est responsable de comprendre et de respecter cette politique de qualité.'
                         : 'All laboratory personnel are responsible for understanding and adhering to this quality policy.'
@@ -191,10 +191,10 @@ export default function PolitiqueDeQualitePage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-6">
                 {language === 'fr' ? 'Nos Engagements Qualité' : 'Our Quality Commitments'}
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl text-[#1E40AF]/70 max-w-3xl mx-auto">
                 {language === 'fr'
                   ? 'Le laboratoire est engagé dans les engagements qualité suivants'
                   : 'The laboratory is committed to the following quality commitments'
@@ -243,17 +243,17 @@ export default function PolitiqueDeQualitePage() {
               ].map((commitment, index) => (
                 <div
                   key={index}
-                  className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 lg:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#0A065D]/20 hover:-translate-y-1"
+                  className="bg-[#84BDE3]/10 rounded-2xl p-6 lg:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#84BDE3]/30 hover:border-[#1E40AF]/20 hover:-translate-y-1"
                 >
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-xl flex items-center justify-center flex-shrink-0">
                       <CheckCircle className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">
+                      <h3 className="text-lg sm:text-xl font-bold text-[#1E40AF] mb-3">
                         {language === 'fr' ? commitment.titleFr : commitment.title}
                       </h3>
-                      <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                      <p className="text-[#1E40AF]/80 text-sm sm:text-base leading-relaxed">
                         {language === 'fr' ? commitment.descriptionFr : commitment.description}
                       </p>
                     </div>
@@ -265,19 +265,19 @@ export default function PolitiqueDeQualitePage() {
         </section>
 
         {/* Standards and Compliance */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-[#84BDE3]/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-[#0A065D]/10 px-4 py-2 rounded-full mb-6">
-                <Award className="w-5 h-5 text-[#0A065D]" />
-                <span className="text-[#0A065D] font-semibold text-sm sm:text-base">
+              <div className="inline-flex items-center gap-2 bg-[#1E40AF]/10 px-4 py-2 rounded-full mb-6">
+                <Award className="w-5 h-5 text-[#1E40AF]" />
+                <span className="text-[#1E40AF] font-semibold text-sm sm:text-base">
                   {language === 'fr' ? 'Normes & Conformité' : 'Standards & Compliance'}
                 </span>
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-6">
                 {language === 'fr' ? 'Normes et Conformité' : 'Standards and Compliance'}
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl text-[#1E40AF]/70 max-w-3xl mx-auto">
                 {language === 'fr'
                   ? 'Respect des standards internationaux les plus exigeants'
                   : 'Compliance with the most demanding international standards'
@@ -310,13 +310,13 @@ export default function PolitiqueDeQualitePage() {
                 return (
                   <div
                     key={index}
-                    className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 text-center"
+                    className="bg-white rounded-2xl p-8 shadow-xl border border-[#84BDE3]/30 text-center"
                   >
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-2xl flex items-center justify-center mx-auto mb-6">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">{standard.title}</h3>
-                    <p className="text-gray-700 leading-relaxed">
+                    <h3 className="text-xl font-bold text-[#1E40AF] mb-3">{standard.title}</h3>
+                    <p className="text-[#1E40AF]/80 leading-relaxed">
                       {language === 'fr' ? standard.descriptionFr : standard.description}
                     </p>
                   </div>
@@ -330,7 +330,7 @@ export default function PolitiqueDeQualitePage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <div className="bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-2xl p-8 sm:p-10 lg:p-12 shadow-2xl text-white">
+              <div className="bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-2xl p-8 sm:p-10 lg:p-12 shadow-2xl text-white">
                 <div className="flex flex-col md:flex-row items-start gap-8">
                   <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/20">
                     <FileText className="w-10 h-10 text-white" />
@@ -353,15 +353,15 @@ export default function PolitiqueDeQualitePage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-[#84BDE3]/10">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-6">
               {language === 'fr'
                 ? 'Excellence et Qualité au Cœur de Notre Mission'
                 : 'Excellence and Quality at the Heart of Our Mission'
               }
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-[#1E40AF]/70 mb-8 max-w-2xl mx-auto">
               {language === 'fr'
                 ? "Notre politique de qualité guide toutes nos actions pour vous garantir un service d'excellence conforme aux standards internationaux les plus exigeants."
                 : 'Our quality policy guides all our actions to guarantee you an excellent service compliant with the most demanding international standards.'
@@ -370,14 +370,14 @@ export default function PolitiqueDeQualitePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/signup"
-                className="inline-flex items-center justify-center gap-2 bg-[#0A065D] text-white px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-[#0080FF] transition-all hover:scale-105 shadow-lg"
+                className="inline-flex items-center justify-center gap-2 bg-[#1E40AF] text-white px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-[#3B82F6] transition-all hover:scale-105 shadow-lg"
               >
                 {language === 'fr' ? 'Créer un Compte' : 'Create an Account'}
                 <ChevronRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/charte-de-qualite"
-                className="inline-flex items-center justify-center gap-2 bg-transparent text-[#0A065D] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-[#0A065D] hover:bg-[#0A065D] hover:text-white transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-transparent text-[#1E40AF] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-[#1E40AF] hover:bg-[#1E40AF] hover:text-white transition-all"
               >
                 {language === 'fr' ? 'Notre Charte de Qualité' : 'Our Quality Charter'}
               </Link>

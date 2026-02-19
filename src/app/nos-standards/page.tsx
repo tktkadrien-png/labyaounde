@@ -62,7 +62,7 @@ export default function NosStandardsPage() {
       <TopNavigationBar />
       <MainNavigation />
 
-      <main className="min-h-screen bg-gradient-to-b from-white to-[#77B5FE]/20">
+      <main className="min-h-screen bg-gradient-to-b from-[#84BDE3]/20 to-[#84BDE3]/10">
         {/* Hero Section */}
         <section className="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
           <div className="absolute inset-0">
@@ -118,7 +118,7 @@ export default function NosStandardsPage() {
         </section>
 
         {/* Image Gallery Section */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-[#84BDE3]/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-xl group">
@@ -144,7 +144,7 @@ export default function NosStandardsPage() {
         </section>
 
         {/* Introduction */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#F0F7FF] to-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-[#84BDE3]/15">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-2xl p-8 sm:p-10 lg:p-12 shadow-2xl text-white">
@@ -170,7 +170,7 @@ export default function NosStandardsPage() {
         </section>
 
         {/* Standards Grid */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#F0F7FF] to-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-[#84BDE3]/15">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-6">
@@ -188,7 +188,7 @@ export default function NosStandardsPage() {
               {standards.map((standard, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                  className="bg-white rounded-2xl p-8 shadow-xl border border-[#84BDE3]/30 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="flex items-start gap-4 mb-6">
                     <div className="w-14 h-14 bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-xl flex items-center justify-center flex-shrink-0">
@@ -210,7 +210,7 @@ export default function NosStandardsPage() {
                   <p className="text-[#1E40AF]/80 leading-relaxed">
                     {language === 'fr' ? standard.descriptionFr : standard.description}
                   </p>
-                  <div className="mt-4 pt-4 border-t border-gray-100">
+                  <div className="mt-4 pt-4 border-t border-[#84BDE3]/30">
                     <div className="flex items-center gap-2 text-[#FF8500]">
                       <Check className="w-5 h-5" />
                       <span className="text-sm font-semibold">
@@ -225,10 +225,10 @@ export default function NosStandardsPage() {
         </section>
 
         {/* Commitment Section */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-[#84BDE3]/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
-              <div className="bg-gradient-to-br from-[#F0F7FF] to-white rounded-2xl p-8 sm:p-10 shadow-xl border border-gray-100">
+              <div className="bg-[#84BDE3]/15 rounded-2xl p-8 sm:p-10 shadow-xl border border-[#84BDE3]/30">
                 <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-2xl mb-6">
                   <Shield className="w-10 h-10 text-white" />
                 </div>
@@ -247,7 +247,7 @@ export default function NosStandardsPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-[#84BDE3]/10">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-6">
               {language === 'fr'

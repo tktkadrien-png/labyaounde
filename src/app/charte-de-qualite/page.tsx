@@ -14,7 +14,7 @@ export default function CharteDeQualitePage() {
       <TopNavigationBar />
       <MainNavigation />
 
-      <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      <main className="min-h-screen bg-[#84BDE3]/10">
         {/* Hero Section */}
         <section className="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
           <div className="absolute inset-0">
@@ -25,7 +25,7 @@ export default function CharteDeQualitePage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0A065D]/95 via-[#0A065D]/85 to-[#0A065D]/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#1E40AF]/95 via-[#1E40AF]/85 to-[#1E40AF]/70"></div>
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
@@ -66,20 +66,20 @@ export default function CharteDeQualitePage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-[#0A065D]/10 px-4 py-2 rounded-full mb-6">
-                <Award className="w-5 h-5 text-[#0A065D]" />
-                <span className="text-[#0A065D] font-semibold text-sm sm:text-base">Notre Charte</span>
+              <div className="inline-flex items-center gap-2 bg-[#1E40AF]/10 px-4 py-2 rounded-full mb-6">
+                <Award className="w-5 h-5 text-[#1E40AF]" />
+                <span className="text-[#1E40AF] font-semibold text-sm sm:text-base">Notre Charte</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-4">
                 Charte de Qualité Lab Yaounde
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl text-[#1E40AF]/70 max-w-3xl mx-auto">
                 Nos engagements envers nos patients et partenaires
               </p>
             </div>
 
             <div className="max-w-5xl mx-auto">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-[#0A065D]/10">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-[#1E40AF]/10">
                 <Image
                   src="/ChatGPT Image Dec 1, 2025, 01_56_11 AM.png"
                   alt="Charte de Qualité Lab Yaounde"
@@ -94,13 +94,13 @@ export default function CharteDeQualitePage() {
         </section>
 
         {/* Nos Engagements */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-[#84BDE3]/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-4">
                 Nos Engagements Qualité
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl text-[#1E40AF]/70 max-w-3xl mx-auto">
                 Des standards d'excellence pour votre santé
               </p>
             </div>
@@ -134,15 +134,15 @@ export default function CharteDeQualitePage() {
               ].map((engagement, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#0A065D]/20 hover:-translate-y-1"
+                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#84BDE3]/30 hover:border-[#1E40AF]/20 hover:-translate-y-1"
                 >
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-xl flex items-center justify-center flex-shrink-0">
                       <CheckCircle className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">{engagement.title}</h3>
-                      <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{engagement.description}</p>
+                      <h3 className="text-lg sm:text-xl font-bold text-[#1E40AF] mb-2">{engagement.title}</h3>
+                      <p className="text-[#1E40AF]/70 text-sm sm:text-base leading-relaxed">{engagement.description}</p>
                     </div>
                   </div>
                 </div>
@@ -152,7 +152,7 @@ export default function CharteDeQualitePage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#0A065D] to-[#0080FF] text-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] text-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6">
               Une Qualité de Service Exceptionnelle
@@ -163,14 +163,14 @@ export default function CharteDeQualitePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/signup"
-                className="inline-flex items-center justify-center gap-2 bg-white text-[#0A065D] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-white/90 transition-all hover:scale-105"
+                className="inline-flex items-center justify-center gap-2 bg-white text-[#1E40AF] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-white/90 transition-all hover:scale-105"
               >
                 Créer un Compte
                 <ChevronRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/#contact"
-                className="inline-flex items-center justify-center gap-2 bg-transparent text-white px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-white hover:bg-white hover:text-[#0A065D] transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-transparent text-white px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-white hover:bg-white hover:text-[#1E40AF] transition-all"
               >
                 Nous Contacter
               </Link>
