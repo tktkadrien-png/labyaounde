@@ -33,7 +33,7 @@ export default function DoisJePrendreRDV() {
 
       <main className="bg-[#84BDE3]/10">
         {/* Hero Section */}
-        <section ref={heroRef as React.RefObject<HTMLElement>} className="bg-gradient-to-br from-[#84BDE3] via-[#84BDE3]/90 to-[#1E40AF] text-white py-20 lg:py-32 relative overflow-hidden">
+        <section ref={heroRef as React.RefObject<HTMLElement>} className="bg-gradient-to-br from-[#AAD8FB] via-[#AAD8FB]/90 to-[#AAD8FB]/80 text-white py-20 lg:py-32 relative overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
@@ -111,7 +111,7 @@ export default function DoisJePrendreRDV() {
                 <div className="w-12 h-12 bg-[#00CED1]/100 rounded-full flex items-center justify-center mb-4">
                   <Users className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-blue-900 mb-2">Service Rapide</h3>
+                <h3 className="text-xl font-bold text-[#1E40AF] mb-2">Service Rapide</h3>
                 <p className="text-[#1E40AF]/80">Temps d'attente moyen de 15-20 minutes selon l'affluence</p>
               </div>
             </div>
@@ -133,7 +133,7 @@ export default function DoisJePrendreRDV() {
                   />
                 </div>
                 <div className="lg:w-2/3 text-center lg:text-left">
-                  <div className="inline-flex items-center gap-2 bg-[#00CED1]/20 text-blue-700 px-6 py-3 rounded-full mb-4">
+                  <div className="inline-flex items-center gap-2 bg-[#00CED1]/20 text-[#1E40AF] px-6 py-3 rounded-full mb-4">
                     <Check className="w-5 h-5" />
                     <span className="text-sm font-semibold">Accès Libre - Sans Rendez-vous</span>
                   </div>
@@ -198,7 +198,7 @@ export default function DoisJePrendreRDV() {
                           <div className="flex-1">
                             <div className="flex items-start justify-between">
                               <span className="font-semibold text-[#1E40AF]">{item.name}</span>
-                              <span className="text-xs bg-[#00CED1]/20 text-blue-700 px-2 py-1 rounded-full">{item.time}</span>
+                              <span className="text-xs bg-[#00CED1]/20 text-[#1E40AF] px-2 py-1 rounded-full">{item.time}</span>
                             </div>
                             <p className="text-sm text-[#1E40AF]/70 mt-1">{item.desc}</p>
                           </div>
@@ -762,7 +762,7 @@ export default function DoisJePrendreRDV() {
           <div className="max-w-[1200px] mx-auto px-6">
             <div className={`transition-all duration-700 ${examplesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <div className="text-center mb-12">
-                <div className="inline-flex items-center gap-2 bg-[#00CED1]/20 text-blue-700 px-6 py-3 rounded-full mb-4">
+                <div className="inline-flex items-center gap-2 bg-[#00CED1]/20 text-[#1E40AF] px-6 py-3 rounded-full mb-4">
                   <Users className="w-5 h-5" />
                   <span className="text-sm font-semibold">Cas Pratiques</span>
                 </div>
@@ -1166,7 +1166,7 @@ export default function DoisJePrendreRDV() {
         </section>
 
         {/* Contact & Rendez-vous - Version améliorée */}
-        <section id="contact" ref={contactRef as React.RefObject<HTMLElement>} className="py-20 lg:py-28 bg-gradient-to-br from-[#1E40AF] via-[#1E40AF]/90 to-[#1E40AF]/80 text-white relative overflow-hidden">
+        <section id="contact" ref={contactRef as React.RefObject<HTMLElement>} className="py-20 lg:py-28 bg-[#84BDE3] text-white relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#00CED1] rounded-full blur-3xl"></div>

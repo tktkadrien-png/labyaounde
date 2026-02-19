@@ -10,7 +10,7 @@ export default function NotFound() {
         <h2 className="text-2xl font-bold text-[#0A065D] mb-4">
           Page non trouvée
         </h2>
-        <p className="text-gray-600 mb-6">
+        <p className="text-[#1E40AF]/70 mb-6">
           La page que vous recherchez n&apos;existe pas ou a été déplacée.
         </p>
         <Link

@@ -90,7 +90,7 @@ export default function PolitiqueDeQualitePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              <div className="bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-2xl p-8 text-white shadow-xl text-center">
+              <div className="bg-[#84BDE3] rounded-2xl p-8 text-white shadow-xl text-center">
                 <BookOpen className="w-12 h-12 mb-4 mx-auto" />
                 <h3 className="text-xl sm:text-2xl font-bold mb-3">{language === 'fr' ? 'Pré-analytique' : 'Pre-analytical'}</h3>
                 <p className="text-white/90 leading-relaxed">
@@ -101,7 +101,7 @@ export default function PolitiqueDeQualitePage() {
                 </p>
               </div>
 
-              <div className="bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-2xl p-8 text-white shadow-xl text-center">
+              <div className="bg-[#84BDE3] rounded-2xl p-8 text-white shadow-xl text-center">
                 <Shield className="w-12 h-12 mb-4 mx-auto" />
                 <h3 className="text-xl sm:text-2xl font-bold mb-3">{language === 'fr' ? 'Analytique' : 'Analytical'}</h3>
                 <p className="text-white/90 leading-relaxed">
@@ -112,7 +112,7 @@ export default function PolitiqueDeQualitePage() {
                 </p>
               </div>
 
-              <div className="bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-2xl p-8 text-white shadow-xl text-center">
+              <div className="bg-[#84BDE3] rounded-2xl p-8 text-white shadow-xl text-center">
                 <FileText className="w-12 h-12 mb-4 mx-auto" />
                 <h3 className="text-xl sm:text-2xl font-bold mb-3">{language === 'fr' ? 'Post-analytique' : 'Post-analytical'}</h3>
                 <p className="text-white/90 leading-relaxed">
@@ -330,7 +330,7 @@ export default function PolitiqueDeQualitePage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <div className="bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-2xl p-8 sm:p-10 lg:p-12 shadow-2xl text-white">
+              <div className="bg-[#84BDE3] rounded-2xl p-8 sm:p-10 lg:p-12 shadow-2xl text-white">
                 <div className="flex flex-col md:flex-row items-start gap-8">
                   <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/20">
                     <FileText className="w-10 h-10 text-white" />

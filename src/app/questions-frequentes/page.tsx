@@ -129,7 +129,7 @@ export default function QuestionsFrequentesPage() {
 
       <main className="min-h-screen bg-[#84BDE3]/10">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-[#84BDE3] via-[#84BDE3]/90 to-[#84BDE3]/80 text-white py-20">
+        <section className="bg-gradient-to-br from-[#AAD8FB] via-[#AAD8FB]/90 to-[#AAD8FB]/80 text-white py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <HelpCircle className="w-20 h-20 mx-auto mb-6" />
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">{currentContent.title}</h1>
@@ -212,7 +212,7 @@ export default function QuestionsFrequentesPage() {
         {/* Contact CTA */}
         <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-2xl p-8 lg:p-12 text-white shadow-2xl">
+            <div className="bg-[#84BDE3] rounded-2xl p-8 lg:p-12 text-white shadow-2xl">
               <HelpCircle className="w-16 h-16 mx-auto mb-6" />
               <h2 className="text-3xl lg:text-4xl font-bold mb-4">{currentContent.contact.title}</h2>
               <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">{currentContent.contact.description}</p>

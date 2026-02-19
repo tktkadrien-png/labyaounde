@@ -111,7 +111,7 @@ export default function ContactPage() {
         {/* Contact Information */}
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-12 text-center">
+            <h2 className="text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-12 text-center">
               {currentContent.contactInfo.title}
             </h2>
 
@@ -121,8 +121,8 @@ export default function ContactPage() {
                 <div className="w-14 h-14 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-xl flex items-center justify-center mb-6">
                   <MapPin className="w-7 h-7 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{currentContent.contactInfo.address.title}</h3>
-                <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                <h3 className="text-2xl font-bold text-[#1E40AF] mb-4">{currentContent.contactInfo.address.title}</h3>
+                <p className="text-[#1E40AF]/80 text-lg leading-relaxed mb-6">
                   {currentContent.contactInfo.address.details}
                 </p>
                 <a
@@ -141,7 +141,7 @@ export default function ContactPage() {
                 <div className="w-14 h-14 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-xl flex items-center justify-center mb-6">
                   <Mail className="w-7 h-7 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{currentContent.contactInfo.email.title}</h3>
+                <h3 className="text-2xl font-bold text-[#1E40AF] mb-4">{currentContent.contactInfo.email.title}</h3>
                 <a
                   href={`mailto:${currentContent.contactInfo.email.details}`}
                   className="text-[#0A065D] text-lg font-semibold hover:underline"
@@ -155,10 +155,10 @@ export default function ContactPage() {
                 <div className="w-14 h-14 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-xl flex items-center justify-center mb-6">
                   <Clock className="w-7 h-7 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{currentContent.contactInfo.hours.title}</h3>
+                <h3 className="text-2xl font-bold text-[#1E40AF] mb-4">{currentContent.contactInfo.hours.title}</h3>
                 <ul className="space-y-2">
                   {currentContent.contactInfo.hours.items.map((item, index) => (
-                    <li key={index} className="text-gray-700 text-lg">{item}</li>
+                    <li key={index} className="text-[#1E40AF]/80 text-lg">{item}</li>
                   ))}
                 </ul>
               </div>
@@ -169,10 +169,10 @@ export default function ContactPage() {
         {/* Social Media Section */}
         <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-4">
               {currentContent.social.title}
             </h2>
-            <p className="text-lg text-gray-600 mb-12">{currentContent.social.description}</p>
+            <p className="text-lg text-[#1E40AF]/70 mb-12">{currentContent.social.description}</p>
 
             <div className="flex justify-center gap-6">
               {/* Facebook */}

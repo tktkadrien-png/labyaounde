@@ -106,7 +106,7 @@ export default function ImmunologiePage() {
               <span className="inline-block bg-[#0A065D]/10 text-[#0A065D] text-sm font-bold uppercase tracking-wider px-4 py-2 rounded-full mb-4">
                 Nos Tests
               </span>
-              <h2 className="text-4xl md:text-5xl font-black text-gray-900">
+              <h2 className="text-4xl md:text-5xl font-black text-[#1E40AF]">
                 Analyses Immunologiques
               </h2>
             </div>
@@ -120,8 +120,8 @@ export default function ImmunologiePage() {
                   <div className="w-14 h-14 bg-gradient-to-br from-[#0A065D] to-[#0A065D]/80 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <service.icon className="w-7 h-7 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{service.desc}</p>
+                  <h3 className="text-xl font-bold text-[#1E40AF] mb-3">{service.title}</h3>
+                  <p className="text-[#1E40AF]/70 leading-relaxed">{service.desc}</p>
                 </div>
               ))}
             </div>
@@ -135,7 +135,7 @@ export default function ImmunologiePage() {
               <span className="inline-block bg-[#FF6B00]/10 text-[#FF6B00] text-sm font-bold uppercase tracking-wider px-4 py-2 rounded-full mb-4">
                 Notre Expertise
               </span>
-              <h2 className="text-4xl md:text-5xl font-black text-gray-900">
+              <h2 className="text-4xl md:text-5xl font-black text-[#1E40AF]">
                 Technologie Avancée
               </h2>
             </div>

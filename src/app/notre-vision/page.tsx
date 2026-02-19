@@ -27,7 +27,7 @@ export default function NotreVisionPage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-black/30"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#84BDE3]/95 via-[#84BDE3]/85 to-[#84BDE3]/70"></div>
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">

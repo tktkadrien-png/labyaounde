@@ -108,17 +108,17 @@ export default function ActualitesPage() {
             {loading ? (
               <div className="text-center py-20">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0A065D] mx-auto"></div>
-                <p className="text-gray-600 mt-4">
+                <p className="text-[#1E40AF]/70 mt-4">
                   {language === 'fr' ? 'Chargement des actualités...' : 'Loading news...'}
                 </p>
               </div>
             ) : news.length === 0 ? (
               <div className="text-center py-20">
                 <Newspaper className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                <h3 className="text-2xl font-bold text-[#1E40AF] mb-3">
                   {language === 'fr' ? 'Aucune actualité pour le moment' : 'No news at the moment'}
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-[#1E40AF]/70">
                   {language === 'fr'
                     ? 'Revenez bientôt pour découvrir nos dernières actualités'
                     : 'Come back soon to discover our latest news'}
@@ -148,8 +148,8 @@ export default function ActualitesPage() {
                         <Calendar className="w-4 h-4" />
                         {item.date}
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight">{item.title}</h3>
-                      <p className="text-gray-600 leading-relaxed mb-4">{item.excerpt}</p>
+                      <h3 className="text-xl font-bold text-[#1E40AF] mb-3 leading-tight">{item.title}</h3>
+                      <p className="text-[#1E40AF]/70 leading-relaxed mb-4">{item.excerpt}</p>
                       <button className="inline-flex items-center gap-2 text-[#0A065D] font-semibold hover:gap-3 transition-all">
                         {language === 'fr' ? 'Lire plus' : 'Read more'}
                         <ChevronRight className="w-4 h-4" />

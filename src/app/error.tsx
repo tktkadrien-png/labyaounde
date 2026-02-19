@@ -24,7 +24,7 @@ export default function Error({
         <h2 className="text-2xl font-bold text-[#0A065D] mb-4">
           Une erreur est survenue
         </h2>
-        <p className="text-gray-600 mb-6">
+        <p className="text-[#1E40AF]/70 mb-6">
           Nous nous excusons pour ce désagrément. Veuillez réessayer.
         </p>
         <button

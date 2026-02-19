@@ -357,7 +357,7 @@ export default function SignupPage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#FF6B00] to-[#FF8C00] rounded-2xl mb-4 shadow-lg">
                 <Sparkles className="w-8 h-8 text-white" />
               </div>
-              <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
+              <h1 className="text-3xl sm:text-4xl font-bold text-[#1E40AF] mb-2">
                 {t.title}
               </h1>
               <p className="text-gray-500 text-lg">
@@ -383,7 +383,7 @@ export default function SignupPage() {
 
               {/* Full Name Input */}
               <div>
-                <label htmlFor="fullName" className="block text-sm font-bold text-gray-700 mb-2">
+                <label htmlFor="fullName" className="block text-sm font-bold text-[#1E40AF]/80 mb-2">
                   {t.fullNameLabel} <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -398,14 +398,14 @@ export default function SignupPage() {
                     }}
                     placeholder={t.fullNamePlaceholder}
                     autoComplete="name"
-                    className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-2xl focus:border-[#0A065D] focus:outline-none transition-colors text-gray-900 placeholder-gray-400 text-lg"
+                    className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-2xl focus:border-[#0A065D] focus:outline-none transition-colors text-[#1E40AF] placeholder-gray-400 text-lg"
                   />
                 </div>
               </div>
 
               {/* Phone Input (Optional) */}
               <div>
-                <label htmlFor="phone" className="block text-sm font-bold text-gray-700 mb-2">
+                <label htmlFor="phone" className="block text-sm font-bold text-[#1E40AF]/80 mb-2">
                   {t.phoneLabel}
                 </label>
                 <div className="relative">
@@ -417,14 +417,14 @@ export default function SignupPage() {
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder={t.phonePlaceholder}
                     autoComplete="tel"
-                    className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-2xl focus:border-[#0A065D] focus:outline-none transition-colors text-gray-900 placeholder-gray-400 text-lg"
+                    className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-2xl focus:border-[#0A065D] focus:outline-none transition-colors text-[#1E40AF] placeholder-gray-400 text-lg"
                   />
                 </div>
               </div>
 
               {/* Email Input */}
               <div>
-                <label htmlFor="email" className="block text-sm font-bold text-gray-700 mb-2">
+                <label htmlFor="email" className="block text-sm font-bold text-[#1E40AF]/80 mb-2">
                   {t.emailLabel} <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -439,14 +439,14 @@ export default function SignupPage() {
                     }}
                     placeholder={t.emailPlaceholder}
                     autoComplete="email"
-                    className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-2xl focus:border-[#0A065D] focus:outline-none transition-colors text-gray-900 placeholder-gray-400 text-lg"
+                    className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-2xl focus:border-[#0A065D] focus:outline-none transition-colors text-[#1E40AF] placeholder-gray-400 text-lg"
                   />
                 </div>
               </div>
 
               {/* Password Input */}
               <div>
-                <label htmlFor="password" className="block text-sm font-bold text-gray-700 mb-2">
+                <label htmlFor="password" className="block text-sm font-bold text-[#1E40AF]/80 mb-2">
                   {t.passwordLabel} <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -461,12 +461,12 @@ export default function SignupPage() {
                     }}
                     placeholder={t.passwordPlaceholder}
                     autoComplete="new-password"
-                    className="w-full pl-12 pr-14 py-4 border-2 border-gray-200 rounded-2xl focus:border-[#0A065D] focus:outline-none transition-colors text-gray-900 placeholder-gray-400 text-lg"
+                    className="w-full pl-12 pr-14 py-4 border-2 border-gray-200 rounded-2xl focus:border-[#0A065D] focus:outline-none transition-colors text-[#1E40AF] placeholder-gray-400 text-lg"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors p-1"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-[#1E40AF]/50 hover:text-[#1E40AF]/70 transition-colors p-1"
                   >
                     {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
@@ -476,7 +476,7 @@ export default function SignupPage() {
                 {password && (
                   <div className="mt-4 p-4 bg-gray-50 rounded-2xl space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium text-gray-600">{t.passwordStrength.title}</span>
+                      <span className="text-sm font-medium text-[#1E40AF]/70">{t.passwordStrength.title}</span>
                       <span className={`text-sm font-bold ${strengthInfo.textColor}`}>
                         {strengthInfo.label}
                       </span>
@@ -509,7 +509,7 @@ export default function SignupPage() {
 
               {/* Confirm Password Input */}
               <div>
-                <label htmlFor="confirmPassword" className="block text-sm font-bold text-gray-700 mb-2">
+                <label htmlFor="confirmPassword" className="block text-sm font-bold text-[#1E40AF]/80 mb-2">
                   {t.confirmPasswordLabel} <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -524,7 +524,7 @@ export default function SignupPage() {
                     }}
                     placeholder={t.confirmPasswordPlaceholder}
                     autoComplete="new-password"
-                    className={`w-full pl-12 pr-14 py-4 border-2 rounded-2xl focus:outline-none transition-colors text-gray-900 placeholder-gray-400 text-lg ${
+                    className={`w-full pl-12 pr-14 py-4 border-2 rounded-2xl focus:outline-none transition-colors text-[#1E40AF] placeholder-gray-400 text-lg ${
                       confirmPassword && password !== confirmPassword
                         ? "border-red-300 focus:border-red-500"
                         : confirmPassword && password === confirmPassword
@@ -535,7 +535,7 @@ export default function SignupPage() {
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors p-1"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-[#1E40AF]/50 hover:text-[#1E40AF]/70 transition-colors p-1"
                   >
                     {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
@@ -559,7 +559,7 @@ export default function SignupPage() {
                   }}
                   className="w-5 h-5 mt-0.5 rounded-lg border-gray-300 text-[#0A065D] focus:ring-[#0A065D] cursor-pointer"
                 />
-                <label htmlFor="acceptTerms" className="text-sm text-gray-600 cursor-pointer leading-relaxed">
+                <label htmlFor="acceptTerms" className="text-sm text-[#1E40AF]/70 cursor-pointer leading-relaxed">
                   {t.acceptTerms}{" "}
                   <Link href="/conditions" className="text-[#0A065D] hover:text-[#0080FF] font-bold">
                     {t.termsLink}
@@ -594,7 +594,7 @@ export default function SignupPage() {
 
             {/* Login Link */}
             <div className="mt-8 pt-6 border-t border-gray-100 text-center">
-              <p className="text-gray-600 text-lg">
+              <p className="text-[#1E40AF]/70 text-lg">
                 {t.hasAccount}{" "}
                 <Link
                   href="/login"

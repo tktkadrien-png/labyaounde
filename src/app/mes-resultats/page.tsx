@@ -180,16 +180,16 @@ export default function ResultsPage() {
               <ArrowLeft className="w-5 h-5" />
               {currentContent.backButton}
             </button>
-            <h1 className="text-4xl font-bold text-gray-900">{currentContent.title}</h1>
-            <p className="text-gray-600 mt-2">{currentContent.subtitle}</p>
+            <h1 className="text-4xl font-bold text-[#1E40AF]">{currentContent.title}</h1>
+            <p className="text-[#1E40AF]/70 mt-2">{currentContent.subtitle}</p>
           </div>
 
           {/* Results List */}
           {results.length === 0 ? (
             <div className="bg-white rounded-2xl shadow-md p-12 text-center">
               <FileText className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">{currentContent.noResults}</h3>
-              <p className="text-gray-600">{currentContent.noResultsDesc}</p>
+              <h3 className="text-xl font-semibold text-[#1E40AF] mb-2">{currentContent.noResults}</h3>
+              <p className="text-[#1E40AF]/70">{currentContent.noResultsDesc}</p>
             </div>
           ) : (
             <div className="bg-white rounded-2xl shadow-md overflow-hidden">
@@ -224,13 +224,13 @@ export default function ResultsPage() {
                             <div className="flex items-center">
                               <FileText className="w-5 h-5 text-[#0A065D] mr-3" />
                               <div>
-                                <div className="text-sm font-medium text-gray-900">{result.test_name}</div>
+                                <div className="text-sm font-medium text-[#1E40AF]">{result.test_name}</div>
                                 {result.notes && <div className="text-xs text-gray-500">{result.notes}</div>}
                               </div>
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            <span className="text-sm text-gray-900">{result.test_type}</span>
+                            <span className="text-sm text-[#1E40AF]">{result.test_type}</span>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="flex items-center text-sm text-gray-500">
@@ -284,8 +284,8 @@ export default function ResultsPage() {
                         <div className="flex items-start gap-3">
                           <FileText className="w-5 h-5 text-[#0A065D] mt-1" />
                           <div>
-                            <h3 className="font-medium text-gray-900">{result.test_name}</h3>
-                            <p className="text-sm text-gray-600">{result.test_type}</p>
+                            <h3 className="font-medium text-[#1E40AF]">{result.test_name}</h3>
+                            <p className="text-sm text-[#1E40AF]/70">{result.test_type}</p>
                             {result.notes && <p className="text-xs text-gray-500 mt-1">{result.notes}</p>}
                           </div>
                         </div>

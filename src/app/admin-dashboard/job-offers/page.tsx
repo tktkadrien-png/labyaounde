@@ -173,11 +173,11 @@ export default function JobOffersAdmin() {
             </Link>
             <div className="flex justify-between items-center">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
+                <h1 className="text-3xl font-bold text-[#1E40AF] flex items-center gap-3">
                   <Briefcase className="w-8 h-8 text-[#0A065D]" />
                   Gestion des Offres d'Emploi
                 </h1>
-                <p className="text-gray-600 mt-2">Créer et gérer les offres d'emploi et stages</p>
+                <p className="text-[#1E40AF]/70 mt-2">Créer et gérer les offres d'emploi et stages</p>
               </div>
               <button
                 onClick={() => setShowForm(!showForm)}
@@ -192,13 +192,13 @@ export default function JobOffersAdmin() {
           {/* Form */}
           {showForm && (
             <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl font-bold text-[#1E40AF] mb-6">
                 {editingOffer ? 'Modifier l\'offre' : 'Nouvelle offre'}
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-[#1E40AF]/80 mb-2">
                       Titre du poste *
                     </label>
                     <input
@@ -212,7 +212,7 @@ export default function JobOffersAdmin() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-[#1E40AF]/80 mb-2">
                       Localisation *
                     </label>
                     <input
@@ -226,7 +226,7 @@ export default function JobOffersAdmin() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-[#1E40AF]/80 mb-2">
                       Type de contrat *
                     </label>
                     <select
@@ -243,7 +243,7 @@ export default function JobOffersAdmin() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-[#1E40AF]/80 mb-2">
                       Date de publication *
                     </label>
                     <input
@@ -258,7 +258,7 @@ export default function JobOffersAdmin() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-[#1E40AF]/80 mb-2">
                     Description *
                   </label>
                   <textarea
@@ -272,7 +272,7 @@ export default function JobOffersAdmin() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-[#1E40AF]/80 mb-2">
                     Requis (optionnel)
                   </label>
                   <textarea
@@ -292,7 +292,7 @@ export default function JobOffersAdmin() {
                     onChange={(e) => setFormData({ ...formData, is_published: e.target.checked })}
                     className="w-5 h-5 text-[#0A065D] rounded focus:ring-2 focus:ring-[#0A065D]"
                   />
-                  <label htmlFor="is_published" className="text-sm font-semibold text-gray-700">
+                  <label htmlFor="is_published" className="text-sm font-semibold text-[#1E40AF]/80">
                     Publier immédiatement
                   </label>
                 </div>
@@ -308,7 +308,7 @@ export default function JobOffersAdmin() {
                   <button
                     type="button"
                     onClick={resetForm}
-                    className="px-8 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all"
+                    className="px-8 py-3 border-2 border-gray-300 text-[#1E40AF]/80 rounded-xl font-semibold hover:bg-gray-50 transition-all"
                   >
                     Annuler
                   </button>
@@ -326,8 +326,8 @@ export default function JobOffersAdmin() {
             ) : jobOffers.length === 0 ? (
               <div className="bg-white rounded-2xl p-12 text-center">
                 <Briefcase className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Aucune offre</h3>
-                <p className="text-gray-600">Créez votre première offre d'emploi</p>
+                <h3 className="text-xl font-bold text-[#1E40AF] mb-2">Aucune offre</h3>
+                <p className="text-[#1E40AF]/70">Créez votre première offre d'emploi</p>
               </div>
             ) : (
               jobOffers.map((offer) => (
@@ -335,11 +335,11 @@ export default function JobOffersAdmin() {
                   <div className="flex justify-between items-start">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-3">
-                        <h3 className="text-xl font-bold text-gray-900">{offer.title}</h3>
+                        <h3 className="text-xl font-bold text-[#1E40AF]">{offer.title}</h3>
                         <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
                           offer.is_published
                             ? 'bg-green-100 text-green-700'
-                            : 'bg-gray-100 text-gray-700'
+                            : 'bg-gray-100 text-[#1E40AF]/80'
                         }`}>
                           {offer.is_published ? 'Publié' : 'Brouillon'}
                         </span>
@@ -347,10 +347,10 @@ export default function JobOffersAdmin() {
                           {offer.type}
                         </span>
                       </div>
-                      <p className="text-gray-600 mb-2">{offer.location} • {offer.date}</p>
-                      <p className="text-gray-700">{offer.description}</p>
+                      <p className="text-[#1E40AF]/70 mb-2">{offer.location} • {offer.date}</p>
+                      <p className="text-[#1E40AF]/80">{offer.description}</p>
                       {offer.requirements && (
-                        <p className="text-gray-600 text-sm mt-2">Requis: {offer.requirements}</p>
+                        <p className="text-[#1E40AF]/70 text-sm mt-2">Requis: {offer.requirements}</p>
                       )}
                     </div>
                     <div className="flex gap-2 ml-4">
@@ -360,9 +360,9 @@ export default function JobOffersAdmin() {
                         title={offer.is_published ? 'Dépublier' : 'Publier'}
                       >
                         {offer.is_published ? (
-                          <EyeOff className="w-5 h-5 text-gray-600" />
+                          <EyeOff className="w-5 h-5 text-[#1E40AF]/70" />
                         ) : (
-                          <Eye className="w-5 h-5 text-gray-600" />
+                          <Eye className="w-5 h-5 text-[#1E40AF]/70" />
                         )}
                       </button>
                       <button

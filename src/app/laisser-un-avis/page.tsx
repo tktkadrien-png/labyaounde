@@ -231,10 +231,10 @@ export default function ReviewPage() {
                   <CheckCircle className="w-12 h-12 text-[#1E40AF]" />
                 </div>
               </div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-3">
+              <h1 className="text-3xl font-bold text-[#1E40AF] mb-3">
                 {currentContent.successTitle}
               </h1>
-              <p className="text-gray-600 mb-8 text-lg">
+              <p className="text-[#1E40AF]/70 mb-8 text-lg">
                 {currentContent.successMessage}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -305,7 +305,7 @@ export default function ReviewPage() {
 
                   {/* Rating */}
                   <div className="bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-2xl p-6">
-                    <label className="block text-center text-base font-semibold text-gray-800 mb-4">
+                    <label className="block text-center text-base font-semibold text-[#1E40AF] mb-4">
                       {currentContent.ratingLabel}
                     </label>
                     <div className="flex gap-2 justify-center mb-3">
@@ -337,7 +337,7 @@ export default function ReviewPage() {
 
                   {/* Service Type */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-[#1E40AF]/80 mb-2">
                       <Stethoscope className="w-4 h-4 inline mr-2" />
                       {currentContent.serviceTypeLabel}
                     </label>
@@ -360,7 +360,7 @@ export default function ReviewPage() {
 
                   {/* Visit Date */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-[#1E40AF]/80 mb-2">
                       <Calendar className="w-4 h-4 inline mr-2" />
                       {currentContent.visitDateLabel}
                     </label>
@@ -375,7 +375,7 @@ export default function ReviewPage() {
 
                   {/* Name */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-[#1E40AF]/80 mb-2">
                       <User className="w-4 h-4 inline mr-2" />
                       {currentContent.nameLabel} *
                     </label>
@@ -391,20 +391,20 @@ export default function ReviewPage() {
 
                   {/* Email (readonly) */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-[#1E40AF]/80 mb-2">
                       {currentContent.emailLabel}
                     </label>
                     <input
                       type="email"
                       value={email}
                       readOnly
-                      className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 text-gray-600 cursor-not-allowed"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 text-[#1E40AF]/70 cursor-not-allowed"
                     />
                   </div>
 
                   {/* Would Recommend */}
                   <div className="bg-gradient-to-br from-[#0A065D]/5 to-[#0080FF]/5 rounded-2xl p-5">
-                    <label className="block text-sm font-semibold text-gray-700 mb-4">
+                    <label className="block text-sm font-semibold text-[#1E40AF]/80 mb-4">
                       <ThumbsUp className="w-4 h-4 inline mr-2" />
                       {currentContent.recommendLabel}
                     </label>
@@ -415,7 +415,7 @@ export default function ReviewPage() {
                         className={`flex-1 py-3 px-4 rounded-xl font-medium transition-all ${
                           wouldRecommend
                             ? "bg-[#1E40AF] text-white shadow-lg"
-                            : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                            : "bg-gray-100 text-[#1E40AF]/70 hover:bg-gray-200"
                         }`}
                       >
                         {currentContent.recommendYes}
@@ -426,7 +426,7 @@ export default function ReviewPage() {
                         className={`flex-1 py-3 px-4 rounded-xl font-medium transition-all ${
                           !wouldRecommend
                             ? "bg-red-500 text-white shadow-lg"
-                            : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                            : "bg-gray-100 text-[#1E40AF]/70 hover:bg-gray-200"
                         }`}
                       >
                         {currentContent.recommendNo}
@@ -436,7 +436,7 @@ export default function ReviewPage() {
 
                   {/* Comment */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-[#1E40AF]/80 mb-2">
                       <MessageSquare className="w-4 h-4 inline mr-2" />
                       {currentContent.commentLabel} *
                     </label>
@@ -480,14 +480,14 @@ export default function ReviewPage() {
             {/* Existing Reviews */}
             <div>
               <div className="mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">{currentContent.reviewsTitle}</h2>
-                <p className="text-gray-600">{currentContent.reviewsSubtitle}</p>
+                <h2 className="text-2xl font-bold text-[#1E40AF] mb-2">{currentContent.reviewsTitle}</h2>
+                <p className="text-[#1E40AF]/70">{currentContent.reviewsSubtitle}</p>
               </div>
 
               {existingReviews.length === 0 ? (
                 <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-12 text-center">
                   <Award className="w-16 h-16 text-[#FE5000] mx-auto mb-4" />
-                  <p className="text-gray-600 text-lg">{currentContent.noReviews}</p>
+                  <p className="text-[#1E40AF]/70 text-lg">{currentContent.noReviews}</p>
                 </div>
               ) : (
                 <div className="space-y-4">
@@ -502,7 +502,7 @@ export default function ReviewPage() {
                             {review.name.charAt(0).toUpperCase()}
                           </div>
                           <div>
-                            <h4 className="font-semibold text-gray-900">{review.name}</h4>
+                            <h4 className="font-semibold text-[#1E40AF]">{review.name}</h4>
                             <div className="flex items-center gap-2 text-sm text-gray-500">
                               <Clock className="w-3 h-3" />
                               {formatDate(review.created_at)}
@@ -530,7 +530,7 @@ export default function ReviewPage() {
                         </div>
                       )}
 
-                      <p className="text-gray-700 leading-relaxed mb-3">{review.comment}</p>
+                      <p className="text-[#1E40AF]/80 leading-relaxed mb-3">{review.comment}</p>
 
                       {review.would_recommend && (
                         <div className="flex items-center gap-2 text-[#1E40AF] text-sm font-medium">

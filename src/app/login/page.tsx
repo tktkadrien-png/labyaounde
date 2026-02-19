@@ -456,7 +456,7 @@ export default function LoginPage() {
                   <div className="w-20 h-20 bg-gradient-to-br from-[#FF6B00] to-[#FF8C00] rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                     <Mail className="w-10 h-10 text-white" />
                   </div>
-                  <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                  <h1 className="text-3xl font-bold text-[#1E40AF] mb-2">
                     {t.resetPassword.title}
                   </h1>
                   <p className="text-gray-500 text-lg">
@@ -482,7 +482,7 @@ export default function LoginPage() {
 
                   {/* Email Input */}
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2">
+                    <label className="block text-sm font-bold text-[#1E40AF]/80 mb-2">
                       {t.emailLabel}
                     </label>
                     <div className="relative">
@@ -495,7 +495,7 @@ export default function LoginPage() {
                           setError("");
                         }}
                         placeholder={t.emailPlaceholder}
-                        className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-2xl focus:border-[#0A065D] focus:outline-none transition-colors text-gray-900 placeholder-gray-400 text-lg"
+                        className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-2xl focus:border-[#0A065D] focus:outline-none transition-colors text-[#1E40AF] placeholder-gray-400 text-lg"
                       />
                     </div>
                   </div>
@@ -537,7 +537,7 @@ export default function LoginPage() {
               // Login Form
               <>
                 <div className="text-center mb-8">
-                  <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
+                  <h1 className="text-3xl sm:text-4xl font-bold text-[#1E40AF] mb-2">
                     {t.welcomeBack}
                   </h1>
                   <p className="text-gray-500 text-lg">
@@ -563,7 +563,7 @@ export default function LoginPage() {
 
                   {/* Email Input */}
                   <div>
-                    <label htmlFor="email" className="block text-sm font-bold text-gray-700 mb-2">
+                    <label htmlFor="email" className="block text-sm font-bold text-[#1E40AF]/80 mb-2">
                       {t.emailLabel}
                     </label>
                     <div className="relative">
@@ -578,14 +578,14 @@ export default function LoginPage() {
                         }}
                         placeholder={t.emailPlaceholder}
                         autoComplete="email"
-                        className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-2xl focus:border-[#0A065D] focus:outline-none transition-colors text-gray-900 placeholder-gray-400 text-lg"
+                        className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-2xl focus:border-[#0A065D] focus:outline-none transition-colors text-[#1E40AF] placeholder-gray-400 text-lg"
                       />
                     </div>
                   </div>
 
                   {/* Password Input */}
                   <div>
-                    <label htmlFor="password" className="block text-sm font-bold text-gray-700 mb-2">
+                    <label htmlFor="password" className="block text-sm font-bold text-[#1E40AF]/80 mb-2">
                       {t.passwordLabel}
                     </label>
                     <div className="relative">
@@ -600,12 +600,12 @@ export default function LoginPage() {
                         }}
                         placeholder={t.passwordPlaceholder}
                         autoComplete="current-password"
-                        className="w-full pl-12 pr-14 py-4 border-2 border-gray-200 rounded-2xl focus:border-[#0A065D] focus:outline-none transition-colors text-gray-900 placeholder-gray-400 text-lg"
+                        className="w-full pl-12 pr-14 py-4 border-2 border-gray-200 rounded-2xl focus:border-[#0A065D] focus:outline-none transition-colors text-[#1E40AF] placeholder-gray-400 text-lg"
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors p-1"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 text-[#1E40AF]/50 hover:text-[#1E40AF]/70 transition-colors p-1"
                       >
                         {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                       </button>
@@ -621,7 +621,7 @@ export default function LoginPage() {
                         onChange={(e) => setRememberMe(e.target.checked)}
                         className="w-5 h-5 rounded-lg border-gray-300 text-[#0A065D] focus:ring-[#0A065D] cursor-pointer"
                       />
-                      <span className="text-sm text-gray-600 group-hover:text-gray-900 transition-colors font-medium">
+                      <span className="text-sm text-[#1E40AF]/70 group-hover:text-[#1E40AF] transition-colors font-medium">
                         {t.rememberMe}
                       </span>
                     </label>
@@ -661,7 +661,7 @@ export default function LoginPage() {
 
                 {/* Create Account Link */}
                 <div className="mt-8 pt-6 border-t border-gray-100 text-center">
-                  <p className="text-gray-600 text-lg">
+                  <p className="text-[#1E40AF]/70 text-lg">
                     {t.noAccount}{" "}
                     <Link
                       href="/signup"
@@ -677,7 +677,7 @@ export default function LoginPage() {
                   <button
                     type="button"
                     onClick={() => setShowAdminSection(!showAdminSection)}
-                    className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors text-gray-600 font-medium"
+                    className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors text-[#1E40AF]/70 font-medium"
                   >
                     <UserCog className="w-5 h-5" />
                     {showAdminSection ? t.admin.collapse : t.admin.expand}

@@ -134,11 +134,11 @@ export default function AssistancePage() {
                     <div className="w-14 h-14 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-xl flex items-center justify-center mb-6">
                       <Icon className="w-7 h-7 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">{section.title}</h3>
-                    <p className="text-gray-600 mb-4">{section.description}</p>
+                    <h3 className="text-2xl font-bold text-[#1E40AF] mb-3">{section.title}</h3>
+                    <p className="text-[#1E40AF]/70 mb-4">{section.description}</p>
                     <ul className="space-y-2 mb-6">
                       {section.details.map((detail, i) => (
-                        <li key={i} className="text-sm text-gray-700 flex items-center gap-2">
+                        <li key={i} className="text-sm text-[#1E40AF]/80 flex items-center gap-2">
                           <div className="w-1.5 h-1.5 bg-[#0A065D] rounded-full"></div>
                           {detail}
                         </li>
@@ -168,12 +168,12 @@ export default function AssistancePage() {
                   <div className="w-12 h-12 bg-[#0A065D] rounded-xl flex items-center justify-center">
                     <Clock className="w-6 h-6 text-white" />
                   </div>
-                  <h2 className="text-2xl font-bold text-gray-900">{currentContent.schedule.title}</h2>
+                  <h2 className="text-2xl font-bold text-[#1E40AF]">{currentContent.schedule.title}</h2>
                 </div>
                 <div className="space-y-4">
                   {currentContent.schedule.items.map((item, index) => (
                     <div key={index} className="flex justify-between items-center bg-white p-4 rounded-xl">
-                      <span className="font-semibold text-gray-900">{item.day}</span>
+                      <span className="font-semibold text-[#1E40AF]">{item.day}</span>
                       <span className="text-[#0A065D] font-bold">{item.hours}</span>
                     </div>
                   ))}
@@ -186,9 +186,9 @@ export default function AssistancePage() {
                   <div className="w-12 h-12 bg-[#0A065D] rounded-xl flex items-center justify-center">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
-                  <h2 className="text-2xl font-bold text-gray-900">{currentContent.location.title}</h2>
+                  <h2 className="text-2xl font-bold text-[#1E40AF]">{currentContent.location.title}</h2>
                 </div>
-                <p className="text-gray-700 text-lg mb-6 leading-relaxed">{currentContent.location.address}</p>
+                <p className="text-[#1E40AF]/80 text-lg mb-6 leading-relaxed">{currentContent.location.address}</p>
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=VFGR%2BMGH%2C+Cite+Verte%2C+Yaound%C3%A9%2C+Cameroon"
                   target="_blank"

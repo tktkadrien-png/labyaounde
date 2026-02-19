@@ -455,17 +455,17 @@ export default function AdminDashboard() {
                 <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#0A065D] to-[#0080FF] rounded-2xl mb-4 shadow-lg">
                   <Settings className="w-10 h-10 text-white" />
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                <h2 className="text-2xl font-bold text-[#1E40AF] mb-2">
                   {language === 'fr' ? 'Accès Administrateur' : 'Admin Access'}
                 </h2>
-                <p className="text-gray-600">
+                <p className="text-[#1E40AF]/70">
                   {language === 'fr' ? 'Entrez le mot de passe pour continuer' : 'Enter password to continue'}
                 </p>
               </div>
 
               <form onSubmit={handleLogin} className="space-y-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-[#1E40AF]/80 mb-2">
                     {language === 'fr' ? 'Mot de passe' : 'Password'}
                   </label>
                   <input
@@ -556,7 +556,7 @@ export default function AdminDashboard() {
               className={`px-6 py-3 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${
                 activeTab === "overview"
                   ? "bg-[#0A065D] text-white"
-                  : "text-gray-600 hover:bg-gray-100"
+                  : "text-[#1E40AF]/70 hover:bg-gray-100"
               }`}
             >
               <BarChart3 className="w-4 h-4" />
@@ -567,7 +567,7 @@ export default function AdminDashboard() {
               className={`px-6 py-3 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${
                 activeTab === "reviews"
                   ? "bg-[#0A065D] text-white"
-                  : "text-gray-600 hover:bg-gray-100"
+                  : "text-[#1E40AF]/70 hover:bg-gray-100"
               }`}
             >
               <MessageSquare className="w-4 h-4" />
@@ -583,7 +583,7 @@ export default function AdminDashboard() {
               className={`px-6 py-3 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${
                 activeTab === "analytics"
                   ? "bg-[#0A065D] text-white"
-                  : "text-gray-600 hover:bg-gray-100"
+                  : "text-[#1E40AF]/70 hover:bg-gray-100"
               }`}
             >
               <PieChart className="w-4 h-4" />
@@ -601,7 +601,7 @@ export default function AdminDashboard() {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-gray-500 font-medium">{currentContent.totalUsers}</p>
-                      <p className="text-3xl font-bold text-gray-900 mt-1">{stats.totalUsers}</p>
+                      <p className="text-3xl font-bold text-[#1E40AF] mt-1">{stats.totalUsers}</p>
                       <div className="flex items-center gap-1 mt-2">
                         <ArrowUp className="w-4 h-4 text-green-500" />
                         <span className="text-sm text-green-600 font-medium">+{periodStats.users}</span>
@@ -619,7 +619,7 @@ export default function AdminDashboard() {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-gray-500 font-medium">{currentContent.totalReviews}</p>
-                      <p className="text-3xl font-bold text-gray-900 mt-1">{stats.totalReviews}</p>
+                      <p className="text-3xl font-bold text-[#1E40AF] mt-1">{stats.totalReviews}</p>
                       <div className="flex items-center gap-1 mt-2">
                         <ArrowUp className="w-4 h-4 text-green-500" />
                         <span className="text-sm text-green-600 font-medium">+{periodStats.reviews}</span>
@@ -637,7 +637,7 @@ export default function AdminDashboard() {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-gray-500 font-medium">{currentContent.avgRating}</p>
-                      <p className="text-3xl font-bold text-gray-900 mt-1">{stats.avgRating}/5</p>
+                      <p className="text-3xl font-bold text-[#1E40AF] mt-1">{stats.avgRating}/5</p>
                       <div className="flex gap-1 mt-2">
                         {[1, 2, 3, 4, 5].map(star => (
                           <Star
@@ -662,7 +662,7 @@ export default function AdminDashboard() {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-gray-500 font-medium">{currentContent.recommendRate}</p>
-                      <p className="text-3xl font-bold text-gray-900 mt-1">{stats.recommendRate}%</p>
+                      <p className="text-3xl font-bold text-[#1E40AF] mt-1">{stats.recommendRate}%</p>
                       <div className="flex items-center gap-1 mt-2">
                         <ThumbsUp className="w-4 h-4 text-green-500" />
                         <span className="text-sm text-green-600">{language === 'fr' ? 'Recommandent' : 'Recommend'}</span>
@@ -679,7 +679,7 @@ export default function AdminDashboard() {
               <div className="grid lg:grid-cols-3 gap-6">
                 {/* Content Management */}
                 <div className="lg:col-span-2 bg-white rounded-xl shadow-sm p-6">
-                  <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  <h2 className="text-lg font-bold text-[#1E40AF] mb-4 flex items-center gap-2">
                     <FileText className="w-5 h-5 text-[#0A065D]" />
                     {currentContent.contentManagement}
                   </h2>
@@ -696,9 +696,9 @@ export default function AdminDashboard() {
                         </div>
                         <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-[#0A065D] group-hover:translate-x-1 transition-all" />
                       </div>
-                      <h3 className="font-bold text-gray-900 mb-1">{currentContent.actualites}</h3>
+                      <h3 className="font-bold text-[#1E40AF] mb-1">{currentContent.actualites}</h3>
                       <div className="flex gap-4 text-sm">
-                        <span className="text-gray-600">{stats.totalActualites} total</span>
+                        <span className="text-[#1E40AF]/70">{stats.totalActualites} total</span>
                         <span className="text-green-600">{stats.publishedActualites} {currentContent.published.toLowerCase()}</span>
                       </div>
                     </Link>
@@ -714,9 +714,9 @@ export default function AdminDashboard() {
                         </div>
                         <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-[#FE5000] group-hover:translate-x-1 transition-all" />
                       </div>
-                      <h3 className="font-bold text-gray-900 mb-1">{currentContent.jobOffers}</h3>
+                      <h3 className="font-bold text-[#1E40AF] mb-1">{currentContent.jobOffers}</h3>
                       <div className="flex gap-4 text-sm">
-                        <span className="text-gray-600">{stats.totalJobOffers} total</span>
+                        <span className="text-[#1E40AF]/70">{stats.totalJobOffers} total</span>
                         <span className="text-green-600">{stats.publishedJobOffers} {currentContent.published.toLowerCase()}</span>
                       </div>
                     </Link>
@@ -725,7 +725,7 @@ export default function AdminDashboard() {
 
                 {/* Quick Stats Chart */}
                 <div className="bg-white rounded-xl shadow-sm p-6">
-                  <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  <h2 className="text-lg font-bold text-[#1E40AF] mb-4 flex items-center gap-2">
                     <Activity className="w-5 h-5 text-[#0A065D]" />
                     {currentContent.trendsOverTime}
                   </h2>
@@ -740,7 +740,7 @@ export default function AdminDashboard() {
                             style={{ width: `${Math.min((day.reviews / Math.max(...dailyStats.map(d => d.reviews), 1)) * 100, 100)}%` }}
                           ></div>
                         </div>
-                        <span className="text-sm font-medium text-gray-700 w-8">{day.reviews}</span>
+                        <span className="text-sm font-medium text-[#1E40AF]/80 w-8">{day.reviews}</span>
                       </div>
                     ))}
                   </div>
@@ -750,7 +750,7 @@ export default function AdminDashboard() {
               {/* Recent Reviews */}
               <div className="bg-white rounded-xl shadow-sm p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+                  <h2 className="text-lg font-bold text-[#1E40AF] flex items-center gap-2">
                     <MessageSquare className="w-5 h-5 text-[#0A065D]" />
                     {currentContent.recentActivity}
                   </h2>
@@ -771,7 +771,7 @@ export default function AdminDashboard() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="font-semibold text-gray-900">{review.name}</span>
+                          <span className="font-semibold text-[#1E40AF]">{review.name}</span>
                           <div className="flex gap-0.5">
                             {[1, 2, 3, 4, 5].map(star => (
                               <Star
@@ -785,7 +785,7 @@ export default function AdminDashboard() {
                             ))}
                           </div>
                         </div>
-                        <p className="text-sm text-gray-600 line-clamp-2">{review.comment}</p>
+                        <p className="text-sm text-[#1E40AF]/70 line-clamp-2">{review.comment}</p>
                         <p className="text-xs text-gray-400 mt-1">
                           {new Date(review.created_at).toLocaleDateString(language === 'fr' ? 'fr-FR' : 'en-US', {
                             day: 'numeric',
@@ -855,7 +855,7 @@ export default function AdminDashboard() {
                           </div>
                           <div>
                             <div className="flex items-center gap-3 mb-1">
-                              <span className="font-bold text-gray-900">{review.name}</span>
+                              <span className="font-bold text-[#1E40AF]">{review.name}</span>
                               <div className="flex gap-0.5">
                                 {[1, 2, 3, 4, 5].map(star => (
                                   <Star
@@ -881,7 +881,7 @@ export default function AdminDashboard() {
                                 {review.service_type}
                               </span>
                             )}
-                            <p className="text-gray-700 mt-2">{review.comment}</p>
+                            <p className="text-[#1E40AF]/80 mt-2">{review.comment}</p>
                             <p className="text-xs text-gray-400 mt-2">
                               {new Date(review.created_at).toLocaleDateString(language === 'fr' ? 'fr-FR' : 'en-US', {
                                 year: 'numeric',
@@ -917,7 +917,7 @@ export default function AdminDashboard() {
               {/* Rating Distribution */}
               <div className="grid lg:grid-cols-2 gap-6">
                 <div className="bg-white rounded-xl shadow-sm p-6">
-                  <h2 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
+                  <h2 className="text-lg font-bold text-[#1E40AF] mb-6 flex items-center gap-2">
                     <BarChart3 className="w-5 h-5 text-[#0A065D]" />
                     {currentContent.ratingDistribution}
                   </h2>
@@ -930,7 +930,7 @@ export default function AdminDashboard() {
                       return (
                         <div key={rating} className="flex items-center gap-4">
                           <div className="flex items-center gap-1 w-20">
-                            <span className="font-medium text-gray-700">{rating}</span>
+                            <span className="font-medium text-[#1E40AF]/80">{rating}</span>
                             <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
                           </div>
                           <div className="flex-1 h-8 bg-gray-100 rounded-full overflow-hidden">
@@ -941,7 +941,7 @@ export default function AdminDashboard() {
                               style={{ width: `${percentage}%` }}
                             ></div>
                           </div>
-                          <span className="text-sm font-medium text-gray-600 w-16 text-right">
+                          <span className="text-sm font-medium text-[#1E40AF]/70 w-16 text-right">
                             {count} ({Math.round(percentage)}%)
                           </span>
                         </div>
@@ -952,7 +952,7 @@ export default function AdminDashboard() {
 
                 {/* Summary Stats */}
                 <div className="bg-white rounded-xl shadow-sm p-6">
-                  <h2 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
+                  <h2 className="text-lg font-bold text-[#1E40AF] mb-6 flex items-center gap-2">
                     <TrendingUp className="w-5 h-5 text-[#0A065D]" />
                     {currentContent.performanceOverview}
                   </h2>
@@ -960,25 +960,25 @@ export default function AdminDashboard() {
                   <div className="grid grid-cols-2 gap-4">
                     <div className="p-4 bg-blue-50 rounded-xl text-center">
                       <p className="text-3xl font-bold text-[#0A065D]">{stats.totalReviews}</p>
-                      <p className="text-sm text-gray-600">{currentContent.totalReviews}</p>
+                      <p className="text-sm text-[#1E40AF]/70">{currentContent.totalReviews}</p>
                     </div>
                     <div className="p-4 bg-green-50 rounded-xl text-center">
                       <p className="text-3xl font-bold text-green-600">{stats.recommendRate}%</p>
-                      <p className="text-sm text-gray-600">{currentContent.recommendRate}</p>
+                      <p className="text-sm text-[#1E40AF]/70">{currentContent.recommendRate}</p>
                     </div>
                     <div className="p-4 bg-yellow-50 rounded-xl text-center">
                       <p className="text-3xl font-bold text-yellow-600">{stats.avgRating}</p>
-                      <p className="text-sm text-gray-600">{currentContent.avgRating}</p>
+                      <p className="text-sm text-[#1E40AF]/70">{currentContent.avgRating}</p>
                     </div>
                     <div className="p-4 bg-purple-50 rounded-xl text-center">
                       <p className="text-3xl font-bold text-purple-600">{stats.totalUsers}</p>
-                      <p className="text-sm text-gray-600">{currentContent.totalUsers}</p>
+                      <p className="text-sm text-[#1E40AF]/70">{currentContent.totalUsers}</p>
                     </div>
                   </div>
 
                   {/* Period comparison */}
                   <div className="mt-6 p-4 bg-gray-50 rounded-xl">
-                    <h3 className="font-semibold text-gray-900 mb-3">{periodStats.label}</h3>
+                    <h3 className="font-semibold text-[#1E40AF] mb-3">{periodStats.label}</h3>
                     <div className="flex justify-between">
                       <div>
                         <p className="text-2xl font-bold text-[#0A065D]">{periodStats.reviews}</p>
@@ -995,7 +995,7 @@ export default function AdminDashboard() {
 
               {/* Weekly Trend Chart */}
               <div className="bg-white rounded-xl shadow-sm p-6">
-                <h2 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
+                <h2 className="text-lg font-bold text-[#1E40AF] mb-6 flex items-center gap-2">
                   <CalendarDays className="w-5 h-5 text-[#0A065D]" />
                   {language === 'fr' ? 'Activité des 7 derniers jours' : 'Last 7 days activity'}
                 </h2>
@@ -1007,7 +1007,7 @@ export default function AdminDashboard() {
 
                     return (
                       <div key={index} className="flex-1 flex flex-col items-center gap-2">
-                        <span className="text-sm font-medium text-gray-900">{day.reviews}</span>
+                        <span className="text-sm font-medium text-[#1E40AF]">{day.reviews}</span>
                         <div className="w-full bg-gray-100 rounded-t-lg relative" style={{ height: '160px' }}>
                           <div
                             className="absolute bottom-0 w-full bg-gradient-to-t from-[#0A065D] to-[#0080FF] rounded-t-lg transition-all"

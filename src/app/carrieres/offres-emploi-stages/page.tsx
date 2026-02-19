@@ -108,7 +108,7 @@ export default function OffresEmploiStagesPage() {
             {loading ? (
               <div className="text-center py-20">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0A065D] mx-auto"></div>
-                <p className="text-gray-600 mt-4">
+                <p className="text-[#1E40AF]/70 mt-4">
                   {language === 'fr' ? 'Chargement des offres...' : 'Loading offers...'}
                 </p>
               </div>
@@ -120,13 +120,13 @@ export default function OffresEmploiStagesPage() {
                       <Briefcase className="w-10 h-10 text-[#0A065D]" />
                     </div>
 
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-4">
                       {language === 'fr'
                         ? 'Pas d\'offres d\'emploi et stage pour le moment'
                         : 'No job offers or internships at the moment'}
                     </h2>
 
-                    <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                    <p className="text-lg text-[#1E40AF]/70 mb-8 max-w-2xl mx-auto">
                       {language === 'fr'
                         ? 'Nous n\'avons actuellement aucune offre d\'emploi ou de stage disponible. Cependant, nous sommes toujours à la recherche de talents. N\'hésitez pas à nous envoyer votre candidature spontanée.'
                         : 'We currently have no job or internship offers available. However, we are always looking for talent. Feel free to send us your spontaneous application.'}
@@ -156,10 +156,10 @@ export default function OffresEmploiStagesPage() {
                 <div className="max-w-4xl mx-auto">
                   <div className="grid md:grid-cols-2 gap-6 mt-12">
                     <div className="bg-gradient-to-br from-[#00CED1]/10 to-[#00CED1]/10 rounded-xl p-6 border border-[#00CED1]/20">
-                      <h3 className="text-xl font-bold text-gray-900 mb-3">
+                      <h3 className="text-xl font-bold text-[#1E40AF] mb-3">
                         {language === 'fr' ? 'Pourquoi nous rejoindre ?' : 'Why join us?'}
                       </h3>
-                      <ul className="space-y-2 text-gray-700">
+                      <ul className="space-y-2 text-[#1E40AF]/80">
                         <li className="flex items-start gap-2">
                           <ChevronRight className="w-5 h-5 text-[#0A065D] flex-shrink-0 mt-0.5" />
                           <span>{language === 'fr' ? 'Environnement de travail moderne et équipé' : 'Modern and well-equipped work environment'}</span>
@@ -176,10 +176,10 @@ export default function OffresEmploiStagesPage() {
                     </div>
 
                     <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-100">
-                      <h3 className="text-xl font-bold text-gray-900 mb-3">
+                      <h3 className="text-xl font-bold text-[#1E40AF] mb-3">
                         {language === 'fr' ? 'Processus de candidature' : 'Application process'}
                       </h3>
-                      <ul className="space-y-2 text-gray-700">
+                      <ul className="space-y-2 text-[#1E40AF]/80">
                         <li className="flex items-start gap-2">
                           <ChevronRight className="w-5 h-5 text-[#0A065D] flex-shrink-0 mt-0.5" />
                           <span>{language === 'fr' ? 'Envoyez votre CV et lettre de motivation' : 'Send your CV and cover letter'}</span>
@@ -208,8 +208,8 @@ export default function OffresEmploiStagesPage() {
                             <Briefcase className="w-7 h-7 text-white" />
                           </div>
                           <div>
-                            <h3 className="text-2xl font-bold text-gray-900 mb-2">{job.title}</h3>
-                            <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-3">
+                            <h3 className="text-2xl font-bold text-[#1E40AF] mb-2">{job.title}</h3>
+                            <div className="flex flex-wrap gap-4 text-sm text-[#1E40AF]/70 mb-3">
                               <div className="flex items-center gap-2">
                                 <MapPin className="w-4 h-4 text-[#0A065D]" />
                                 {job.location}
@@ -222,9 +222,9 @@ export default function OffresEmploiStagesPage() {
                                 {job.type}
                               </span>
                             </div>
-                            <p className="text-gray-700 leading-relaxed mb-2">{job.description}</p>
+                            <p className="text-[#1E40AF]/80 leading-relaxed mb-2">{job.description}</p>
                             {job.requirements && (
-                              <p className="text-gray-600 text-sm">
+                              <p className="text-[#1E40AF]/70 text-sm">
                                 <strong>Requis:</strong> {job.requirements}
                               </p>
                             )}

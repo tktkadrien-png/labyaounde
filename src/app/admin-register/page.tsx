@@ -161,10 +161,10 @@ export default function AdminRegisterPage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#FE5000] to-[#CC4000] rounded-full mb-4 shadow-lg">
                 <Shield className="w-8 h-8 text-white" />
               </div>
-              <h2 className="text-3xl font-bold text-gray-900">
+              <h2 className="text-3xl font-bold text-[#1E40AF]">
                 {currentContent.title}
               </h2>
-              <p className="mt-2 text-sm text-gray-600">{currentContent.subtitle}</p>
+              <p className="mt-2 text-sm text-[#1E40AF]/70">{currentContent.subtitle}</p>
 
               {/* Admin Badge */}
               <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-[#FE5000]/10 rounded-full">
@@ -194,7 +194,7 @@ export default function AdminRegisterPage() {
 
               {/* Secret Code - First field for security */}
               <div className="bg-[#FE5000]/10 border border-[#FE5000]/30 rounded-lg p-4">
-                <label htmlFor="secretCode" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="secretCode" className="block text-sm font-medium text-[#1E40AF]/80 mb-1">
                   {currentContent.secretCodeLabel} <span className="text-[#FE5000]">*</span>
                 </label>
                 <div className="relative">
@@ -218,7 +218,7 @@ export default function AdminRegisterPage() {
 
               {/* Full Name */}
               <div>
-                <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="fullName" className="block text-sm font-medium text-[#1E40AF]/80 mb-1">
                   {currentContent.nameLabel}
                 </label>
                 <div className="relative">
@@ -239,7 +239,7 @@ export default function AdminRegisterPage() {
 
               {/* Email */}
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="email" className="block text-sm font-medium text-[#1E40AF]/80 mb-1">
                   {currentContent.emailLabel}
                 </label>
                 <div className="relative">
@@ -260,7 +260,7 @@ export default function AdminRegisterPage() {
 
               {/* Password */}
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="password" className="block text-sm font-medium text-[#1E40AF]/80 mb-1">
                   {currentContent.passwordLabel}
                 </label>
                 <div className="relative">
@@ -279,7 +279,7 @@ export default function AdminRegisterPage() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-[#1E40AF]/50 hover:text-[#1E40AF]/70"
                   >
                     {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                   </button>
@@ -288,7 +288,7 @@ export default function AdminRegisterPage() {
 
               {/* Confirm Password */}
               <div>
-                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="confirmPassword" className="block text-sm font-medium text-[#1E40AF]/80 mb-1">
                   {currentContent.confirmPasswordLabel}
                 </label>
                 <div className="relative">
@@ -307,7 +307,7 @@ export default function AdminRegisterPage() {
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-[#1E40AF]/50 hover:text-[#1E40AF]/70"
                   >
                     {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                   </button>
@@ -346,7 +346,7 @@ export default function AdminRegisterPage() {
 
             {/* Login link */}
             <div className="text-center">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-[#1E40AF]/70">
                 {currentContent.hasAccount}{" "}
                 <a href="/admin-login" className="font-semibold text-[#FE5000] hover:text-[#CC4000] transition-colors">
                   {currentContent.loginLink}

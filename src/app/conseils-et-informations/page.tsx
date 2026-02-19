@@ -58,7 +58,7 @@ export default function ConseilsEtInformations() {
 
       <main className="bg-[#84BDE3]/10">
         {/* Hero Section */}
-        <section ref={heroRef as React.RefObject<HTMLElement>} className="bg-gradient-to-br from-[#84BDE3] via-[#84BDE3]/90 to-[#1E40AF] text-white py-20 lg:py-32 relative overflow-hidden">
+        <section ref={heroRef as React.RefObject<HTMLElement>} className="bg-gradient-to-br from-[#AAD8FB] via-[#AAD8FB]/90 to-[#AAD8FB]/80 text-white py-20 lg:py-32 relative overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
@@ -241,7 +241,7 @@ export default function ConseilsEtInformations() {
               </div>
 
               {/* CTA Preparation */}
-              <div className="mt-12 bg-gradient-to-r from-[#1E40AF] to-[#1E40AF] rounded-2xl p-8 text-white text-center">
+              <div className="mt-12 bg-[#84BDE3] rounded-2xl p-8 text-white text-center">
                 <h3 className="text-2xl font-bold mb-4">{t('fullPrepGuide')}</h3>
                 <p className="text-white/90 mb-6 max-w-2xl mx-auto">
                   {t('fullPrepGuideDesc')}
@@ -412,7 +412,7 @@ export default function ConseilsEtInformations() {
         </section>
 
         {/* CTA Final */}
-        <section ref={ctaRef as React.RefObject<HTMLElement>} className="py-20 lg:py-28 bg-gradient-to-br from-[#1E40AF] via-[#1E40AF]/90 to-[#1E40AF]/80 text-white">
+        <section ref={ctaRef as React.RefObject<HTMLElement>} className="py-20 lg:py-28 bg-[#84BDE3] text-white">
           <div className="max-w-[1200px] mx-auto px-6">
             <div className={`text-center transition-all duration-700 ${ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <Users className="w-20 h-20 mx-auto mb-6 text-white/90" />

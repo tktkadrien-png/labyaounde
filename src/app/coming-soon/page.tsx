@@ -24,11 +24,11 @@ export default function ComingSoonPage() {
             </div>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#1E40AF] mb-6">
             {language === 'fr' ? 'Page en Construction' : 'Page Under Construction'}
           </h1>
 
-          <p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed">
+          <p className="text-lg sm:text-xl text-[#1E40AF]/70 mb-8 leading-relaxed">
             {language === 'fr'
               ? 'Cette page est actuellement en cours de développement. Nous travaillons activement pour vous offrir une meilleure expérience.'
               : 'This page is currently under development. We are actively working to bring you a better experience.'
@@ -36,13 +36,13 @@ export default function ComingSoonPage() {
           </p>
 
           <div className="bg-gradient-to-br from-[#0A065D]/5 to-[#0080FF]/5 rounded-2xl p-8 border border-[#0A065D]/10 mb-8">
-            <p className="text-base sm:text-lg text-gray-700 mb-4">
+            <p className="text-base sm:text-lg text-[#1E40AF]/80 mb-4">
               {language === 'fr'
                 ? 'Cette page sera bientôt disponible avec:'
                 : 'This page will soon be available with:'
               }
             </p>
-            <ul className="text-left max-w-md mx-auto space-y-2 text-gray-700">
+            <ul className="text-left max-w-md mx-auto space-y-2 text-[#1E40AF]/80">
               <li className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-[#0A065D] rounded-full"></span>
                 {language === 'fr' ? 'Contenu détaillé et informatif' : 'Detailed and informative content'}

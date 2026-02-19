@@ -72,17 +72,17 @@ export default function InterpretationResultatsPage() {
                   <span className="text-[#0891B2] font-semibold text-sm sm:text-base">Expertise Professionnelle</span>
                 </div>
 
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-6 leading-tight">
                   Le Biologiste du LABY à Votre Service
                 </h2>
 
-                <div className="prose prose-lg max-w-none text-gray-700 space-y-6">
+                <div className="prose prose-lg max-w-none text-[#1E40AF]/80 space-y-6">
                   <p className="text-base sm:text-lg leading-relaxed">
                     Le Biologiste du LABY est <strong>disposé à répondre à toutes vos questions</strong> relatives à l'interprétation de tous vos résultats d'analyses biologiques.
                   </p>
 
                   <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#0891B2]">
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">Services d'Interprétation</h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-[#1E40AF] mb-4">Services d'Interprétation</h3>
                     <ul className="space-y-3 text-base sm:text-lg">
                       <li className="flex items-start gap-3">
                         <div className="w-2 h-2 rounded-full bg-[#0891B2] mt-2 flex-shrink-0"></div>
@@ -139,10 +139,10 @@ export default function InterpretationResultatsPage() {
                 <Globe className="w-5 h-5 text-[#0891B2]" />
                 <span className="text-[#0891B2] font-semibold text-sm sm:text-base">Ressource Internationale</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-4">
                 Lab Tests Online
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl text-[#1E40AF]/70 max-w-3xl mx-auto">
                 Pour une compréhension plus approfondie de vos analyses
               </p>
             </div>
@@ -160,7 +160,7 @@ export default function InterpretationResultatsPage() {
               </div>
 
               <div className="order-1 lg:order-2 space-y-6">
-                <div className="prose prose-lg max-w-none text-gray-700">
+                <div className="prose prose-lg max-w-none text-[#1E40AF]/80">
                   <p className="text-base sm:text-lg leading-relaxed">
                     Pour une compréhension plus approfondie de vos analyses de <strong>Biochimie clinique, Hormonologie, Marqueurs tumoraux et sérodiagnostics</strong>, nous vous prions de bien vouloir visiter le site web de <strong>Lab Tests Online</strong>.
                   </p>
@@ -172,8 +172,8 @@ export default function InterpretationResultatsPage() {
                       <Award className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Fondation et Mission</h3>
-                      <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                      <h3 className="text-lg sm:text-xl font-bold text-[#1E40AF] mb-2">Fondation et Mission</h3>
+                      <p className="text-[#1E40AF]/70 text-sm sm:text-base leading-relaxed">
                         Site fondé en 2002 par <strong>The American Association for Clinical Chemistry (AACC)</strong> dans le but d'aider les patients et les professionnels de la santé à mieux comprendre leurs différents tests d'analyses biologiques.
                       </p>
                     </div>
@@ -186,11 +186,11 @@ export default function InterpretationResultatsPage() {
                       <Globe className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Portée Internationale</h3>
-                      <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-3">
+                      <h3 className="text-lg sm:text-xl font-bold text-[#1E40AF] mb-2">Portée Internationale</h3>
+                      <p className="text-[#1E40AF]/70 text-sm sm:text-base leading-relaxed mb-3">
                         Lab Tests Online est actuellement <strong>traduit en 14 langues</strong> et utilisé comme outil d'interprétation des résultats biologiques par <strong>17 pays dans le monde</strong>.
                       </p>
-                      <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                      <p className="text-[#1E40AF]/70 text-sm sm:text-base leading-relaxed">
                         Le <strong>Cameroun sera le 18ème</strong> par notre biais.
                       </p>
                     </div>
@@ -205,10 +205,10 @@ export default function InterpretationResultatsPage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-4">
                 Versions Internationales
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl text-[#1E40AF]/70 max-w-3xl mx-auto">
                 Accédez aux ressources dans votre langue
               </p>
             </div>
@@ -221,19 +221,19 @@ export default function InterpretationResultatsPage() {
                     <Shield className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Royaume-Uni</h3>
-                    <p className="text-gray-600 text-sm">Version anglaise</p>
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#1E40AF]">Royaume-Uni</h3>
+                    <p className="text-[#1E40AF]/70 text-sm">Version anglaise</p>
                   </div>
                 </div>
 
                 <div className="space-y-4 mb-6">
-                  <p className="text-gray-700 text-base leading-relaxed">
+                  <p className="text-[#1E40AF]/80 text-base leading-relaxed">
                     Au Royaume-Uni, le concept fut introduit en 2004 par <strong>The Association for Clinical Biochemistry and Laboratory Medicine (ACB)</strong>.
                   </p>
 
                   <div className="bg-white p-4 rounded-xl border-l-4 border-[#0891B2]">
-                    <p className="text-gray-600 text-sm mb-2">Soutenu par :</p>
-                    <ul className="space-y-2 text-gray-700 text-sm">
+                    <p className="text-[#1E40AF]/70 text-sm mb-2">Soutenu par :</p>
+                    <ul className="space-y-2 text-[#1E40AF]/80 text-sm">
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-[#0891B2] mt-1.5 flex-shrink-0"></div>
                         <span>The Institute of Biomedical Science (IBMS)</span>
@@ -265,19 +265,19 @@ export default function InterpretationResultatsPage() {
                     <Sparkles className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900">France</h3>
-                    <p className="text-gray-600 text-sm">Version française</p>
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#1E40AF]">France</h3>
+                    <p className="text-[#1E40AF]/70 text-sm">Version française</p>
                   </div>
                 </div>
 
                 <div className="space-y-4 mb-6">
-                  <p className="text-gray-700 text-base leading-relaxed">
+                  <p className="text-[#1E40AF]/80 text-base leading-relaxed">
                     En France, Lab Tests Online a été développé par la <strong>Société Française de Biologie Clinique (SFBC)</strong>.
                   </p>
 
                   <div className="bg-white p-4 rounded-xl border-l-4 border-[#0891B2]">
-                    <p className="text-gray-600 text-sm mb-2">Soutenu par :</p>
-                    <ul className="space-y-2 text-gray-700 text-sm">
+                    <p className="text-[#1E40AF]/70 text-sm mb-2">Soutenu par :</p>
+                    <ul className="space-y-2 text-[#1E40AF]/80 text-sm">
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-[#0891B2] mt-1.5 flex-shrink-0"></div>
                         <span>Syndicat de l'Industrie du Diagnostic In Vitro (SIDIV)</span>
@@ -309,10 +309,10 @@ export default function InterpretationResultatsPage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-4">
                 Domaines Couverts par Lab Tests Online
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl text-[#1E40AF]/70 max-w-3xl mx-auto">
                 Informations détaillées sur vos analyses
               </p>
             </div>
@@ -347,8 +347,8 @@ export default function InterpretationResultatsPage() {
                   <div className="w-12 h-12 bg-gradient-to-br from-[#0891B2] to-[#0E7490] rounded-xl flex items-center justify-center mb-4">
                     <domain.icon className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">{domain.title}</h3>
-                  <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{domain.description}</p>
+                  <h3 className="text-lg sm:text-xl font-bold text-[#1E40AF] mb-3">{domain.title}</h3>
+                  <p className="text-[#1E40AF]/70 text-sm sm:text-base leading-relaxed">{domain.description}</p>
                 </div>
               ))}
             </div>

@@ -132,7 +132,7 @@ export default function QuickReviewPopup({ isOpen, onClose }: QuickReviewPopupPr
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-all z-10"
+          className="absolute top-4 right-4 p-2 text-[#1E40AF]/50 hover:text-[#1E40AF]/70 hover:bg-gray-100 rounded-full transition-all z-10"
         >
           <X className="w-5 h-5" />
         </button>
@@ -146,15 +146,15 @@ export default function QuickReviewPopup({ isOpen, onClose }: QuickReviewPopupPr
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">{currentContent.successMessage}</h3>
-              <p className="text-gray-600">{language === 'fr' ? 'Votre retour est précieux pour nous' : 'Your feedback is valuable to us'}</p>
+              <h3 className="text-2xl font-bold text-[#1E40AF] mb-2">{currentContent.successMessage}</h3>
+              <p className="text-[#1E40AF]/70">{language === 'fr' ? 'Votre retour est précieux pour nous' : 'Your feedback is valuable to us'}</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Header */}
               <div className="text-center pb-2">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">{currentContent.title}</h2>
-                <p className="text-gray-600 text-sm">{currentContent.subtitle}</p>
+                <h2 className="text-2xl font-bold text-[#1E40AF] mb-2">{currentContent.title}</h2>
+                <p className="text-[#1E40AF]/70 text-sm">{currentContent.subtitle}</p>
               </div>
               {error && (
                 <div className="bg-red-50 border-l-4 border-red-500 p-3 text-red-700 text-sm rounded">
@@ -164,7 +164,7 @@ export default function QuickReviewPopup({ isOpen, onClose }: QuickReviewPopupPr
 
               {/* Rating */}
               <div className="bg-gray-50 rounded-2xl p-6">
-                <label className="block text-center text-sm font-semibold text-gray-800 mb-4">
+                <label className="block text-center text-sm font-semibold text-[#1E40AF] mb-4">
                   {currentContent.ratingLabel}
                 </label>
                 <div className="flex gap-3 justify-center">
@@ -191,7 +191,7 @@ export default function QuickReviewPopup({ isOpen, onClose }: QuickReviewPopupPr
 
               {/* Comment */}
               <div>
-                <label htmlFor="comment" className="block text-sm font-medium text-gray-700 mb-3">
+                <label htmlFor="comment" className="block text-sm font-medium text-[#1E40AF]/80 mb-3">
                   {currentContent.commentLabel}
                 </label>
                 <textarea

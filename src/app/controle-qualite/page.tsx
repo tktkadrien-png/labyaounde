@@ -25,7 +25,7 @@ export default function ControleQualitePage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#1E40AF]/95 via-[#0A065D]/85 to-[#0A065D]/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#84BDE3]/95 via-[#84BDE3]/85 to-[#84BDE3]/70"></div>
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
@@ -79,7 +79,7 @@ export default function ControleQualitePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              <div className="bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-2xl p-8 text-white shadow-xl">
+              <div className="bg-[#84BDE3] rounded-2xl p-8 text-white shadow-xl">
                 <Activity className="w-12 h-12 mb-4" />
                 <h3 className="text-2xl font-bold mb-4">Contrôle Qualité Interne (CQI)</h3>
                 <p className="text-white/90 leading-relaxed">
@@ -87,7 +87,7 @@ export default function ControleQualitePage() {
                 </p>
               </div>
 
-              <div className="bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-2xl p-8 text-white shadow-xl">
+              <div className="bg-[#84BDE3] rounded-2xl p-8 text-white shadow-xl">
                 <Target className="w-12 h-12 mb-4" />
                 <h3 className="text-2xl font-bold mb-4">Contrôle Qualité Externe (EQA)</h3>
                 <p className="text-white/90 leading-relaxed">
@@ -303,7 +303,7 @@ export default function ControleQualitePage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] text-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-[#84BDE3] text-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6">
               La Qualité au Service de Votre Santé

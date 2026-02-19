@@ -121,10 +121,10 @@ export default function AidePage() {
                         <Icon className="w-7 h-7 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#0A065D] transition-colors">
+                        <h3 className="text-2xl font-bold text-[#1E40AF] mb-3 group-hover:text-[#0A065D] transition-colors">
                           {section.title}
                         </h3>
-                        <p className="text-gray-600 leading-relaxed mb-4">{section.description}</p>
+                        <p className="text-[#1E40AF]/70 leading-relaxed mb-4">{section.description}</p>
                         <div className="flex items-center gap-2 text-[#0A065D] font-semibold">
                           <span>{language === 'fr' ? 'En savoir plus' : 'Learn more'}</span>
                           <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

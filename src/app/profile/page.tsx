@@ -179,8 +179,8 @@ export default function ProfilePage() {
               <ArrowLeft className="w-5 h-5" />
               {currentContent.backButton}
             </button>
-            <h1 className="text-4xl font-bold text-gray-900">{currentContent.title}</h1>
-            <p className="text-gray-600 mt-2">{currentContent.subtitle}</p>
+            <h1 className="text-4xl font-bold text-[#1E40AF]">{currentContent.title}</h1>
+            <p className="text-[#1E40AF]/70 mt-2">{currentContent.subtitle}</p>
           </div>
 
           {/* Profile Form Card */}
@@ -228,7 +228,7 @@ export default function ProfilePage() {
 
               {/* Full Name */}
               <div>
-                <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="fullName" className="block text-sm font-medium text-[#1E40AF]/80 mb-2">
                   {currentContent.fullNameLabel}
                 </label>
                 <div className="relative">
@@ -248,7 +248,7 @@ export default function ProfilePage() {
 
               {/* Email (Read-only) */}
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-[#1E40AF]/80 mb-2">
                   {currentContent.emailLabel}
                 </label>
                 <div className="relative">
@@ -268,7 +268,7 @@ export default function ProfilePage() {
 
               {/* Phone */}
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="phone" className="block text-sm font-medium text-[#1E40AF]/80 mb-2">
                   {currentContent.phoneLabel}
                 </label>
                 <div className="relative">

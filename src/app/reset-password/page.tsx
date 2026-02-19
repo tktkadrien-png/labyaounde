@@ -257,7 +257,7 @@ export default function ResetPasswordPage() {
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
           <Loader2 className="w-12 h-12 text-[#0A065D] animate-spin mx-auto mb-4" />
-          <p className="text-gray-600">
+          <p className="text-[#1E40AF]/70">
             {language === 'fr' ? 'Vérification...' : 'Verifying...'}
           </p>
         </div>
@@ -274,10 +274,10 @@ export default function ResetPasswordPage() {
             <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
               <AlertCircle className="w-8 h-8 text-red-500" />
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">
+            <h1 className="text-2xl font-bold text-[#1E40AF] mb-4">
               {language === 'fr' ? 'Lien invalide' : 'Invalid Link'}
             </h1>
-            <p className="text-gray-600 mb-8">{error}</p>
+            <p className="text-[#1E40AF]/70 mb-8">{error}</p>
             <Link
               href="/login"
               className="inline-flex items-center justify-center gap-2 w-full py-3.5 bg-[#0A065D] text-white rounded-xl font-semibold hover:bg-[#0A065D]/90 transition-all"
@@ -316,7 +316,7 @@ export default function ResetPasswordPage() {
             <div className="w-16 h-16 bg-[#FF6B00]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
               <KeyRound className="w-8 h-8 text-[#FF6B00]" />
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#1E40AF] mb-2">
               {t.title}
             </h1>
             <p className="text-gray-500">
@@ -342,7 +342,7 @@ export default function ResetPasswordPage() {
 
             {/* Password Input */}
             <div>
-              <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-semibold text-[#1E40AF]/80 mb-2">
                 {t.passwordLabel}
               </label>
               <div className="relative">
@@ -357,12 +357,12 @@ export default function ResetPasswordPage() {
                   }}
                   placeholder={t.passwordPlaceholder}
                   autoComplete="new-password"
-                  className="w-full pl-12 pr-12 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#0A065D] focus:outline-none transition-colors text-gray-900 placeholder-gray-400"
+                  className="w-full pl-12 pr-12 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#0A065D] focus:outline-none transition-colors text-[#1E40AF] placeholder-gray-400"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[#1E40AF]/50 hover:text-[#1E40AF]/70 transition-colors"
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -406,7 +406,7 @@ export default function ResetPasswordPage() {
 
             {/* Confirm Password Input */}
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="confirmPassword" className="block text-sm font-semibold text-[#1E40AF]/80 mb-2">
                 {t.confirmPasswordLabel}
               </label>
               <div className="relative">
@@ -421,7 +421,7 @@ export default function ResetPasswordPage() {
                   }}
                   placeholder={t.confirmPasswordPlaceholder}
                   autoComplete="new-password"
-                  className={`w-full pl-12 pr-12 py-3.5 border-2 rounded-xl focus:outline-none transition-colors text-gray-900 placeholder-gray-400 ${
+                  className={`w-full pl-12 pr-12 py-3.5 border-2 rounded-xl focus:outline-none transition-colors text-[#1E40AF] placeholder-gray-400 ${
                     confirmPassword && password !== confirmPassword
                       ? "border-red-300 focus:border-red-500"
                       : confirmPassword && password === confirmPassword
@@ -432,7 +432,7 @@ export default function ResetPasswordPage() {
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[#1E40AF]/50 hover:text-[#1E40AF]/70 transition-colors"
                 >
                   {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>

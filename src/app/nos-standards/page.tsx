@@ -73,7 +73,7 @@ export default function NosStandardsPage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-black/30"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#84BDE3]/95 via-[#84BDE3]/85 to-[#84BDE3]/70"></div>
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
@@ -147,7 +147,7 @@ export default function NosStandardsPage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-[#84BDE3]/15">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <div className="bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] rounded-2xl p-8 sm:p-10 lg:p-12 shadow-2xl text-white">
+              <div className="bg-[#84BDE3] rounded-2xl p-8 sm:p-10 lg:p-12 shadow-2xl text-white">
                 <div className="flex items-start gap-6 mb-6">
                   <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/20">
                     <BookOpen className="w-8 h-8 text-white" />

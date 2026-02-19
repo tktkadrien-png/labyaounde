@@ -51,7 +51,7 @@ const FloatingReviewWidget = () => {
         {/* Close button */}
         <button
           onClick={handleClose}
-          className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors"
+          className="absolute top-3 right-3 text-[#1E40AF]/50 hover:text-[#1E40AF]/70 transition-colors"
           aria-label="Close"
         >
           <X className="w-5 h-5" />
@@ -79,7 +79,7 @@ const FloatingReviewWidget = () => {
           </h3>
 
           {/* Subtitle */}
-          <p className="text-sm text-gray-600 mb-4">
+          <p className="text-sm text-[#1E40AF]/70 mb-4">
             {currentContent.subtitle}
           </p>
 

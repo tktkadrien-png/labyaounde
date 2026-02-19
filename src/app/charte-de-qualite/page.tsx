@@ -25,7 +25,7 @@ export default function CharteDeQualitePage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#1E40AF]/95 via-[#1E40AF]/85 to-[#1E40AF]/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#84BDE3]/95 via-[#84BDE3]/85 to-[#84BDE3]/70"></div>
           </div>
 
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
@@ -152,7 +152,7 @@ export default function CharteDeQualitePage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#1E40AF] to-[#3B82F6] text-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-[#84BDE3] text-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6">
               Une Qualité de Service Exceptionnelle

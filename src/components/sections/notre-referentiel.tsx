@@ -57,7 +57,7 @@ export default function NotreReferentiel() {
                         <h3 className="text-xl sm:text-2xl font-bold text-[#0A065D] mb-2">
                           Lab Tests
                         </h3>
-                        <p className="text-sm sm:text-base text-gray-600 font-semibold">
+                        <p className="text-sm sm:text-base text-[#1E40AF]/70 font-semibold">
                           Online
                         </p>
                       </div>

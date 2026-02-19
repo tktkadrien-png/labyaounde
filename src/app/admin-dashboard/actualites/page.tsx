@@ -175,11 +175,11 @@ export default function ActualitesAdmin() {
             </Link>
             <div className="flex justify-between items-center">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
+                <h1 className="text-3xl font-bold text-[#1E40AF] flex items-center gap-3">
                   <Newspaper className="w-8 h-8 text-[#0A065D]" />
                   Gestion des Actualités
                 </h1>
-                <p className="text-gray-600 mt-2">Créer et gérer les actualités du laboratoire</p>
+                <p className="text-[#1E40AF]/70 mt-2">Créer et gérer les actualités du laboratoire</p>
               </div>
               <button
                 onClick={() => setShowForm(!showForm)}
@@ -194,13 +194,13 @@ export default function ActualitesAdmin() {
           {/* Form */}
           {showForm && (
             <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl font-bold text-[#1E40AF] mb-6">
                 {editingActualite ? 'Modifier l\'actualité' : 'Nouvelle actualité'}
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-[#1E40AF]/80 mb-2">
                       Titre *
                     </label>
                     <input
@@ -214,7 +214,7 @@ export default function ActualitesAdmin() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-[#1E40AF]/80 mb-2">
                       Catégorie *
                     </label>
                     <select
@@ -230,7 +230,7 @@ export default function ActualitesAdmin() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-[#1E40AF]/80 mb-2">
                       Date *
                     </label>
                     <input
@@ -244,7 +244,7 @@ export default function ActualitesAdmin() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-[#1E40AF]/80 mb-2">
                       URL de l'image (optionnel)
                     </label>
                     <input
@@ -258,7 +258,7 @@ export default function ActualitesAdmin() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-[#1E40AF]/80 mb-2">
                     Extrait *
                   </label>
                   <textarea
@@ -272,7 +272,7 @@ export default function ActualitesAdmin() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-[#1E40AF]/80 mb-2">
                     Contenu *
                   </label>
                   <textarea
@@ -293,7 +293,7 @@ export default function ActualitesAdmin() {
                     onChange={(e) => setFormData({ ...formData, is_published: e.target.checked })}
                     className="w-5 h-5 text-[#0A065D] rounded focus:ring-2 focus:ring-[#0A065D]"
                   />
-                  <label htmlFor="is_published" className="text-sm font-semibold text-gray-700">
+                  <label htmlFor="is_published" className="text-sm font-semibold text-[#1E40AF]/80">
                     Publier immédiatement
                   </label>
                 </div>
@@ -309,7 +309,7 @@ export default function ActualitesAdmin() {
                   <button
                     type="button"
                     onClick={resetForm}
-                    className="px-8 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all"
+                    className="px-8 py-3 border-2 border-gray-300 text-[#1E40AF]/80 rounded-xl font-semibold hover:bg-gray-50 transition-all"
                   >
                     Annuler
                   </button>
@@ -327,8 +327,8 @@ export default function ActualitesAdmin() {
             ) : actualites.length === 0 ? (
               <div className="bg-white rounded-2xl p-12 text-center">
                 <Newspaper className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Aucune actualité</h3>
-                <p className="text-gray-600">Créez votre première actualité</p>
+                <h3 className="text-xl font-bold text-[#1E40AF] mb-2">Aucune actualité</h3>
+                <p className="text-[#1E40AF]/70">Créez votre première actualité</p>
               </div>
             ) : (
               actualites.map((actualite) => (
@@ -336,11 +336,11 @@ export default function ActualitesAdmin() {
                   <div className="flex justify-between items-start">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-3">
-                        <h3 className="text-xl font-bold text-gray-900">{actualite.title}</h3>
+                        <h3 className="text-xl font-bold text-[#1E40AF]">{actualite.title}</h3>
                         <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
                           actualite.is_published
                             ? 'bg-green-100 text-green-700'
-                            : 'bg-gray-100 text-gray-700'
+                            : 'bg-gray-100 text-[#1E40AF]/80'
                         }`}>
                           {actualite.is_published ? 'Publié' : 'Brouillon'}
                         </span>
@@ -348,9 +348,9 @@ export default function ActualitesAdmin() {
                           {actualite.category}
                         </span>
                       </div>
-                      <p className="text-gray-600 text-sm mb-2">{actualite.date}</p>
-                      <p className="text-gray-700 mb-2">{actualite.excerpt}</p>
-                      <p className="text-gray-600 text-sm line-clamp-2">{actualite.content}</p>
+                      <p className="text-[#1E40AF]/70 text-sm mb-2">{actualite.date}</p>
+                      <p className="text-[#1E40AF]/80 mb-2">{actualite.excerpt}</p>
+                      <p className="text-[#1E40AF]/70 text-sm line-clamp-2">{actualite.content}</p>
                     </div>
                     <div className="flex gap-2 ml-4">
                       <button
@@ -359,9 +359,9 @@ export default function ActualitesAdmin() {
                         title={actualite.is_published ? 'Dépublier' : 'Publier'}
                       >
                         {actualite.is_published ? (
-                          <EyeOff className="w-5 h-5 text-gray-600" />
+                          <EyeOff className="w-5 h-5 text-[#1E40AF]/70" />
                         ) : (
-                          <Eye className="w-5 h-5 text-gray-600" />
+                          <Eye className="w-5 h-5 text-[#1E40AF]/70" />
                         )}
                       </button>
                       <button

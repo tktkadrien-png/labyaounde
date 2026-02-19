@@ -112,10 +112,10 @@ export default function CarrieresPage() {
                   {language === 'fr' ? 'Actualités' : 'News'}
                 </span>
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-6">
                 {language === 'fr' ? 'Nos Dernières Actualités' : 'Our Latest News'}
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl text-[#1E40AF]/70 max-w-3xl mx-auto">
                 {language === 'fr'
                   ? 'Restez informé des dernières nouvelles de notre laboratoire'
                   : 'Stay informed about our laboratory latest news'}
@@ -129,7 +129,7 @@ export default function CarrieresPage() {
             ) : news.length === 0 ? (
               <div className="text-center py-12">
                 <Newspaper className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-600">
+                <p className="text-[#1E40AF]/70">
                   {language === 'fr' ? 'Aucune actualité pour le moment' : 'No news at the moment'}
                 </p>
               </div>
@@ -152,8 +152,8 @@ export default function CarrieresPage() {
                         <Calendar className="w-4 h-4" />
                         {item.date}
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                      <p className="text-gray-600 leading-relaxed">{item.excerpt}</p>
+                      <h3 className="text-xl font-bold text-[#1E40AF] mb-3">{item.title}</h3>
+                      <p className="text-[#1E40AF]/70 leading-relaxed">{item.excerpt}</p>
                     </div>
                   </div>
                 ))}
@@ -182,10 +182,10 @@ export default function CarrieresPage() {
                   {language === 'fr' ? 'Emploi & Stages' : 'Jobs & Internships'}
                 </span>
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E40AF] mb-6">
                 {language === 'fr' ? 'Offres d\'Emploi et Stages' : 'Job Offers and Internships'}
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl text-[#1E40AF]/70 max-w-3xl mx-auto">
                 {language === 'fr'
                   ? 'Découvrez nos opportunités de carrière et rejoignez une équipe passionnée'
                   : 'Discover our career opportunities and join a passionate team'}
@@ -199,7 +199,7 @@ export default function CarrieresPage() {
             ) : jobOffers.length === 0 ? (
               <div className="text-center py-12">
                 <Briefcase className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-600">
+                <p className="text-[#1E40AF]/70">
                   {language === 'fr' ? 'Aucune offre pour le moment' : 'No offers at the moment'}
                 </p>
               </div>
@@ -214,8 +214,8 @@ export default function CarrieresPage() {
                           <Briefcase className="w-7 h-7 text-white" />
                         </div>
                         <div>
-                          <h3 className="text-2xl font-bold text-gray-900 mb-2">{job.title}</h3>
-                          <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-3">
+                          <h3 className="text-2xl font-bold text-[#1E40AF] mb-2">{job.title}</h3>
+                          <div className="flex flex-wrap gap-4 text-sm text-[#1E40AF]/70 mb-3">
                             <div className="flex items-center gap-2">
                               <MapPin className="w-4 h-4 text-[#0A065D]" />
                               {job.location}
@@ -228,7 +228,7 @@ export default function CarrieresPage() {
                               {job.type}
                             </span>
                           </div>
-                          <p className="text-gray-700 leading-relaxed">{job.description}</p>
+                          <p className="text-[#1E40AF]/80 leading-relaxed">{job.description}</p>
                         </div>
                       </div>
                     </div>
