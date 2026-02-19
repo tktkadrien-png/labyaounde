@@ -152,12 +152,12 @@ export default function CharteDeQualitePage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-[#84BDE3] text-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-[#84BDE3] text-[#1034A6]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6">
               Une Qualité de Service Exceptionnelle
             </h2>
-            <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-[#1034A6]/90 mb-8 max-w-2xl mx-auto">
               Notre charte de qualité reflète notre engagement indéfectible envers votre santé et votre bien-être.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

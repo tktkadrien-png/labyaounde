@@ -79,18 +79,18 @@ export default function ControleQualitePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              <div className="bg-[#84BDE3] rounded-2xl p-8 text-white shadow-xl">
+              <div className="bg-[#84BDE3] rounded-2xl p-8 text-[#1034A6] shadow-xl">
                 <Activity className="w-12 h-12 mb-4" />
                 <h3 className="text-2xl font-bold mb-4">Contrôle Qualité Interne (CQI)</h3>
-                <p className="text-white/90 leading-relaxed">
+                <p className="text-[#1034A6]/90 leading-relaxed">
                   Surveillance quotidienne de nos processus analytiques pour assurer la constance et la fiabilité de nos résultats au fil du temps.
                 </p>
               </div>
 
-              <div className="bg-[#84BDE3] rounded-2xl p-8 text-white shadow-xl">
+              <div className="bg-[#84BDE3] rounded-2xl p-8 text-[#1034A6] shadow-xl">
                 <Target className="w-12 h-12 mb-4" />
                 <h3 className="text-2xl font-bold mb-4">Contrôle Qualité Externe (EQA)</h3>
-                <p className="text-white/90 leading-relaxed">
+                <p className="text-[#1034A6]/90 leading-relaxed">
                   Évaluation régulière de nos performances par comparaison avec d&apos;autres laboratoires de référence au niveau international.
                 </p>
               </div>
@@ -303,12 +303,12 @@ export default function ControleQualitePage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-[#84BDE3] text-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-[#84BDE3] text-[#1034A6]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6">
               La Qualité au Service de Votre Santé
             </h2>
-            <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-[#1034A6]/90 mb-8 max-w-2xl mx-auto">
               Notre engagement pour le contrôle qualité vous assure des résultats d&apos;analyses fiables et précis, essentiels pour votre diagnostic et votre suivi médical.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

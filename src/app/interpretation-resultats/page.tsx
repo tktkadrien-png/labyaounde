@@ -356,18 +356,18 @@ export default function InterpretationResultatsPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#0891B2] to-[#0E7490] text-white">
+        <section className="py-12 sm:py-16 lg:py-20 bg-[#84BDE3] text-[#1034A6]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6">
               Besoin d'Aide pour Comprendre Vos Résultats ?
             </h2>
-            <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-[#1034A6]/90 mb-8 max-w-2xl mx-auto">
               Notre biologiste est disponible 24h/24 et 7j/7 pour répondre à toutes vos questions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/#contact"
-                className="inline-flex items-center justify-center gap-2 bg-white text-[#0891B2] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-white/90 transition-all hover:scale-105"
+                className="inline-flex items-center justify-center gap-2 bg-white text-[#1034A6] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg hover:bg-white/90 transition-all hover:scale-105"
               >
                 Contacter le Biologiste
                 <ChevronRight className="w-5 h-5" />
@@ -376,7 +376,7 @@ export default function InterpretationResultatsPage() {
                 href="https://www.labtestsonline.fr"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-transparent text-white px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-white hover:bg-white hover:text-[#0891B2] transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-transparent text-[#1034A6] px-8 py-4 rounded-xl font-semibold text-base sm:text-lg border-2 border-[#1034A6] hover:bg-[#1034A6]/10 transition-all"
               >
                 Visiter Lab Tests Online
                 <ExternalLink className="w-5 h-5" />

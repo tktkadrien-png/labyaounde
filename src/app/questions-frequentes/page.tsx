@@ -212,10 +212,10 @@ export default function QuestionsFrequentesPage() {
         {/* Contact CTA */}
         <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="bg-[#84BDE3] rounded-2xl p-8 lg:p-12 text-white shadow-2xl">
+            <div className="bg-[#84BDE3] rounded-2xl p-8 lg:p-12 text-[#1034A6] shadow-2xl">
               <HelpCircle className="w-16 h-16 mx-auto mb-6" />
               <h2 className="text-3xl lg:text-4xl font-bold mb-4">{currentContent.contact.title}</h2>
-              <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">{currentContent.contact.description}</p>
+              <p className="text-lg text-[#1034A6]/90 mb-8 max-w-2xl mx-auto">{currentContent.contact.description}</p>
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-3 bg-white text-[#1E40AF] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl transform hover:scale-105"

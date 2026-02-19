@@ -147,16 +147,16 @@ export default function NosStandardsPage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-[#84BDE3]/15">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <div className="bg-[#84BDE3] rounded-2xl p-8 sm:p-10 lg:p-12 shadow-2xl text-white">
+              <div className="bg-[#84BDE3] rounded-2xl p-8 sm:p-10 lg:p-12 shadow-2xl text-[#1034A6]">
                 <div className="flex items-start gap-6 mb-6">
-                  <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/20">
-                    <BookOpen className="w-8 h-8 text-white" />
+                  <div className="w-16 h-16 bg-[#1034A6]/10 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-shrink-0 border border-[#1034A6]/20">
+                    <BookOpen className="w-8 h-8 text-[#1034A6]" />
                   </div>
                   <div className="flex-1">
-                    <h2 className="text-2xl sm:text-3xl font-bold mb-4">
+                    <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-[#1034A6]">
                       {language === 'fr' ? 'Nos Standards de Référence' : 'Our Reference Standards'}
                     </h2>
-                    <p className="text-white/90 text-lg leading-relaxed">
+                    <p className="text-[#1034A6]/90 text-lg leading-relaxed">
                       {language === 'fr'
                         ? "Nos standards sont ceux recommandés par The Health and Care Professions Council (HCPC), organisme régulateur des professions de santé au Royaume-Uni chargé de l'accréditation et de l'évaluation des professionnels de santé, qui sont aussi ceux préconisés par The Institute of Biomedical Science (IBMS), The Clinical and Laboratory Standards Institute (CLSI), la norme ISO 15189, le Guide de Bonne Exécution des Analyses (GBEA) et l'Organisation Mondiale de la Santé (OMS)."
                         : 'Our standards are those recommended by The Health and Care Professions Council (HCPC), the UK regulatory body for health professions responsible for accreditation and evaluation of healthcare professionals, which are also those advocated by The Institute of Biomedical Science (IBMS), The Clinical and Laboratory Standards Institute (CLSI), ISO 15189 standard, the Good Laboratory Practice Guide (GBEA) and the World Health Organization (WHO).'

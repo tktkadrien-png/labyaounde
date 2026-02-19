@@ -104,12 +104,12 @@ export default function ConseilsEtInformations() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#1E40AF]/80 to-transparent flex items-center">
-                  <div className="p-8 text-white max-w-xl">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#84BDE3]/90 to-[#84BDE3]/60 flex items-center">
+                  <div className="p-8 text-[#1034A6] max-w-xl">
                     <h2 className="text-3xl lg:text-5xl font-bold mb-4">
                       {t('welcomeGuide')}
                     </h2>
-                    <p className="text-lg text-white/90">
+                    <p className="text-lg text-[#1034A6]/90">
                       {t('welcomeGuideDesc')}
                     </p>
                   </div>
@@ -241,9 +241,9 @@ export default function ConseilsEtInformations() {
               </div>
 
               {/* CTA Preparation */}
-              <div className="mt-12 bg-[#84BDE3] rounded-2xl p-8 text-white text-center">
+              <div className="mt-12 bg-[#84BDE3] rounded-2xl p-8 text-[#1034A6] text-center">
                 <h3 className="text-2xl font-bold mb-4">{t('fullPrepGuide')}</h3>
-                <p className="text-white/90 mb-6 max-w-2xl mx-auto">
+                <p className="text-[#1034A6]/90 mb-6 max-w-2xl mx-auto">
                   {t('fullPrepGuideDesc')}
                 </p>
                 <Link
@@ -351,9 +351,9 @@ export default function ConseilsEtInformations() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#1E40AF]/80 to-[#FE5000]/60 flex items-center justify-center">
-                  <div className="text-center text-white px-6">
-                    <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-full mb-4">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#84BDE3]/90 to-[#84BDE3]/70 flex items-center justify-center">
+                  <div className="text-center text-[#1034A6] px-6">
+                    <div className="inline-flex items-center gap-2 bg-[#1034A6]/10 backdrop-blur-sm text-[#1034A6] px-6 py-3 rounded-full mb-4">
                       <ShieldCheck className="w-5 h-5" />
                       <span className="text-sm font-semibold">{t('yourSecurity')}</span>
                     </div>
@@ -412,14 +412,14 @@ export default function ConseilsEtInformations() {
         </section>
 
         {/* CTA Final */}
-        <section ref={ctaRef as React.RefObject<HTMLElement>} className="py-20 lg:py-28 bg-[#84BDE3] text-white">
+        <section ref={ctaRef as React.RefObject<HTMLElement>} className="py-20 lg:py-28 bg-[#84BDE3] text-[#1034A6]">
           <div className="max-w-[1200px] mx-auto px-6">
             <div className={`text-center transition-all duration-700 ${ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <Users className="w-20 h-20 mx-auto mb-6 text-white/90" />
+              <Users className="w-20 h-20 mx-auto mb-6 text-[#1034A6]/90" />
               <h2 className="text-3xl lg:text-5xl font-bold mb-6">
                 {t('needHelpInfo')}
               </h2>
-              <p className="text-xl lg:text-2xl text-white/90 mb-12 max-w-3xl mx-auto">
+              <p className="text-xl lg:text-2xl text-[#1034A6]/90 mb-12 max-w-3xl mx-auto">
                 {t('teamAvailable')}
               </p>
 
@@ -442,7 +442,7 @@ export default function ConseilsEtInformations() {
 
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-3 bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-lg font-semibold transition-all text-lg"
+                  className="inline-flex items-center gap-3 bg-transparent border-2 border-[#1034A6] text-[#1034A6] hover:bg-[#1034A6]/10 px-8 py-4 rounded-lg font-semibold transition-all text-lg"
                 >
                   <Phone className="w-6 h-6" />
                   {t('contactCtaButton')}

@@ -90,10 +90,10 @@ export default function PolitiqueDeQualitePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              <div className="bg-[#84BDE3] rounded-2xl p-8 text-white shadow-xl text-center">
+              <div className="bg-[#84BDE3] rounded-2xl p-8 text-[#1034A6] shadow-xl text-center">
                 <BookOpen className="w-12 h-12 mb-4 mx-auto" />
                 <h3 className="text-xl sm:text-2xl font-bold mb-3">{language === 'fr' ? 'Pré-analytique' : 'Pre-analytical'}</h3>
-                <p className="text-white/90 leading-relaxed">
+                <p className="text-[#1034A6]/90 leading-relaxed">
                   {language === 'fr'
                     ? 'Prélèvement, identification, transport et réception des échantillons'
                     : 'Sample collection, identification, transport and reception'
@@ -101,10 +101,10 @@ export default function PolitiqueDeQualitePage() {
                 </p>
               </div>
 
-              <div className="bg-[#84BDE3] rounded-2xl p-8 text-white shadow-xl text-center">
+              <div className="bg-[#84BDE3] rounded-2xl p-8 text-[#1034A6] shadow-xl text-center">
                 <Shield className="w-12 h-12 mb-4 mx-auto" />
                 <h3 className="text-xl sm:text-2xl font-bold mb-3">{language === 'fr' ? 'Analytique' : 'Analytical'}</h3>
-                <p className="text-white/90 leading-relaxed">
+                <p className="text-[#1034A6]/90 leading-relaxed">
                   {language === 'fr'
                     ? 'Réalisation des analyses avec contrôle qualité rigoureux'
                     : 'Performing analyses with rigorous quality control'
@@ -112,10 +112,10 @@ export default function PolitiqueDeQualitePage() {
                 </p>
               </div>
 
-              <div className="bg-[#84BDE3] rounded-2xl p-8 text-white shadow-xl text-center">
+              <div className="bg-[#84BDE3] rounded-2xl p-8 text-[#1034A6] shadow-xl text-center">
                 <FileText className="w-12 h-12 mb-4 mx-auto" />
                 <h3 className="text-xl sm:text-2xl font-bold mb-3">{language === 'fr' ? 'Post-analytique' : 'Post-analytical'}</h3>
-                <p className="text-white/90 leading-relaxed">
+                <p className="text-[#1034A6]/90 leading-relaxed">
                   {language === 'fr'
                     ? 'Validation, transmission et archivage des résultats'
                     : 'Validation, transmission and archiving of results'
@@ -330,16 +330,16 @@ export default function PolitiqueDeQualitePage() {
         <section className="py-12 sm:py-16 lg:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <div className="bg-[#84BDE3] rounded-2xl p-8 sm:p-10 lg:p-12 shadow-2xl text-white">
+              <div className="bg-[#84BDE3] rounded-2xl p-8 sm:p-10 lg:p-12 shadow-2xl text-[#1034A6]">
                 <div className="flex flex-col md:flex-row items-start gap-8">
-                  <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/20">
-                    <FileText className="w-10 h-10 text-white" />
+                  <div className="w-20 h-20 bg-[#1034A6]/10 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-shrink-0 border border-[#1034A6]/20">
+                    <FileText className="w-10 h-10 text-[#1034A6]" />
                   </div>
                   <div className="flex-1">
                     <h2 className="text-2xl sm:text-3xl font-bold mb-6">
                       {language === 'fr' ? 'Révision de la Politique' : 'Policy Review'}
                     </h2>
-                    <p className="text-white/90 text-lg leading-relaxed">
+                    <p className="text-[#1034A6]/90 text-lg leading-relaxed">
                       {language === 'fr'
                         ? "Cette politique de qualité sera révisée annuellement ou au besoin pour s'assurer qu'elle demeure pertinente et efficace."
                         : 'This quality policy will be reviewed annually or as needed to ensure it remains relevant and effective.'

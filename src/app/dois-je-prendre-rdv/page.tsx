@@ -83,10 +83,10 @@ export default function DoisJePrendreRDV() {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0A065D]/70 to-transparent flex items-center">
-                <div className="p-8 text-white max-w-lg">
-                  <h3 className="text-3xl font-bold mb-3">Laboratoire moderne et accessible</h3>
-                  <p className="text-lg text-white/90">Des équipements de pointe pour des résultats fiables et rapides</p>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#84BDE3]/80 to-transparent flex items-center">
+                <div className="p-8 text-[#1034A6] max-w-lg">
+                  <h3 className="text-3xl font-bold mb-3 text-[#1034A6]">Laboratoire moderne et accessible</h3>
+                  <p className="text-lg text-[#1034A6]/90">Des équipements de pointe pour des résultats fiables et rapides</p>
                 </div>
               </div>
             </div>
@@ -539,16 +539,16 @@ export default function DoisJePrendreRDV() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#FE5000]/80 to-[#FE5000]/60 flex items-center justify-center">
-                  <div className="text-center text-white px-6">
-                    <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-full mb-4">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#84BDE3]/80 to-[#84BDE3]/60 flex items-center justify-center">
+                  <div className="text-center text-[#1034A6] px-6">
+                    <div className="inline-flex items-center gap-2 bg-[#1034A6]/10 backdrop-blur-sm text-[#1034A6] px-6 py-3 rounded-full mb-4">
                       <Clock className="w-5 h-5" />
                       <span className="text-sm font-semibold">Préparation Indispensable</span>
                     </div>
                     <h2 className="text-3xl lg:text-5xl font-bold mb-4">
                       Comment bien se préparer avant les tests ?
                     </h2>
-                    <p className="text-xl text-white/90 max-w-3xl mx-auto">
+                    <p className="text-xl text-[#1034A6]/90 max-w-3xl mx-auto">
                       Une bonne préparation garantit la fiabilité de vos résultats
                     </p>
                   </div>
@@ -1166,7 +1166,7 @@ export default function DoisJePrendreRDV() {
         </section>
 
         {/* Contact & Rendez-vous - Version améliorée */}
-        <section id="contact" ref={contactRef as React.RefObject<HTMLElement>} className="py-20 lg:py-28 bg-[#84BDE3] text-white relative overflow-hidden">
+        <section id="contact" ref={contactRef as React.RefObject<HTMLElement>} className="py-20 lg:py-28 bg-[#84BDE3] text-[#1034A6] relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#00CED1] rounded-full blur-3xl"></div>
@@ -1183,7 +1183,7 @@ export default function DoisJePrendreRDV() {
                   📞 Contactez-Nous
                 </h2>
 
-                <p className="text-xl lg:text-2xl text-white/90 max-w-3xl mx-auto mb-12">
+                <p className="text-xl lg:text-2xl text-[#1034A6]/90 max-w-3xl mx-auto mb-12">
                   Notre équipe est à votre écoute pour répondre à vos questions et prendre vos rendez-vous
                 </p>
               </div>

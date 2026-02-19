@@ -166,7 +166,7 @@ export default function BiochimieClinikPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-24 bg-[#0A065D]">
+        <section className="py-24 bg-[#84BDE3]">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
               Besoin d'une Analyse ?
