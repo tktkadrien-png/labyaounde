@@ -21,36 +21,36 @@ export default function HomePage() {
       <TopNavigationBar />
       <MainNavigation />
       <main>
-        <ScrollReveal direction="up" duration={0.7}>
+        <ScrollReveal animation="blurIn" duration={0.8}>
           <AboutUs />
         </ScrollReveal>
         <HeroCarousel />
-        <ScrollReveal direction="up" delay={0.1}>
+        <ScrollReveal animation="scaleUp" delay={0.1}>
           <PatientJourneyCards />
         </ScrollReveal>
-        <ScrollReveal direction="left" delay={0.1}>
+        <ScrollReveal animation="fadeLeft" delay={0.1}>
           <Newsletter />
         </ScrollReveal>
-        <ScrollReveal direction="up" delay={0.1}>
+        <ScrollReveal animation="fadeUp" delay={0.1}>
           <ResultsAccess />
         </ScrollReveal>
-        <ScrollReveal direction="right" delay={0.1}>
+        <ScrollReveal animation="fadeRight" delay={0.1}>
           <PartnersLogos />
         </ScrollReveal>
-        <ScrollReveal direction="up" delay={0.1}>
+        <ScrollReveal animation="rotateIn" delay={0.1}>
           <NotreReferentiel />
         </ScrollReveal>
-        <ScrollReveal direction="up" delay={0.15}>
+        <ScrollReveal animation="scaleUp" delay={0.15}>
           <JobOpenings />
         </ScrollReveal>
-        <ScrollReveal direction="up" delay={0.1}>
+        <ScrollReveal animation="blurIn" delay={0.1}>
           <ThreePillars />
         </ScrollReveal>
-        <ScrollReveal direction="up" delay={0.1}>
+        <ScrollReveal animation="slideUp" delay={0.1}>
           <NewsArticles />
         </ScrollReveal>
       </main>
-      <ScrollReveal direction="up" delay={0.1}>
+      <ScrollReveal animation="fadeUp" delay={0.1}>
         <Footer />
       </ScrollReveal>
       <FloatingReviewWidget />

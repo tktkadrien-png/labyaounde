@@ -3,59 +3,90 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
+type AnimationType = "fadeUp" | "fadeDown" | "fadeLeft" | "fadeRight" | "fadeIn" | "scaleUp" | "scaleIn" | "blurIn" | "slideUp" | "slideLeft" | "slideRight" | "rotateIn";
+
 interface ScrollRevealProps {
   children: React.ReactNode;
   className?: string;
-  direction?: "up" | "down" | "left" | "right" | "none";
+  animation?: AnimationType;
   delay?: number;
   duration?: number;
-  distance?: number;
   once?: boolean;
 }
 
-const directionOffsets = {
-  up: { y: 60, x: 0 },
-  down: { y: -60, x: 0 },
-  left: { x: 60, y: 0 },
-  right: { x: -60, y: 0 },
-  none: { x: 0, y: 0 },
+const animations: Record<AnimationType, { initial: object; animate: object }> = {
+  fadeUp: {
+    initial: { opacity: 0, y: 80, scale: 0.95 },
+    animate: { opacity: 1, y: 0, scale: 1 },
+  },
+  fadeDown: {
+    initial: { opacity: 0, y: -60 },
+    animate: { opacity: 1, y: 0 },
+  },
+  fadeLeft: {
+    initial: { opacity: 0, x: -80, scale: 0.97 },
+    animate: { opacity: 1, x: 0, scale: 1 },
+  },
+  fadeRight: {
+    initial: { opacity: 0, x: 80, scale: 0.97 },
+    animate: { opacity: 1, x: 0, scale: 1 },
+  },
+  fadeIn: {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+  },
+  scaleUp: {
+    initial: { opacity: 0, scale: 0.8, y: 40 },
+    animate: { opacity: 1, scale: 1, y: 0 },
+  },
+  scaleIn: {
+    initial: { opacity: 0, scale: 0.85 },
+    animate: { opacity: 1, scale: 1 },
+  },
+  blurIn: {
+    initial: { opacity: 0, filter: "blur(12px)", y: 30 },
+    animate: { opacity: 1, filter: "blur(0px)", y: 0 },
+  },
+  slideUp: {
+    initial: { opacity: 0, y: 100 },
+    animate: { opacity: 1, y: 0 },
+  },
+  slideLeft: {
+    initial: { opacity: 0, x: -100 },
+    animate: { opacity: 1, x: 0 },
+  },
+  slideRight: {
+    initial: { opacity: 0, x: 100 },
+    animate: { opacity: 1, x: 0 },
+  },
+  rotateIn: {
+    initial: { opacity: 0, rotate: -3, scale: 0.95, y: 40 },
+    animate: { opacity: 1, rotate: 0, scale: 1, y: 0 },
+  },
 };
 
 export default function ScrollReveal({
   children,
   className = "",
-  direction = "up",
+  animation = "fadeUp",
   delay = 0,
-  duration = 0.6,
-  distance = 60,
+  duration = 0.7,
   once = true,
 }: ScrollRevealProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once, margin: "-80px" });
+  const isInView = useInView(ref, { once, margin: "-100px" });
 
-  const offset = directionOffsets[direction];
-  const scaledOffset = {
-    x: offset.x !== 0 ? (offset.x > 0 ? distance : -distance) : 0,
-    y: offset.y !== 0 ? (offset.y > 0 ? distance : -distance) : 0,
-  };
+  const anim = animations[animation];
 
   return (
     <motion.div
       ref={ref}
-      initial={{
-        opacity: 0,
-        y: scaledOffset.y,
-        x: scaledOffset.x,
-      }}
-      animate={
-        isInView
-          ? { opacity: 1, y: 0, x: 0 }
-          : { opacity: 0, y: scaledOffset.y, x: scaledOffset.x }
-      }
+      initial={anim.initial}
+      animate={isInView ? anim.animate : anim.initial}
       transition={{
         duration,
         delay,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: [0.22, 1, 0.36, 1],
       }}
       className={className}
     >
@@ -67,14 +98,14 @@ export default function ScrollReveal({
 export function ScrollRevealStagger({
   children,
   className = "",
-  staggerDelay = 0.1,
+  staggerDelay = 0.12,
 }: {
   children: React.ReactNode;
   className?: string;
   staggerDelay?: number;
 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
     <motion.div
@@ -102,8 +133,13 @@ export function ScrollRevealChild({
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 40 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
+        hidden: { opacity: 0, y: 50, scale: 0.95 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+        },
       }}
       className={className}
     >

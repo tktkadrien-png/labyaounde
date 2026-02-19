@@ -276,15 +276,43 @@ const MainNavigation = () => {
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
           <div className={cn(
             "flex items-center justify-between transition-all duration-300",
-            isScrolled ? "h-[110px]" : "h-[160px]"
+            isScrolled ? "h-[80px] sm:h-[90px] lg:h-[110px]" : "h-[90px] sm:h-[110px] lg:h-[160px]"
           )}>
 
             {/* ─── Logo ─── */}
             <Link href="/" aria-label="Lab Yaoundé Home" className="flex items-center flex-shrink-0">
               <motion.div
+                animate={{ height: isScrolled ? 60 : 80 }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="relative block sm:hidden"
+              >
+                <Image
+                  src="/images/images.png"
+                  alt="Lab Yaoundé Logo"
+                  width={300}
+                  height={120}
+                  className="h-full w-auto object-contain"
+                  priority
+                />
+              </motion.div>
+              <motion.div
+                animate={{ height: isScrolled ? 75 : 100 }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="relative hidden sm:block lg:hidden"
+              >
+                <Image
+                  src="/images/images.png"
+                  alt="Lab Yaoundé Logo"
+                  width={400}
+                  height={160}
+                  className="h-full w-auto object-contain"
+                  priority
+                />
+              </motion.div>
+              <motion.div
                 animate={{ height: isScrolled ? 90 : 150 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                className="relative"
+                className="relative hidden lg:block"
               >
                 <Image
                   src="/images/images.png"

@@ -32,7 +32,7 @@ const TopNavigationBar = () => {
       initial={{ y: -10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="bg-[#0A1628] border-b border-white/[0.06]"
+      className="bg-[#0A1628] border-b border-white/[0.06] hidden sm:block"
     >
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-2">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-2.5 lg:gap-0 text-white">
