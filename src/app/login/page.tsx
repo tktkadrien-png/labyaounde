@@ -3,24 +3,34 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Mail, Lock, Eye, EyeOff, AlertCircle, CheckCircle, ArrowLeft, Loader2 } from "lucide-react";
+import Image from "next/image";
+import { Eye, EyeOff, AlertCircle, CheckCircle, Loader2, Facebook, Instagram, ArrowLeft } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { useLanguage } from "@/lib/contents/LanguageContext";
 
+const TikTokIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z" />
+  </svg>
+);
+
 const translations = {
   fr: {
-    title: "Espace Patient",
-    subtitle: "Accédez à vos résultats d'analyses",
-    emailLabel: "Adresse email",
-    emailPlaceholder: "exemple@email.com",
-    passwordLabel: "Mot de passe",
-    passwordPlaceholder: "••••••••",
-    rememberMe: "Rester connecté",
+    signIn: "Se connecter",
+    signUp: "S'inscrire",
+    fullName: "Nom complet",
+    email: "Email",
+    password: "Mot de passe",
+    confirmPassword: "Confirmer le mot de passe",
     forgotPassword: "Mot de passe oublié ?",
     loginButton: "Se connecter",
+    registerButton: "Créer le compte",
     loggingIn: "Connexion...",
+    registering: "Création...",
     noAccount: "Pas encore de compte ?",
-    createAccount: "Créer un compte",
+    hasAccount: "Déjà un compte ?",
+    tagline: "Votre santé, notre priorité",
+    description: "Accédez à vos résultats d'analyses en toute sécurité depuis n'importe où.",
     backToHome: "Retour à l'accueil",
     errors: {
       emailRequired: "Veuillez entrer votre adresse email",
@@ -37,24 +47,27 @@ const translations = {
       subtitle: "Entrez votre email pour recevoir un lien de réinitialisation",
       sendButton: "Envoyer le lien",
       sending: "Envoi...",
-      back: "Retour à la connexion",
+      back: "Retour",
       success: "Email envoyé ! Vérifiez votre boîte de réception.",
       error: "Impossible d'envoyer l'email. Vérifiez l'adresse.",
     },
   },
   en: {
-    title: "Patient Portal",
-    subtitle: "Access your test results",
-    emailLabel: "Email address",
-    emailPlaceholder: "example@email.com",
-    passwordLabel: "Password",
-    passwordPlaceholder: "••••••••",
-    rememberMe: "Remember me",
+    signIn: "Sign In",
+    signUp: "Sign Up",
+    fullName: "Full Name",
+    email: "Email",
+    password: "Password",
+    confirmPassword: "Confirm Password",
     forgotPassword: "Forgot password?",
-    loginButton: "Sign in",
+    loginButton: "Sign In",
+    registerButton: "Create Account",
     loggingIn: "Signing in...",
+    registering: "Creating...",
     noAccount: "Don't have an account?",
-    createAccount: "Create account",
+    hasAccount: "Already have an account?",
+    tagline: "Your health, our priority",
+    description: "Access your test results securely from anywhere.",
     backToHome: "Back to home",
     errors: {
       emailRequired: "Please enter your email address",
@@ -69,9 +82,9 @@ const translations = {
     reset: {
       title: "Forgot Password",
       subtitle: "Enter your email to receive a reset link",
-      sendButton: "Send link",
+      sendButton: "Send Link",
       sending: "Sending...",
-      back: "Back to login",
+      back: "Back",
       success: "Email sent! Check your inbox.",
       error: "Unable to send email. Check the address.",
     },
@@ -83,10 +96,13 @@ export default function LoginPage() {
   const { language } = useLanguage();
   const t = translations[language];
 
+  const [activeTab, setActiveTab] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -125,9 +141,31 @@ export default function LoginPage() {
       }
       if (data?.user) {
         setSuccess(t.success);
-        if (rememberMe) localStorage.setItem("laboyaounde_remember", "true");
-        setTimeout(() => { router.push("/"); router.refresh(); }, 800);
+        setTimeout(() => { router.push("/mes-resultats"); router.refresh(); }, 800);
       }
+    } catch {
+      setError(t.errors.networkError);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSignup = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(""); setSuccess("");
+    if (!email.trim()) return setError(t.errors.emailRequired);
+    if (!isValidEmail(email)) return setError(t.errors.emailInvalid);
+    if (!password) return setError(t.errors.passwordRequired);
+    if (password !== confirmPassword) return setError(language === "fr" ? "Les mots de passe ne correspondent pas." : "Passwords do not match.");
+    setLoading(true);
+    try {
+      const { error: signUpError } = await supabase.auth.signUp({
+        email: email.trim().toLowerCase(),
+        password,
+        options: { data: { full_name: fullName.trim() } },
+      });
+      if (signUpError) { setError(signUpError.message); return; }
+      setSuccess(language === "fr" ? "Compte créé ! Vérifiez votre email." : "Account created! Check your email.");
     } catch {
       setError(t.errors.networkError);
     } finally {
@@ -154,197 +192,368 @@ export default function LoginPage() {
     }
   };
 
+  const switchTab = (tab: "signin" | "signup") => {
+    setActiveTab(tab);
+    setError(""); setSuccess("");
+    setEmail(""); setPassword(""); setFullName(""); setConfirmPassword("");
+  };
+
   if (!mounted) return null;
 
   return (
-    <div className="min-h-screen bg-[#F8FAFF] flex flex-col items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-[#EEF2FF] flex items-center justify-center p-4">
       {/* Back to home */}
       <Link
         href="/"
-        className="absolute top-6 left-6 flex items-center gap-2 text-sm text-[#1034A6]/60 hover:text-[#1034A6] transition-colors"
+        className="fixed top-5 left-5 z-10 flex items-center gap-1.5 text-xs text-white/70 hover:text-white transition-colors bg-[#1034A6]/80 hover:bg-[#1034A6] px-3 py-1.5 rounded-full backdrop-blur-sm"
       >
-        <ArrowLeft className="w-4 h-4" />
+        <ArrowLeft className="w-3.5 h-3.5" />
         {t.backToHome}
       </Link>
 
-      {/* Logo */}
-      <div className="mb-8 text-center">
-        <Link href="/" className="inline-block">
-          <div className="text-2xl font-bold text-[#1034A6] tracking-tight">Lab<span className="text-[#84BDE3]">Yaounde</span></div>
-        </Link>
-      </div>
+      {/* Main card — split layout */}
+      <div className="w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden flex min-h-[580px]">
 
-      {/* Card */}
-      <div className="w-full max-w-sm bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+        {/* LEFT PANEL — branded */}
+        <div className="hidden md:flex md:w-[45%] relative flex-col justify-between p-10 bg-gradient-to-br from-[#1034A6] via-[#1a4dd4] to-[#84BDE3] overflow-hidden">
+          {/* Decorative blobs */}
+          <div className="absolute top-[-60px] right-[-60px] w-48 h-48 rounded-full bg-white/10 blur-2xl" />
+          <div className="absolute bottom-[-40px] left-[-40px] w-64 h-64 rounded-full bg-[#84BDE3]/20 blur-3xl" />
 
-        {!showReset ? (
-          <>
-            <div className="mb-7">
-              <h1 className="text-xl font-bold text-[#1034A6]">{t.title}</h1>
-              <p className="text-sm text-gray-400 mt-1">{t.subtitle}</p>
+          {/* Logo */}
+          <div className="relative z-10">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl px-4 py-3 inline-block border border-white/20">
+              <Image
+                src="/images/images.png"
+                alt="Lab Yaoundé Logo"
+                width={160}
+                height={64}
+                className="h-12 w-auto object-contain"
+                priority
+              />
+            </div>
+          </div>
+
+          {/* Center image */}
+          <div className="relative z-10 flex-1 flex items-center justify-center my-6">
+            <div className="relative w-56 h-64 rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/20">
+              <Image
+                src="/IMAGE/national-cancer-institute-XknuBmnjbKg-unsplash.jpg"
+                alt="Lab professional"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 768px) 0px, 224px"
+                priority
+              />
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1034A6]/40 to-transparent" />
             </div>
 
-            {/* Messages */}
-            {error && (
-              <div className="flex items-start gap-2.5 p-3 bg-red-50 border border-red-100 rounded-xl mb-5">
-                <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
-                <p className="text-sm text-red-600">{error}</p>
-              </div>
-            )}
-            {success && (
-              <div className="flex items-start gap-2.5 p-3 bg-green-50 border border-green-100 rounded-xl mb-5">
-                <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
-                <p className="text-sm text-green-600">{success}</p>
-              </div>
-            )}
+            {/* Floating accent badges */}
+            <div className="absolute top-4 -right-2 bg-white/20 backdrop-blur-md rounded-2xl px-3 py-2 text-white text-xs font-semibold border border-white/30 shadow-lg">
+              <div className="text-lg font-black leading-none">24h</div>
+              <div className="text-white/70 text-[10px]">Résultats</div>
+            </div>
+            <div className="absolute bottom-4 -left-2 bg-white/20 backdrop-blur-md rounded-2xl px-3 py-2 text-white text-xs font-semibold border border-white/30 shadow-lg">
+              <div className="text-lg font-black leading-none text-[#AAD8FB]">ISO</div>
+              <div className="text-white/70 text-[10px]">Certifié</div>
+            </div>
+          </div>
 
-            <form onSubmit={handleLogin} className="space-y-4">
-              {/* Email */}
-              <div>
-                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">
-                  {t.emailLabel}
-                </label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300" />
-                  <input
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => { setEmail(e.target.value); setError(""); }}
-                    placeholder={t.emailPlaceholder}
-                    className="w-full pl-10 pr-4 py-3 text-sm border border-gray-200 rounded-xl focus:border-[#1034A6] focus:ring-1 focus:ring-[#1034A6] outline-none transition-colors text-[#1034A6] placeholder-gray-300"
-                  />
+          {/* Tagline */}
+          <div className="relative z-10">
+            <p className="text-white font-semibold text-lg leading-snug">{t.tagline}</p>
+            <p className="text-white/60 text-xs mt-1.5 leading-relaxed">{t.description}</p>
+
+            {/* Social icons */}
+            <div className="flex items-center gap-3 mt-5">
+              <a href="https://www.facebook.com/profile.php?id=61584110146922" target="_blank" rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white transition-all border border-white/20">
+                <Facebook className="w-3.5 h-3.5" />
+              </a>
+              <a href="https://www.instagram.com/labyciteverte/" target="_blank" rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white transition-all border border-white/20">
+                <Instagram className="w-3.5 h-3.5" />
+              </a>
+              <a href="https://www.tiktok.com/@laby.cite.vert" target="_blank" rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white transition-all border border-white/20">
+                <TikTokIcon />
+              </a>
+            </div>
+
+            <p className="text-white/30 text-[10px] mt-4">© {new Date().getFullYear()} Lab Yaounde. Tous droits réservés.</p>
+          </div>
+        </div>
+
+        {/* RIGHT PANEL — form */}
+        <div className="flex-1 flex flex-col justify-center px-8 py-10 md:px-12">
+
+          {/* Mobile logo */}
+          <div className="md:hidden mb-8 flex justify-center">
+            <Image
+              src="/images/images.png"
+              alt="Lab Yaoundé Logo"
+              width={140}
+              height={56}
+              className="h-14 w-auto object-contain"
+              priority
+            />
+          </div>
+
+          {!showReset ? (
+            <>
+              {/* Tabs */}
+              <div className="flex gap-6 mb-8 border-b border-gray-100">
+                <button
+                  onClick={() => switchTab("signin")}
+                  className={`pb-3 text-sm font-semibold transition-all border-b-2 -mb-px ${
+                    activeTab === "signin"
+                      ? "text-[#1034A6] border-[#1034A6]"
+                      : "text-gray-400 border-transparent hover:text-gray-600"
+                  }`}
+                >
+                  {t.signIn}
+                </button>
+                <button
+                  onClick={() => switchTab("signup")}
+                  className={`pb-3 text-sm font-semibold transition-all border-b-2 -mb-px ${
+                    activeTab === "signup"
+                      ? "text-[#1034A6] border-[#1034A6]"
+                      : "text-gray-400 border-transparent hover:text-gray-600"
+                  }`}
+                >
+                  {t.signUp}
+                </button>
+              </div>
+
+              {/* Alert messages */}
+              {error && (
+                <div className="flex items-start gap-2.5 p-3 bg-red-50 border border-red-100 rounded-xl mb-5">
+                  <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
+                  <p className="text-sm text-red-600">{error}</p>
                 </div>
-              </div>
+              )}
+              {success && (
+                <div className="flex items-start gap-2.5 p-3 bg-green-50 border border-green-100 rounded-xl mb-5">
+                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                  <p className="text-sm text-green-600">{success}</p>
+                </div>
+              )}
 
-              {/* Password */}
-              <div>
-                <div className="flex items-center justify-between mb-1.5">
-                  <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                    {t.passwordLabel}
-                  </label>
+              {/* SIGN IN FORM */}
+              {activeTab === "signin" && (
+                <form onSubmit={handleLogin} className="space-y-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-[#1034A6] mb-1.5">{t.email}</label>
+                    <input
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => { setEmail(e.target.value); setError(""); }}
+                      placeholder="exemple@email.com"
+                      className="w-full px-4 py-3 text-sm border-b border-gray-200 focus:border-[#1034A6] outline-none transition-colors text-gray-700 placeholder-gray-300 bg-transparent"
+                    />
+                  </div>
+
+                  <div>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <label className="text-xs font-semibold text-[#1034A6]">{t.password}</label>
+                      <button
+                        type="button"
+                        onClick={() => { setShowReset(true); setError(""); setSuccess(""); }}
+                        className="text-xs text-[#1034A6]/60 hover:text-[#1034A6] transition-colors"
+                      >
+                        {t.forgotPassword}
+                      </button>
+                    </div>
+                    <div className="relative">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        required
+                        value={password}
+                        onChange={(e) => { setPassword(e.target.value); setError(""); }}
+                        placeholder="••••••••"
+                        className="w-full px-4 py-3 pr-10 text-sm border-b border-gray-200 focus:border-[#1034A6] outline-none transition-colors text-gray-700 placeholder-gray-300 bg-transparent"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-300 hover:text-gray-500 transition-colors"
+                      >
+                        {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                      </button>
+                    </div>
+                  </div>
+
                   <button
-                    type="button"
-                    onClick={() => { setShowReset(true); setError(""); setSuccess(""); }}
-                    className="text-xs text-[#1034A6]/60 hover:text-[#1034A6] transition-colors"
+                    type="submit"
+                    disabled={loading}
+                    className="w-full py-3.5 bg-[#1034A6] hover:bg-[#0A2480] text-white text-sm font-bold rounded-xl transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
                   >
-                    {t.forgotPassword}
+                    {loading ? <><Loader2 className="w-4 h-4 animate-spin" />{t.loggingIn}</> : t.loginButton}
                   </button>
-                </div>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300" />
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    required
-                    value={password}
-                    onChange={(e) => { setPassword(e.target.value); setError(""); }}
-                    placeholder={t.passwordPlaceholder}
-                    className="w-full pl-10 pr-10 py-3 text-sm border border-gray-200 rounded-xl focus:border-[#1034A6] focus:ring-1 focus:ring-[#1034A6] outline-none transition-colors text-[#1034A6] placeholder-gray-300"
-                  />
+
+                  <p className="text-center text-xs text-gray-400 pt-1">
+                    {t.noAccount}{" "}
+                    <button type="button" onClick={() => switchTab("signup")} className="text-[#1034A6] font-semibold hover:underline">
+                      {t.signUp}
+                    </button>
+                  </p>
+                </form>
+              )}
+
+              {/* SIGN UP FORM */}
+              {activeTab === "signup" && (
+                <form onSubmit={handleSignup} className="space-y-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-[#1034A6] mb-1.5">{t.fullName}</label>
+                    <input
+                      type="text"
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.value)}
+                      placeholder={language === "fr" ? "Votre nom" : "Your name"}
+                      className="w-full px-4 py-3 text-sm border-b border-gray-200 focus:border-[#1034A6] outline-none transition-colors text-gray-700 placeholder-gray-300 bg-transparent"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-[#1034A6] mb-1.5">{t.email}</label>
+                    <input
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => { setEmail(e.target.value); setError(""); }}
+                      placeholder="exemple@email.com"
+                      className="w-full px-4 py-3 text-sm border-b border-gray-200 focus:border-[#1034A6] outline-none transition-colors text-gray-700 placeholder-gray-300 bg-transparent"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-[#1034A6] mb-1.5">{t.password}</label>
+                    <div className="relative">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        required
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="••••••••"
+                        className="w-full px-4 py-3 pr-10 text-sm border-b border-gray-200 focus:border-[#1034A6] outline-none transition-colors text-gray-700 placeholder-gray-300 bg-transparent"
+                      />
+                      <button type="button" onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-300 hover:text-gray-500 transition-colors">
+                        {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-[#1034A6] mb-1.5">{t.confirmPassword}</label>
+                    <div className="relative">
+                      <input
+                        type={showConfirmPassword ? "text" : "password"}
+                        required
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        placeholder="••••••••"
+                        className="w-full px-4 py-3 pr-10 text-sm border-b border-gray-200 focus:border-[#1034A6] outline-none transition-colors text-gray-700 placeholder-gray-300 bg-transparent"
+                      />
+                      <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-300 hover:text-gray-500 transition-colors">
+                        {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                      </button>
+                    </div>
+                  </div>
+
                   <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-300 hover:text-gray-500 transition-colors"
+                    type="submit"
+                    disabled={loading}
+                    className="w-full py-3.5 bg-[#1034A6] hover:bg-[#0A2480] text-white text-sm font-bold rounded-xl transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
                   >
-                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    {loading ? <><Loader2 className="w-4 h-4 animate-spin" />{t.registering}</> : t.registerButton}
                   </button>
-                </div>
-              </div>
 
-              {/* Remember me */}
-              <label className="flex items-center gap-2.5 cursor-pointer group">
-                <input
-                  type="checkbox"
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                  className="w-4 h-4 rounded border-gray-300 text-[#1034A6] focus:ring-[#1034A6]"
-                />
-                <span className="text-sm text-gray-400 group-hover:text-gray-600 transition-colors">{t.rememberMe}</span>
-              </label>
-
-              {/* Submit */}
+                  <p className="text-center text-xs text-gray-400 pt-1">
+                    {t.hasAccount}{" "}
+                    <button type="button" onClick={() => switchTab("signin")} className="text-[#1034A6] font-semibold hover:underline">
+                      {t.signIn}
+                    </button>
+                  </p>
+                </form>
+              )}
+            </>
+          ) : (
+            /* RESET PASSWORD */
+            <>
               <button
-                type="submit"
-                disabled={loading}
-                className="w-full py-3 bg-[#1034A6] hover:bg-[#0A2480] text-white text-sm font-semibold rounded-xl transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                onClick={() => { setShowReset(false); setError(""); setSuccess(""); }}
+                className="flex items-center gap-1.5 text-sm text-[#1034A6]/60 hover:text-[#1034A6] transition-colors mb-8"
               >
-                {loading ? (
-                  <><Loader2 className="w-4 h-4 animate-spin" />{t.loggingIn}</>
-                ) : t.loginButton}
+                <ArrowLeft className="w-4 h-4" />
+                {t.reset.back}
               </button>
-            </form>
 
-            <p className="text-center text-sm text-gray-400 mt-6">
-              {t.noAccount}{" "}
-              <Link href="/mes-resultats" className="text-[#1034A6] font-semibold hover:underline">
-                {t.createAccount}
-              </Link>
-            </p>
-          </>
-        ) : (
-          /* Reset Password Form */
-          <>
-            <button
-              onClick={() => { setShowReset(false); setError(""); setSuccess(""); }}
-              className="flex items-center gap-1.5 text-sm text-[#1034A6]/60 hover:text-[#1034A6] transition-colors mb-6"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              {t.reset.back}
-            </button>
-
-            <div className="mb-7">
-              <h1 className="text-xl font-bold text-[#1034A6]">{t.reset.title}</h1>
-              <p className="text-sm text-gray-400 mt-1">{t.reset.subtitle}</p>
-            </div>
-
-            {error && (
-              <div className="flex items-start gap-2.5 p-3 bg-red-50 border border-red-100 rounded-xl mb-5">
-                <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
-                <p className="text-sm text-red-600">{error}</p>
+              <div className="mb-7">
+                <h2 className="text-xl font-bold text-[#1034A6]">{t.reset.title}</h2>
+                <p className="text-sm text-gray-400 mt-1">{t.reset.subtitle}</p>
               </div>
-            )}
-            {success && (
-              <div className="flex items-start gap-2.5 p-3 bg-green-50 border border-green-100 rounded-xl mb-5">
-                <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
-                <p className="text-sm text-green-600">{success}</p>
-              </div>
-            )}
 
-            <form onSubmit={handleReset} className="space-y-4">
-              <div>
-                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">
-                  {t.emailLabel}
-                </label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300" />
+              {error && (
+                <div className="flex items-start gap-2.5 p-3 bg-red-50 border border-red-100 rounded-xl mb-5">
+                  <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
+                  <p className="text-sm text-red-600">{error}</p>
+                </div>
+              )}
+              {success && (
+                <div className="flex items-start gap-2.5 p-3 bg-green-50 border border-green-100 rounded-xl mb-5">
+                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                  <p className="text-sm text-green-600">{success}</p>
+                </div>
+              )}
+
+              <form onSubmit={handleReset} className="space-y-4">
+                <div>
+                  <label className="block text-xs font-semibold text-[#1034A6] mb-1.5">{t.email}</label>
                   <input
                     type="email"
                     required
                     value={resetEmail}
                     onChange={(e) => { setResetEmail(e.target.value); setError(""); }}
-                    placeholder={t.emailPlaceholder}
-                    className="w-full pl-10 pr-4 py-3 text-sm border border-gray-200 rounded-xl focus:border-[#1034A6] focus:ring-1 focus:ring-[#1034A6] outline-none transition-colors text-[#1034A6] placeholder-gray-300"
+                    placeholder="exemple@email.com"
+                    className="w-full px-4 py-3 text-sm border-b border-gray-200 focus:border-[#1034A6] outline-none transition-colors text-gray-700 placeholder-gray-300 bg-transparent"
                   />
                 </div>
-              </div>
-              <button
-                type="submit"
-                disabled={resetLoading}
-                className="w-full py-3 bg-[#1034A6] hover:bg-[#0A2480] text-white text-sm font-semibold rounded-xl transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-              >
-                {resetLoading ? (
-                  <><Loader2 className="w-4 h-4 animate-spin" />{t.reset.sending}</>
-                ) : t.reset.sendButton}
-              </button>
-            </form>
-          </>
-        )}
-      </div>
+                <button
+                  type="submit"
+                  disabled={resetLoading}
+                  className="w-full py-3.5 bg-[#1034A6] hover:bg-[#0A2480] text-white text-sm font-bold rounded-xl transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                >
+                  {resetLoading ? <><Loader2 className="w-4 h-4 animate-spin" />{t.reset.sending}</> : t.reset.sendButton}
+                </button>
+              </form>
+            </>
+          )}
 
-      {/* Footer note */}
-      <p className="mt-6 text-xs text-gray-400 text-center">
-        © {new Date().getFullYear()} Lab Yaounde — Connexion sécurisée SSL
-      </p>
+          {/* Mobile social links */}
+          <div className="md:hidden flex items-center justify-center gap-4 mt-8 pt-6 border-t border-gray-100">
+            <a href="https://www.facebook.com/profile.php?id=61584110146922" target="_blank" rel="noopener noreferrer"
+              className="w-8 h-8 rounded-full bg-gray-100 hover:bg-[#1034A6] flex items-center justify-center text-gray-400 hover:text-white transition-all">
+              <Facebook className="w-3.5 h-3.5" />
+            </a>
+            <a href="https://www.instagram.com/labyciteverte/" target="_blank" rel="noopener noreferrer"
+              className="w-8 h-8 rounded-full bg-gray-100 hover:bg-[#1034A6] flex items-center justify-center text-gray-400 hover:text-white transition-all">
+              <Instagram className="w-3.5 h-3.5" />
+            </a>
+            <a href="https://www.tiktok.com/@laby.cite.vert" target="_blank" rel="noopener noreferrer"
+              className="w-8 h-8 rounded-full bg-gray-100 hover:bg-[#1034A6] flex items-center justify-center text-gray-400 hover:text-white transition-all">
+              <TikTokIcon />
+            </a>
+          </div>
+
+          <p className="mt-5 text-[10px] text-gray-300 text-center">
+            © {new Date().getFullYear()} Lab Yaounde — Connexion sécurisée SSL
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
