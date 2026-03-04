@@ -1,6 +1,6 @@
 "use client";
 
-import { Phone, Mail, MapPin, Facebook, Instagram, Shield } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Instagram, Shield, LayoutDashboard } from 'lucide-react';
 import { useLanguage } from '@/lib/contents/LanguageContext';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -32,7 +32,7 @@ const TopNavigationBar = () => {
       initial={{ y: -10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="bg-[#0A1628] border-b border-white/[0.06] hidden sm:block"
+      className="bg-[#1034A6] border-b border-white/[0.08] hidden sm:block"
     >
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-2">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-2.5 lg:gap-0 text-white">
@@ -84,9 +84,27 @@ const TopNavigationBar = () => {
                 <TikTokIcon className="h-3.5 w-3.5" />
               </a>
 
-              {/* Admin Access Button */}
-              <Link href="/admin-login" aria-label="Admin Login" className="ml-1 flex items-center justify-center w-7 h-7 text-white/40 hover:text-white/80 transition-colors">
+              {/* Divider */}
+              <span className="text-white/20 mx-1">|</span>
+
+              {/* Admin Login */}
+              <Link
+                href="/admin-login"
+                aria-label="Admin Login"
+                title="Connexion Admin"
+                className="flex items-center justify-center w-7 h-7 text-white/40 hover:text-white/80 transition-colors"
+              >
                 <Shield className="h-3.5 w-3.5" />
+              </Link>
+
+              {/* Admin Dashboard — direct access icon */}
+              <Link
+                href="/admin-dashboard"
+                aria-label="Admin Dashboard"
+                title="Tableau de bord Admin"
+                className="flex items-center justify-center w-7 h-7 rounded-md bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all"
+              >
+                <LayoutDashboard className="h-3.5 w-3.5" />
               </Link>
             </div>
           </div>

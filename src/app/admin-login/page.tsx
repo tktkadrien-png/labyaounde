@@ -2,10 +2,8 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Shield, Mail, Lock, Eye, EyeOff, LogIn, AlertTriangle } from "lucide-react";
-import TopNavigationBar from "@/components/sections/top-navigation-bar";
-import MainNavigation from "@/components/sections/main-navigation";
-import Footer from "@/components/sections/footer";
+import Link from "next/link";
+import { Shield, Mail, Lock, Eye, EyeOff, AlertCircle, ArrowLeft, Loader2 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { useLanguage } from "@/lib/contents/LanguageContext";
 
@@ -18,121 +16,93 @@ export default function AdminLoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const content = {
+  const t = {
     fr: {
       title: "Connexion Admin",
       subtitle: "Accès réservé aux administrateurs",
-      emailLabel: "Email Administrateur",
-      emailPlaceholder: "admin@example.com",
+      emailLabel: "Email",
+      emailPlaceholder: "admin@labyaounde.com",
       passwordLabel: "Mot de passe",
-      passwordPlaceholder: "••••••••",
       loginButton: "Se connecter",
-      loading: "Connexion en cours...",
-      unauthorized: "Accès non autorisé. Seuls les administrateurs peuvent se connecter ici.",
-      noAccount: "Pas encore de compte admin?",
+      loading: "Connexion...",
+      unauthorized: "Accès non autorisé. Compte administrateur requis.",
+      noAccount: "Pas encore de compte admin ?",
       registerLink: "Créer un compte",
       invalidCredentials: "Email ou mot de passe incorrect.",
       networkError: "Erreur de connexion. Vérifiez votre connexion internet.",
+      backToSite: "Retour au site",
     },
     en: {
       title: "Admin Login",
       subtitle: "Access reserved for administrators",
-      emailLabel: "Admin Email",
-      emailPlaceholder: "admin@example.com",
+      emailLabel: "Email",
+      emailPlaceholder: "admin@labyaounde.com",
       passwordLabel: "Password",
-      passwordPlaceholder: "••••••••",
       loginButton: "Sign in",
       loading: "Signing in...",
-      unauthorized: "Unauthorized access. Only administrators can login here.",
-      noAccount: "Don't have an admin account?",
-      registerLink: "Register",
+      unauthorized: "Unauthorized. Administrator account required.",
+      noAccount: "No admin account yet?",
+      registerLink: "Create account",
       invalidCredentials: "Invalid email or password.",
       networkError: "Connection error. Check your internet connection.",
+      backToSite: "Back to site",
     },
-  };
-
-  const currentContent = content[language];
+  }[language];
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setLoading(true);
-
     try {
-      // 1. Sign in with Supabase Auth
       const { data, error: authError } = await supabase.auth.signInWithPassword({
         email: email.trim().toLowerCase(),
         password,
       });
 
       if (authError) {
-        console.error("Auth error:", authError);
-
         if (authError.message.includes("Invalid login credentials")) {
-          setError(currentContent.invalidCredentials);
-        } else if (authError.message.toLowerCase().includes("fetch") || authError.message.toLowerCase().includes("network")) {
-          setError(currentContent.networkError);
+          setError(t.invalidCredentials);
+        } else if (authError.message.toLowerCase().includes("network") || authError.message.toLowerCase().includes("fetch")) {
+          setError(t.networkError);
         } else {
           setError(authError.message);
         }
         return;
       }
 
-      if (!data.user) {
-        setError(currentContent.invalidCredentials);
-        return;
-      }
+      if (!data.user) { setError(t.invalidCredentials); return; }
 
-      // 2. Verify admin status via secure API route
+      // Verify admin status
       try {
         const verifyResponse = await fetch('/api/admin/verify', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            user_id: data.user.id,
-          }),
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ user_id: data.user.id }),
         });
-
         const verifyData = await verifyResponse.json();
-
         if (!verifyData.is_admin) {
-          // Not an admin - sign out and show error
           await supabase.auth.signOut();
-          setError(currentContent.unauthorized);
+          setError(t.unauthorized);
           return;
         }
-      } catch (verifyError) {
-        // If API verification fails, fall back to metadata check
-        console.warn("API verification failed, using fallback:", verifyError);
-
+      } catch {
+        // Fallback check
         const isAdmin =
-          data.user.email === "Labyaounde@gmail.com" ||
           data.user.user_metadata?.is_admin === true ||
           data.user.user_metadata?.role === "admin";
-
         if (!isAdmin) {
           await supabase.auth.signOut();
-          setError(currentContent.unauthorized);
+          setError(t.unauthorized);
           return;
         }
       }
 
-      // 3. Admin verified - redirect to dashboard
       router.push("/admin-dashboard");
-
-    } catch (error: any) {
-      console.error("Login error:", error);
-
-      if (error.message?.toLowerCase().includes("fetch") || error.message?.toLowerCase().includes("network")) {
-        setError(currentContent.networkError);
+    } catch (err: any) {
+      if (err.message?.toLowerCase().includes("fetch") || err.message?.toLowerCase().includes("network")) {
+        setError(t.networkError);
       } else {
-        setError(
-          language === "fr"
-            ? "Une erreur est survenue. Veuillez réessayer."
-            : "An error occurred. Please try again."
-        );
+        setError(language === "fr" ? "Une erreur est survenue." : "An error occurred.");
       }
     } finally {
       setLoading(false);
@@ -140,144 +110,108 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <>
-      <TopNavigationBar />
-      <MainNavigation />
-      <main className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full">
-          {/* Modern Card with Admin Theme */}
-          <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 space-y-8 border-t-4 border-[#FE5000]">
-            {/* Header */}
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#FE5000] to-[#CC4000] rounded-full mb-4 shadow-lg">
-                <Shield className="w-8 h-8 text-white" />
-              </div>
-              <h2 className="text-3xl font-bold text-[#1E40AF]">
-                {currentContent.title}
-              </h2>
-              <p className="mt-2 text-sm text-[#1E40AF]/70">{currentContent.subtitle}</p>
+    <div className="min-h-screen bg-[#F8FAFF] flex flex-col items-center justify-center px-4 py-12">
+      {/* Back to site */}
+      <Link
+        href="/"
+        className="absolute top-6 left-6 flex items-center gap-2 text-sm text-[#1034A6]/60 hover:text-[#1034A6] transition-colors"
+      >
+        <ArrowLeft className="w-4 h-4" />
+        {t.backToSite}
+      </Link>
 
-              {/* Admin Badge */}
-              <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-[#FE5000]/10 rounded-full">
-                <Shield className="w-4 h-4 text-[#FE5000]" />
-                <span className="text-sm font-semibold text-[#FE5000]">
-                  {language === "fr" ? "Espace Administrateur" : "Administrator Area"}
-                </span>
-              </div>
-            </div>
+      {/* Logo */}
+      <div className="mb-8 text-center">
+        <Link href="/" className="inline-flex items-center gap-2">
+          <Shield className="w-5 h-5 text-[#1034A6]" />
+          <div className="text-2xl font-bold text-[#1034A6] tracking-tight">
+            Lab<span className="text-[#84BDE3]">Yaounde</span>
+            <span className="text-sm font-normal text-gray-400 ml-2">Admin</span>
+          </div>
+        </Link>
+      </div>
 
-            {/* Form */}
-            <form onSubmit={handleLogin} className="space-y-6">
-              {/* Error Message */}
-              {error && (
-                <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded flex items-start gap-3">
-                  <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                  <p className="text-red-700 text-sm">{error}</p>
-                </div>
-              )}
+      {/* Card */}
+      <div className="w-full max-w-sm bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+        <div className="mb-7">
+          <h1 className="text-xl font-bold text-[#1034A6]">{t.title}</h1>
+          <p className="text-sm text-gray-400 mt-1">{t.subtitle}</p>
+        </div>
 
-              {/* Email */}
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-[#1E40AF]/80 mb-1">
-                  {currentContent.emailLabel}
-                </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Mail className="h-5 w-5 text-gray-400" />
-                  </div>
-                  <input
-                    id="email"
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder={currentContent.emailPlaceholder}
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FE5000] focus:border-transparent transition-all placeholder:text-gray-400"
-                  />
-                </div>
-              </div>
+        {error && (
+          <div className="flex items-start gap-2.5 p-3 bg-red-50 border border-red-100 rounded-xl mb-5">
+            <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-red-600">{error}</p>
+          </div>
+        )}
 
-              {/* Password */}
-              <div>
-                <label htmlFor="password" className="block text-sm font-medium text-[#1E40AF]/80 mb-1">
-                  {currentContent.passwordLabel}
-                </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Lock className="h-5 w-5 text-gray-400" />
-                  </div>
-                  <input
-                    id="password"
-                    type={showPassword ? "text" : "password"}
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder={currentContent.passwordPlaceholder}
-                    className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FE5000] focus:border-transparent transition-all placeholder:text-gray-400"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-[#1E40AF]/50 hover:text-[#1E40AF]/70"
-                  >
-                    {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-                  </button>
-                </div>
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full flex justify-center items-center gap-2 py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-[#FE5000] to-[#CC4000] hover:from-[#CC4000] hover:to-[#FE5000] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FE5000] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-[1.02]"
-              >
-                {loading ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    {currentContent.loading}
-                  </>
-                ) : (
-                  <>
-                    <LogIn className="w-5 h-5" />
-                    {currentContent.loginButton}
-                  </>
-                )}
-              </button>
-            </form>
-
-            {/* Divider */}
+        <form onSubmit={handleLogin} className="space-y-4">
+          {/* Email */}
+          <div>
+            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">
+              {t.emailLabel}
+            </label>
             <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">{language === "fr" ? "ou" : "or"}</span>
-              </div>
-            </div>
-
-            {/* Register link */}
-            <div className="text-center">
-              <p className="text-sm text-[#1E40AF]/70">
-                {currentContent.noAccount}{" "}
-                <a href="/admin-register" className="font-semibold text-[#FE5000] hover:text-[#CC4000] transition-colors">
-                  {currentContent.registerLink}
-                </a>
-              </p>
-            </div>
-
-            {/* Warning Notice */}
-            <div className="bg-[#FE5000]/10 border border-[#FE5000]/30 rounded-lg p-4">
-              <p className="text-xs text-[#FE5000] text-center">
-                <strong>{language === "fr" ? "Avertissement:" : "Warning:"}</strong>{" "}
-                {language === "fr"
-                  ? "Cette zone est strictement réservée aux administrateurs autorisés."
-                  : "This area is strictly reserved for authorized administrators."}
-              </p>
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300" />
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => { setEmail(e.target.value); setError(""); }}
+                placeholder={t.emailPlaceholder}
+                className="w-full pl-10 pr-4 py-3 text-sm border border-gray-200 rounded-xl focus:border-[#1034A6] focus:ring-1 focus:ring-[#1034A6] outline-none transition-colors text-[#1034A6] placeholder-gray-300"
+              />
             </div>
           </div>
-        </div>
-      </main>
-      <Footer />
-    </>
+
+          {/* Password */}
+          <div>
+            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">
+              {t.passwordLabel}
+            </label>
+            <div className="relative">
+              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300" />
+              <input
+                type={showPassword ? "text" : "password"}
+                required
+                value={password}
+                onChange={(e) => { setPassword(e.target.value); setError(""); }}
+                placeholder="••••••••"
+                className="w-full pl-10 pr-10 py-3 text-sm border border-gray-200 rounded-xl focus:border-[#1034A6] focus:ring-1 focus:ring-[#1034A6] outline-none transition-colors text-[#1034A6] placeholder-gray-300"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-300 hover:text-gray-500 transition-colors"
+              >
+                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+              </button>
+            </div>
+          </div>
+
+          {/* Submit */}
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-3 bg-[#1034A6] hover:bg-[#0A2480] text-white text-sm font-semibold rounded-xl transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
+          >
+            {loading ? (
+              <><Loader2 className="w-4 h-4 animate-spin" />{t.loading}</>
+            ) : t.loginButton}
+          </button>
+        </form>
+
+        <p className="text-center text-sm text-gray-400 mt-6">
+          {t.noAccount}{" "}
+          <Link href="/admin-register" className="text-[#1034A6] font-semibold hover:underline">
+            {t.registerLink}
+          </Link>
+        </p>
+      </div>
+
+      <p className="mt-6 text-xs text-gray-400 text-center">
+        © {new Date().getFullYear()} Lab Yaounde — Zone administrateur sécurisée
+      </p>
+    </div>
   );
 }

@@ -2,10 +2,8 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Shield, Mail, Lock, Eye, EyeOff, UserPlus, User, Key, AlertTriangle } from "lucide-react";
-import TopNavigationBar from "@/components/sections/top-navigation-bar";
-import MainNavigation from "@/components/sections/main-navigation";
-import Footer from "@/components/sections/footer";
+import Link from "next/link";
+import { Shield, Mail, Lock, Eye, EyeOff, User, Key, AlertCircle, CheckCircle, ArrowLeft, Loader2 } from "lucide-react";
 import { useLanguage } from "@/lib/contents/LanguageContext";
 
 export default function AdminRegisterPage() {
@@ -22,85 +20,66 @@ export default function AdminRegisterPage() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const content = {
+  const t = {
     fr: {
-      title: "Créer un compte Admin",
+      title: "Compte Administrateur",
       subtitle: "Inscription réservée aux administrateurs autorisés",
+      keyLabel: "Clé secrète admin",
+      keyPlaceholder: "Entrez la clé secrète",
+      keyNote: "Seuls les propriétaires autorisés de Lab Yaounde disposent de cette clé",
       nameLabel: "Nom complet",
       namePlaceholder: "Nom de l'administrateur",
-      emailLabel: "Email Administrateur",
+      emailLabel: "Email",
       emailPlaceholder: "admin@labyaounde.com",
       passwordLabel: "Mot de passe",
-      passwordPlaceholder: "••••••••",
       confirmPasswordLabel: "Confirmer le mot de passe",
-      confirmPasswordPlaceholder: "••••••••",
-      secretCodeLabel: "Clé Secrète Admin",
-      secretCodePlaceholder: "Entrez la clé secrète",
-      registerButton: "Créer le compte Admin",
-      loading: "Création du compte...",
-      passwordMismatch: "Les mots de passe ne correspondent pas",
-      passwordTooShort: "Le mot de passe doit contenir au moins 6 caractères",
-      hasAccount: "Déjà un compte admin?",
+      registerButton: "Créer le compte",
+      loading: "Création...",
+      mismatch: "Les mots de passe ne correspondent pas",
+      tooShort: "Le mot de passe doit contenir au moins 6 caractères",
+      keyRequired: "La clé secrète est requise",
+      hasAccount: "Déjà un compte ?",
       loginLink: "Se connecter",
-      successMessage: "Compte administrateur créé avec succès! Redirection...",
-      securityNote: "Seuls les propriétaires autorisés de Lab Yaounde ont la clé secrète",
+      success: "Compte créé avec succès ! Redirection...",
+      networkError: "Erreur de connexion. Vérifiez votre connexion internet.",
+      unknownError: "Une erreur est survenue. Veuillez réessayer.",
     },
     en: {
-      title: "Create Admin Account",
+      title: "Admin Account",
       subtitle: "Registration reserved for authorized administrators",
+      keyLabel: "Admin secret key",
+      keyPlaceholder: "Enter secret key",
+      keyNote: "Only authorized Lab Yaounde owners have this key",
       nameLabel: "Full name",
       namePlaceholder: "Administrator name",
-      emailLabel: "Admin Email",
+      emailLabel: "Email",
       emailPlaceholder: "admin@labyaounde.com",
       passwordLabel: "Password",
-      passwordPlaceholder: "••••••••",
       confirmPasswordLabel: "Confirm password",
-      confirmPasswordPlaceholder: "••••••••",
-      secretCodeLabel: "Admin Secret Key",
-      secretCodePlaceholder: "Enter secret key",
-      registerButton: "Create Admin Account",
-      loading: "Creating account...",
-      passwordMismatch: "Passwords do not match",
-      passwordTooShort: "Password must be at least 6 characters",
-      hasAccount: "Already have an admin account?",
+      registerButton: "Create account",
+      loading: "Creating...",
+      mismatch: "Passwords do not match",
+      tooShort: "Password must be at least 6 characters",
+      keyRequired: "Secret key is required",
+      hasAccount: "Already have an account?",
       loginLink: "Sign in",
-      successMessage: "Admin account created successfully! Redirecting...",
-      securityNote: "Only authorized Lab Yaounde owners have the secret key",
+      success: "Account created successfully! Redirecting...",
+      networkError: "Connection error. Check your internet connection.",
+      unknownError: "An error occurred. Please try again.",
     },
-  };
-
-  const currentContent = content[language];
+  }[language];
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
-    setSuccess("");
-
-    // Client-side validation
-    if (password !== confirmPassword) {
-      setError(currentContent.passwordMismatch);
-      return;
-    }
-
-    if (password.length < 6) {
-      setError(currentContent.passwordTooShort);
-      return;
-    }
-
-    if (!secretCode.trim()) {
-      setError(language === "fr" ? "La clé secrète est requise" : "Secret key is required");
-      return;
-    }
-
+    setError(""); setSuccess("");
+    if (!secretCode.trim()) return setError(t.keyRequired);
+    if (password.length < 6) return setError(t.tooShort);
+    if (password !== confirmPassword) return setError(t.mismatch);
     setLoading(true);
-
     try {
-      // Call secure API route instead of direct Supabase call
       const response = await fetch('/api/admin/register', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email: email.trim().toLowerCase(),
           password,
@@ -108,40 +87,18 @@ export default function AdminRegisterPage() {
           admin_secret_key: secretCode.trim(),
         }),
       });
-
       const data = await response.json();
-
       if (!response.ok) {
-        // Handle specific error codes
-        const errorMessage = language === "fr" ? data.error : (data.error_en || data.error);
-        setError(errorMessage);
+        setError(language === "fr" ? data.error : (data.error_en || data.error));
         return;
       }
-
-      // Success!
-      setSuccess(currentContent.successMessage);
-
-      // Redirect to admin login after 2 seconds
-      setTimeout(() => {
-        router.push("/admin-login");
-      }, 2000);
-
-    } catch (error: any) {
-      console.error("Registration error:", error);
-
-      // Network error handling
-      if (error.message?.includes('fetch') || error.message?.includes('network')) {
-        setError(
-          language === "fr"
-            ? "Erreur de connexion. Vérifiez votre connexion internet."
-            : "Connection error. Check your internet connection."
-        );
+      setSuccess(t.success);
+      setTimeout(() => router.push("/admin-login"), 2000);
+    } catch (err: any) {
+      if (err.message?.includes('fetch') || err.message?.includes('network')) {
+        setError(t.networkError);
       } else {
-        setError(
-          language === "fr"
-            ? "Une erreur est survenue. Veuillez réessayer."
-            : "An error occurred. Please try again."
-        );
+        setError(t.unknownError);
       }
     } finally {
       setLoading(false);
@@ -149,224 +106,161 @@ export default function AdminRegisterPage() {
   };
 
   return (
-    <>
-      <TopNavigationBar />
-      <MainNavigation />
-      <main className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full">
-          {/* Modern Card with Admin Theme */}
-          <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 space-y-8 border-t-4 border-[#FE5000]">
-            {/* Header */}
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#FE5000] to-[#CC4000] rounded-full mb-4 shadow-lg">
-                <Shield className="w-8 h-8 text-white" />
-              </div>
-              <h2 className="text-3xl font-bold text-[#1E40AF]">
-                {currentContent.title}
-              </h2>
-              <p className="mt-2 text-sm text-[#1E40AF]/70">{currentContent.subtitle}</p>
+    <div className="min-h-screen bg-[#F8FAFF] flex flex-col items-center justify-center px-4 py-12">
+      {/* Back link */}
+      <Link
+        href="/admin-login"
+        className="absolute top-6 left-6 flex items-center gap-2 text-sm text-[#1034A6]/60 hover:text-[#1034A6] transition-colors"
+      >
+        <ArrowLeft className="w-4 h-4" />
+        {t.hasAccount} {t.loginLink}
+      </Link>
 
-              {/* Admin Badge */}
-              <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-[#FE5000]/10 rounded-full">
-                <Shield className="w-4 h-4 text-[#FE5000]" />
-                <span className="text-sm font-semibold text-[#FE5000]">
-                  {language === "fr" ? "Inscription Administrateur" : "Administrator Registration"}
-                </span>
-              </div>
-            </div>
+      {/* Logo */}
+      <div className="mb-8 text-center">
+        <Link href="/" className="inline-flex items-center gap-2">
+          <Shield className="w-5 h-5 text-[#1034A6]" />
+          <div className="text-2xl font-bold text-[#1034A6] tracking-tight">
+            Lab<span className="text-[#84BDE3]">Yaounde</span>
+            <span className="text-sm font-normal text-gray-400 ml-2">Admin</span>
+          </div>
+        </Link>
+      </div>
 
-            {/* Form */}
-            <form onSubmit={handleRegister} className="space-y-5">
-              {/* Error Message */}
-              {error && (
-                <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded flex items-start gap-3">
-                  <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                  <p className="text-red-700 text-sm">{error}</p>
-                </div>
-              )}
+      {/* Card */}
+      <div className="w-full max-w-sm bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+        <div className="mb-7">
+          <h1 className="text-xl font-bold text-[#1034A6]">{t.title}</h1>
+          <p className="text-sm text-gray-400 mt-1">{t.subtitle}</p>
+        </div>
 
-              {/* Success Message */}
-              {success && (
-                <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded">
-                  <p className="text-green-700 text-sm font-medium">{success}</p>
-                </div>
-              )}
+        {/* Messages */}
+        {error && (
+          <div className="flex items-start gap-2.5 p-3 bg-red-50 border border-red-100 rounded-xl mb-5">
+            <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-red-600">{error}</p>
+          </div>
+        )}
+        {success && (
+          <div className="flex items-start gap-2.5 p-3 bg-green-50 border border-green-100 rounded-xl mb-5">
+            <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-green-600">{success}</p>
+          </div>
+        )}
 
-              {/* Secret Code - First field for security */}
-              <div className="bg-[#FE5000]/10 border border-[#FE5000]/30 rounded-lg p-4">
-                <label htmlFor="secretCode" className="block text-sm font-medium text-[#1E40AF]/80 mb-1">
-                  {currentContent.secretCodeLabel} <span className="text-[#FE5000]">*</span>
-                </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Key className="h-5 w-5 text-[#FE5000]" />
-                  </div>
-                  <input
-                    id="secretCode"
-                    type="password"
-                    required
-                    value={secretCode}
-                    onChange={(e) => setSecretCode(e.target.value)}
-                    placeholder={currentContent.secretCodePlaceholder}
-                    className="block w-full pl-10 pr-3 py-3 border border-[#FE5000]/50 rounded-lg focus:ring-2 focus:ring-[#FE5000] focus:border-transparent transition-all placeholder:text-gray-400 bg-white"
-                  />
-                </div>
-                <p className="mt-2 text-xs text-[#FE5000]">
-                  {currentContent.securityNote}
-                </p>
-              </div>
-
-              {/* Full Name */}
-              <div>
-                <label htmlFor="fullName" className="block text-sm font-medium text-[#1E40AF]/80 mb-1">
-                  {currentContent.nameLabel}
-                </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <User className="h-5 w-5 text-gray-400" />
-                  </div>
-                  <input
-                    id="fullName"
-                    type="text"
-                    required
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    placeholder={currentContent.namePlaceholder}
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FE5000] focus:border-transparent transition-all placeholder:text-gray-400"
-                  />
-                </div>
-              </div>
-
-              {/* Email */}
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-[#1E40AF]/80 mb-1">
-                  {currentContent.emailLabel}
-                </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Mail className="h-5 w-5 text-gray-400" />
-                  </div>
-                  <input
-                    id="email"
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder={currentContent.emailPlaceholder}
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FE5000] focus:border-transparent transition-all placeholder:text-gray-400"
-                  />
-                </div>
-              </div>
-
-              {/* Password */}
-              <div>
-                <label htmlFor="password" className="block text-sm font-medium text-[#1E40AF]/80 mb-1">
-                  {currentContent.passwordLabel}
-                </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Lock className="h-5 w-5 text-gray-400" />
-                  </div>
-                  <input
-                    id="password"
-                    type={showPassword ? "text" : "password"}
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder={currentContent.passwordPlaceholder}
-                    className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FE5000] focus:border-transparent transition-all placeholder:text-gray-400"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-[#1E40AF]/50 hover:text-[#1E40AF]/70"
-                  >
-                    {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-                  </button>
-                </div>
-              </div>
-
-              {/* Confirm Password */}
-              <div>
-                <label htmlFor="confirmPassword" className="block text-sm font-medium text-[#1E40AF]/80 mb-1">
-                  {currentContent.confirmPasswordLabel}
-                </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Lock className="h-5 w-5 text-gray-400" />
-                  </div>
-                  <input
-                    id="confirmPassword"
-                    type={showConfirmPassword ? "text" : "password"}
-                    required
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    placeholder={currentContent.confirmPasswordPlaceholder}
-                    className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FE5000] focus:border-transparent transition-all placeholder:text-gray-400"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-[#1E40AF]/50 hover:text-[#1E40AF]/70"
-                  >
-                    {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-                  </button>
-                </div>
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full flex justify-center items-center gap-2 py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-[#FE5000] to-[#CC4000] hover:from-[#CC4000] hover:to-[#A03300] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FE5000] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-[1.02]"
-              >
-                {loading ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    {currentContent.loading}
-                  </>
-                ) : (
-                  <>
-                    <UserPlus className="w-5 h-5" />
-                    {currentContent.registerButton}
-                  </>
-                )}
-              </button>
-            </form>
-
-            {/* Divider */}
+        <form onSubmit={handleRegister} className="space-y-4">
+          {/* Secret key — first for security */}
+          <div className="p-4 bg-[#1034A6]/5 border border-[#1034A6]/10 rounded-xl">
+            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">
+              {t.keyLabel}
+            </label>
             <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">{language === "fr" ? "ou" : "or"}</span>
-              </div>
+              <Key className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#1034A6]/40" />
+              <input
+                type="password"
+                required
+                value={secretCode}
+                onChange={(e) => { setSecretCode(e.target.value); setError(""); }}
+                placeholder={t.keyPlaceholder}
+                className="w-full pl-10 pr-4 py-3 text-sm border border-[#1034A6]/20 rounded-xl focus:border-[#1034A6] focus:ring-1 focus:ring-[#1034A6] outline-none transition-colors bg-white text-[#1034A6] placeholder-gray-300"
+              />
             </div>
+            <p className="text-xs text-[#1034A6]/50 mt-1.5">{t.keyNote}</p>
+          </div>
 
-            {/* Login link */}
-            <div className="text-center">
-              <p className="text-sm text-[#1E40AF]/70">
-                {currentContent.hasAccount}{" "}
-                <a href="/admin-login" className="font-semibold text-[#FE5000] hover:text-[#CC4000] transition-colors">
-                  {currentContent.loginLink}
-                </a>
-              </p>
-            </div>
-
-            {/* Warning Notice */}
-            <div className="bg-[#FE5000]/10 border border-[#FE5000]/30 rounded-lg p-4">
-              <p className="text-xs text-[#FE5000] text-center">
-                <strong>{language === "fr" ? "Avertissement:" : "Warning:"}</strong>{" "}
-                {language === "fr"
-                  ? "Cette zone est strictement réservée aux administrateurs autorisés de Lab Yaounde."
-                  : "This area is strictly reserved for authorized Lab Yaounde administrators."}
-              </p>
+          {/* Full name */}
+          <div>
+            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">{t.nameLabel}</label>
+            <div className="relative">
+              <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300" />
+              <input
+                type="text"
+                required
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                placeholder={t.namePlaceholder}
+                className="w-full pl-10 pr-4 py-3 text-sm border border-gray-200 rounded-xl focus:border-[#1034A6] focus:ring-1 focus:ring-[#1034A6] outline-none transition-colors text-[#1034A6] placeholder-gray-300"
+              />
             </div>
           </div>
-        </div>
-      </main>
-      <Footer />
-    </>
+
+          {/* Email */}
+          <div>
+            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">{t.emailLabel}</label>
+            <div className="relative">
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300" />
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder={t.emailPlaceholder}
+                className="w-full pl-10 pr-4 py-3 text-sm border border-gray-200 rounded-xl focus:border-[#1034A6] focus:ring-1 focus:ring-[#1034A6] outline-none transition-colors text-[#1034A6] placeholder-gray-300"
+              />
+            </div>
+          </div>
+
+          {/* Password */}
+          <div>
+            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">{t.passwordLabel}</label>
+            <div className="relative">
+              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300" />
+              <input
+                type={showPassword ? "text" : "password"}
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••"
+                className="w-full pl-10 pr-10 py-3 text-sm border border-gray-200 rounded-xl focus:border-[#1034A6] focus:ring-1 focus:ring-[#1034A6] outline-none transition-colors text-[#1034A6] placeholder-gray-300"
+              />
+              <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-300 hover:text-gray-500 transition-colors">
+                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+              </button>
+            </div>
+          </div>
+
+          {/* Confirm password */}
+          <div>
+            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">{t.confirmPasswordLabel}</label>
+            <div className="relative">
+              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300" />
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                required
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder="••••••••"
+                className="w-full pl-10 pr-10 py-3 text-sm border border-gray-200 rounded-xl focus:border-[#1034A6] focus:ring-1 focus:ring-[#1034A6] outline-none transition-colors text-[#1034A6] placeholder-gray-300"
+              />
+              <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-300 hover:text-gray-500 transition-colors">
+                {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+              </button>
+            </div>
+          </div>
+
+          {/* Submit */}
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-3 bg-[#1034A6] hover:bg-[#0A2480] text-white text-sm font-semibold rounded-xl transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
+          >
+            {loading ? (
+              <><Loader2 className="w-4 h-4 animate-spin" />{t.loading}</>
+            ) : t.registerButton}
+          </button>
+        </form>
+
+        <p className="text-center text-sm text-gray-400 mt-6">
+          {t.hasAccount}{" "}
+          <Link href="/admin-login" className="text-[#1034A6] font-semibold hover:underline">
+            {t.loginLink}
+          </Link>
+        </p>
+      </div>
+
+      <p className="mt-6 text-xs text-gray-400 text-center">
+        © {new Date().getFullYear()} Lab Yaounde — Zone administrateur sécurisée
+      </p>
+    </div>
   );
 }

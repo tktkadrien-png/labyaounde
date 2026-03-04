@@ -191,7 +191,8 @@ export default function AdminDashboard() {
     const alreadyAuth = sessionStorage.getItem('adminAuthenticated') === 'true';
     if (alreadyAuth) {
       setIsAuthenticated(true);
-      fetchAllData();
+    } else {
+      setLoading(false);
     }
   }, []);
 
