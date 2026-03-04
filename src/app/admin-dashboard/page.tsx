@@ -69,6 +69,14 @@ export default function AdminDashboard() {
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState<"all" | "5" | "4" | "3" | "2" | "1">("all");
 
+  // Toast notification
+  const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
+
+  const showToast = (message: string, type: "success" | "error" = "success") => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 3500);
+  };
+
   // Stats
   const [stats, setStats] = useState({
     totalUsers: 0,
@@ -180,17 +188,16 @@ export default function AdminDashboard() {
   const currentContent = content[language];
 
   useEffect(() => {
-    setIsAuthenticated(true);
-    sessionStorage.setItem('adminAuthenticated', 'true');
-    fetchAllData();
+    const alreadyAuth = sessionStorage.getItem('adminAuthenticated') === 'true';
+    if (alreadyAuth) {
+      setIsAuthenticated(true);
+      fetchAllData();
+    }
   }, []);
 
   useEffect(() => {
     if (!isAuthenticated) return;
-    const interval = setInterval(() => {
-      fetchAllData();
-    }, 30000); // Refresh every 30 seconds
-    return () => clearInterval(interval);
+    fetchAllData();
   }, [isAuthenticated]);
 
   useEffect(() => {
@@ -499,6 +506,20 @@ export default function AdminDashboard() {
       <TopNavigationBar />
       <MainNavigation />
 
+      {/* Toast notification */}
+      {toast && (
+        <div className={`fixed top-6 right-6 z-50 px-6 py-4 rounded-xl shadow-2xl text-white font-semibold transition-all flex items-center gap-3 ${
+          toast.type === "success" ? "bg-green-600" : "bg-red-600"
+        }`}>
+          {toast.type === "success" ? (
+            <CheckCircle className="w-5 h-5 flex-shrink-0" />
+          ) : (
+            <XCircle className="w-5 h-5 flex-shrink-0" />
+          )}
+          {toast.message}
+        </div>
+      )}
+
       <main className="min-h-screen bg-gray-100">
         {/* Top Header Bar */}
         <div className="bg-gradient-to-r from-[#0A065D] via-[#0080FF] to-[#0909FF] text-white">
@@ -603,8 +624,14 @@ export default function AdminDashboard() {
                       <p className="text-sm text-gray-500 font-medium">{currentContent.totalUsers}</p>
                       <p className="text-3xl font-bold text-[#1E40AF] mt-1">{stats.totalUsers}</p>
                       <div className="flex items-center gap-1 mt-2">
-                        <ArrowUp className="w-4 h-4 text-green-500" />
-                        <span className="text-sm text-green-600 font-medium">+{periodStats.users}</span>
+                        {periodStats.users > 0 ? (
+                          <ArrowUp className="w-4 h-4 text-green-500" />
+                        ) : (
+                          <ArrowDown className="w-4 h-4 text-gray-400" />
+                        )}
+                        <span className={`text-sm font-medium ${periodStats.users > 0 ? 'text-green-600' : 'text-gray-400'}`}>
+                          +{periodStats.users}
+                        </span>
                         <span className="text-xs text-gray-500">{periodStats.label}</span>
                       </div>
                     </div>
@@ -621,8 +648,14 @@ export default function AdminDashboard() {
                       <p className="text-sm text-gray-500 font-medium">{currentContent.totalReviews}</p>
                       <p className="text-3xl font-bold text-[#1E40AF] mt-1">{stats.totalReviews}</p>
                       <div className="flex items-center gap-1 mt-2">
-                        <ArrowUp className="w-4 h-4 text-green-500" />
-                        <span className="text-sm text-green-600 font-medium">+{periodStats.reviews}</span>
+                        {periodStats.reviews > 0 ? (
+                          <ArrowUp className="w-4 h-4 text-green-500" />
+                        ) : (
+                          <ArrowDown className="w-4 h-4 text-gray-400" />
+                        )}
+                        <span className={`text-sm font-medium ${periodStats.reviews > 0 ? 'text-green-600' : 'text-gray-400'}`}>
+                          +{periodStats.reviews}
+                        </span>
                         <span className="text-xs text-gray-500">{periodStats.label}</span>
                       </div>
                     </div>
@@ -874,6 +907,19 @@ export default function AdminDashboard() {
                                   {language === 'fr' ? 'Recommande' : 'Recommends'}
                                 </span>
                               )}
+                              <span className={`text-xs px-2 py-1 rounded-full font-semibold ${
+                                review.status === 'approved'
+                                  ? 'bg-green-100 text-green-700'
+                                  : review.status === 'rejected'
+                                  ? 'bg-red-100 text-red-700'
+                                  : 'bg-yellow-100 text-yellow-700'
+                              }`}>
+                                {review.status === 'approved'
+                                  ? currentContent.approved
+                                  : review.status === 'rejected'
+                                  ? currentContent.rejected
+                                  : currentContent.pending}
+                              </span>
                             </div>
                             <p className="text-sm text-gray-500 mb-2">{review.email}</p>
                             {review.service_type && (
@@ -895,6 +941,24 @@ export default function AdminDashboard() {
                         </div>
 
                         <div className="flex gap-2 sm:flex-col">
+                          {review.status !== 'approved' && (
+                            <button
+                              onClick={() => handleUpdateReviewStatus(review.id, 'approved')}
+                              className="p-2 text-green-600 hover:bg-green-50 rounded-lg transition-colors"
+                              title={currentContent.approve}
+                            >
+                              <CheckCircle className="w-5 h-5" />
+                            </button>
+                          )}
+                          {review.status !== 'rejected' && (
+                            <button
+                              onClick={() => handleUpdateReviewStatus(review.id, 'rejected')}
+                              className="p-2 text-orange-500 hover:bg-orange-50 rounded-lg transition-colors"
+                              title={currentContent.reject}
+                            >
+                              <XCircle className="w-5 h-5" />
+                            </button>
+                          )}
                           <button
                             onClick={() => handleDeleteReview(review.id)}
                             className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"

@@ -4,7 +4,8 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
-  Newspaper, Plus, Edit, Trash2, Eye, EyeOff, Save, X, ArrowLeft
+  Newspaper, Plus, Edit, Trash2, Eye, EyeOff, Save, X, ArrowLeft,
+  CheckCircle, XCircle
 } from "lucide-react";
 import TopNavigationBar from "@/components/sections/top-navigation-bar";
 import MainNavigation from "@/components/sections/main-navigation";
@@ -29,6 +30,7 @@ export default function ActualitesAdmin() {
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [editingActualite, setEditingActualite] = useState<Actualite | null>(null);
+  const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -40,9 +42,22 @@ export default function ActualitesAdmin() {
     is_published: false,
   });
 
+  // Protection: vérifier l'authentification admin
+  useEffect(() => {
+    const isAuth = sessionStorage.getItem('adminAuthenticated') === 'true';
+    if (!isAuth) {
+      router.push('/admin-dashboard');
+    }
+  }, [router]);
+
   useEffect(() => {
     fetchActualites();
   }, []);
+
+  const showToast = (message: string, type: "success" | "error" = "success") => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 3500);
+  };
 
   const fetchActualites = async () => {
     setLoading(true);
@@ -63,7 +78,6 @@ export default function ActualitesAdmin() {
     e.preventDefault();
 
     if (editingActualite) {
-      // Update existing actualite
       const { error } = await supabase
         .from('actualites')
         .update({
@@ -74,23 +88,22 @@ export default function ActualitesAdmin() {
 
       if (error) {
         console.error('Error updating actualite:', error);
-        alert('Erreur lors de la mise à jour');
+        showToast('Erreur lors de la mise à jour', 'error');
       } else {
-        alert('Actualité mise à jour avec succès!');
+        showToast('Actualité mise à jour avec succès !');
         resetForm();
         fetchActualites();
       }
     } else {
-      // Create new actualite
-      const { error} = await supabase
+      const { error } = await supabase
         .from('actualites')
         .insert([formData]);
 
       if (error) {
         console.error('Error creating actualite:', error);
-        alert(`Erreur lors de la création: ${error.message}\n\nDétails: ${JSON.stringify(error, null, 2)}`);
+        showToast(`Erreur lors de la création : ${error.message}`, 'error');
       } else {
-        alert('Actualité créée avec succès!');
+        showToast('Actualité créée avec succès !');
         resetForm();
         fetchActualites();
       }
@@ -121,9 +134,9 @@ export default function ActualitesAdmin() {
 
     if (error) {
       console.error('Error deleting actualite:', error);
-      alert('Erreur lors de la suppression');
+      showToast('Erreur lors de la suppression', 'error');
     } else {
-      alert('Actualité supprimée avec succès!');
+      showToast('Actualité supprimée avec succès !');
       fetchActualites();
     }
   };
@@ -136,7 +149,9 @@ export default function ActualitesAdmin() {
 
     if (error) {
       console.error('Error toggling publish:', error);
+      showToast('Erreur lors du changement de statut', 'error');
     } else {
+      showToast(actualite.is_published ? 'Actualité dépubliée' : 'Actualité publiée');
       fetchActualites();
     }
   };
@@ -161,6 +176,20 @@ export default function ActualitesAdmin() {
     <>
       <TopNavigationBar />
       <MainNavigation />
+
+      {/* Toast notification */}
+      {toast && (
+        <div className={`fixed top-6 right-6 z-50 px-6 py-4 rounded-xl shadow-2xl text-white font-semibold transition-all flex items-center gap-3 ${
+          toast.type === "success" ? "bg-green-600" : "bg-red-600"
+        }`}>
+          {toast.type === "success" ? (
+            <CheckCircle className="w-5 h-5 flex-shrink-0" />
+          ) : (
+            <XCircle className="w-5 h-5 flex-shrink-0" />
+          )}
+          {toast.message}
+        </div>
+      )}
 
       <main className="min-h-screen bg-gray-50 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -234,12 +263,11 @@ export default function ActualitesAdmin() {
                       Date *
                     </label>
                     <input
-                      type="text"
+                      type="date"
                       required
                       value={formData.date}
                       onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0A065D] focus:border-transparent"
-                      placeholder="Ex: 15 Novembre 2025"
                     />
                   </div>
 
