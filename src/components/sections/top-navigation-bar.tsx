@@ -1,6 +1,6 @@
 "use client";
 
-import { Phone, Mail, MapPin, Facebook, Instagram, Shield, LayoutDashboard } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Instagram } from 'lucide-react';
 import { useLanguage } from '@/lib/contents/LanguageContext';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -84,28 +84,6 @@ const TopNavigationBar = () => {
                 <TikTokIcon className="h-3.5 w-3.5" />
               </a>
 
-              {/* Divider */}
-              <span className="text-white/20 mx-1">|</span>
-
-              {/* Admin Login */}
-              <Link
-                href="/admin-login"
-                aria-label="Admin Login"
-                title="Connexion Admin"
-                className="flex items-center justify-center w-7 h-7 text-white/40 hover:text-white/80 transition-colors"
-              >
-                <Shield className="h-3.5 w-3.5" />
-              </Link>
-
-              {/* Admin Dashboard — direct access icon */}
-              <Link
-                href="/admin-dashboard"
-                aria-label="Admin Dashboard"
-                title="Tableau de bord Admin"
-                className="flex items-center justify-center w-7 h-7 rounded-md bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all"
-              >
-                <LayoutDashboard className="h-3.5 w-3.5" />
-              </Link>
             </div>
           </div>
         </div>

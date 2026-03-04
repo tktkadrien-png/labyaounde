@@ -472,13 +472,9 @@ const MainNavigation = () => {
               ) : (
                 <div className="flex items-center gap-1.5">
                   <Link href="/login">
-                    <button className="px-4 py-2 text-sm font-medium text-[#1E40AF]/70 hover:text-[#1E40AF] rounded-lg hover:bg-slate-50 transition-colors">
+                    <button className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-[#1034A6] hover:bg-[#0A2480] rounded-lg transition-all duration-200 shadow-sm hover:shadow-md">
+                      <LogIn className="w-3.5 h-3.5" />
                       {language === "fr" ? "Connexion" : "Login"}
-                    </button>
-                  </Link>
-                  <Link href="/signup">
-                    <button className="px-4 py-2 text-sm font-medium text-white bg-[#FF8500] hover:bg-[#E87000] rounded-lg transition-all duration-200 shadow-sm hover:shadow-md">
-                      {language === "fr" ? "Inscription" : "Sign Up"}
                     </button>
                   </Link>
                 </div>
@@ -583,13 +579,9 @@ const MainNavigation = () => {
             ) : (
               <div className="flex gap-2">
                 <Link href="/login" onClick={() => setIsMobileMenuOpen(false)} className="flex-1">
-                  <button className="w-full py-2.5 text-sm font-medium text-[#1E40AF]/80 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
+                  <button className="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-semibold text-white bg-[#1034A6] rounded-lg hover:bg-[#0A2480] transition-colors">
+                    <LogIn className="w-4 h-4" />
                     {language === "fr" ? "Connexion" : "Login"}
-                  </button>
-                </Link>
-                <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)} className="flex-1">
-                  <button className="w-full py-2.5 text-sm font-medium text-white bg-[#FF8500] rounded-lg hover:bg-[#E87000] transition-colors">
-                    {language === "fr" ? "Inscription" : "Sign Up"}
                   </button>
                 </Link>
               </div>
