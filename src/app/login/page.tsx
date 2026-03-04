@@ -255,26 +255,35 @@ export default function LoginPage() {
             </div>
           </div>
 
-          {/* Center image */}
+          {/* Center — Logo showcase */}
           <div className="relative z-10 flex-1 flex items-center justify-center my-6">
-            <div className="relative w-52 h-60 rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/20">
-              <Image
-                src="/IMAGE/national-cancer-institute-XknuBmnjbKg-unsplash.jpg"
-                alt="Lab professional"
-                fill
-                className="object-cover object-center"
-                sizes="208px"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F6E]/50 to-transparent" />
+            {/* Outer glow ring */}
+            <div className="relative flex items-center justify-center">
+              <div className="absolute w-56 h-56 rounded-full bg-white/5 blur-2xl" />
+              <div className="absolute w-44 h-44 rounded-full border border-white/10" />
+              <div className="absolute w-56 h-56 rounded-full border border-white/5" />
+              {/* Spinning dashed ring */}
+              <div className="absolute w-52 h-52 rounded-full border-2 border-dashed border-white/15 animate-spin" style={{ animationDuration: "18s" }} />
+
+              {/* Logo card */}
+              <div className="relative w-40 h-40 rounded-3xl bg-white shadow-2xl shadow-black/40 flex items-center justify-center border border-white/80">
+                <Image
+                  src="/images/images.png"
+                  alt="Lab Yaoundé Logo"
+                  width={130}
+                  height={130}
+                  className="w-28 h-auto object-contain"
+                  priority
+                />
+              </div>
             </div>
 
             {/* Floating badges */}
-            <div className="absolute top-2 -right-3 bg-white/15 backdrop-blur-md rounded-2xl px-3 py-2 border border-white/25 shadow-xl">
+            <div className="absolute top-0 -right-2 bg-white/15 backdrop-blur-md rounded-2xl px-3 py-2 border border-white/25 shadow-xl">
               <div className="text-xl font-black text-white leading-none">24h</div>
               <div className="text-white/60 text-[10px] font-medium">Résultats</div>
             </div>
-            <div className="absolute bottom-2 -left-3 bg-white/15 backdrop-blur-md rounded-2xl px-3 py-2 border border-white/25 shadow-xl">
+            <div className="absolute bottom-0 -left-2 bg-white/15 backdrop-blur-md rounded-2xl px-3 py-2 border border-white/25 shadow-xl">
               <div className="text-xl font-black text-[#93C5FD] leading-none">ISO</div>
               <div className="text-white/60 text-[10px] font-medium">Certifié</div>
             </div>
